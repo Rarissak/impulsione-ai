@@ -1,7 +1,5 @@
 # impulsione-ai
 
-# Impulsione aí
-
 ## Descrição do Projeto
 
 Impulsione aí é uma plataforma web projetada para conectar empreendedores locais a usuários interessados em comprar produtos e serviços de qualidade a preços acessíveis apoiando o empreendedorismo. Nosso principal objetivo é impulsionar os negócios desses empreendedores, fornecendo-lhes uma plataforma onde possam promover seus produtos e alcançar um público mais amplo.
@@ -36,7 +34,7 @@ Aceitamos contribuições de desenvolvedores interessados em melhorar a platafor
 
 Para executar o projeto localmente, siga estas etapas:
 
-1. Clone o repositório: `https://github.com/Rarissak/impulsioneAi.git`
+1. Clone o repositório: `https://github.com/Rarissak/impulsione-ai.git`
 2. Instale as dependências: `npm install`, `npm install vite`
 3. Execute o servidor: `npm run dev`
 4. Acesse a plataforma em seu navegador: `http://localhost:3000`
