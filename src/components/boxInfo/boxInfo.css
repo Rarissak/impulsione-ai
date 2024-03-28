@@ -1,0 +1,55 @@
+/*Titulo do Box e suas variações*/
+.titleBox {
+    padding-left: 6rem;
+    padding-right: 6rem;
+    border-radius: 40px;
+    padding-top: 1rem;
+    text-align: center;
+    z-index: 1;
+}
+#titleBoxLaranja{ background-color: #FFE1CC; }
+#titleBoxRoxo{ background-color: #8A00DE; }
+#titleBoxBranco{ background-color: #ffffff; }
+
+/*H1 do Titulo do Box e suas variações*/
+.titleBox h1{ 
+    font-size: 30px; 
+}
+#titleBoxLaranja h1{ color: #8A00DE !important; }
+#titleBoxRoxo h1{ color: #FFC79E !important; }
+#titleBoxBranco h1{ color: #FF7D1E !important; }
+
+/*Divisor e suas variações*/
+.divisor {
+    padding-top: 3rem;
+    width: 100%;
+    margin-top: -30px;
+}
+#divisorRoxo { background-color: #8A00DE; }
+#divisorLaranja { background-color: #FFE1CC; }
+#divisorBranco { background-color: #ffffff; 
+                border-top-left-radius: 20px; border-top-right-radius: 20px;}
+
+
+/* #boxPrincipal {
+    background-color: #8A00DE;
+    padding-top: 5rem;
+    padding-bottom: 2em;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    margin-top: -40px;
+    z-index: 0;
+} */
+
+section{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /*Para o efeito alcançar toda a pagina*/
+}

@@ -1,0 +1,50 @@
+.footer {
+    background-color: #CE5700;
+    color: #fff;
+    text-align: end;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 0.75rem;
+}
+
+.logo { width: 12rem; }
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-bottom: 2rem;
+}
+  
+.footer-content p { margin-bottom: 0; }
+  
+#copyright {
+    font-size: 0.7em;
+    color:#FFC79E;
+    text-align: center;
+}
+
+.redes-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.redes-links_p-redes {
+    align-self: center;
+    padding-bottom: 1em;
+}
+
+.redes-links_img-redes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between !important;
+    gap: 1rem;
+}
+
+.redes-links_img-redes img {
+    width: 2rem;
+}

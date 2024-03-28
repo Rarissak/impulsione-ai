@@ -1,0 +1,34 @@
+#boxVideo {
+    display: flex;
+    justify-content: center;
+    /* background-color: blueviolet; */
+    align-items: center;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    margin-left: 3em; 
+    margin-right: 3em;
+}
+
+.title {
+    font-size: 35px;
+    line-height: 1 !important;
+
+}
+
+#textVideo {
+    margin-top: 1em;
+    margin-right: 8em;
+    color: #CE5700;
+}
+
+#video {
+    /* width: 1349px;  */
+    width: 45rem;
+    /* height: 350px; */
+    height: 25rem;
+    border-radius: 2em;
+}
+
+#boxInfoVideo {
+    width: 35%;
+}

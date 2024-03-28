@@ -1,0 +1,178 @@
+/*===- Configuração básica dos butões -===*/
+button, #headerSearch input
+{
+    border-color: #ffa15d00;
+    border-radius: 25px;
+}
+
+/*===- Configuração da caixa acima da listra -===*/
+#headerUpper
+{
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    gap: 20px;
+    align-items: center;
+}
+
+/*===- Alinhamento vertical para items da caixa acima da listra... -===*/
+.centralizeItems
+{
+    display: flex;
+    align-content: center;
+}
+
+.headerScreenLinks
+{
+    text-decoration: none;
+    padding: .2rem .8rem;
+    background-color: #ff7c1e00;
+    color: #7900c3;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21.78px;
+    letter-spacing: -1.5%;
+    height: 30px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.headerScreenLinks:hover
+{
+    transition: .4s;
+    background-color: #ffa15d;
+    border-radius: 20px;
+}
+
+.headerScreenButtons:hover
+{
+    transition: .4s !important;
+    background-color: #ffa15d !important;
+    border-radius: 20px !important;
+}
+
+.headerIcon:hover { color: #ffffff; }
+
+#headerSearch input
+{
+    padding: .1rem 1.3rem;
+    background-color: #F3F3F3;
+    color: #919191;
+    font-weight: 500;
+    font-size: 13px; 
+    line-height: 18.15px;
+    letter-spacing: -1.5%;
+    width: 100%;
+    height: 34px;
+    transition: .2s;
+}
+
+#headerSearch {
+    width: 40%;
+}
+
+#headerSearch input:hover
+{
+    transition: .4s;
+    background-color: #e7e4e4;
+    color: #919191;
+    
+}
+
+#headerSearch img
+{
+    margin-left: 6px;
+    width: 20.47px;
+    height: 25px;
+    margin-top: 5px;
+}
+
+/*===- Botão parceiros -===*/
+#headerLogin, #headerParceiros
+{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 8px;
+}
+
+.headerScreenButtons:hover{
+    background-color: red;
+}
+
+.headerScreenButtons:hover{
+    background-color: red;
+}
+
+#headerLogin
+{
+    background-color: transparent;
+    cursor: pointer;
+    color: #7900C3;
+    font-weight: 500;
+}
+
+
+#headerParceiros img
+{
+    margin-top: -3px;
+}
+
+
+/*===- Separando logo e o restante dos elementos para centralizá-los na tela sem que ele fiquem tronxos -===*/
+#align
+{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 9px;
+    width: 80%;
+}
+
+
+
+#logo
+{
+    /* margin-left: 10px; */
+    width: 100%;
+    height: 4rem;
+}
+
+/*===- Listra divisora -===*/
+
+#headerHR
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*===- Botões das categorias/nichos -===*/
+#headerCategory
+{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.headerCategoryButtons
+{
+    padding: .01rem 1.5rem;
+    background-color: #ffa15d;
+    color: #ffffff;
+    font-weight:800;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-align: center;
+    height: 25px;
+    transition: .2s;
+    scale: 1;
+}
+
+.headerCategoryButtons:hover
+{
+    transition: .35s;
+    background-color: #ffbe8f;
+    scale: 1.02;
+}

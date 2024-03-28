@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Inter';
+}
+
+/*Centralizando botões no centro da tela*/
+#buttonCentralize
+{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/*Definindo configurações básica dos botões*/
+.buttons
+{
+    margin-top: 15px;
+    color: #B741FF;
+    font-size: 16px;
+    font-weight: 800;
+    padding: .2rem 1.5rem;
+    margin-bottom: 45px;
+    cursor: pointer;
+    background-color: #f6e8ff;
+}
+
+/*Definindo cor*/
+#buttonSelecionado
+{
+    background-color: #B741FF;
+    color: #ffffff;
+}
+
+.buttons:hover
+{
+    transition: .2s;
+    background-color:  #ffb47e;
+}

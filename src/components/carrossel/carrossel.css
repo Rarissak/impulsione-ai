@@ -1,0 +1,20 @@
+.slide-item {
+    width: 40rem;
+    height: 22rem;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.slide-box {
+    width: 40rem;
+    height: 24rem;
+}
+
+/* Altera a cor das bolinhas da paginação (dots) */
+.swiper-pagination-bullet {
+    background-color: #8A00DE !important; /* Cor das bolinhas */
+    width: 8px !important; /* Largura das bolinhas */
+    height: 8px !important; /* Altura das bolinhas */
+    margin: 0 5px !important;
+    border-radius: 50% !important; /* Deixa as bolinhas arredondadas */
+}

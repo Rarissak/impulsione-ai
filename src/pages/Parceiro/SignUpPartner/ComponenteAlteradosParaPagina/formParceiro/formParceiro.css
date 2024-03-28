@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Inter';
+}
+
+.senhaValidacoes {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between !important; */
+
+}
+
+#senhaRescrever{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    gap: 5rem
+}
+
+.boxForm {
+    background-color: #ffffff;
+    padding-bottom: 2em;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    /* margin-top: -40px;
+    z-index: 1; */
+}
+
+/*Colocando o elemento loginHeader em cima do loginBody*/
+#formTitle
+{
+    position: relative;
+    top: 58%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(255, 255, 255);
+    border-radius: 53px;
+    text-align: center;
+    width: 38%;
+    z-index: -1;
+    height: 12%;
+}
+
+/*Configurando a fonte do loginHeader*/
+#formTitle span
+{
+    font-family: 'Baloo 2', sans-serif;
+    color: #FF7D1E;
+    font-size: 42px;
+    font-weight:800;
+    position: relative;
+    
+}
+
+#form
+{
+  width: 100%;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+#formContainer
+{
+    /* width: 50%; */
+    padding-top: 2rem;
+}
+
+
+
+/*Configuração dos campos*/
+.fieldType1
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fieldType2 .nameField
+{
+    margin-right: 10px;
+}
+
+.nameField
+{
+    color: #CC78FF;
+    font-weight: 700;
+}
+
+
+
+/*Configuração das legendas de alguns campos*/
+#alertLocationField
+{
+    font-size: 12.5px;
+}
+
+#passwordRequery
+{
+    margin-top: -15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#passwordRequery span
+{
+    font-size: 10.5px;
+    color:  #919191;
+}
+
+/*Configuração Texto de aviso de erro abaixo do campo*/
+
+.invalidInput, .validInput
+{
+    text-align: right;
+  
+}
+
+.invalidInput span
+{
+    font-size: 14px;
+    color: red;
+}
+
+.validInput
+{
+    font-size: 14px;
+    color: green;
+}
+
+/*Mudando o campo CPF para ficar parecido com a estilização do campo MEI*/
+
+#centralizeCpfField
+{
+    display: flex;
+    align-items:flex-start;
+    gap: 15px;
+}
+
+    /*Configuração do campo Opcional + atualização do campo cpf*/
+.optionalField
+{
+    display: flex;
+    gap: 15px;
+}
+
+.optional
+{
+    font-size: 11px;
+    color: #FF8D3B;
+}
+
+#inputOptional, .especialCase
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+   
+    
+}
+/*Configuração do campo modalidade*/
+#radioContainer
+{
+    margin-left: 35px;
+}
+
+#radioContainer input
+{
+    cursor: pointer;
+}
+
+#fieldRadio
+{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.radioOption
+{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+ 
+}
+
+/*Configuração do campo Plano escolhido*/
+#selectField label
+{
+    color: #8A00DE;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+#selectField select
+{
+    
+    background: #CC78FF;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 25px;
+    border-color: rgba(73, 4, 4, 0);
+    padding: .2rem .5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.nichoSelecao select
+{
+    background: #ffffff;
+    color: #626064;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 25px;
+    border-color: #8A00DE;
+    padding: .2rem .5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+#form input
+{
+    background-color: #f3f3f3;
+    border-radius: 25px;
+    border-color: #f3f3f300;
+    padding: .2rem .6rem;
+}
+
+.fieldSetConfig
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-color: #8900de00;
+}
+
+
+/*Configuração do campo Formas de contato*/
+#contactFormsH1
+{
+    margin-top: 30px;
+    color: #FF7D1E;
+    font-weight: 800;
+}
+
+.iconField
+{
+    display: flex;
+}
+
+.iconField img
+{
+    width: 25px;
+    margin-right: 5px;
+}
+
+
+
+/*Configuração dos botões do form*/
+
+#buttonsForm
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#buttonsForm button
+{
+    margin-top: 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    padding: .2rem 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+/* Configuração dos botões de cadastro */
+#cadastradoButton
+{
+    background-color: #B741FF;
+    
+}
+#cadastradoButton:hover
+{
+    transition: .2s;
+    background-color: #8c32c4;
+}
+
+#cadastrarButton
+{
+    background-color: #FF8D3B;
+    margin-right: 2px;
+}
+
+#cadastrarButton:hover
+{
+    transition: .2s;
+    background-color: #be6a2d;
+}
+
+/*Espaço entre o formulário de cadastro e o footer*/
+#beforeFooter
+{
+    background-color: #f6e8ff;
+    height: 120px;
+
+}

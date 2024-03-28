@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
+
+/*===- Configuração de  botão selecionado -===*/
+
+#fundoRoxoClaro {
+    background-color: #CC78FF !important;
+}
+
+#linkCadastro {
+    padding: 0.75rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #FF8D3B;
+    cursor: pointer;
+}
+
+#headerIconParceiros {
+    fill: rgb(255, 255, 255) !important;
+}
+
+
+.blocoRoxo{
+    background: linear-gradient(to right, #3C0060, #64039F);
+}
+
+#bloco1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 5rem;
+}
+
+#infoBloco1 {
+    width: 30%;
+}
+
+#infoBloco1 h1 {
+    color: #FFA767;
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+}
+
+#infoBloco1 p {
+    color: #EBCBFF;
+    font-size: 14px;
+    margin-bottom: 2rem;
+}
+
+.buttonInfo {
+    padding: 0.75rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #FF8D3B;
+}
+
+
+#bloco2 {
+    margin-top: 6rem;
+    padding-bottom: 8rem;
+}
+
+#titleText {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+}
+
+#textBranco{
+    font-size: 30px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+#textLaranja{
+    font-size: 30px;
+    font-weight: 300;
+    color: #FEBE90;
+}
+
+#info {
+    margin-top: 3rem;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
+#boxLaranja{
+    background-color: #FFE1CC !important;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.titleBoxLaranja {
+    background-color: #FFE1CC !important;
+}
+
+#titulo {
+    color: #8A00DE !important;
+}
+
+#divisor {
+    background-color: #FFE1CC;
+}
+
+#bloco3 {
+    margin-top: -40px;
+}
+
+#titleVideo {
+    color: #FF7D1E;
+    font-size: 45px;
+}
+
+#textVideo {
+    font-size: 16px;
+}
+
+
+/* ESTILO DO BLOCO 5 */
+
+#bloco5 {
+    display: grid;
+    place-items: center;
+    margin-bottom: 7rem;
+}
+
+#bloco5 h1 {
+    font-size: 30px;
+    text-align: center;
+    background-color: #FF7D1E;
+    color: #ffffff;
+    border-radius: 30px;
+    padding: 0.25rem;
+    width: 100%;
+}
+
+#bloco5 p {
+    font-size: 16px;
+    color: #CE5700;
+}
+
+#boxPlanos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.planos {
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+.plano {
+    width: 30%;
+    background-color: #FFEDE0;
+    padding: 2.75rem;
+    border-radius: 30px;
+    display:flex;
+    flex-direction: column;
+    height: 38rem;
+}
+
+.plano img {
+    width: 2.5rem;
+}
+
+.vantagem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.buttonPlanos {
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: 5rem;
+    padding: 0.75rem;
+    width: 100%;
+    font-weight: 600;
+    background-color: #CC78FF;
+    align-self: center;
+    /* display: flex;
+    align-items: flex-end; */
+    margin-top: auto;
+    align-self: flex-end;
+}
+
+
+/*barraLinks*/
+#linksNavegacao {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#linksNavegacao span {
+    background-color: #CC78FF;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 15px;
+    color: white;
+    border: none;
+    border-radius: 1.5em;
+    padding: 0.2em 1.9em;
+    font-family: "Baloo 2", sans-serif;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    scale: 1;
+}
+
+.teste:hover{
+    transition: .35s !important;
+    background-color: #8A00DE !important;
+    scale: 1.02 !important;
+}
+
+#barraLinksLogin {
+    background-color: #CC78FF;
+    border-radius: 20px;
+}
+#barraLinksLogin span {
+    color: #ffffff;
+    font-size: 15px !important;
+    font-family: "Baloo 2", sans-serif;
+}
+
+#barraLinksLogin:hover{
+    transition: .35s !important;
+    background-color: #8A00DE !important;
+    scale: 1.02 !important;
+}

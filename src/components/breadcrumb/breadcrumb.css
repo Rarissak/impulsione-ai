@@ -1,0 +1,18 @@
+.breadcrumb {
+    padding: 0;
+}
+  
+.breadcrumb-item {
+    color: #8800DA; /* Cor roxa */
+    margin-right: 5px;
+}
+  
+.separator {
+    color: #8800DA;
+    margin: 0 5px; /* Espaçamento entre os separadores */
+}
+  
+.breadcrumb-item.active {
+    font-weight: bold;
+}
+  

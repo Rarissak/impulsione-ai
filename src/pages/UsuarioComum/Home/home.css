@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
+
+.boxInformations {
+    display: flex !important;
+    flex-direction: row !important;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+#chamada {
+    color: #8A00DE;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+#chamada p{
+    background-color: #F7EBFF;
+    width: 100%;
+    padding: 1em;
+}
+
+.carrossel {
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    gap:2em;
+    margin: 2.5em 5.4em 2.5em 5.4em;
+    align-items: center;
+}
+
+.carrossel p {
+    color: #FF7D1E;
+}
+
+.carrossel_texto{
+    width: 30%;
+}
+
+#destaques {
+    display: flex;
+    flex-direction: column;
+    margin: 3em;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#linhaDestaques{
+    display: flex;
+    flex-direction: row;
+    /* gap: 2rem; */
+    justify-content: space-between;
+    width: 100%;
+}
+
+#tituloDepoimentos {
+    background-color: #FF7D1E;
+    /* margin-top, margin-right, margin-bottom, e margin-left. */
+    /* margin: 0em 30em 1em 0em; */
+    width: 40%;
+    padding: 0.25rem;
+    color: #FFFFFF;
+    border-top-right-radius: 10em;
+    border-bottom-right-radius: 10em;
+    font-family: "Baloo 2", sans-serif;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#tituloDepoimentos h2 {
+    color: #FFFFFF;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 30px;
+    text-align: end;
+    padding-right: 4rem;
+}
+
+#depoimentos {
+    display: flex;
+    flex-direction: row;
+    gap: 10em;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-bottom: 5em;
+}

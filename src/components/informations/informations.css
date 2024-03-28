@@ -1,0 +1,25 @@
+#iconInfo { width: 8rem; }
+
+#titleInfo{
+    font-size: 17px;
+    color: #F7EBFF;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#textInfo{
+    color: #F7EBFF;
+    align-self: center !important;
+    font-size: 14px;
+    text-align: center;
+}
+
+#setInformation{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

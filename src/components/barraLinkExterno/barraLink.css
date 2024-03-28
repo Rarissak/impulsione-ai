@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* .itemBarra {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 50px !important;
+    color: rgb(255, 0, 0);
+    border: none;
+    border-radius: 1.5em;
+    padding: 0.2em 1.9em;
+    font-family: "Baloo 2", sans-serif;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    scale: 1;
+}
+
+ */
+.itemBarra:hover
+{
+    transition: .35s !important;
+    background-color: #ff6a00 !important;
+    scale: 1.02 !important;
+}
+
+
+
+.itemBarraRoxo:hover
+{
+    transition: .35s !important;
+    background-color: #7800c3 !important;
+    scale: 1.02 !important;
+}
+
+#fundoRoxoClaro:hover{
+    transition: .35s !important;
+    background-color: #8A00DE !important;
+    scale: 1.02 !important;
+}

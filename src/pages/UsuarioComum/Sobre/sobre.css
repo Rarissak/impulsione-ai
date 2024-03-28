@@ -1,0 +1,62 @@
+#fraseEfeito {
+    color: #FFA15D;
+    margin-top: -20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .carrossel_texto p{
+    color: #8A00DE;
+    text-align: end;
+  }
+  
+  .carrossel_texto {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+    align-self: center;
+  
+  }
+  
+  .boxInformations p {
+      text-align: center;
+      color: #ffffff;
+  }
+  
+  .boxInformationsDegrade {
+      background: linear-gradient(to bottom, #8A00DE, #6B02AB);
+      /* padding: 3em; */
+      margin-bottom: 0;
+  
+    }
+    
+    /* Estilos para o conteúdo dentro da caixa */
+    .boxInformationsDegrade .title {
+      color: #FFA15D; /* Cor do título */
+      margin-bottom: 0.9em;
+      padding-top: 1.5em;
+      text-align: center;
+    }
+    
+    .boxInformationsDegrade .pilares {
+      margin-bottom: 2em;
+    }
+    
+    .boxInformationsDegrade .pilares h3 {
+      color: #ffffff; /* Cor do título */
+    }
+    
+    .boxInformationsDegrade .pilares p {
+      color: #ffffff; /* Cor do texto */
+    }
+  
+    .secaoPilares {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+    
+    #breadcrumbs {
+      margin-left: 5em;
+    }

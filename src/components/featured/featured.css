@@ -1,0 +1,97 @@
+*{  /*Todos os elementos vão seguir as seguintes configurações*/
+    margin: 0;  /*Tirando a margem*/
+    padding: 0; /*Tirando o espaçamento dentro do elemento*/
+    box-sizing: border-box; 
+}
+
+#featuredContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#titleBorda{ width: 100%; }
+
+#featuredTitle {
+    font-size: 30px;
+    text-align: center;
+    background-color: #FF7D1E;
+    color: #ffffff;
+    border-radius: 30px;
+    padding: 0.75rem;
+    font-family: "Baloo 2", sans-serif;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+/*Featured*/
+#featured {
+    margin-top: 15px; /*Abrindo uma margem entre os destaques e o titulo*/
+    display: flex;
+    justify-content: center; /*Centralizando todos os elementos no centro da tela*/
+    margin-bottom: 15px; /*Abrindo uma margem no fundo dele para futuros elementos*/
+    gap: 35px;  /*Abrindo um espaço entre cada elemento*/
+    flex-wrap: wrap;
+}
+
+/*Featured Square*/
+.featuredSquare {
+    display: flex; /*Definindo o formato de exibição para flexível*/
+    justify-content: flex-start; /*Centralizando horizontalmente os elementos */
+    flex-direction: column;/*Com isto a cenrralização horizontal vira vertical. */
+    text-align: center; /*Centralizando texto dentro do retangulo*/
+    width: 15rem; /*Definindo o tamanho dele*/
+    height: 20rem;
+    gap: 10px;
+    border-radius: 20px; /*Arredodamento do retangulo*/
+    text-decoration: none !important;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.featuredSquare:hover{
+    background-color: #CE5700;
+    transition: .4s;
+    background-color: #ffa15d;
+}
+
+.featuredSquare span { text-decoration-style: none !important; }
+
+#quadradoLaranja{ background-color: #ffe1cc !important}
+#quadradoBranco{ background-color: #ffffff; }
+
+#quadradoLaranja:hover {
+    transition: .4s;
+    background-color: #ffc59c !important;}
+#quadradoBranco:hover{ 
+    transition: .4s;
+    background-color: #ffc59c !important; }
+
+.data {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.featuredSquare img {
+    border-radius: 20px 20px 0px  0px;
+    width: 15rem;
+}
+
+
+/*Name and Niche configuration*/
+
+.featuredName {
+    margin-top: 5px; /*Espaçamento em cima, para deixar mais espaço entre o texto e a borda da foto*/
+    color: #CE5700 !important;
+    font-size: 16px;
+    font-weight:700;
+    text-transform: uppercase;
+    text-decoration: none !important;
+}
+
+.featuredNiche {
+    color: #d16210;
+    margin-bottom: 5px; /*Espaçamento em baixo, para deixar mais espaço entre o texto e a borda do retangulo*/
+    text-decoration: none !important;
+}
