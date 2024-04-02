@@ -30,26 +30,47 @@
 #divisorBranco { background-color: #ffffff; 
                 border-top-left-radius: 20px; border-top-right-radius: 20px;}
 
-
-/* #boxPrincipal {
-    background-color: #8A00DE;
-    padding-top: 5rem;
-    padding-bottom: 2em;
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    align-items: flex-start;
-    justify-content: space-around;
-    padding-left: 10rem;
-    padding-right: 10rem;
-    margin-top: -40px;
-    z-index: 0;
-} */
-
 section{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%; /*Para o efeito alcançar toda a pagina*/
+}
+
+/* RESPONSIVO */
+
+
+@media screen and (max-width: 1200px){
+}
+
+@media screen and (max-width: 1024px){
+}
+
+@media screen and (max-width: 768px){
+    
+    .titleBox h1{ 
+        font-size: 25px; 
+    }
+
+    .titleBox {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@media screen and (max-width: 560px){
+    
+}
+
+@media screen and (max-width: 480px){
+	
+}
+
+@media screen and (max-width: 320px){
+	
+}
+
+@media screen and (max-width: 280px){
+	
 }

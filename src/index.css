@@ -60,3 +60,53 @@ body {
 #fundoRoxoClaro {
     background-color: #CC78FF;
 }
+
+
+/* RESPONSIVO */
+@media screen and (max-width: 280px){
+	
+}
+
+@media screen and (max-width: 320px){
+	
+}
+
+@media screen and (max-width: 480px){
+	
+}
+
+@media screen and (max-width: 560px){
+    
+}
+
+@media screen and (max-width: 768px){
+    
+    .boxInformations {
+        padding-top: 1rem !important;
+        padding-bottom: 4rem !important;
+        flex-direction: column !important;
+        flex-wrap: wrap;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        gap: 2rem;
+    }
+	
+}
+
+@media screen and (max-width: 1024px){
+	
+}
+
+@media screen and (max-width: 1200px){
+    .boxInformations {
+        padding-bottom: 2em;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: flex-start;
+        justify-content: space-around;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+}

@@ -5,8 +5,10 @@ function Informations({icon, titulo, texto}){
     return(
         <div id="setInformation">
             <img id="iconInfo" src={icon} alt={titulo}></img>
-            <h2 id="titleInfo">{titulo}</h2>
-            <p id="textInfo">{texto}</p>
+            <div id='infos'>
+                <h2 id="titleInfo">{titulo}</h2>
+                <p id="textInfo">{texto}</p>
+            </div>
         </div>
     )
 }
