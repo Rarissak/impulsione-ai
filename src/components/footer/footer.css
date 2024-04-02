@@ -48,3 +48,78 @@
 .redes-links_img-redes img {
     width: 2rem;
 }
+
+/* Para telas menores que 280px */
+@media screen and (max-width: 280px){
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .redes-links {
+        display: none;
+    }
+}
+
+/* Para telas entre 281px e 320px */
+@media screen and (min-width: 281px) and (max-width: 320px){
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .redes-links {
+        display: none;
+    }
+}
+
+/* Para telas entre 321px e 480px */
+@media screen and (min-width: 321px) and (max-width: 480px){
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .redes-links {
+        display: none;
+    }
+}
+
+/* Para telas entre 481px e 560px */
+@media screen and (min-width: 481px) and (max-width: 560px){
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .redes-links {
+        display: none;
+    }
+}
+
+/* Para telas entre 561px e 768px */
+@media screen and (min-width: 561px) and (max-width: 768px){
+    .footer-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+    .redes-links_p-redes {
+        font-size: 0.9rem;
+    }
+}
+
+/* Para telas entre 769px e 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px){
+    .footer-content {
+        flex-direction: row;
+        /* justify-content: space-around; */
+        align-items: center;
+    }
+}
+
+/* Para telas entre 1025px e 1200px */
+@media screen and (min-width: 1025px) and (max-width: 1200px){
+    .footer-content {
+        flex-direction: row;
+        /* justify-content: space-around; */
+        align-items: center;
+    }
+}
