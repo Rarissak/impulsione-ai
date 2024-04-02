@@ -36,3 +36,33 @@
     background-color: #8A00DE !important;
     scale: 1.02 !important;
 }
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 1200px){
+    
+}
+
+@media screen and (max-width: 1024px){
+
+}
+
+@media screen and (max-width: 768px){    
+}
+
+/* Só para testar*/
+@media screen and (max-width: 560px){
+
+}
+
+@media screen and (max-width: 480px){
+	
+}
+
+@media screen and (max-width: 320px){
+	
+}
+
+@media screen and (max-width: 280px){
+	
+}

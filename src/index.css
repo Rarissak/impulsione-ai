@@ -36,9 +36,10 @@ body {
     margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 1rem;
     font-family: "Baloo 2", sans-serif;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 #barraLinks button{
@@ -63,21 +64,25 @@ body {
 
 
 /* RESPONSIVO */
-@media screen and (max-width: 280px){
+
+@media screen and (max-width: 1200px){
+    .boxInformations {
+        padding-bottom: 2em;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: flex-start;
+        justify-content: space-around;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+}
+
+@media screen and (max-width: 1024px){
 	
 }
 
-@media screen and (max-width: 320px){
-	
-}
-
-@media screen and (max-width: 480px){
-	
-}
-
-@media screen and (max-width: 560px){
-    
-}
 
 @media screen and (max-width: 768px){
     
@@ -93,20 +98,25 @@ body {
 	
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 560px){
+    #barraLinks button{
+        font-size: 12px !important;
+    }
+    #barraLinks {
+        margin-top: 1rem;
+        gap: 0.5rem;
+    }
+    
+}
+
+@media screen and (max-width: 480px){
 	
 }
 
-@media screen and (max-width: 1200px){
-    .boxInformations {
-        padding-bottom: 2em;
-        width: 100%;
-        display:flex;
-        justify-content: center;
-        align-items: flex-start;
-        justify-content: space-around;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
+@media screen and (max-width: 320px){
+	
+}
 
+@media screen and (max-width: 280px){
+	
 }

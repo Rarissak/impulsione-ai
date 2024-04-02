@@ -84,3 +84,81 @@
     margin-right: 3em;
     margin-bottom: 5em;
 }
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 1200px){
+    .carrossel {
+        display:flex;
+        justify-content: space-around;
+        margin: 3rem 0 3rem 0;
+        flex-direction: row;
+        gap:2em;
+        align-items: center;
+    }
+
+    .carrossel_texto{ width: 30%; }
+
+    .carrossel_texto img{ width: 20rem; }
+
+    .carrossel_texto p{ font-size: 14px; }
+}
+
+@media screen and (max-width: 1024px){
+}
+
+/* Tamanho criado por conta do componente carrossel */
+@media screen and (max-width: 840px){
+    .carrossel {
+        display:flex;
+        flex-direction: column !important;
+    }
+
+    .carrossel_texto{
+        width: 90%;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        align-items: start !important;
+    }
+
+}
+/* Tamanho criado por conta do componente carrossel */
+
+@media screen and (max-width: 768px){
+    .carrossel_texto img{ width: 15rem; }
+
+}
+
+@media screen and (max-width: 560px){
+    .carrossel_texto{
+        width: 90%;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .carrossel_texto p{
+        font-size: 12px;
+        text-align: center !important;
+    }
+
+    .carrossel_texto img{
+        width: 13rem;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 480px){
+	
+}
+
+@media screen and (max-width: 320px){
+	
+}
+
+@media screen and (max-width: 280px){
+	
+}
