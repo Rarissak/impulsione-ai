@@ -1,7 +1,6 @@
 #boxVideo {
     display: flex;
     justify-content: center;
-    /* background-color: blueviolet; */
     align-items: center;
     margin-top: 3em;
     margin-bottom: 3em;
@@ -22,9 +21,7 @@
 }
 
 #video {
-    /* width: 1349px;  */
     width: 45rem;
-    /* height: 350px; */
     height: 25rem;
     border-radius: 2em;
 }
@@ -32,3 +29,185 @@
 #boxInfoVideo {
     width: 35%;
 }
+
+
+
+/* Para telas menores que 280px */
+@media screen and (max-width: 280px){
+    #boxVideo {
+        margin: 0.5em;
+    }
+    #boxInfoVideo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    .title {
+        font-size: 1.6em !important;
+        text-align: center;
+    }
+    #textVideo {
+        font-size: 0.9em !important;
+        margin: 0em;
+        text-align: justify;
+    }
+    #video {
+        width: 100%;
+        height: auto;
+        border-radius: 1em;
+    }
+}
+
+/* Para telas entre 281px e 320px */
+@media screen and (min-width: 281px) and (max-width: 320px){
+    #boxVideo {
+        margin: 0.5em;
+    }
+    #boxInfoVideo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    .title {
+        font-size: 1.6em !important;
+        text-align: center;
+    }
+    #textVideo {
+        font-size: 0.9em !important;
+        margin: 0em;
+        text-align: justify;
+    }
+    #video {
+        width: 100%;
+        height: auto;
+        border-radius: 1em;
+    }
+}
+
+/* Para telas entre 321px e 480px */
+@media screen and (min-width: 321px) and (max-width: 480px){
+    #boxVideo {
+        margin: 0.5em;
+    }
+    #boxInfoVideo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    .title {
+        font-size: 1.6em !important;
+        text-align: center;
+    }
+    #textVideo {
+        font-size: 0.9em !important;
+        margin: 0em;
+        text-align: justify;
+    }
+    #video {
+        width: 100%;
+        height: auto;
+        border-radius: 1em;
+    }
+}
+
+/* Para telas entre 481px e 560px */
+@media screen and (min-width: 481px) and (max-width: 560px){
+    #boxVideo {
+        margin: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6em;
+    }
+    #boxInfoVideo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    .title {
+        font-size: 1.9em !important;
+        text-align: center;
+    }
+    #textVideo {
+        font-size: 1em !important;
+        margin: 0em;
+        text-align: justify;
+    }
+    #video {
+        width: 24em;
+        height: 13.5em;
+        border-radius: 1em;
+    }
+}
+
+
+/* Para telas entre 561px e 768px */
+@media screen and (min-width: 561px) and (max-width: 768px){
+    #boxVideo {
+        margin: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6em;
+    }
+    #boxInfoVideo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+    .title {
+        font-size: 2em !important;
+        text-align: center;
+    }
+    #textVideo {
+        font-size: 1.2em !important;
+        margin: 0em;
+        text-align: center;
+    }
+    #video {
+        width: 30em;
+        height: 16.9em;
+        border-radius: 1em;
+    }
+}
+
+/* Para telas entre 769px e 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px){
+    #boxVideo {
+        margin: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6em;
+    }
+    #boxInfoVideo {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+    .title {
+        font-size: 2.5em !important;
+        text-align: center;
+    }
+    #textVideo {
+        font-size: 1em !important;
+        margin: 0em;
+        text-align: center;
+    }
+    #video {
+        width: 35em;
+        height: 19.7em;
+        border-radius: 1em;
+    }
+}
+
+/* Para telas entre 1025px e 1200px */
+/* @media screen and (min-width: 1025px) and (max-width: 1200px){
+
+} */
