@@ -1,7 +1,6 @@
 import React from "react";
 import './forgotPassword.css';
 import BoxInfo from "../../../components/boxInfo/boxInfo";
-import '../forgotPassword/teste.css';
 import FundoSenha from '../../../assets/fundoSenha.svg';
 
 function EsqueciSenha()
