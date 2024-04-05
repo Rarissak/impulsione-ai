@@ -1,10 +1,9 @@
-
 import React,{useState} from "react";
 import './login.css';
 // import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
 // Importando o icon do botão de fechar o modal.
 import iconModalClose from '../../../assets/iconLoginModalClose.svg';
-import BoxInfo from "../../../components/boxInfo/boxInfo";
+import {BoxInfoModal} from "../../../components/boxInfo/boxInfo";
 import { Link } from "react-router-dom";
 
  {/*Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
@@ -34,8 +33,7 @@ function Login()
                         </button>
                     </div>
                                        
-                    <BoxInfo title={'Login'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
-
+                    <BoxInfoModal title={'Login'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfoModal>
                     <div id="loginBody">
 
                         <div className="loginInputs">

@@ -195,3 +195,74 @@ Aparecer e desaparecer*/
 #loginButtonSignUp {
     text-decoration: none !important;
 }
+
+@media screen and (max-width: 1200px){
+   
+    #loginContainer
+    {
+
+        width: 38%;
+      
+    }
+}
+
+@media screen and (max-width: 1024px){
+    #loginContainer
+    {
+
+        width: 43%;
+      
+    }
+}
+
+/* Tamanho criado por conta do componente carrossel */
+@media screen and (max-width: 840px){
+ 
+
+}
+/* Tamanho criado por conta do componente carrossel */
+
+@media screen and (max-width: 768px){
+    #loginContainer
+    {
+
+        width: 46%;
+      
+    }
+}
+
+@media screen and (max-width: 560px){
+    #loginContainer
+    {
+
+        width: 52%;
+      
+    }
+}
+
+@media screen and (max-width: 480px){
+    #loginContainer
+    {
+
+        width: 56%;
+      
+    }
+}
+
+@media screen and (max-width: 320px){
+    #loginContainer
+    {
+
+        width: 62%;
+      
+    }
+}
+
+@media screen and (max-width: 280px){
+    #loginContainer
+    {
+
+        width: 66%;
+      
+    }
+}
