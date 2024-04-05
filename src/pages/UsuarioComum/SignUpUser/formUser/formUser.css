@@ -215,8 +215,8 @@
 #buttonsForm
 {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-around;
+    width: 50%;
 }
 
 #buttonsForm button
@@ -314,3 +314,126 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 1443px){
+
+   
+}
+@media screen and (max-width: 1200px){
+
+   
+}
+
+@media screen and (max-width: 1024px){
+}
+
+/* Tamanho criado por conta do componente carrossel */
+@media screen and (max-width: 840px){
+
+    #formContainer
+    {
+        width: 60%;
+    }
+
+}
+/* Tamanho criado por conta do componente carrossel */
+
+@media screen and (max-width: 768px){
+   
+    #formContainer
+    {
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 667px){
+
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        gap: 25px;
+    }
+    #buttonsForm button
+    {
+        margin-top: 15px;
+        font-weight:600;
+        padding: .1rem .5rem;
+        cursor: pointer;
+        transition: .3s;
+        
+    }
+    
+  
+}
+@media screen and (max-width: 560px){
+    #formContainer
+    {
+        width: 90%;
+        
+        
+    }
+    .fieldSetConfig
+    {
+        flex-direction: column;
+    }
+     input,input[type="password"]
+    {
+        width: 95%;
+        display: flex;
+    }
+    
+
+    .especialCase
+    {
+        width: 110%;
+    }
+   
+}
+
+@media screen and (max-width: 480px){
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 460px){
+    input[type="password"]
+    {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 407px){
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 25px;
+        
+    }
+}
+@media screen and (max-width: 367px){
+    input[type="password"]
+    {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 320px){
+  #formContainer
+  {
+    margin-left: -65px;
+  }
+}
+
+@media screen and (max-width: 280px){
+	
+}
+
