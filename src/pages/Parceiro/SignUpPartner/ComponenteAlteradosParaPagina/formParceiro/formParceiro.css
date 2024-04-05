@@ -76,8 +76,8 @@
 
 #formContainer
 {
-    /* width: 50%; */
-    padding-top: 2rem;
+    /* padding-top: 2rem; fds*/
+    width: 50%;
 }
 
 
@@ -281,7 +281,7 @@
 #buttonsForm
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
@@ -327,3 +327,142 @@
     height: 120px;
 
 }
+
+
+@media screen and (max-width: 1337px){
+
+  
+}
+@media screen and (max-width: 1200px){
+
+   
+}
+
+@media screen and (max-width: 1024px){
+ 
+}
+
+@media screen and (max-width: 890px){
+    #formContainer
+    {
+        width: 60%;
+    }
+}
+
+/* Tamanho criado por conta do componente carrossel */
+@media screen and (max-width: 840px){
+
+    #formContainer
+    {
+        width: 60%;
+    }
+
+}
+/* Tamanho criado por conta do componente carrossel */
+
+@media screen and (max-width: 768px){
+   
+    #formContainer
+    {
+        width: 90%;
+        
+    }
+
+    
+
+}
+
+@media screen and (max-width: 667px){
+
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        gap: 25px;
+    }
+    #buttonsForm button
+    {
+        margin-top: 15px;
+        font-weight:600;
+        padding: .1rem .5rem;
+        cursor: pointer;
+        transition: .3s;
+        
+    }
+    input{
+        width: 90%;
+    }
+  
+}
+@media screen and (max-width: 560px){
+    #formContainer
+    {
+        width: 90%;
+        
+        
+    }
+    .fieldSetConfig
+    {
+        flex-direction: column;
+    }
+     input,input[type="password"]
+    {
+        width: 95%;
+        display: flex;
+    }
+    
+
+    .especialCase
+    {
+        width: 110%;
+    }
+   
+}
+
+@media screen and (max-width: 480px){
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        width: 25%;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 460px){
+    input[type="password"]
+    {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 407px){
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 25%;
+        gap: 25px;
+        
+    }
+}
+@media screen and (max-width: 367px){
+    input[type="password"]
+    {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 320px){
+  #formContainer
+  {
+    margin-left: -65px;
+  }
+}
+
+@media screen and (max-width: 280px){
+	
+}
+
