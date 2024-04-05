@@ -26,8 +26,14 @@
   
   .boxInformationsDegrade {
       background: linear-gradient(to bottom, #8A00DE, #6B02AB);
-      /* padding: 3em; */
-      margin-bottom: 0;
+      /* padding: 3em;
+      margin-bottom: 0; */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between !important;
+
+      /* Padding p/ alinhar as laterais */
+      padding: 0rem 10rem 0rem 10rem;
   
     }
     
@@ -43,17 +49,13 @@
       margin-bottom: 2em;
     }
     
-    .boxInformationsDegrade .pilares h3 {
-      color: #ffffff; /* Cor do título */
-    }
-    
-    .boxInformationsDegrade .pilares p {
-      color: #ffffff; /* Cor do texto */
+    .pilares {
+      color: #ffffff; /
     }
   
     .secaoPilares {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       margin-bottom: 0;
     }
     

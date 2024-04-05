@@ -15,7 +15,7 @@ function Header()
      };
 
     return (
-        <div>
+        <header>
 
             <div id='headerUpper'>
 
@@ -80,7 +80,7 @@ function Header()
                         backgroundColor: '#7900c3', // Cor de fundo da linha horizontal
                         margin: 0
                     }} />
-        </div>
+        </header>
     );
 }
 

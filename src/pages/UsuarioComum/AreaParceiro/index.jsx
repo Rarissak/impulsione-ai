@@ -69,7 +69,7 @@ function AreaParceiro(){
                     
                 </nav>
 
-                <section id="bloco1">
+                <section className="bloco1">
                 <div id="infoBloco1">
                     <h1 className='title'>Dê um salto no seu negócio!</h1>
                     <p>Use nossa plataforma como uma forma de impulsionar ai, aqui, aonde você estiver!</p>
@@ -89,7 +89,7 @@ function AreaParceiro(){
                 />
                 </section>
 
-                <section id="bloco2">
+                <section className="bloco2">
                     <div id="titleText">
                         <h2 id="textBranco">Vantagens de</h2>
                         <h2 id="textLaranja">Impulsionar seu Negócio</h2>
@@ -122,7 +122,7 @@ function AreaParceiro(){
                 </div>
             </section>
 
-            <section id="bloco4">
+            <section className="bloco4">
                 <BoxVideo video={"https://www.youtube.com/embed/CxwjOwNgx30?si=LCEVyJluPePxyanL"} 
                         title={"Sebrae"} 
                         text={"Veja algumas dicas do nosso colaborador para impulsionar ainda mais seu negócio."}>

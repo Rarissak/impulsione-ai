@@ -14,21 +14,20 @@
 
 body {
     background-color: #FFF9F5;
+    margin-top: 4rem;
 }
 
 /* Só para testar  */
 .boxInformations {
     background-color: #8A00DE;
-    padding-bottom: 2em;
     width: 100%;
     display:flex;
     justify-content: center;
     align-items: flex-start;
-    justify-content: space-around;
-    padding-left: 6rem;
-    padding-right: 6rem;
-    /* margin-top: -40px;
-    z-index: 1; */
+    justify-content: space-between;
+
+    /* Margin nas laterais */
+    padding: 2rem 10rem 3rem 10rem;
 }
 
 #barraLinks {

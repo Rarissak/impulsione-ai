@@ -1,11 +1,18 @@
 #boxVideo {
     display: flex;
+<<<<<<< HEAD
     justify-content: center;
+=======
+    justify-content: space-between;
+    /* background-color: blueviolet; */
+>>>>>>> 13f4c9d (edit feat: ajustes nas margin e padding para deixar as paginas no mesmo padrão)
     align-items: center;
-    margin-top: 3em;
+    /* margin-top: 3em;
     margin-bottom: 3em;
     margin-left: 3em; 
-    margin-right: 3em;
+    margin-right: 3em; */
+    /* Margin nas laterais */
+    margin: 5rem 10rem 6rem 10rem;
 }
 
 .title {

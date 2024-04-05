@@ -21,11 +21,14 @@
 }
 
 .carrossel {
+    /* Margin nas laterais */
+    margin: 3rem 10rem 3rem 10rem;
+
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: row;
     gap:2em;
-    margin: 2.5em 5.4em 2.5em 5.4em;
+    /* margin: 2.5em 5.4em 2.5em 5.4em; */
     align-items: center;
 }
 
@@ -44,6 +47,9 @@
     gap: 2rem;
     justify-content: center;
     align-items: center;
+
+    /* Margin nas laterais */
+    margin: 5rem 10rem 5rem 10rem;
 }
 
 #linhaDestaques{
@@ -79,10 +85,13 @@
 #depoimentos {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 10em;
-    margin-left: 3em;
+    /* margin-left: 3em;
     margin-right: 3em;
-    margin-bottom: 5em;
+    margin-bottom: 5em; */
+    /* Margin nas laterais */
+    margin: 2rem 10rem 5rem 10rem;
 }
 
 /* RESPONSIVO */

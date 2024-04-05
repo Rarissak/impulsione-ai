@@ -45,7 +45,7 @@ function Vitrine(){
                     <BarraLinkExterno id='fundoRoxoClaro' name={'DIVERSOS'} link={''}></BarraLinkExterno>
                 </nav>
 
-                <section id="bloco1">
+                <section className="bloco1">
                     <div id="infoBloco1">
                         <button id='favoritos' onClick={Favoritar}>
                             <img id='botaoFavoritar' src={HeartLine}/>
@@ -65,7 +65,7 @@ function Vitrine(){
                     />
                 </section>
 
-                <section id="bloco2">
+                <section className="bloco2">
                     <div id="titleText">
                         <h2 id="textBranco">Nossos Produtos</h2>
                     </div>
