@@ -96,6 +96,19 @@
 
 /* RESPONSIVO */
 
+  /* Os quadrados dentro da lista de destaques acabam expremidos por um tempo no width 1200, ent troquei por este.
+No momento que os quadrados quererem se juntar ele vai debrar linha. */
+@media screen and (max-width: 1335px){
+    #linhaDestaques{
+       
+        flex-wrap: wrap;
+        justify-content: space-around;
+        row-gap: 2rem;
+        gap: 15px;
+        
+    }
+}
+
 @media screen and (max-width: 1200px){
     .carrossel {
         display:flex;
