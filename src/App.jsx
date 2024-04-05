@@ -13,6 +13,7 @@ import CadastroParceiro from '../src/pages/Parceiro/SignUpPartner/SignUpPartner.
 import EsqueciSenha from '../src/pages/UsuarioComum/forgotPassword/forgotPassword.jsx';
 import AlterarSenha from '../src/pages/UsuarioComum/changePassword/changePassword.jsx';
 import Admin from '../src/pages/Admin/index.jsx';
+// import EsqueciSenha from './pages/UsuarioComum/forgotPassword/esqueciSenha.jsx';
 
 function App() {
   return (
