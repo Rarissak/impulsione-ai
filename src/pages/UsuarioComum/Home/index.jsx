@@ -30,9 +30,43 @@ import Fisio from '../../../assets/fisioEmcasa.png';
 import vintageVibe from '../../../assets/vintageVibe.png';
 import Destaque from '../../../components/featured/destaque.jsx';
 import { Link } from 'react-router-dom';
+import axiosInstance from '../../../helper/axiosInstance.js';
+import { useEffect, useState } from 'react';
+
+
+const id =  localStorage.getItem('id');
 
 
 function Home(){
+    
+    const [usuarioLogado, setUsuarioLogado] = useState({})
+    const[empreendedoresDestaque, setEmpreendedoresDestaque] = useState({})
+
+    useEffect(()=>{
+        axiosInstance.get('/empreendedores/' + id).then((res) => {
+            setUsuarioLogado(res.data)
+        }).catch((err)=>{
+            console.log("Erro ao pegar os recusos: "+ err)
+        })
+
+        axiosInstance.get('/empreendedores').then((res) =>{
+            setEmpreendedoresDestaque(res.data)
+           
+        }).catch((err)=>{
+            console.log("Erro ao pegar os recusos: "+ err)
+        })
+
+        
+    },[])
+
+    useEffect(()=>{
+        console.log(usuarioLogado)
+        console.log(empreendedoresDestaque)
+    })
+
+
+    
+
     return (
         <>
         <Header></Header>
