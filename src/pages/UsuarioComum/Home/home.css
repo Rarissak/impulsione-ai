@@ -106,6 +106,10 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
         row-gap: 2rem;
         gap: 15px; 
     }
+
+    .carrossel_texto img{
+        width: 18rem;
+    }
 }
 
 @media screen and (max-width: 1260px){
@@ -123,8 +127,7 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 @media screen and (max-width: 1200px){
     .carrossel {
         display:flex;
-        justify-content: space-around;
-        margin: 3rem 0 3rem 0;
+        justify-content: space-between;
         flex-direction: row;
         gap:2em;
         align-items: center;
@@ -132,7 +135,7 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 
     .carrossel_texto{ width: 30%; }
 
-    .carrossel_texto img{ width: 20rem; }
+    .carrossel_texto img{ width: 16rem; }
 
     .carrossel_texto p{ font-size: 14px; }
 }
@@ -140,7 +143,8 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 @media screen and (max-width: 1024px){
     
 
-    
+    .carrossel_texto img{ width: 15rem; }
+
 
     /* Ajustes de Margin e padding*/
     #depoimentos { margin: 2rem 8rem 3rem 8rem; }
@@ -150,17 +154,23 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
     }
 
     #destaques { margin: 5rem 8rem 5rem 8rem;}
+
+    .carrossel { margin: 3rem 8rem 3rem 8rem !important; }
 }
 
 /* Usado para ajeitar as margins */
 @media screen and (max-width: 920px){
     
+
     
     /* Ajustes de Margin e padding*/
     #depoimentos { margin: 2rem 5rem 3rem 5rem; }
     #tituloDepoimentos h2 { padding-left: 5rem; }
 
     #destaques { margin: 5rem 5rem 5rem 5rem; }
+
+    .carrossel { margin: 3rem 5rem 3rem 5rem !important; }
+
 }
 
 /* Tamanho criado por conta do componente carrossel */
@@ -193,6 +203,18 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
         line-height: 0.9;
         margin: 0.5rem 0;
     }
+
+    .carrossel_texto{
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 0;
+        margin-bottom: 2rem;
+        align-items: center !important;
+    }
+
+    .carrossel_texto p{
+        text-align: center !important;
+    }
 }
 
 @media screen and (max-width: 560px){
@@ -214,22 +236,19 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
         align-self: center;
     }
 
-    /* Ajustes de Margin */
-    #depoimentos {
-        margin: 2rem 2rem 2rem 3rem;
-    }
-
     /* Ajustes de Margin e padding*/
-    #depoimentos { margin: 2rem 2rem 2rem 5rem; 
+    #depoimentos { margin: 2rem 2rem 2rem 2rem; 
         #tituloDepoimentos h2 { padding-left: 2rem; }
     }
-    
 
     #destaques { margin: 5rem 2rem 2rem 2rem; }
+
+    .carrossel { margin: 3rem 2rem 3rem 2rem !important; }
+
 }
 
 @media screen and (max-width: 480px){
-    
+     
 	
 }
 

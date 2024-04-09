@@ -17,6 +17,9 @@
     height: 8px !important; /* Altura das bolinhas */
     margin: 0 5px !important;
     border-radius: 50% !important; /* Deixa as bolinhas arredondadas */
+    z-index: 5;
+    position: relative;
+
 }
 
 /* RESPONSIVO */
@@ -37,19 +40,29 @@
 }
 
 @media screen and (max-width: 1200px){
-}
-
-@media screen and (max-width: 1024px){
     .slide-item {
-        width: 30rem;
+        width: 28rem;
         height: 16rem;
         border-radius: 15px;
     }
     
     .slide-box {
-        width: 30rem;
+        width: 28rem;
         height: 18rem;
     }
+}
+
+@media screen and (max-width: 1024px){
+    /* .slide-item {
+        width: 30rem;
+        height: 16rem;
+        border-radius: 15px;
+    } */
+    
+    /* .slide-box {
+        width: 30rem;
+        height: 18rem;
+    } */
 }
 
 /* Tamanho para deixar  */
@@ -69,36 +82,77 @@
     .slide-item {
         width: 36rem;
         height: 20rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
     
+    #efeitoDegrade{
+        position: relative;
+        height: 70px;
+        margin-top: -4.3rem;
+        z-index: 2;
+        /* background-color: red; */
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF9F5);
+
+    }
+
     .slide-box {
         width: 36rem;
         height: 20rem;
+
+
     }
 }
 
 /* Só para testar*/
 @media screen and (max-width: 560px){
     .slide-item {
-        width: 30rem;
+        width: 28rem;
         height: 12rem;
     }
     
     .slide-box {
-        width: 30rem;
+        width: 28rem;
         height: 12rem;
     }
     
 }
 
 @media screen and (max-width: 480px){
-	
+	.slide-item {
+        width: 22rem;
+        height: 10rem;
+    }
+    
+    .slide-box {
+        width: 22rem;
+        height: 10rem;
+        background-color: red;
+    }
 }
 
-@media screen and (max-width: 320px){
-	
+@media screen and (max-width: 360px){
+	.slide-item {
+        width: 17rem;
+        height: 8rem;
+    }
+    
+    .slide-box {
+        width: 17rem;
+        height: 8rem;
+        background-color: blue;
+    }
 }
 
 @media screen and (max-width: 280px){
-	
+	.slide-item {
+        width: 15rem;
+        height: 6rem;
+    }
+    
+    .slide-box {
+        width: 15rem;
+        height: 6rem;
+        background-color: green;
+    }
 }

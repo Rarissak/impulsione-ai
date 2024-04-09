@@ -51,6 +51,9 @@ register();
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                <div id='efeitoDegrade'>
+                    {/* <hr></hr> */}
+                </div>
             </div>
         );
     }
