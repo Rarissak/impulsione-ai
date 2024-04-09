@@ -6,6 +6,7 @@
     gap: 0.75rem;
     /* Não precisa ficar colocando partido */
     padding: 1.25rem;
+    width: 25rem;
 }
 
 .caixa_top {
@@ -37,4 +38,41 @@
 
 .caixa_bottom {
     padding-top: 1em;  
+}
+
+/* RRESPONSIVO */
+
+@media screen and (max-width: 1200px){}
+
+/* Tamanho para aumentar o tamanho da caixa */
+@media screen and (max-width: 1155px){
+    .caixa {
+        
+        width: 100%;
+    }
+	
+}
+
+@media screen and (max-width: 1024px){
+	
+}
+
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (max-width: 560px){
+
+}
+
+@media screen and (max-width: 480px){
+	
+}
+
+@media screen and (max-width: 320px){
+	
+}
+
+@media screen and (max-width: 280px){
+	
 }
