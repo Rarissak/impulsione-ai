@@ -30,12 +30,14 @@ import Fisio from '../../../assets/fisioEmcasa.png';
 import vintageVibe from '../../../assets/vintageVibe.png';
 import Destaque from '../../../components/featured/destaque.jsx';
 import { Link } from 'react-router-dom';
+import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
 
 
 function Home(){
     return (
         <>
         <Header></Header>
+        <MenuLateral></MenuLateral>
         <body>
             <nav id='barraLinks'>
                 <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={''}></BarraLinkExterno>

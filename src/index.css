@@ -84,6 +84,10 @@ body {
 
 
 @media screen and (max-width: 768px){
+
+    body{
+        margin-top: 0;
+    }
     
     .boxInformations {
         padding-top: 1rem !important;

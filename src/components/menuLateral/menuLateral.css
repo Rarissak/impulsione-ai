@@ -1,0 +1,196 @@
+/* .navResponsivo {
+    
+} */
+
+#barraResponsivo {
+    background-color: #7900C3;
+    display: flex;
+    justify-content:space-between;
+    padding: 0.5rem;
+    align-items: center;
+
+    #logoResponsivo {
+        width: 10rem;
+    }
+
+    .searchResponsivo {
+        display: flex;
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 0 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    #abrirMenu img{
+        width: 2.5rem;
+        padding: 0.5rem; 
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #abrirMenu {
+        width: 2.5rem;
+        background-color: #7900C3;
+        padding: 0.5rem;
+        border-radius: 10px;
+    }
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;   
+}
+
+.menuLateral {
+    list-style-type: none;
+    padding: 0;
+    background-color: #2C0048;
+    width: 20rem;
+    padding: 0.5rem;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    bottom: 0;
+    z-index: 9999;
+    height: 100%;
+
+    #botaoSair {
+        display: flex;
+        justify-content: start;
+        margin-top: 1rem;
+    }
+    
+    #botaoSair button{
+        padding: 0.5rem;
+        border-radius: 50px;
+        align-self: center;
+        display: flex;
+        background: none;
+    }
+    
+    #botaoSair img{
+        width: 0.75rem;
+    }
+
+    .iconResponsivo {
+        padding: 0.25rem;
+        width: 2rem;
+        border-radius: 20px;
+    }
+    
+    #linkMenu{
+        font-size: 18px !important;
+        font-weight: 600;
+        color: #ffffff;
+        text-decoration: none !important;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    .menuLateral li{
+        margin: 10px 0;
+    }
+    
+    .menuLateral a {
+        text-decoration: none; /* Removendo sublinhado dos links */
+        color: #7900C3; /* Definindo a cor do texto dos links */
+        outline: none;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .itemLista{
+        display: flex;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        text-decoration: none !important;
+    }
+
+    .botaoLogin {
+        display: flex;
+        justify-content: space-between !important;
+        align-items: center;
+        width: 100%;
+        background: none;
+        border: none;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        outline: none;
+
+        #setaVerMais{
+            width: 0.75rem !important;
+        }
+    }
+    
+}
+
+/* ------------ */
+
+#loginExpandido {
+    display: flex;
+    flex-direction: column;
+    background-color: #9d00ff38;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: start;
+}
+
+#loginExpandido a {
+    color: #ffc397;
+    text-decoration: none;
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+#loginExpandido a:hover {
+    color: #d38cff;
+}
+
+.menuLateral {
+    /* Estilos para o menu fechado */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    /* display: none; */
+}
+
+.menuLateral.aberto {
+    /* Estilos para o menu aberto */
+    transform: translateX(0);
+    
+}
+
+/* Responsivo */
+
+@media screen and (max-width: 1200px){}
+
+@media screen and (max-width: 1024px){}
+
+@media screen and (min-width: 769px){
+    .navResponsivo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .navResponsivo {
+        display: flex;
+    }
+
+    #barraResponsivo {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 560px){}
+
+@media screen and (max-width: 480px){}
+
+@media screen and (max-width: 320px){}
+
+@media screen and (max-width: 280px){}
