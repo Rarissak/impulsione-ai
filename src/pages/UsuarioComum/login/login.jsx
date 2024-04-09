@@ -28,7 +28,7 @@ function Login()
 {   
     
     
-    async function postLogin(){
+    async function handleLogin(){
         await axiosInstanceLogin.post("/login",{
              email: email,
             senha: senha
@@ -36,6 +36,7 @@ function Login()
         }).then((res) =>{
             localStorage.setItem('id',res.data.idUsuario)
             localStorage.setItem('token',res.data.token)
+            localStorage.setItem('uri', res.data.tipoUsuarioUri)
             
         }).catch((error) => {
            
@@ -101,7 +102,7 @@ function Login()
 
                          {/*Botões de logar e ir para cadastro*/}
                         <div id="loginButtons">
-                            <button id="loginButtonSignIn" onClick={postLogin}>ENTRAR</button>
+                            <button id="loginButtonSignIn" onClick={handleLogin}>ENTRAR</button>
                             <Link id="loginButtonSignUp" to='/cadastroUsuario'
                                 >Não possuo cadastro
                             </Link>

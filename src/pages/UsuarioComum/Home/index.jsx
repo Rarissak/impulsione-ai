@@ -32,42 +32,25 @@ import Destaque from '../../../components/featured/destaque.jsx';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../../helper/axiosInstance.js';
 import { useEffect, useState } from 'react';
+import useAxios from '../../../hook/useAxios.js';
 
 
 const id =  localStorage.getItem('id');
+const userUri = localStorage.getItem('uri');
 
+;
 
 function Home(){
     
     const [usuarioLogado, setUsuarioLogado] = useState({})
-    const[empreendedoresDestaque, setEmpreendedoresDestaque] = useState({})
-
-    useEffect(()=>{
-        axiosInstance.get('/empreendedores/' + id).then((res) => {
-            setUsuarioLogado(res.data)
-        }).catch((err)=>{
-            console.log("Erro ao pegar os recusos: "+ err)
-        })
-
-        axiosInstance.get('/empreendedores').then((res) =>{
-            setEmpreendedoresDestaque(res.data)
-           
-        }).catch((err)=>{
-            console.log("Erro ao pegar os recusos: "+ err)
-        })
-
-        
-    },[])
-
-    useEffect(()=>{
-        console.log(usuarioLogado)
-        console.log(empreendedoresDestaque)
+    const [empreendedoresDestaque, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url:'empreendedores'
     })
 
 
-    
-
-    return (
+   return (
         <>
         <Header></Header>
 
@@ -128,7 +111,7 @@ function Home(){
         <div id='destaques'>
             <TitleBorda title={'Destaques'}></TitleBorda>
             <div id='linhaDestaques'>
-                <Destaque idBox={'quadradoLaranja'} path={'/vitrine'} foto={TrufasDoSim} nome={'Trufas do Sim'} nicho={'Gastronomia'}></Destaque>
+                <Destaque idBox={'quadradoLaranja'} path={'/vitrine'} foto={TrufasDoSim} nome={empreendedoresDestaque[0]?.nomeEmpreendimento} nicho={'Gastronomia'}></Destaque>
                 <Destaque idBox={'quadradoLaranja'} path={''} foto={Fisio} nome={'Fisio em casa'} nicho={'Saúde'}></Destaque>
                 <Destaque idBox={'quadradoLaranja'} path={''} foto={Artelane} nome={'Artelane'} nicho={'Artesanato'}></Destaque>
                 <Destaque idBox={'quadradoLaranja'} path={''} foto={vintageVibe} nome={'Vintage Vibe'} nicho={'Moda'}></Destaque>
