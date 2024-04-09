@@ -12,7 +12,7 @@ function BarraLinkExterno({id, name, link}) {
           <button className='itemBarra' id={id}>{name}</button>
         </Link>
       </>
-    );
+    ); 
 }
 
 export default BarraLinkExterno;

@@ -26,15 +26,17 @@ import Saude01 from '../../../assets/saudeFisio.png'
 import Saude02 from '../../../assets/saudeEstetica.png'
 import Tecnologia from '../../../assets/tecnologia.png'
 import Propaganda from '../../../assets/propagandaImpulsioneAi.png'
+import MenuLateral from '../../../components/menuLateral/menuLateral';
 
 function Vitrine(){
     return (
         <>
         <Header></Header>
+        <MenuLateral></MenuLateral>
         <body>
             <div className='blocoRoxo'>
 
-                <nav id='barraLinks'>
+                <nav className='linksExternos' id='barraLinks'>
                     <BarraLinkExterno id='fundoRoxoClaro' name={'GASTRONOMIA'} link={''}></BarraLinkExterno>
                     <BarraLinkExterno id='fundoRoxoClaro' name={'MODA'} link={''}></BarraLinkExterno>
                     <BarraLinkExterno id='fundoRoxoClaro' name={'ARTESANATO'} link={''}></BarraLinkExterno>

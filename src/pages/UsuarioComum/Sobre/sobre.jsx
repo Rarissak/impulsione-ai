@@ -1,4 +1,5 @@
 import './sobre.css';
+import '../../../index.css';
 import Carrossel from '../../../components/carrossel/carrossel.jsx';
 import Header from '../../../components/header/header.jsx';
 import BarraLinkExterno from '../../../components/barraLinkExterno/BarraLinkExterno.jsx';
@@ -18,6 +19,7 @@ import Saude02 from '../../../assets/saudeEstetica.png';
 import Tecnologia from '../../../assets/tecnologia.png';
 import Propaganda from '../../../assets/propagandaImpulsioneAi.png';
 import { Link } from 'react-router-dom';
+import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
 
 function Sobre() {
   const crumbs = [
@@ -28,8 +30,10 @@ function Sobre() {
   return (
     <>
       <Header />
+      <MenuLateral></MenuLateral>
+
       <body>
-        <nav id='barraLinks'>
+        <nav className='linksExternos' id='barraLinks'>
           <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={''}></BarraLinkExterno>
           <BarraLinkExterno id='fundoLaranja' name={'MODA'} link={''}></BarraLinkExterno>
           <BarraLinkExterno id='fundoLaranja' name={'ARTESANATO'} link={''}></BarraLinkExterno>

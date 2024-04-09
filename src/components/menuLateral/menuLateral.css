@@ -1,6 +1,4 @@
-/* .navResponsivo {
-    
-} */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
 
 #barraResponsivo {
     background-color: #7900C3;
@@ -33,6 +31,13 @@
         background-color: #7900C3;
         padding: 0.5rem;
         border-radius: 10px;
+    }
+
+    section{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 2rem;
     }
 }
 
@@ -165,6 +170,48 @@ ul{
     
 }
 
+#barraLinksResponsivo {
+    list-style: none;
+    list-style-type: none;
+    /* display: flex;
+    flex-direction: column; */
+    /* flex-wrap: wrap; */
+    gap: 0.5rem;
+    margin-top: 5rem;
+    margin: 1rem;
+    align-items: center;
+    margin-top: 5rem;
+
+    li {
+        background-color: #370158;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        transition: background-color 0.3s ease;
+    }
+
+    li:hover {
+        background-color: #6f17a5;
+        transition: 0.2s;
+    }
+
+    .linksResponsivo {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        text-decoration: none; 
+        color: #ffa768; 
+        cursor: pointer; 
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* .linhaDivisora {
+        border-color: none;
+        border: solid 1px red;
+        width: 100%;
+    } */
+}
+
 /* Responsivo */
 
 @media screen and (max-width: 1200px){}
@@ -180,6 +227,10 @@ ul{
 @media screen and (max-width: 768px){
     .navResponsivo {
         display: flex;
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+        top: 0;
     }
 
     #barraResponsivo {
@@ -191,6 +242,44 @@ ul{
 
 @media screen and (max-width: 480px){}
 
-@media screen and (max-width: 320px){}
+@media screen and (max-width: 320px){
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .searchResponsivo {
+        width: 100% !important;
+        height: 1.5rem;
+        align-items: end;
+
+        #lupa {
+            width: 0.75rem;
+        }
+
+        #pesquisa {
+            padding: 0;
+            background-color: #ffffff;
+            color: #919191;
+            font-weight: 500;
+            font-size: 10px; 
+            line-height: 18.15px;
+            letter-spacing: -1.5%;
+            width: 100%;
+            height: 1.5rem;
+            transition: .2s;
+
+        }
+
+        
+    }
+
+    #logoResponsivo{
+        width: 8rem !important;
+        align-self: center !important;
+    }
+}
 
 @media screen and (max-width: 280px){}

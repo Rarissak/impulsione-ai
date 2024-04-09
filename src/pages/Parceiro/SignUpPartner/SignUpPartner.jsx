@@ -3,12 +3,14 @@ import Header from '../../../components/header/header.jsx';
 import FormParceiro from '../SignUpPartner/ComponenteAlteradosParaPagina/formParceiro/formParceiro.jsx';
 import Buttons from "../SignUpPartner/ComponenteAlteradosParaPagina/buttonsPartnerUser/buttons.jsx"
 import Footer from '../../../components/footer/footer.jsx';
+import MenuLateral from "../../../components/menuLateral/menuLateral.jsx";
 
 function SignUpPartner()
 {
     return(
         <div>
             <Header/>
+            <MenuLateral></MenuLateral>
             <body style={{ margin: 0, padding: 0, backgroundColor: '#F6E8FF',
                             display: "flex", flexDirection:"column", justifyContent:"center"}}>
                 <Buttons idParceiro='buttonSelecionado' idUsuario=' '/>

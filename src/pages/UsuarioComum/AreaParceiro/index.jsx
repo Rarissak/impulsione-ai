@@ -39,6 +39,7 @@ import vintageVibe from '../../../assets/vintageVibe.png';
 // import Produto from '../../../components/produto/produto';
 
 import Login, { ToggleModal } from '../login/login.jsx';
+import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
     
 
 function AreaParceiro(){
@@ -50,6 +51,7 @@ function AreaParceiro(){
     return (
         <>
         <Header></Header>
+        <MenuLateral></MenuLateral>
         
         <body>
             <div className='blocoRoxo'>

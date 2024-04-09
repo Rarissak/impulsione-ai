@@ -30,16 +30,24 @@
 }
 
 @media screen and (max-width: 320px){
+    #titleInfo{
+        font-size: 13px;
+    }
+
+    #textInfo{
+        font-size: 10px;
+    }
 	
 }
 
 @media screen and (max-width: 480px){
+    #iconInfo { width: 4rem !important; }
 	
 }
 
 @media screen and (max-width: 560px){
     #titleInfo{
-        font-size: 15px;
+        font-size: 14px;
     }
 
     #textInfo{

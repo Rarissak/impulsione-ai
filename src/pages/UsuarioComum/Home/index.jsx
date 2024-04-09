@@ -1,4 +1,5 @@
 import './home.css';
+import '../../../index.css'
 import Carrossel from '../../../components/carrossel/carrossel.jsx';
 import Header from '../../../components/header/header.jsx';
 import BarraLinkExterno from '../../../components/barraLinkExterno/BarraLinkExterno.jsx';
@@ -39,7 +40,7 @@ function Home(){
         <Header></Header>
         <MenuLateral></MenuLateral>
         <body>
-            <nav id='barraLinks'>
+            <nav className='linksExternos' id='barraLinks'>
                 <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={''}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'MODA'} link={''}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'ARTESANATO'} link={''}></BarraLinkExterno>

@@ -11,6 +11,7 @@ import SearchIconSvg from '../../assets/searchIcon.svg';
 import Seta from '../../assets/setaBaixo.svg';
 import IconParceiro from '../../assets/IconParceiroBranco.svg';
 import IconPerfil from '../../assets/iconPerfilBranco.svg';
+import BarraLinkExterno from '../barraLinkExterno/BarraLinkExterno';
 
 
 function MenuLateral(LoginPerfil, linkPerfil){
@@ -32,9 +33,12 @@ function MenuLateral(LoginPerfil, linkPerfil){
 
 
     return(
-        <nav class="navResponsivo">
+        <nav class="navResponsivo" id='espacar'>
             
             <ul className={`menuLateral ${menuAberto ? 'aberto' : ''}`}>
+                <ul>
+
+                
                 <li id='botaoSair'>
                     <button onClick={fecharModal}>
                         <img src={IconFechar} alt='botão para fechar menu'/>
@@ -55,7 +59,8 @@ function MenuLateral(LoginPerfil, linkPerfil){
                     </Link>
                 </li>
                 <li>
-                    <Link className='itemLista'>
+                    <Link className='itemLista'
+                    to='/areaParceiro'>
                         <img className='iconResponsivo' src ={IconParceiro} alt='Icon parceiro'/>
                         <a id='linkMenu' className='title'>Área Parceiros</a>
                     </Link>
@@ -70,7 +75,8 @@ function MenuLateral(LoginPerfil, linkPerfil){
                     </button>
                     {expandir && (
                         <div id='loginExpandido'>
-                        <Link className='title'>Perfil</Link>
+                        <Link className='title'
+                        to='/casatroUsuario'>Perfil</Link>
                         <Link className='title'>
                             Sair
                         </Link>
@@ -79,8 +85,33 @@ function MenuLateral(LoginPerfil, linkPerfil){
                     )}
                     
                 </li>
-                <ul>
-                    
+                </ul>
+
+                <ul id='barraLinksResponsivo'>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>GASTRONOMIA</Link>
+                    </li>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>MODA</Link>
+                    </li>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>ARTESANATO</Link>
+                    </li>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>TECNOLOGIA</Link>
+                    </li>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>EDUCAÇÃO</Link>
+                    </li>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>SAÚDE</Link>
+                    </li>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>ESTÉTICA</Link>
+                    </li>
+                    <li>
+                        <Link to=' ' className='linksResponsivo'>DIVERSOS</Link>
+                    </li>
                 </ul>
             </ul>
 
@@ -90,19 +121,22 @@ function MenuLateral(LoginPerfil, linkPerfil){
                     <img  onClick={toggleMenu} src={IconMenu} alt='icon para abrir o menu responsivo'/>
                 </button>
 
-                <Link
-                to='/'>
-                    <img id='logoResponsivo' src={LogoResponsivo}/>
-                </Link>
+                <section>
+                    <Link
+                    to='/'>
+                        <img id='logoResponsivo' src={LogoResponsivo}/>
+                    </Link>
 
-                <div className='searchResponsivo' id="headerSearch">
-                    {/* // className='centralizeItems' id="headerSearch" */}
-                    <input
-                    type="text"
-                    placeholder='Inicie aqui sua busca'
-                    />            
-                    <img src={SearchIconSvg} alt="Icone de Lupa, com o sentido de buscar informações" />
-                </div>
+                    <div className='searchResponsivo' id="headerSearch">
+                        {/* // className='centralizeItems' id="headerSearch" */}
+                        <input id='pesquisa'
+                        type="text"
+                        placeholder='Inicie aqui sua busca'
+                        />            
+                        <img id='lupa' src={SearchIconSvg} alt="Icone de Lupa, com o sentido de buscar informações" />
+                    </div>
+                </section>
+                
 
             </div>
         </nav>
