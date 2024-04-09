@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import Login, { ToggleModal } from '../../pages/UsuarioComum/login/login';
 import IconFechar from '../../assets/iconLoginModalClose.svg';
-import Logo from '../../assets/'
 
 
 function MenuLateral(LoginPerfil, linkPerfil){

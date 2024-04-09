@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './forgotPassword.css';
-import {BoxInfoModal} from '../../../components/boxInfo/boxInfo';
+import BoxInfo from '../../../components/boxInfo/boxInfo';
 import ModalChangePassworld from '../changePassword/changePassword'
 import FundoSenha from '../../../assets/fundoSenha.svg';
 
@@ -17,7 +17,7 @@ function EsqueciSenha()
         <body id="bodyDiferente">
             <div id='boxEsqueciSenha'>
                 <div>
-                <BoxInfoModal title={'Esqueci minha senha'} idBox='titleBoxBranco' idModal='esqueciBox' idDivisor='divisorBranco'></BoxInfoModal>
+                <BoxInfo title={'Esqueci minha senha'} idBox='titleBoxBranco' idModal='esqueciBox' idDivisor='divisorBranco'></BoxInfo>
                 <form id="forgotBody" onSubmit={AbrirModalChange}>
 
                     {/*Input de email*/}
