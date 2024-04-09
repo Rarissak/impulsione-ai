@@ -5,6 +5,7 @@ import BoxInfo from "../../../../../components/boxInfo/boxInfo";
 import facebookRoxo from '../../../../../assets/facebookRoxo.svg'
 import instagramRoxo from '../../../../../assets/instagramRoxo.svg'
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Função de validação de CNPJ
 function isValidCNPJ (cnpj){
@@ -105,99 +106,99 @@ function FormPartner()
         setTelefone(event.target.value);
     };
 
-    //Validação do código (Jhonnatas)
-    // const [dados, setDadosEmpreendedor] = useState({
-    //     nomeCompleto: '',
-    //     dataNascimento: '',
-    //     cpf: '',
-    //     mei: '',
-    //     senha: '',
-    //     nomeEmpreendimento: '',
-    //     site: '',
-    //     telefone: '',
-    //     email: '',
-    //     planoEscolhido: '',
-    //     instagram: '',
-    //     facebook: '',
-    //     nicho: '',
-    //     modalidade: ''
-    // });
+    // Validação do código (Jhonnatas)
+    const [dados, setDadosEmpreendedor] = useState({
+        nomeCompleto: '',
+        dataNascimento: '',
+        cpf: '',
+        mei: '',
+        senha: '',
+        nomeEmpreendimento: '',
+        site: '',
+        telefone: '',
+        email: '',
+        planoEscolhido: '',
+        instagram: '',
+        facebook: '',
+        nicho: '',
+        modalidade: ''
+    });
 
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     try {
-    //         const resposta = await axios.post('http://localhost:8080/empreendedores', dados);
-    //         console.log(resposta.data);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const resposta = await axios.post('http://localhost:8080/empreendedores', dados);
+            console.log(resposta.data);
 
-    //         localStorage.setItem('cpf', dados.cpf);
-    //         localStorage.setItem('email', dados.email);
+            localStorage.setItem('cpf', dados.cpf);
+            localStorage.setItem('email', dados.email);
 
-    //         setTimeout(handleSubmitEndereco, 2000);
-    //         setTimeout(handleSubmitEmail, 5000);
+            handleSubmitEndereco();
+            handleSubmitEmail();
 
-    //        alert("Cadastro realizado com sucesso!");
-    //        window.location.href='./login';
-    //     } catch (erro) {
-    //         console.error('Ocorreu um erro ao enviar o formulário:', erro);
-    //         alert("Desculpe, ocorreu um erro no cadastro :(  Tente novamente mais tarde.");
-    //     }
-    // };
+            CadastroRealizado();
+        
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o formulário:', erro);
+            alert("Desculpe, ocorreu um erro no cadastro :(  Tente novamente mais tarde.");
+        }
+    };
 
-    // const handleChange = (event) => {
-    //     setDadosEmpreendedor({ ...dados, [event.target.name]: event.target.value });
-    // };
+    const handleChange = (event) => {
+        setDadosEmpreendedor({ ...dados, [event.target.name]: event.target.value });
+    };
 
 
 
-    // const [dadosEndereco, setDadosEndereco] = useState({
-    //     uf: '',
-    //     cidade: '',
-    //     bairro: '',
-    //     logadouro: '',
-    //     numero: '',
-    //     cpfEmpreendedor: localStorage.getItem('cpf')
-    // });
+    const [dadosEndereco, setDadosEndereco] = useState({
+        uf: '',
+        cidade: '',
+        bairro: '',
+        logadouro: '',
+        numero: '',
+        cpfEmpreendedor: localStorage.getItem('cpf')
+    });
 
-    // const handleSubmitEndereco = async () => {
-    //     event.preventDefault();
+    const handleSubmitEndereco = async () => {
+        event.preventDefault();
 
-    //     try {
-    //         const resposta = await axios.post('http://localhost:8080/endereco', dadosEndereco);
-    //         console.log(resposta.data);
+        try {
+            const resposta = await axios.post('http://localhost:8080/endereco', dadosEndereco);
+            console.log(resposta.data);
             
-    //     } catch (erro) {
-    //         console.error('Ocorreu um erro ao enviar o formulário:', erro);
-    //     }
-    // };
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o formulário:', erro);
+        }
+    };
 
-    // const handleChangeEndereco = (event) => {
-    //     setDadosEndereco({ ...dadosEndereco, [event.target.name]: event.target.value });
-    // };
+    const handleChangeEndereco = (event) => {
+        setDadosEndereco({ ...dadosEndereco, [event.target.name]: event.target.value });
+    };
 
 
-    // const [dadosEmail, setDadosEmail] = useState({
-    //     ownerRef: "Suporte",
-    //     emailFrom: "impulsioneai@gmail.com",
-    //     emailTo: localStorage.getItem('email'),
-    //     subject: "Bem-vindo (a) ao ImpulsioneAI",
-    //     text: "Bem-vindo(a) ao ImpulsioneAi! Estamos muito felizes em tê-lo(a) conosco! A nossa plataforma foi criada para lhe ajudar na divulgação do seu trabalho. Qualquer dúvida é só entrar em contato!"
-    // });
+    const [dadosEmail, setDadosEmail] = useState({
+        ownerRef: "Suporte",
+        emailFrom: "impulsioneai@gmail.com",
+        emailTo: localStorage.getItem('email'),
+        subject: "Bem-vindo (a) ao ImpulsioneAI",
+        text: "Bem-vindo(a) ao ImpulsioneAi! Estamos muito felizes em tê-lo(a) conosco! A nossa plataforma foi criada para lhe ajudar na divulgação do seu trabalho. Qualquer dúvida é só entrar em contato!"
+    });
 
-    // const handleSubmitEmail = async () => {
-    //     event.preventDefault();
+    const handleSubmitEmail = async () => {
+        event.preventDefault();
 
-    //     try {
-    //         const resposta = await axios.post('http://localhost:8080/email', dadosEmail);
-    //         console.log(resposta.data);
+        try {
+            const resposta = await axios.post('http://localhost:8080/email', dadosEmail);
+            console.log(resposta.data);
             
-    //     } catch (erro) {
-    //         console.error('Ocorreu um erro ao enviar o e-mail:', erro);
-    //     }
-    // };
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o e-mail:', erro);
+        }
+    };
 
-    // const handleChangeEmail = (event) => {
-    //     setDadosEmail({ ...dadosEmail, [event.target.name]: event.target.value });
-    // };
+    const handleChangeEmail = (event) => {
+        setDadosEmail({ ...dadosEmail, [event.target.name]: event.target.value });
+    };
 
 
 
@@ -205,14 +206,14 @@ function FormPartner()
     return(
         <div>
             {/*Centraliza o formulário no centro da tela.*/}
-            <div id="form"> 
+            <div id="form" > 
                 <BoxInfo title={'Cadastro Parceiro'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
                 {/* <div id="formTitle">
                     <span>Cadastro Parceiro</span>
                 </div> */}
                 {/*Contém todo o formulário e seus campos*/}
                 <div className="boxForm">
-                    <form id="formContainer">
+                    <form id="formContainer" onSubmit={handleSubmit}>
 
                         {/*Campo das informações pessoais*/}
                         <fieldset className = "fieldSetConfig">
@@ -222,7 +223,10 @@ function FormPartner()
                                         <input 
                                             type="text" 
                                             size={43} 
-                                            required />
+                                            required 
+                                            name="nomeCompleto"
+                                            value={dados.nomeCompleto}
+                                            onChange={handleChange}/>
                                     </div>
 
                                     {/*DATA DE NASCIMENTO*/}
@@ -231,7 +235,10 @@ function FormPartner()
                                         <input 
                                         type="date"
                                         size={6}
-                                        required/>
+                                        required
+                                        name="dataNascimento"
+                                        value={dados.dataNascimento}
+                                        onChange={handleChange}/>
                                     </div> 
 
                                     {/*CPF*/}
@@ -244,8 +251,10 @@ function FormPartner()
                                                     pattern="^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11})$" 
                                                     maxLength="14" 
                                                     required
-                                                    value={cpf}
-                                                    onChange={handleCpfChange}
+                                                    name="cpf"
+                                                    value={dados.cpf}
+                                                    onBlur={localStorage.setItem('cpf', dados.cpf)}
+                                                    onChange={handleChange}
                                                     size={22}
                                                     placeholder="123.123.123-12"
                                                     onKeyDown={apenasNumeros}/> 
@@ -266,8 +275,9 @@ function FormPartner()
                                                 type="text"  
                                                 pattern="^(\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}|\d{14})$" 
                                                 maxLength="18"
-                                                value={mei}
-                                                onChange={handleMeiChange}
+                                                name="mei"
+                                                value={dados.mei}
+                                                onChange={handleChange}
                                                 placeholder="12.345.678/0001-90"
                                                 size={23}
                                                 onKeyDown={apenasNumeros}/>
@@ -292,7 +302,10 @@ function FormPartner()
                                     <input 
                                     type="text"
                                     required
-                                    size={4}/>
+                                    size={4}
+                                    name="uf"
+                                    value={dadosEndereco.uf}
+                                    onChange={handleChangeEndereco}/>
                                 </div>
 
                                 {/*CIDADE*/}
@@ -301,7 +314,10 @@ function FormPartner()
                                     <input 
                                     type="text"
                                     required
-                                    size={12}/>
+                                    size={12}
+                                    name="cidade"
+                                    value={dadosEndereco.cidade}
+                                    onChange={handleChangeEndereco}/>
                                 </div>
 
                                 {/*BAIRRO*/}
@@ -310,7 +326,10 @@ function FormPartner()
                                     <input 
                                     type="text"
                                     required
-                                    size={12}/>
+                                    size={12}
+                                    name="bairro"
+                                    value={dadosEndereco.bairro}
+                                    onChange={handleChangeEndereco}/>
                                 </div>
                                 
                                 {/*LOGADOURO*/}
@@ -319,7 +338,10 @@ function FormPartner()
                                     <input 
                                     type="text"
                                     required
-                                    size={34}/>
+                                    size={34}
+                                    name="logadouro"
+                                    value={dadosEndereco.logadouro}
+                                    onChange={handleChangeEndereco}/>
                                 </div>
 
                                 {/*NÚMERO DA CASA OU APARTAMENTO*/}
@@ -331,6 +353,9 @@ function FormPartner()
                                         maxLength={6}
                                         pattern="[0-9]+|s/n|S/N"
                                         placeholder="'s/n' para sem número"
+                                        name="numero"
+                                        value={dadosEndereco.numero}
+                                        onChange={handleChangeEndereco}
                                     />
                                     
                                 </div>
@@ -347,8 +372,11 @@ function FormPartner()
                                         <input 
                                         type="password"
                                         required
-                                        value={confirmarSenha} 
-                                        onChange={(e) => setConfirmarSenha(e.target.value)} 
+                                        name="senha"
+                                        value={dados.senha}
+                                        onChange={handleChange}
+                                        // value={confirmarSenha} 
+                                        // onChange={(e) => setConfirmarSenha(e.target.value)} 
                                         minLength={8}
                                         size={27}/>
                                     </div>
@@ -388,17 +416,17 @@ function FormPartner()
                                 {/*NICHO*/}
                                 <div className="fieldType1 nichoSelecao">
                                     <label className="nameField" htmlFor="nichoNegocio">*Qual nicho seu de trabalho?</label>
-                                    <select id="nichoNegocio" required>
-                                    <option value="">Selecione o Nicho</option>
-                                    <option value="gastronomia">Gastronomia</option>
-                                    <option value="moda">Moda</option>
-                                    <option value="artesanato">Artesanato</option>
-                                    <option value="tecnologia">Tecnologia</option>
-                                    <option value="educacao">Educação</option>
-                                    <option value="saude">Saúde</option>
-                                    <option value="estetica">Estética</option>
-                                    <option value="diversos">Diversos</option>
-                                </select>
+                                    <select id="nichoNegocio"  value={dados.nicho} onChange={handleChange}>
+                                        <option value="">Selecione o Nicho</option>
+                                        <option value="gastronomia">Gastronomia</option>
+                                        <option value="moda">Moda</option>
+                                        <option value="artesanato">Artesanato</option>
+                                        <option value="tecnologia">Tecnologia</option>
+                                        <option value="educacao">Educação</option>
+                                        <option value="saude">Saúde</option>
+                                        <option value="estetica">Estética</option>
+                                        <option value="diversos">Diversos</option>
+                                    </select>
                                 </div>
                                 
                                 {/*MODALIDADE*/}
@@ -409,13 +437,13 @@ function FormPartner()
                                     <div id="fieldRadio">
                                 
                                         <div className="radioOption">
-                                            <input type="radio" name="modalidade"/> <span>Presencial</span>
+                                            <input type="radio" name="modalidade" value="Presencial" checked={dados.modalidade === 'Presencial'} onChange={handleChange}/> <span>Presencial</span>
                                         </div>
                                         <div className="radioOption">
-                                            <input type="radio" name="modalidade"/> <span>Online</span>
+                                            <input type="radio" name="modalidade" value="online" checked={dados.modalidade === 'online'} onChange={handleChange}/> <span>Online</span>
                                         </div>
                                         <div className="radioOption">
-                                            <input type="radio" name="modalidade"/> <span>Híbrido</span>
+                                            <input type="radio" name="modalidade" value="Hibrido" checked={dados.modalidade === 'Hibrido'} onChange={handleChange}/> <span>Híbrido</span>
                                         </div>
                                     </div>
 
@@ -427,7 +455,10 @@ function FormPartner()
                                     <input 
                                         type="text"
                                         required
-                                        size={30}/>
+                                        size={30}
+                                        name="nomeEmpreendimento"
+                                        value={dados.nomeEmpreendimento}
+                                        onChange={handleChange}/>
                                 </div>
 
                                 {/*SITE DO NEGÓCIO*/}
@@ -435,6 +466,9 @@ function FormPartner()
                                     <span className="nameField">Site do seu negócio</span>
                                     <input 
                                         type="text"
+                                        name="site"
+                                        value={dados.site}
+                                        onChange={handleChange}
                                         // required
                                         size={24}/>
                                 </div>
@@ -443,7 +477,7 @@ function FormPartner()
                             {/*PLANO ESCOLHIDO*/}
                             <div id="selectField">
                                 <label htmlFor="membership">*Plano Escolhido</label>
-                                <select id="membership" required>
+                                <select id="membership"  value={dados.planoEscolhido} onChange={handleChange}>
                                     <option value="">Selecione</option>
                                     <option value="free">Gratuito</option>
                                     <option value="bronze">Bronze</option>
@@ -462,8 +496,11 @@ function FormPartner()
                                 <span className="nameField">*Número de Telefone</span>
                                 <input 
                                     type="tel"
-                                    value={telefone}
-                                    onChange={handleTelefoneChange}
+                                    name="telefone"
+                                    value={dados.telefone}
+                                    onChange={handleChange}
+                                    // value={telefone}
+                                    // onChange={handleTelefoneChange}
                                     required
                                     pattern="(?:\(\d{2}\) \d{5}-\d{4}|\d{11})"
                                     placeholder="(11) 92222-3333 ou só números"
@@ -481,8 +518,11 @@ function FormPartner()
                                 <input 
                                     type="email"
                                     required
-                                    value={email}
-                                    onChange={handleEmailChange}
+                                    name="email"
+                                    value={dados.email}
+                                    onChange={handleChange}
+                                    // value={email}
+                                    // onChange={handleEmailChange}
                                     size={42.5}/>
                                     <span className="invalidInput">
                                         {email !== '' && !emailValido && <span className="error">Email inválido</span>}
@@ -495,7 +535,10 @@ function FormPartner()
                                 <input 
                                     type="text"
                                     // required
-                                    size={66}/>
+                                    size={66}
+                                    name="instagram"
+                                    value={dados.instagram}
+                                    onChange={handleChange}/>
                             </div>
 
                             {/*FACEBOOK*/}
@@ -504,13 +547,17 @@ function FormPartner()
                                 <input 
                                     type="text"
                                     // required
-                                    size={66}/>
+                                    size={66}
+                                    name="facebook"
+                                    value={dados.facebook}
+                                    onChange={handleChange}/>
                             </div>
 
                             <div id="buttonsForm">
                                     <button id="cadastradoButton">JÁ POSSUO CADASTRO</button>
 
-                                <button id="cadastrarButton" type="submit" onSubmit={CadastroRealizado}>CADASTRAR</button>
+                                {/* <button id="cadastrarButton" type="submit" onSubmit={CadastroRealizado}>CADASTRAR</button> */}
+                                <button id="cadastrarButton" type="submit">CADASTRAR</button>
                             </div>
                         </fieldset>
                     </form>
