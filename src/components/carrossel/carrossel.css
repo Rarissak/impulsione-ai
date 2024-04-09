@@ -127,7 +127,6 @@
     .slide-box {
         width: 22rem;
         height: 10rem;
-        background-color: red;
     }
 }
 
@@ -140,7 +139,6 @@
     .slide-box {
         width: 17rem;
         height: 8rem;
-        background-color: blue;
     }
 }
 
@@ -153,6 +151,5 @@
     .slide-box {
         width: 15rem;
         height: 6rem;
-        background-color: green;
     }
 }

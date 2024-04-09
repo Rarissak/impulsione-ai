@@ -42,21 +42,32 @@ section{
 
 
 @media screen and (max-width: 1200px){
+    .titleBox h1{ 
+        font-size: 26px !important; 
+    }
 }
 
 @media screen and (max-width: 1024px){
+    .titleBox h1{ 
+        font-size: 24px !important; 
+    }
+    .titleBox {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
 }
 
 @media screen and (max-width: 768px){
     
     .titleBox h1{ 
-        font-size: 25px; 
+        font-size: 22px !important; 
     }
 
     .titleBox {
         padding-left: 4rem;
         padding-right: 4rem;
     }
+
 }
 
 @media screen and (max-width: 560px){
@@ -64,6 +75,13 @@ section{
 }
 
 @media screen and (max-width: 480px){
+    .titleBox h1{ 
+        font-size: 20px !important; 
+    }
+    .titleBox {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
 	
 }
 
@@ -72,5 +90,12 @@ section{
 }
 
 @media screen and (max-width: 280px){
+    .titleBox h1{ 
+        font-size: 18px !important; 
+    }
+    .titleBox {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 	
 }

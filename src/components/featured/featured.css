@@ -124,6 +124,9 @@
         width: 12rem; /*Definindo o tamanho dele*/
         height: 16.15rem;
     }
+
+    #featuredTitle{ font-size: 24px; }
+
 	
 }
 
@@ -156,6 +159,7 @@
 }
 
 @media screen and (max-width: 480px){
+    #featuredTitle{ font-size: 20px !important; }
 	
 }
 
@@ -164,5 +168,6 @@
 }
 
 @media screen and (max-width: 280px){
+    #featuredTitle{ font-size: 18px !important; }
 	
 }

@@ -196,7 +196,7 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
     .carrossel_texto img{ width: 15rem; }
 
     #tituloDepoimentos {
-        width: 55%;
+        width: 60%;
     }
 
     #tituloDepoimentos h2 {
@@ -238,7 +238,7 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 
     /* Ajustes de Margin e padding*/
     #depoimentos { margin: 2rem 2rem 2rem 2rem; 
-        #tituloDepoimentos h2 { padding-left: 2rem; }
+        #tituloDepoimentos h2 { padding-left: 1rem; }
     }
 
     #destaques { margin: 5rem 2rem 2rem 2rem; }
@@ -248,14 +248,20 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 }
 
 @media screen and (max-width: 480px){
-     
-	
+    
+    #tituloDepoimentos h2 { font-size: 20px; }
+    #tituloDepoimentos { width: 70%; }
 }
 
 @media screen and (max-width: 320px){
+    #tituloDepoimentos h2 { font-size: 20px; 
+        padding-left: 1rem; }
+    #tituloDepoimentos { width: 80%; }
 	
 }
 
 @media screen and (max-width: 280px){
+    #tituloDepoimentos h2 { font-size: 18px; }
+
 	
 }
