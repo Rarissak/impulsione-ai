@@ -86,7 +86,7 @@ body {
 @media screen and (max-width: 768px){
 
     body{
-        margin-top: 6rem;
+        margin-top: 4.5rem !important;
     }
     
     .boxInformations {

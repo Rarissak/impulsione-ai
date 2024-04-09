@@ -10,7 +10,8 @@
     flex-direction: column;
 }
 
-#titleBorda{ width: 100%; }
+#titleBorda{ width: 100%; 
+margin: 0 10rem 0 10rem !important;}
 
 #featuredTitle {
     font-size: 30px;
@@ -125,9 +126,17 @@
         height: 16.15rem;
     }
 
-    #featuredTitle{ font-size: 24px; }
+    #featuredTitle{ font-size: 24px !important; }
 
-	
+	#titleBorda{ 
+        margin: 0 8rem 0 8rem !important;
+    }
+}
+
+@media screen and (max-width: 920px){
+    #titleBorda{ 
+        margin: 0 5rem 0 5rem !important;
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -155,7 +164,9 @@
 }
 
 @media screen and (max-width: 560px){
-
+    #titleBorda{ 
+        margin: 0 2rem 0 2rem !important;
+    }
 }
 
 @media screen and (max-width: 480px){

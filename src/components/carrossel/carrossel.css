@@ -86,15 +86,24 @@
         border-bottom-right-radius: 0;
     }
     
-    #efeitoDegrade{
+    .efeitoDegrade{
         position: relative;
         height: 70px;
         margin-top: -4.3rem;
         z-index: 2;
         /* background-color: red; */
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF9F5);
-
+        /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF9F5); */
     }
+
+    #degradeRoxo {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #42016A);
+    }
+
+    #degradeClaro {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF9F5);
+    }
+
+
 
     .slide-box {
         width: 36rem;

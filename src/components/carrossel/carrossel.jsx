@@ -19,7 +19,7 @@ register();
     //     {id: '4', image: 'https://ciclovivo.com.br/wp-content/uploads/2018/10/iStock-536613027-1024x683.jpg'},    
     // ]
 
-    function Carrossel({ img1, img2, img3, img4, img5, img6, img7 }) {
+    function Carrossel({ img1, img2, img3, img4, img5, img6, img7, idDegrade }) {
         const [slidePerView, setSlidePerView] = useState(1);
         const data = [
             { id: '1', image: img1 },
@@ -51,7 +51,7 @@ register();
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div id='efeitoDegrade'>
+                <div className='efeitoDegrade' id={idDegrade}>
                     {/* <hr></hr> */}
                 </div>
             </div>

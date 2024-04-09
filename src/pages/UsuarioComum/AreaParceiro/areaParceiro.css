@@ -24,6 +24,7 @@
 
 .blocoRoxo{
     background: linear-gradient(to right, #3C0060, #64039F);
+    margin: 0 !important;
 }
 
 .bloco1 {
@@ -94,7 +95,6 @@
     margin-top: 3rem;
     width: 100%;
     display:flex;
-    justify-content: center;
     align-items: flex-start;
     justify-content: space-between;
     /* padding-left: 6rem;
@@ -106,6 +106,15 @@
     padding-top: 2rem;
     padding-bottom: 5rem;
     justify-content: space-between;
+    padding: 1rem 10rem 3rem 10rem !important;
+}
+
+#linhaDestaques {
+    gap: 2rem;
+}
+
+.destaquesBloco3 {
+    width: 100%;
 }
 
 .titleBoxLaranja {
@@ -208,6 +217,12 @@
     align-items: flex-end; */
     margin-top: auto;
     align-self: flex-end;
+    cursor: pointer;
+}
+
+.buttonPlanos:hover{
+    background-color: #FF7D1E;
+    transition: 0.3s;
 }
 
 
@@ -254,4 +269,166 @@
     transition: .35s !important;
     background-color: #8A00DE !important;
     scale: 1.02 !important;
+}
+
+
+
+/* RRESPONSIVO */
+
+@media screen and (max-width: 1380px){
+    .vantagem img {
+        width: 1.75rem;
+    }
+}
+
+@media screen and (max-width: 1280px){
+    .vantagem img {
+        width: 1.75rem;
+    }
+
+    .vantagem p {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 1200px){
+
+    #infoBloco1 h1 {
+        font-size: 31px !important;
+    }
+    .botaoInfo {
+        padding: 0.75rem 0.85rem !important;
+    }
+
+    #titleText h2{
+        font-size: 26px;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .plano {
+        padding: 1.75rem;
+    }
+
+    .vantagem {
+        gap: 0.75rem
+    }
+	
+}
+
+@media screen and (max-width: 1024px){
+    
+    #infoBloco1 h1 {
+        font-size: 28px !important;
+        text-align: start;
+    }
+
+    .botaoInfo {
+        font-size: 13px !important;
+        padding: 0.75rem 0.85rem !important;
+    }
+
+    #titleText h2{
+        font-size: 24px;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+
+    /* Margins e paddins laterais */
+    .bloco1 { padding: 1.5rem 8rem 1.5rem 8rem;}
+    .bloco2 { padding: 3rem 8rem 7rem 8rem; }
+    #bloco5 { padding: 1.5rem 8rem 6rem 8rem; }
+    #boxLaranja{ padding: 1rem 8rem 3rem 8rem !important; }
+	
+}
+
+@media screen and (max-width: 840px) {
+    .bloco1 { 
+        flex-wrap: wrap;
+
+        #infoBloco1 {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #textoBloco1{
+            width: 60%;
+        }
+    }
+
+    #boxPlanos {
+        display: flex;
+        flex-direction: column !important;
+        gap: 2rem;
+
+        .plano{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    
+
+}
+
+
+@media screen and (max-width: 920px) {
+    
+    /* Margins e paddins laterais */
+    .bloco1 { padding: 1.5rem 5rem 1.5rem 5rem;}
+    .bloco2 { padding: 3rem 5rem 6rem 5rem; }
+    #bloco5 { padding: 1.5rem 5rem 4rem 5rem; }
+    #boxLaranja{ padding: 1rem 5rem 3rem 5rem !important; }
+
+}
+
+@media screen and (max-width: 768px){
+    
+    #titleText h2{
+        font-size: 22px;
+        display: flex;
+        flex-direction: column !important;
+    }
+    
+    #info{
+        flex-direction: column;
+        margin-top: 2rem;
+        padding: 0;
+        width: 100%;
+        gap: 1rem !important
+    }
+}
+
+@media screen and (max-width: 560px){
+
+    /* Margins e paddins laterais */
+    .bloco1 { padding: 1.5rem 2rem 1.5rem 2rem;}
+    .bloco2 { padding: 3rem 2rem 7rem 2rem; }
+    #bloco5 { padding: 1.5rem 2rem 6rem 2rem; }
+    #boxLaranja{ padding: 1rem 2rem 2rem 2rem !important; }
+}
+
+@media screen and (max-width: 480px){
+    #titleText h2{
+        font-size: 20px;
+        display: flex;
+        flex-direction: column !important;
+    }
+	
+}
+
+@media screen and (max-width: 320px){
+	
+}
+
+@media screen and (max-width: 280px){
+
+    #titleText h2{
+        font-size: 18px;
+        display: flex;
+        flex-direction: column !important;
+    }
+	
 }

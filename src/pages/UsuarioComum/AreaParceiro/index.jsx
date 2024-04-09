@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../index.css';
 // import '././././index.css';
 import './areaParceiro.css';
 import Header from '../../../components/header/header';
@@ -71,10 +72,12 @@ function AreaParceiro(){
                     
                 </nav>
 
-                <section className="bloco1">
+                <section className="bloco1" id=''>
                 <div id="infoBloco1">
-                    <h1 className='title'>Dê um salto no seu negócio!</h1>
-                    <p>Use nossa plataforma como uma forma de impulsionar ai, aqui, aonde você estiver!</p>
+                    <div id='textoBloco1'>
+                        <h1 className='title'>Dê um salto no seu negócio!</h1>
+                        <p>Use nossa plataforma como uma forma de impulsionar ai, aqui, aonde você estiver!</p>
+                    </div>
                     <Link
                     to='/cadastroParceiro'>
                         <button className='botaoInfo' id='linkCadastro'>TORNE-SE UM PARCEIRO</button>
@@ -88,6 +91,7 @@ function AreaParceiro(){
                     img5={Saude02}
                     img6={Educacao}
                     img7={Propaganda}
+                    idDegrade={'degradeRoxo'}
                 />
                 </section>
 
@@ -115,12 +119,14 @@ function AreaParceiro(){
 
             <section id="bloco3">
                 <BoxInfo title={"Empreendedores que indicam o Impulsione Aí"} idBox={'titleBoxLaranja'} idDivisor={'divisorLaranja'}></BoxInfo>
-                <div className='boxInformations' id="boxLaranja">              
-                    <Destaque idBox={'quadradoBranco'} path={'/vitrine'} foto={TrufasDoSim} nome={'Trufas do Sim'} nicho={'Gastronomia'}></Destaque>
-                    <Destaque idBox={'quadradoBranco'} path={''} foto={Fisio} nome={'Fisio em casa'} nicho={'Saúde'}></Destaque>
-                    <Destaque idBox={'quadradoBranco'} path={''} foto={Artelane} nome={'Artelane'} nicho={'Artesanato'}></Destaque>
-                    <Destaque idBox={'quadradoBranco'} path={''} foto={vintageVibe} nome={'Vintage Vibe'} nicho={'Moda'}></Destaque>
-                    <Destaque idBox={'quadradoBranco'} path={''} foto={pitagoras} nome={'Pitágoras'} nicho={'Educação'}></Destaque>
+                <div className='destaquesBloco3' id="boxLaranja">
+                    <div id='linhaDestaques'>
+                        <Destaque idBox={'quadradoBranco'} path={'/vitrine'} foto={TrufasDoSim} nome={'Trufas do Sim'} nicho={'Gastronomia'}></Destaque>
+                        <Destaque idBox={'quadradoBranco'} path={''} foto={Fisio} nome={'Fisio em casa'} nicho={'Saúde'}></Destaque>
+                        <Destaque idBox={'quadradoBranco'} path={''} foto={Artelane} nome={'Artelane'} nicho={'Artesanato'}></Destaque>
+                        <Destaque idBox={'quadradoBranco'} path={''} foto={vintageVibe} nome={'Vintage Vibe'} nicho={'Moda'}></Destaque>
+                        <Destaque idBox={'quadradoBranco'} path={''} foto={pitagoras} nome={'Pitágoras'} nicho={'Educação'}></Destaque>
+                    </div>
                 </div>
             </section>
 
