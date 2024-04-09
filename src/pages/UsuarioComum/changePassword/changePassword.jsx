@@ -1,7 +1,6 @@
-
 import React,{useState} from "react";
 import './changePassword.css';
-import BoxInfo from "../../../components/boxInfo/boxInfo";
+import {BoxInfoModal} from "../../../components/boxInfo/boxInfo";
 
 
 function apenasNumeros(evt) {
@@ -27,7 +26,8 @@ function ChangePassword()
                 <div id="changeContainer">
 
                     
-                    <BoxInfo title={'Alterar Senha'} idBox={'titleBoxBranco'} idDivisor={'divisorBranco'}></BoxInfo>
+                     {/*Titulo do componente login*/}
+                     <BoxInfoModal title={'Alterar Senha'} idBox={'titleBoxBranco'} idModal={'changeBox'} idDivisor={'divisorBranco'}></BoxInfoModal>
 
                     <div id="changeBody">
 
