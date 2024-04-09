@@ -24,6 +24,7 @@ function ChangePassword()
             <div id="changeCentralize" >
 
                 <div id="changeContainer">
+
                     
                     <BoxInfo title={'Alterar Senha'} idBox={'titleBoxBranco'} idDivisor={'divisorBranco'}></BoxInfo>
 
@@ -162,3 +163,4 @@ export default ChangePassword;
 // }
 
 // export default ChangePassword;
+

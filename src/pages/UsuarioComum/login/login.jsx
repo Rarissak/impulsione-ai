@@ -1,4 +1,3 @@
-
 import React,{useState} from "react";
 import './login.css';
 // import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
@@ -34,8 +33,8 @@ function Login()
                         </button>
                     </div>
                                        
+                    {/* <BoxInfo title={'Login'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfo> */}
                     <BoxInfo title={'Login'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
-
                     <div id="loginBody">
 
                         <div className="loginInputs">

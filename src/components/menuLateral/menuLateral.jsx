@@ -13,9 +13,6 @@ import IconParceiro from '../../assets/IconParceiroBranco.svg';
 import IconPerfil from '../../assets/iconPerfilBranco.svg';
 
 
-// import Logo from '../../assets/'
-
-
 function MenuLateral(LoginPerfil, linkPerfil){
 
     const [expandir, setExpandir] = useState(false);
