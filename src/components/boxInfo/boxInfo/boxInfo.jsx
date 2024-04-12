@@ -1,5 +1,5 @@
 import './boxInfo.css';
-import '../../index.css';
+import '../../../index.css';
 // import GrowIcon from '../../assets/growIcon.svg';
 // import StoreIcon from '../../assets/storeIcon.svg';
 // import PuzzleIcon from '../../assets/puzzleIcon.svg'; 
