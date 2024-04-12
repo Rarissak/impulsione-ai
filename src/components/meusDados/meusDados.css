@@ -1,0 +1,539 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Inter';
+}
+
+/*Colocando o elemento loginHeader em cima do loginBody*/
+
+
+/*Configurando a fonte do loginHeader*/
+#formTitle1 
+{
+    
+    display: flex;
+    justify-content: left;
+   
+}
+
+#formTitle1 h1
+{
+    font-family: 'Baloo 2', sans-serif;
+    color: #8A00DE;
+    font-size: 30px;
+    font-weight:600;
+}
+
+#form
+{
+  width: 100%;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+#formContainer
+{
+    width: 50%;
+}
+
+
+/*Configuração dos campos*/
+.fieldType1
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fieldType2 
+{
+    display: flex;
+    align-content: center;
+}
+
+.fieldType2 .nameField
+{
+    margin-right: 10px;
+}
+
+.nameField
+{
+    color: #CC78FF;
+    font-weight: 700;
+}
+
+
+
+/*Configuração das legendas de alguns campos*/
+#alertLocationField
+{
+    font-size: 12.5px;
+}
+
+#passwordRequery
+{
+    margin-top: -15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#passwordRequery span
+{
+    font-size: 10.5px;
+    color:  #919191;
+}
+
+/*Configuração do campo Opcional*/
+.optionalField
+{
+    display: flex;
+    gap: 15px;
+}
+
+.optional
+{
+    font-size: 11px;
+    color: #FF8D3B;
+}
+
+#inputOptional
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: right;
+    
+}
+/*Configuração do campo modalidade*/
+#radioContainer
+{
+    margin-left: 35px;
+}
+
+#radioContainer input
+{
+    cursor: pointer;
+}
+
+#fieldRadio
+{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.radioOption
+{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+ 
+}
+
+/*Configuração do campo Plano escolhido*/
+#selectField label
+{
+    color: #8A00DE;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+#selectField select
+{
+    
+    background: #CC78FF;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 25px;
+    border-color: rgba(73, 4, 4, 0);
+    padding: .2rem .5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/*Definindo o formato e cor do fundo do input*/
+#form input
+{
+    background-color: #f3f3f3;
+    border-radius: 25px;
+    border-color: #f3f3f300;
+    padding: .2rem .6rem;
+}
+
+/*Configuração padrão de alguns campos*/
+.fieldSetConfig
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-color: #8900de00;
+}
+
+
+/*Configuração do campo Formas de contato*/
+#contactFormsH1
+{
+    margin-top: 30px;
+    color: #FF7D1E;
+    font-weight: 800;
+}
+
+.iconField
+{
+    display: flex;
+}
+
+.iconField img
+{
+    width: 25px;
+    margin-right: 5px;
+}
+
+
+
+/*Configuração dos botões do form*/
+
+.buttonsForm
+{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.buttonsForm button
+{
+    
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    padding: .4rem 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+/*EStilização dos botões do cadastro de usuário*/
+
+    /*Botão dos usuários que já tem cadastro*/
+#editButton
+{
+    background-color: #FF8D3B;
+}
+
+#editButton:hover
+{
+    transition: .2s;
+    background-color:  #be6a2d;
+}
+
+.corLaranja .nameField
+{
+    color: #FF8D3B;
+}
+ /*Botão dos usuários que ainda vão se cadastrar*/
+#alterarButton
+{
+    background-color:  #CC78FF;
+    margin-right: 2px;
+}
+
+#alterarButton:hover
+{
+    transition: .2s;
+    background-color: #b067dd;
+}
+
+ /*Espaço entre o cadastro e o footer*/
+#beforeFooter
+{
+    background-color: #f6e8ff;
+    height: 70px;
+
+}
+
+ /*Configuração adicional do campo CPF, usado para centralizar o input e a mensagem de invalidez de seu contéudo*/
+.especialCase
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;   
+}
+
+/*Configuração Texto de aviso de erro abaixo do campo*/
+
+.invalidInput, .validInput
+{
+    text-align: right;
+  
+}
+
+.invalidInput span
+{
+    font-size: 14px;
+    color: red;
+}
+
+.validInput span
+{
+    font-size: 14px;
+    color: rgb(3, 177, 3);
+}
+
+/*Mudando o campo CPF para ficar parecido com a estilização do campo MEI*/
+
+#centralizeCpfField
+{
+    display: flex;
+    align-items:flex-start;
+    gap: 15px;
+}
+
+.textCentralize
+{
+   text-align: start;
+   margin-top: 5px;
+}
+
+/*Field set Com foto*/
+
+#fieldSetFoto
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -7px;
+    margin-top: -25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.boxForm fieldset
+{
+    border: #8900de00;
+}
+
+#separarCampos div
+{
+    margin-top: 15px;
+}
+
+#fotoPerfil
+{
+    width: 120px;
+    border-radius: 75px;
+}
+
+ /*Campo dos negócios*/
+#fieldSetNegocio
+{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
+ /*Campo dos icones e botão*/
+#fieldSetIcon
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.iconCenter
+{
+    display: flex;
+    align-content: center;
+    margin-bottom: 15px;
+}
+
+.iconCenter img
+{
+    width: 20px;
+    margin-right: 10px;
+}
+.buttonsFormEdit button
+{
+    margin-top: 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    padding: .4rem 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+    
+}
+.buttonsFormEdit 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+#fieldSetEmail
+{
+    display: flex;
+    justify-content: space-between;
+    gap: -25px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#fieldSetConfigPlano
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1.5px solid #CC78FF;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+
+
+
+ /*Fazendo a mensagem de invaliz ficar em baixo do input*/
+#ajustandoMensagemInvalida
+{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1443px){
+
+   
+}
+@media screen and (max-width: 1200px){
+
+   
+}
+
+@media screen and (max-width: 1024px){
+}
+
+/* Tamanho criado por conta do componente carrossel */
+@media screen and (max-width: 840px){
+
+    #formContainer
+    {
+        width: 60%;
+    }
+
+}
+/* Tamanho criado por conta do componente carrossel */
+
+@media screen and (max-width: 768px){
+   
+    #formContainer
+    {
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 667px){
+
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        gap: 25px;
+    }
+    #buttonsForm button
+    {
+        margin-top: 15px;
+        font-weight:600;
+        padding: .1rem .5rem;
+        cursor: pointer;
+        transition: .3s;
+        
+    }
+    
+  
+}
+@media screen and (max-width: 560px){
+    #formContainer
+    {
+        width: 90%;
+        
+        
+    }
+    .fieldSetConfig
+    {
+        flex-direction: column;
+    }
+     input,input[type="password"]
+    {
+        width: 95%;
+        display: flex;
+    }
+    
+
+    .especialCase
+    {
+        width: 110%;
+    }
+   
+}
+
+@media screen and (max-width: 480px){
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 460px){
+    input[type="password"]
+    {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 407px){
+    #buttonsForm
+    {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 25px;
+        
+    }
+}
+@media screen and (max-width: 367px){
+    input[type="password"]
+    {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 320px){
+  #formContainer
+  {
+    margin-left: -65px;
+  }
+}
+
+@media screen and (max-width: 280px){
+	
+}
+
