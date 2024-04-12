@@ -38,6 +38,10 @@ section{
     width: 100%; /*Para o efeito alcançar toda a pagina*/
 }
 
+#meuPlanoBox .titleBox h1{ 
+    font-size: 35px; 
+}
+
 /* RESPONSIVO */
 
 /* Alterações para o modal login*/
@@ -206,7 +210,10 @@ section{
         font-size: 25px; 
     }
 
- 
+    #meuPlanoBox .titleBox{ 
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
 }
 
 @media screen and (max-width: 678px){
@@ -238,6 +245,10 @@ section{
         padding-right: 3rem;
     }
 
+    #meuPlanoBox .titleBox{ 
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -251,9 +262,3 @@ section{
 @media screen and (max-width: 280px){
 	
 }
-
-
-
-
-
-
