@@ -37,6 +37,9 @@ function EsqueciSenha()
                     const nomeCompleto = data.nome;
                     const primeiroNome = nomeCompleto.split(' ')[0];
                     localStorage.setItem('nomeUsuario', primeiroNome);
+
+                    localStorage.setItem('idUsuario', data.id);
+
                     alert("Código de verificação enviado ao seu e-mail. Digite-o para trocar sua senha!");
 
                     const codigoAleatorio = gerarCodigoAleatorio(7);
@@ -44,6 +47,7 @@ function EsqueciSenha()
                     localStorage.setItem('email', email);
 
                     console.log(localStorage.getItem('codigoAcesso'));
+                    
 
                     handleSubmitEmail({
                         ownerRef: "Suporte",
