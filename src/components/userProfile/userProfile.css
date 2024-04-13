@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Inter';
+    
+}
+
+/*Tornando a seguinte cor como a cor de fundo*/
+
+    /*Camada mais profunda*/
+html{
+    background-color: #FFF9F5;
+}
+
+    /*Camada dos meus dados e vitrine*/
+#boxForm
+{
+    background-color: #FFF9F5;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 35px;
+    flex-wrap: wrap;
+    width: 80%;
+    transition: .2s;
+}
+
+
+    /*Camada dos demais elementos*/
+#corFundo
+{
+    background-color:#FFF9F5;
+}
+
+
+
+/*Configurando a fonte do loginHeader*/
+#formTitle1 
+{
+    
+    display: flex;
+    justify-content: left;
+   
+}
+
+#formTitle1 h1
+{
+    font-family: 'Baloo 2', sans-serif;
+    color: #8A00DE;
+    font-size: 30px;
+    font-weight:600;
+}
+
+
+
+#form
+{
+  width: 100vw;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 5rem;
+  
+}
+
+
+#formContainer
+{
+    min-width: 315px;
+    max-width: 443px;
+    
+}
+
+
+/*Configuração dos campos*/
+.fieldType1
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fieldType2 
+{
+    display: flex;
+    align-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.fieldType2 .nameField
+{
+    margin-right: 10px;
+}
+
+.nameField
+{
+    color: #CC78FF;
+    font-weight: 700;
+}
+
+
+/*Definindo o formato e cor do fundo do input*/
+#form input
+{
+    background-color: #f3f3f3;
+    border-radius: 25px;
+    border-color: #f3f3f300;
+    padding: .2rem .6rem;
+}
+
+/*Configuração padrão de alguns campos*/
+.fieldSetConfig
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-color: #8900de00;
+}
+
+/*Icon coração*/
+.iconCoracao
+{
+    width: 35px;
+}
+
+.favContainer
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.favContainer .nameField
+{
+    color:#000000;
+    font-size: 15px;
+}
+
+.favContainer .conteudo
+{
+    font-size: 14px;
+}
+
+
+
+/*-- Recomendados --*/
+
+#recomendacoes
+{
+    margin: 3rem 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: .2s;
+   
+}
+
+#recomendados
+{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 45px;
+    gap: 35px;
+}
+
+#recomendados .recomendadoImg
+{
+    width: 164px;
+    height: 164px;
+    border-radius: 20px;
+
+}  
+
+
+.recomendado
+{
+    display: flex;
+    gap: 20px;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    max-width: 455px;
+    
+}
+
+.recomendado button
+{
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    transition: .2s;
+}
+
+.recomendadoText
+{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.recomendado .recomendadoTitle
+{
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF7D1E;
+}
+
+.recomendado .recomendadoTipoEstab
+{
+    
+    font-size: 14px;
+    font-weight: 300;
+    color: #8A00DE;
+}
+
+
+.recomendado .recomendadoDesc
+{
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #595959;
+    background-color: blue;
+    text-align: justify;
+
+}
+
+.recomendado .recomendadoIcon
+{
+    display: flex;
+    align-items: end;
+}
+.recomendado .recomendadoIcon img
+{
+    width: 35px;
+}
+/*EStilização dos botões do cadastro de usuário*/
+
+    /*Botão dos usuários que já tem cadastro*/
+#editButton
+{
+    background-color: #FF8D3B;
+}
+
+#editButton:hover
+{
+    transition: .2s;
+    background-color:  #be6a2d;
+}
+
+
+ /*Espaço entre o cadastro e o footer*/
+#beforeFooter
+{
+    background-color: #f6e8ff;
+    height: 70px;
+
+}
+
+
+/*Field set Com foto*/
+
+#fieldSetFoto
+{
+
+    display: flex;
+    align-items: left;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: -7px;
+    margin-right: 15px;
+    border: #615d6400;
+}
+
+#duploField
+{
+    display: flex;
+    gap: 50px;
+}
+
+
+
+.buttonsFormEdit button
+{
+    margin-top: 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    padding: .4rem 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+    
+}
+
+.buttonsFormEdit 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+#fieldSetEmail
+{
+    display: flex;
+    justify-content: space-between;
+    gap: -25px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#fieldSetConfigPlano
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1.5px solid #CC78FF;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+
+
+
+ /*Fazendo a mensagem de invaliz ficar em baixo do input*/
+#ajustandoMensagemInvalida
+{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1406px){
+
+   
+}
+@media screen and (max-width: 1240px){
+
+    #recomendados
+    {
+        justify-content: center;
+    }
+   
+}
+
+@media screen and (max-width: 1200px){
+
+   
+}
+
+@media screen and (max-width: 1124px){
+    #recomendacoes
+    {
+        margin: 2rem 9rem;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    #recomendacoes
+    {
+        margin: 2rem 6rem;
+    }
+}
+
+@media screen and (max-width: 920px){
+    #vitrineContainer
+    {
+        margin-left: -30px;
+    }
+    #boxForm
+    {
+        justify-content: center;
+    }
+    #formContainer
+    {
+        width: 50%;
+    }
+  
+   
+}
+/* Tamanho criado por conta do componente carrossel */
+@media screen and (max-width: 840px){
+
+ 
+
+}
+/* Tamanho criado por conta do componente carrossel */
+
+@media screen and (max-width: 780px){
+    #recomendacoes
+    {
+        margin: 2rem 5rem;
+    }
+   
+    .boxForm
+    {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 667px){
+
+    #recomendacoes
+    {
+        margin: 2rem 2rem;
+    }
+  
+}
+@media screen and (max-width: 560px){
+
+    #titleBorda
+    {
+        width: 99%;
+    }
+
+    #recomendacoes
+    {
+        margin: .1rem;
+    }
+    
+    #recomendados
+    {
+        width: 95%;
+        margin: .5rem;
+        margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 536px){
+    #recomendacoes
+    {
+        width: 100%;
+    }
+
+   
+
+}
+
+@media screen and (max-width: 480px){
+   
+}
+
+@media screen and (max-width: 460px){
+   
+
+   
+}
+@media screen and (max-width: 407px){
+  
+}
+@media screen and (max-width: 367px){
+   
+}
+
+@media screen and (max-width: 320px){
+ 
+}
+
+@media screen and (max-width: 280px){
+	
+}
+
