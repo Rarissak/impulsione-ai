@@ -4,66 +4,80 @@ import BoxInfo from '../../../components/boxInfo/boxInfo';
 import ModalChangePassworld from '../changePassword/changePassword'
 import FundoSenha from '../../../assets/fundoSenha.svg';
 
-
+import axios from "axios";
     
+
+function gerarCodigoAleatorio(tamanho) {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let codigo = '';
+
+    for (let i = 0; i < tamanho; i++) {
+        const indice = Math.floor(Math.random() * caracteres.length);
+        codigo += caracteres.charAt(indice);
+    }
+
+    return codigo;
+}   
 
 function EsqueciSenha()
 {
 
     const [email, setEmail] = useState('');
-   
-  
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-  
-      try {
-        const response = await fetch(`http://localhost:8080/verificaUsuarios?email=${email}`);
-        const dataText = await response.text();
 
-        if (response.ok) {
-            
-            try {
-                const data = JSON.parse(dataText);
-                // Extraindo o primeiro nome
-                const nomeCompleto = data.nome;
-                const primeiroNome = nomeCompleto.split(' ')[0];
-                console.log(primeiroNome); 
-                
-            } catch (error) {
-                console.error('Erro ao analisar JSON:', error);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await fetch(`http://localhost:8080/verificaUsuarios?email=${email}`);
+            const dataText = await response.text();
+
+            if (response.ok) {
+                try {
+                    const data = JSON.parse(dataText);
+                    const nomeCompleto = data.nome;
+                    const primeiroNome = nomeCompleto.split(' ')[0];
+                    localStorage.setItem('nomeUsuario', primeiroNome);
+                    alert("Código de verificação enviado ao seu e-mail. Digite-o para trocar sua senha!");
+
+                    const codigoAleatorio = gerarCodigoAleatorio(7);
+                    localStorage.setItem('codigoAcesso', codigoAleatorio);
+                    localStorage.setItem('email', email);
+
+                    console.log(localStorage.getItem('codigoAcesso'));
+
+                    handleSubmitEmail({
+                        ownerRef: "Suporte",
+                        emailFrom: "impulsioneai@gmail.com",
+                        emailTo: email,
+                        subject: "Esqueceu a senha? Não se preocupe, estamos aqui para ajudar!",
+                        text: `Olá ${primeiroNome}, Recebemos sua solicitação de recuperação de senha. Para redefinir sua senha e recuperar o acesso à sua conta, utilize o código de acesso: ${codigoAleatorio}. Se precisar de mais alguma assistência, não hesite em nos contatar!`
+                    });
+
+                    window.location.href = "/alterarSenha";
+
+                } catch (error) {
+                    console.error('Erro ao analisar JSON:', error);
+                }
+            } else {
+                alert("E-mail não encontrado na nossa base de dados :( \nTente novamente!");
             }
-        } else {
-            
-        } 
         } catch (error) {
             console.error('Erro ao verificar usuário:', error);
         }
     };
 
+    const handleSubmitEmail = async (dadosEmail) => {
+        try {
+            const resposta = await axios.post('http://localhost:8080/email', dadosEmail);
+            console.log(resposta.data);
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o e-mail:', erro);
+        }
+    };
 
-// const [dadosEmail, setDadosEmail] = useState({
-//     ownerRef: "Suporte",
-//     emailFrom: "impulsioneai@gmail.com",
-//     emailTo: '',
-//     subject: "Esqueceu a senha? Não se preocupe, estamos aqui para ajudar!",
-//     text: "Olá" + localStorage.getItem('nomeUsuario') + "Recebemos sua solicitação de recuperação de senha. Para redefinir sua senha e recuperar o acesso à sua conta, utilize o código de acesso: " + localStorage.getItem('codigoAcesso') + "Se precisar de mais alguma assistência, não hesite em nos contatar!"
-// });
-
-// const handleSubmitEmail = async () => {
-//     event.preventDefault();
-
-//     try {
-//         const resposta = await axios.post('http://localhost:8080/email', dadosEmail);
-//         console.log(resposta.data);
-        
-//     } catch (erro) {
-//         console.error('Ocorreu um erro ao enviar o e-mail:', erro);
-//     }
-// };
-
-// const handleChangeEmail = (event) => {
-//     setDadosEmail({ ...dadosEmail, [event.target.name]: event.target.value });
-// };
+    const handleChangeEmail = (event) => {
+        setEmail(event.target.value);
+    };
 
 
 
