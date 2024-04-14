@@ -60,7 +60,7 @@ function Home(){
                     img5={Saude02}
                     img6={Educacao}
                     img7={Propaganda}
-                    idDegrade={degardeClaro}
+                    // idDegrade={degardeClaro}
                 />
                 <div className='carrossel_texto'>
                     <img src={LogoColorida} alt="Logo" />

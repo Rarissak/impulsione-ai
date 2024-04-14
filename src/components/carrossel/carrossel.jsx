@@ -51,9 +51,7 @@ register();
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className='efeitoDegrade' id={idDegrade}>
-                    {/* <hr></hr> */}
-                </div>
+                {/* <div className='efeitoDegrade' id={idDegrade}></div> */}
             </div>
         );
     }
