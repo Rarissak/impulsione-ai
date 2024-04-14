@@ -14,6 +14,14 @@ import LogoColorida from '../../../assets/logoColorida.svg'
 import Depoimentos from '../../../components/depoimentos/depoimentos.jsx'
 import PerfilIcon from '../../../assets/profileIcon.svg'
 
+import Destaque from '../../../components/featured/destaque.jsx';
+import { Link } from 'react-router-dom';
+import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
+
+import axiosInstance from '../../../helper/axiosInstance.js';
+import { useEffect, useState } from 'react';
+import useAxios from '../../../hook/useAxios.js';
+
 //Imagens do carrossel
 import Artesanado from '../../../assets/artesanato.png'
 import Educacao from '../../../assets/educacaoAula.png'
@@ -29,12 +37,21 @@ import Artelane from '../../../assets/artelane.png';
 import pitagoras from '../../../assets/pitagoras.png';
 import Fisio from '../../../assets/fisioEmcasa.png';
 import vintageVibe from '../../../assets/vintageVibe.png';
-import Destaque from '../../../components/featured/destaque.jsx';
-import { Link } from 'react-router-dom';
-import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
 
+const id =  localStorage.getItem('id');
+const userUri = localStorage.getItem('uri');
+
+;
 
 function Home(){
+
+    const [usuarioLogado, setUsuarioLogado] = useState({})
+    const [empreendedoresDestaque, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url:'empreendedores'
+    })
+
     return (
         <>
         <Header></Header>
@@ -69,7 +86,6 @@ function Home(){
             </div>
 
             <div id='boxInfos'>
-                {/* <BoxInfo id="tituloBloco" title={"NOSSO OBJETIVO"}></BoxInfo> */}
                 <BoxInfo title={"NOSSO OBJETIVO"} idBox={'titleBoxRoxo'} idDivisor={'divisorRoxo'}></BoxInfo>
                 <div>
                     <div className="boxInformations">                
@@ -90,9 +106,6 @@ function Home(){
                 <Link id='chamada' to='/areaParceiro'>
                     <p>Torne-se um parceiro! <strong>Conheça nossas vantagens</strong></p>
                 </Link>
-                {/* <div id='chamada'>
-                    <p>Torne-se um parceiro! <a href=''><strong>Conheça nossas vantagens</strong></a></p>
-                </div> */}
             </div>
 
             <div id='destaques'>
