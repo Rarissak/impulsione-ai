@@ -32,10 +32,27 @@ import vintageVibe from '../../../assets/vintageVibe.png';
 import Destaque from '../../../components/featured/destaque.jsx';
 import { Link } from 'react-router-dom';
 import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
+import axiosInstance from '../../../helper/axiosInstance.js';
+import { useEffect, useState } from 'react';
+import useAxios from '../../../hook/useAxios.js';
 
+
+const id =  localStorage.getItem('id');
+const userUri = localStorage.getItem('uri');
+
+;
 
 function Home(){
-    return (
+    
+    const [usuarioLogado, setUsuarioLogado] = useState({})
+    const [empreendedoresDestaque, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url:'empreendedores'
+    })
+
+
+   return (
         <>
         <Header></Header>
         <MenuLateral></MenuLateral>
