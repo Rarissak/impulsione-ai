@@ -1,16 +1,10 @@
 import React,{useState} from "react";
 import './login.css';
-import { axiosInstanceLogin } from "../../../helper/axiosInstance"; 
-import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
+// import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
 // Importando o icon do botão de fechar o modal.
 import iconModalClose from '../../../assets/iconLoginModalClose.svg';
 import BoxInfo from "../../../components/boxInfo/boxInfo";
 import { Link } from "react-router-dom";
-
-
-
-
-
 
  {/*Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
 que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
@@ -24,27 +18,7 @@ export function ToggleModal()
 
 
 function Login()
-{   
-    
-    
-    async function handleLogin(){
-        await axiosInstanceLogin.post("/login",{
-             email: email,
-            senha: senha
-            
-        }).then((res) =>{
-            localStorage.setItem('id',res.data.idUsuario)
-            localStorage.setItem('token',res.data.token)
-            localStorage.setItem('uri', res.data.tipoUsuarioUri)
-            
-        }).catch((error) => {
-           
-            console.log(error);
-        })
-    }
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-   
+{
 
     return(
         <div id="back" className="hide">
@@ -65,21 +39,20 @@ function Login()
 
                         <div className="loginInputs">
                             <span className="nameInput">Usuário</span>
-                            <input type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}/>
+                            <input type="email"/>
                         </div>
 
                         <div className="loginInputs">
                             <span className="nameInput">Senha</span>
-                            <input type="password"
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}/>
-                            <span className="forgotPassword" onClick={handleComponentForgetPassword}>Esqueci minha senha</span> 
+                            <input type="password"/>
+                            <Link
+                            to='/esqueciSenha'>
+                                <span className="forgotPassword">Esqueci minha senha</span> 
+                            </Link>
                         </div>
                         
                         <div id="loginButtons">
-                            <button id="loginButtonSignIn" onClick={handleLogin}>ENTRAR</button>
+                            <button id="loginButtonSignIn">ENTRAR</button>
                             <Link id="loginButtonSignUp" to='/cadastroUsuario'
                                 >Não possuo cadastro
                             </Link>
