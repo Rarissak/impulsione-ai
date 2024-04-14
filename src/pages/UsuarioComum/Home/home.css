@@ -23,7 +23,7 @@
 .carrossel {
     /* Margin nas laterais */
     margin: 3rem 10rem 3rem 10rem;
-
+    padding-top: 2rem;
     display:flex;
     justify-content: space-between;
     flex-direction: row;
