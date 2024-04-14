@@ -1,0 +1,172 @@
+#blocoInfoNegocio{
+    background-color: #FFFFFF;
+    border: 1px solid #8A00DE;
+    border-radius: 15px;
+    padding: 2rem;
+    gap: 0.75rem;
+    margin: 0;
+
+
+
+    #topoBloco {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between !important;
+        width: 100%;
+
+        h3 {
+            color: #CE5700;
+            font-size: 20px !important;
+            text-transform: uppercase;
+        }
+
+        button {
+            background-color: #FF7D1E;
+            padding: 0.25em 0.5em;
+            font-size: 20px !important;
+            font-weight: 600;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d95a00;
+            transition: 0.5s;
+        }
+    }
+
+    .infoNegocioRow{
+        display: flex;
+        gap: 0.5rem;
+        align-self: flex-start;
+        color: #595959;
+
+        h3{
+            font-weight: 400;
+        }
+
+        p{
+            font-weight: 700;   
+        }
+    }
+
+    #blocoVerMais{
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin: 0;
+        width: 100%;
+
+        .sessaoInfo {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+
+            .infoNegocioColumn{
+                display: flex;
+                flex-direction: column;
+                color: #595959;
+
+                h3{
+                    font-weight: 400;
+                }
+        
+                p{
+                    font-weight: 700;   
+                }
+            }
+
+        }
+
+        #buttonsAceitarDispensar {
+            display: flex;
+            justify-content: end;
+            margin-top: 1.25rem;
+            gap: 2rem;
+
+            button {
+                padding: 0.25em 0.5em;
+                font-size: 20px !important;
+                font-weight: 600;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+
+            #dispensar{
+                background-color: #DE0D00;
+            }
+
+            #dispensar:hover {
+                background-color: #bf0e02;
+                transition: 0.5s;
+            }
+
+            #aceitar {
+                background-color: #1FDE00;
+            }
+
+            #aceitar:hover {
+                background-color: #19b301;
+                transition: 0.5s;
+            }
+        }
+
+        #motivosDispensa {
+            display: flex;
+            flex-direction: column;
+            width: 100% !important;
+            background-color: #EFEFEF;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-radius: 15px;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding-left: 2rem;
+                padding-right: 2rem;
+
+                button{
+                    margin-top: 1.5rem;
+                    padding: 0.25em 0.5em;
+                    font-size: 20px !important;
+                    font-weight: 600;
+                    color: #FFFFFF;
+                    background-color: #DE0D00;
+                    width: 18rem;
+                    align-self: center;
+                }
+
+
+                #motivos{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 2rem;
+                    justify-content: space-between;
+
+                    .colunaForm {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+
+                        label {
+                            display: flex;
+                            gap: 0.5rem
+                        }
+                    }
+                }    
+            }
+        }
+        
+
+    }
+
+   #infoSolicitacao{
+        font-style: italic;
+        color: #38005A;
+        align-self: end;
+   } 
+}
+
