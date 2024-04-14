@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import axios from 'axios';
 // import '././././index.css';
 import './vitrine.css';
 import Header from '../../../components/header/header';
@@ -29,6 +30,8 @@ import Propaganda from '../../../assets/propagandaImpulsioneAi.png'
 import MenuLateral from '../../../components/menuLateral/menuLateral';
 
 function Vitrine(){
+
+    
     return (
         <>
         <Header></Header>
