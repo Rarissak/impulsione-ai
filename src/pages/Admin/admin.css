@@ -1,1 +1,24 @@
-/*teste*/
+#pageAdmin {
+    margin: 0 !important;
+    
+    #tituloPagina {
+        color: #FFA15D;
+        font-size: 25px !important;
+        margin: 1rem;
+        text-align: start;
+    }
+
+    #solicitacoes {
+        width: 80%;
+        margin: 0 auto; 
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        h1 {
+            color: #8A00DE;
+        }
+    }
+}
+
