@@ -28,6 +28,11 @@
     color: #8A00DE;
     font-size: 30px;
     font-weight:600;
+    margin-bottom: 2rem;
+}
+
+#fundo {
+    background-color: transparent;
 }
 
 #form
@@ -42,6 +47,10 @@
 #formContainer
 {
     width: 50%;
+    background-color: transparent;
+    /* gap: 2rem;
+    display: flex;
+    flex-direction: column; */
 }
 
 
