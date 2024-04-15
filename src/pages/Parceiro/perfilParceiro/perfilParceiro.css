@@ -5,6 +5,51 @@ fieldset {
     /* Defina outras propriedades de estilo conforme necessário */
 }
 
+#sessaoMeusDados{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 0 10rem 0 10rem;
+
+    #informacoesSessao{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 24px;
+        color: #FF7D1E;
+        font-weight: 700;
+
+    }
+
+    h3 {
+        color: #FF7D1E; 
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+    }
+
+    h2{
+        background-color: #B741FF;
+        padding: 0.5rem 1rem;
+        border-radius: 30px; 
+        font-size: 26px;
+        color: #FFffff;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    a{
+        p{
+            color: #7900C3;
+        }
+    }
+
+    
+}
+
+
 #minhaVitrine{
 
     #boxEditVitrine{
@@ -32,13 +77,60 @@ fieldset {
                     font-weight: 700;
                     font-size: 18px;
                 }
-                input{
+
+                .imagem:hover{
+                    color: #9b6cb8;
+                }
+
+                .imagem{
+                    width: 18rem;
+                    /* height: 9rem; */
+                    aspect-ratio: 16/9;
+                    border-radius: 15px;
+                    border: none;
+                    background-color: #EBCBFF;
+                    color: #B695CA;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor:pointer;
+                    border: 2px dashed;
+
+                    
+                    #imagemInput{
+                        display: none
+                    }
+
+                    .pictureImg{
+                        max-width: 100%;
+                    }
+
+                    span{
+                        /* color: #B695CA; */
+                        font-weight: 600;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+
+                        img{
+                            width: 100%;
+
+                        }
+                    }
+                }
+
+                /* input{
                     width: 18rem;
                     height: 9rem;
                     border-radius: 15px;
                     border: none;
                     background-color: #EBCBFF;
-                }
+                } */
+
+                
 
                 button{
                     background-color: #FFA767;
@@ -51,10 +143,16 @@ fieldset {
         }
     }
 
+
+
     #editProdutos{
         display: flex;
         justify-content: space-between;
         width: 100%;
+
+        input:focus{
+            outline: 1px solid #B695CA;
+        }
 
         #addProdutos{
             display: flex;
@@ -211,7 +309,15 @@ fieldset {
     }
 }
 
-/* #8A00DE */
+
+#areaDepoimentos{
+    background-color: red;
+
+    
+}
+
+
+
 
 
 #produtoCadastrado{
