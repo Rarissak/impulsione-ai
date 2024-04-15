@@ -89,7 +89,7 @@ function Sobre() {
                     <p>Buscar constantemente por novas oportunidades de inovação e aprimoramento da plataforma.</p>
                   </div>
                 </div>
-                <img src={Pilares} alt="Pilares" />
+                <img id="img-pilares" src={Pilares} alt="Pilares" />
               </div>
             </div>
           </div>
