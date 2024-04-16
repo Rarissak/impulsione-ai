@@ -3,11 +3,11 @@ import './editarDadosEmp.css';
 // import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
 // Importando o icon do botão de fechar o modal.
 import iconModalClose from '../../../assets/iconLoginModalClose.svg';
-import {BoxInfoModal} from "../../../components/boxInfo/boxInfo";
+import BoxInfo from "../../../components/boxInfo/boxInfo";
 import InstagramIcon from '../../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../../assets/facebookRoxo.svg';
-import ProfileImg from '../../../assets/gato.webp';
-import FotoExemplo from "../../../assets/trufasDoSim.png"
+import ProfileImg from '../../../assets/trufasDoSim.png';
+import FotoExemplo from "../../../assets/trufasDoSim.png";
 import { PegandoDados, MostrarDadosAtualizados } from "../../../components/meusDados/MeusDados";
 
 //Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
@@ -280,8 +280,9 @@ function EditarDadosEmp()
                             <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
                         </button>
                     </div>
-                                       
-                    <BoxInfoModal title={'Editar Dados'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfoModal>
+                    {/* <BoxInfo title={'Editar Dados'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfo> */}
+                   
+                    <BoxInfo title={'Editar Dados'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
                     <div id="loginBody">
 
                         <div id="scroll">

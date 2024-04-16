@@ -2,8 +2,7 @@ import React, {useEffect} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
-import ProfileImg from '../../assets/gato.webp';
-
+import ProfileImg from '../../assets/trufasDoSim.png';
 import EditarDadosEmp, {ToggleModal, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
@@ -239,7 +238,7 @@ function MeusDados()
                                    
                                 </div>
                                  
-                                    
+
                                 <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil"/>
                             </fieldset>
                                 
