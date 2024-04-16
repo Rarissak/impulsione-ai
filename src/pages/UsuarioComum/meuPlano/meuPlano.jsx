@@ -66,7 +66,7 @@ function MeuPlano()
                                 
                             </div>
                             
-                            <div id="rightSide">
+                            {/* <div id="rightSide">
                                 <span className="meuPlanoTitulo">INSIRA DADOS DE PAGAMENTO</span>   
 
                                 <div id="inputs">
@@ -119,7 +119,7 @@ function MeuPlano()
                                     </div>
                                 
                               
-                            </div>
+                            </div> */}
                             
                         </div>
 
