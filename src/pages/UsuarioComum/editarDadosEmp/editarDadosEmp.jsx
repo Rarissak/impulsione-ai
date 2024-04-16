@@ -269,9 +269,9 @@ function EditarDadosEmp()
     // a mensagem de error de digitação, caso seja false.
  
     return(
-        <div id="back" >
+        <div id="back" className="hide">
             
-            <div id="loginCentralize" >
+            <div id="loginCentralize" className="hide">
 
                 <div id="loginContainer">
 
@@ -281,7 +281,7 @@ function EditarDadosEmp()
                         </button>
                     </div>
                                        
-                    <BoxInfoModal title={'Login'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfoModal>
+                    <BoxInfoModal title={'Editar Dados'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfoModal>
                     <div id="loginBody">
 
                         <div id="scroll">
@@ -314,7 +314,7 @@ function EditarDadosEmp()
                                         <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil2"/>
                                         <div className="fieldType1" style={{marginBottom: '15px', marginTop: '15px'}}>
                                         <span className="nameField">Escolhar uma foto</span>
-                                        <input type="file" id="inputImg" src={FotoExemplo} required />
+                                        <input type="file" id="inputImg" src={FotoExemplo}/>
                                         </div>
                                 </fieldset>
                                     
@@ -431,7 +431,7 @@ function EditarDadosEmp()
 
                                     <div className="buttonsFormEdit">  
                                             <button id="editButton" type="submit">SALVAR DADOS</button>
-                                            <button id="cancelButton" type="reset">CANCELAR</button>
+                                           
                                     </div>
                             </form>
                         </div>

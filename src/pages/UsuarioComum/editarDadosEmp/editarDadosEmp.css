@@ -190,10 +190,7 @@ o modal vai continuar na mesma posição.*/
     display: flex;
     justify-content: space-between;
 }
-#cancelButton
-{
-    background-color: #CC78FF;
-}
+
 
 #loginButtonSignUp
 {
