@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+
+/*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
+o modal vai continuar na mesma posição.*/
+#back
+{
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+/*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
+#loginCentralize
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #38005AA1;
+    justify-content: center;
+    align-items: center;
+    z-index: 22;
+    
+}
+   
+/*Definindo o tamanho do container do login*/
+#loginContainer
+{
+    margin-top: -145px;
+    width: 60%;
+    height: 74%;
+    z-index: 15;
+    
+}
+
+
+#scroll
+{
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+
+#formContainerModal input, #formContainerModal select
+{
+    background-color: #f3f3f3;
+    border-radius: 25px;
+    border-color: #f3f3f300;
+    padding: .2rem .6rem;
+}
+
+#formContainerModal fieldset
+{
+    border-color: #ce560000;
+}
+
+#formContainerModal
+{
+   margin-bottom: 255px;
+   
+}
+
+
+
+/*Colocando o elemento loginHeader em cima do loginBody*/
+#loginHeader
+{
+    position: relative;
+    top: 15%;
+    left: 18%;
+    background-color: rgb(255, 255, 255);
+    padding: .7rem 6rem;
+    border-radius: 53px;
+    text-align: center;
+    width: 300px;
+    z-index: 5;
+}
+
+
+#fotoPerfil2
+{
+    width: 142px;
+    border-radius: 75px;
+   
+}
+
+
+/*Configurando a fonte do loginHeader*/
+#loginHeader span
+{
+    font-family: 'Baloo 2', sans-serif;
+    color: #FF7D1E;
+    font-size: 40px;
+    font-weight:800;
+    position: relative;
+    bottom: 18px;
+}
+
+/*Configurando o elemento responsável pelos inputs de login*/
+#loginBody
+{
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #ffffff;
+    /* padding: 4rem 2.3rem  1.3rem 2.3rem; */
+    padding: 2rem;
+    z-index: 22;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/*Configurando a aparencia dos inputs*/
+.loginInputs
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loginInputs input
+{
+    background-color: #F3F3F3;
+    border-radius: 23px;
+    border-color: #f3f3f300;
+    padding: .2rem .6rem;
+}
+
+.nameInput
+{
+    color: #CC78FF;
+    font-weight: 700;  
+}
+
+/*Configurando o esqueci a senha*/
+.forgotPassword
+{
+    color:#CE5700;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: right;
+    cursor: pointer;
+}
+
+
+/*Centralizando os botões do login*/
+#loginButtons
+{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/*Estilizando os botões de longar e de não possuir cadastro*/
+#loginButtons button
+{
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#inputDataNascimento
+{
+    width: 180px;
+    text-align: center;
+}
+
+#loginButtonSignIn
+{
+    background-color: #FF7D1E;
+    color: white;
+    padding: .1rem .1rem;
+    width: 120px;
+}
+#buttonsFormEdit
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#loginButtonSignUp
+{
+    background-color: #ff7c1e00;
+    color: #FFA15D;
+}
+
+
+/*Os elementos com a classe hide, devem ficar invisiveis*/
+#loginCentralize.hide, #back.hide
+{
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
+Aparecer e desaparecer*/
+#loginCentralize, #back
+{
+    opacity: 1;
+    transition: .5s;
+    pointer-events: all;
+}
+
+/*Estilizando os botões responsáveis por abrir e fechar o modal*/
+#openModal
+{
+    margin-top: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#closeModal
+{
+    position: relative;
+    border-radius: 50px;
+    padding: .5rem .7rem;
+    background-color: #ffffff00;
+    transition: .2s;
+    margin-left: 100%;
+    top: 10px !important;
+}
+
+#closeModal img{
+    width: 1.5rem;
+}
+
+#closeModal:hover
+{
+    transition: .2s;
+    background-color: #FF7D1E;
+}
+
+#loginButtonSignUp {
+    text-decoration: none !important;
+}
+
+@media screen and (max-width: 1200px){
+   
+ 
+}
+
+@media screen and (max-width: 1024px){
+
+}
+
+/* Tamanho criado por conta do componente carrossel */
+@media screen and (max-width: 840px){
+ 
+
+}
+/* Tamanho criado por conta do componente carrossel */
+
+@media screen and (max-width: 768px){
+    #loginContainer
+    {
+
+        width: 46%;
+      
+    }
+}
+
+@media screen and (max-width: 560px){
+    #loginContainer
+    {
+
+        width: 52%;
+      
+    }
+}
+
+@media screen and (max-width: 480px){
+    #loginContainer
+    {
+
+        width: 56%;
+      
+    }
+}
+
+@media screen and (max-width: 320px){
+    #loginContainer
+    {
+
+        width: 62%;
+      
+    }
+}
+
+@media screen and (max-width: 280px){
+    #loginContainer
+    {
+
+        width: 66%;
+      
+    }
+}
