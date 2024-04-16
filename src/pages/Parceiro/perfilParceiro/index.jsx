@@ -7,7 +7,6 @@ import MeusDados from "../../../components/meusDados/MeusDados"
 
 import '../perfilParceiro/perfilParceiro.css'
 
-
 // import IconImage from '../../../assets/imagem.svg'
 import IconEditar from '../../../assets/iconEditar.svg'
 import IconExcluir from '../../../assets/iconLoginModalClose.svg';
@@ -120,7 +119,7 @@ function PerfilParceiro(){
                         <form id='addProdutos'>
                             <h3>PRODUTOS</h3>
                             <div id='imgCamposProduto'>
-                                <input id='inputImg' type='image'/>
+                                <input id='inputImg' type='file' accept="image/*"/>
                                 <div id='campos'>
                                     <fieldset>
                                         <legend>NOME DO PRODUTO</legend>
@@ -166,27 +165,29 @@ function PerfilParceiro(){
                 <BoxVideo title={"Sebrae"} text={"Veja algumas dicas do nosso colaborador para impulsionar ainda mais seu negócio"} video={"https://www.youtube.com/embed/ID45S6So2wc?si=TMGqvh3hlyejd5Js"}></BoxVideo>
             </section>
             <hr id='linhaRoxa'></hr>
-            {/* <section id='areaDepoimentos'>
-                <div id='tituloDepoimentos'>
+            <section id='areaDepoimentos'>
+                {/* <div id='tituloDepoimentos'> */}
+                <div id='tituloAreaDepoimentos'>
                     <h2 className="title">DEPOIMENTO</h2>
                 </div>
-                <form>
+                <form id='formDepoimento'>
                     <label>Que tal deixar um depoimento na plataforma contando como foi sua experiência com o Impulsione aí?</label>
-                    <textarea placeholder="Deixe aqui seu depoimento"></textarea>
-                    <fieldset>
+                    <textarea maxLength={150} placeholder="Deixe aqui seu depoimento"></textarea>
+                    {/* <fieldset>
                         <legend>Avalie Nossa Plataforma:</legend>
+                        <img src={' '}/>
                         <ul class="avaliacaoPlataforma">
                             <li class="star-icon ativo" data-avaliacao="1"></li>
                             <li class="star-icon" data-avaliacao="2"></li>
                             <li class="star-icon" data-avaliacao="3"></li>
                             <li class="star-icon" data-avaliacao="4"></li>
                             <li class="star-icon" data-avaliacao="5"></li>
-                            </ul>
-                    </fieldset>
-                    <button type='submit'></button>
+                        </ul>
+                    </fieldset> */}
+                    <button type='submit'>ENVIAR DEPOIMENTO</button>
                 </form>
 
-            </section> */}
+            </section>
         </body>
         <Footer></Footer>
         </>

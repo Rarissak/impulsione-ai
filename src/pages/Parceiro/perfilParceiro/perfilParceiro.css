@@ -246,10 +246,11 @@ fieldset {
 
             textarea{
                 border-radius: 15px;
-                max-height: 5rem;
+                /* max-height: 5rem;
                 min-height: 5rem;
                 max-width: 100%;
-                min-width: 100%;
+                min-width: 100%; */
+                resize: none;
                 margin-top: 0.5rem;
                 border-radius: 15px;
                 background-color: #ffffff;
@@ -311,9 +312,95 @@ fieldset {
 
 
 #areaDepoimentos{
-    background-color: red;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 2rem 0;
+    margin-bottom: 4rem;
 
+    #tituloAreaDepoimentos {
+        background-color: #FF7D1E;
+        /* margin-top, margin-right, margin-bottom, e margin-left. */
+        /* margin: 0em 30em 1em 0em; */
+        /* width: 50%; */
+        padding: 0.25rem;
+        color: #FFFFFF;
+        border-top-right-radius: 10em;
+        border-bottom-right-radius: 10em;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: flex-start;
+
+        h2 {
+            color: #FFFFFF;
+            font-size: 30px;
+            text-align: start;
+            padding-left: 10rem;
+            padding-right: 2rem;
+        }
+    }
+
+    #formDepoimento {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0 10rem;
+        gap: 1rem;
+
+        label{
+            color: #B741FF;
+            align-self: flex-start;
+        }
+
+        textarea{
+            width: 100%;
+            margin: 0 10rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 15px;
+            border:none;
+            outline: 1px solid #e1c5b1;
+            /* max-width: 100%;
+            min-width: 100%;
+            max-height: 5rem; */
+            resize: none;
+
+        }
+
+        fieldset{
+            width: 100%;
+            display: flex;
+            flex-direction: row !important;
+            background-color: red;
+
+            legend{
+                color: #FFA15D;
+                align-self: flex-start;
+            }
+
+            ul{
+                display: flex;
+                flex-direction: row;
+                gap: 1rem
+            }
+
+        }
+        button{
+            background-color: #FF7D1E;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.5rem 0.15rem;
+            width: 20rem;
+            align-self: flex-end;
+        }
+    }
     
+
 }
 
 
@@ -340,6 +427,7 @@ fieldset {
 
         h4 {
             font-weight: 500;
+            color: #ffffff;
         }
 
         #precoProduto {
