@@ -1,9 +1,11 @@
+
+
 import React, {useEffect} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
 import ProfileImg from '../../assets/trufasDoSim.png';
-import EditarDadosEmp, {ToggleModal, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
+import EditarDadosEmp, {ToggleEditDataModal, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
@@ -326,7 +328,7 @@ function MeusDados()
 
                                 <div className="buttonsFormEdit">  
                                         <button id="editButton" type="button" onClick={() => {
-                                         PegandoDados(); ToggleModal();
+                                         PegandoDados(); ToggleEditDataModal();
                                         }}>EDITAR DADOS</button>
                                 </div>
                             

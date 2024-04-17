@@ -10,9 +10,9 @@
 }
 
 
-/*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
+/*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para editDataBack 
 o modal vai continuar na mesma posição.*/
-#back
+#editDataBack
 {
     position: fixed;
     top:50%;
@@ -22,7 +22,7 @@ o modal vai continuar na mesma posição.*/
 }
 
 /*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
-#loginCentralize
+#editDataModal
 {
     width: 100vw;
     height: 100vh;
@@ -199,16 +199,21 @@ o modal vai continuar na mesma posição.*/
 }
 
 
-/*Os elementos com a classe hide, devem ficar invisiveis*/
-#loginCentralize.hide, #back.hide
+/*Os elementos com a classe esconder, devem ficar invisiveis*/
+#editDataModal.esconder, #editDataBack.esconder
 {
     opacity: 0;
     pointer-events: none;
 }
 
-/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
+.esconder{
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe esconder, se cria o efeito:
 Aparecer e desaparecer*/
-#loginCentralize, #back
+#editDataModal, #editDataBack
 {
     opacity: 1;
     transition: .5s;

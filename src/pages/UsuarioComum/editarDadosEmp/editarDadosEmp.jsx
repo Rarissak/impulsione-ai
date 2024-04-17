@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ReactDOM from 'react-dom';
 import './editarDadosEmp.css';
 // import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
 // Importando o icon do botão de fechar o modal.
@@ -10,16 +11,41 @@ import ProfileImg from '../../../assets/trufasDoSim.png';
 import FotoExemplo from "../../../assets/trufasDoSim.png";
 import { PegandoDados, MostrarDadosAtualizados } from "../../../components/meusDados/MeusDados";
 
-//Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
+//Função de fechar o modal. Ele vai adicionar a classe teste(anteriormente chamada de hide) na div loginCentralize, 
 //que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
 
-export function ToggleModal()
-{
-    const loginCentralize = document.querySelector("#loginCentralize");
-    loginCentralize.classList.toggle("hide");
-    const back = document.querySelector("#back");
-    back.classList.toggle("hide");
+// export function AbrirModal()
+// {
+//     const editDataCentralize = document.querySelector("#editDataCentralize");
+//     editDataCentralize.classList.toggle("hide");
+//     const editDataBack = document.querySelector("#editDataBack");
+//     editDataBack.classList.toggle("hide");
+
+//     // if (loginCentralize && back) {
+//     //     loginCentralize.classList.toggle("teste");
+//     //     back.classList.toggle("teste");
+//     // } else {
+//     //     console.error("Elemento não encontrado. Verifique se os IDs '#loginCentralize' e '#back' estão corretos.");
+//     // }
+// }
+
+export function ToggleEditDataModal() {
+    const editDataModal = document.querySelector("#editDataModal"); // ID único
+    const editDataBack = document.querySelector("#editDataBack"); // ID único
+    
+    if (editDataModal && editDataBack) {
+        // ... (código original para mostrar/esconder os elementos)
+      } else {
+        console.error('Elementos "editDataModal" ou "editDataBack" não encontrados.');
+      }
+    
+    
+    
+    editDataModal.classList.toggle("esconder");
+    editDataBack.classList.toggle("esconder");
 }
+
+
 
 
 // Função que faz com que o campo recuse o input de letras no input. A função é colocada no evento onKeyDown -> ao pressionar a tecla.
@@ -269,14 +295,14 @@ function EditarDadosEmp()
     // a mensagem de error de digitação, caso seja false.
  
     return(
-        <div id="back" className="hide">
+        <div id="editDataBack" className="esconder">
             
-            <div id="loginCentralize" className="hide">
+            <div id="editDataModal" className="esconder">
 
                 <div id="loginContainer">
 
                     <div>
-                        <button id = "closeModal" onClick={ToggleModal}>
+                        <button id = "closeModal" onClick={ToggleEditDataModal}>
                             <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
                         </button>
                     </div>
@@ -289,8 +315,8 @@ function EditarDadosEmp()
                             {/*Contém todo o formulário e seus campos*/}
                             <form 
                                 id="formContainerModal" 
-                                onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); ToggleModal();}}
-                                onReset={ToggleModal}>
+                                onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); AbrirModal();}}
+                                onClick={ToggleEditDataModal}>
                                 <div id="formTitle1">
                                     <h1>MEUS DADOS</h1>
                                 </div>
@@ -445,5 +471,7 @@ function EditarDadosEmp()
         </div>
     );
 }
+
+
 
 export default EditarDadosEmp;

@@ -32,11 +32,13 @@ import vintageVibe from '../../../assets/vintageVibe.png';
 import Destaque from '../../../components/featured/destaque.jsx';
 import { Link } from 'react-router-dom';
 import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
+import MeusDados from '../../../components/meusDados/MeusDados.jsx';
 
 
 function Home(){
     return (
         <>
+        <MeusDados></MeusDados>
         <Header></Header>
         <MenuLateral></MenuLateral>
         <body>
