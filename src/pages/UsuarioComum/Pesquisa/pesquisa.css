@@ -1,0 +1,52 @@
+#sectionNegocios {
+    display: flex;
+    flex-direction: row;
+    position: relative; /* Tornar o posicionamento relativo ao elemento pai */
+}
+
+#filtro {
+    /* background-color: aquamarine;
+    width: 270px;
+    height: 471px; */
+    position: absolute; /* Tornar o posicionamento absoluto em relação ao elemento pai */
+    top: 0; /* Alinhar o topo do elemento ao topo do elemento pai */
+    left: 0; /* Alinhar a esquerda do elemento à esquerda do elemento pai */
+}
+
+#negocios {
+    display: grid;
+    grid-template-columns: auto auto; /* Define duas colunas de largura igual */
+    grid-auto-rows: auto;
+    gap: 2.1875em; /* Espaçamento entre os itens */
+    margin-left: 20em;
+}
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 280px){
+
+}
+
+@media screen and (max-width: 320px){
+
+}
+
+@media screen and (max-width: 480px){
+    
+}
+
+@media screen and (max-width: 560px){
+    
+}
+
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (max-width: 1024px){
+
+}
+
+@media screen and (max-width: 1200px){
+
+}

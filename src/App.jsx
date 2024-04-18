@@ -14,6 +14,7 @@ import EsqueciSenha from '../src/pages/UsuarioComum/forgotPassword/forgotPasswor
 import AlterarSenha from '../src/pages/UsuarioComum/changePassword/changePassword.jsx';
 import Admin from '../src/pages/Admin/index.jsx';
 // import EsqueciSenha from './pages/UsuarioComum/forgotPassword/esqueciSenha.jsx';
+import Pesquisa from './pages/UsuarioComum/Pesquisa/pesquisa.jsx';
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path='/esqueciSenha' Component={EsqueciSenha}/>
         <Route path='/alterarSenha' Component={AlterarSenha}/>
         <Route path='/admin' Component={Admin} />
+
+        <Route path='/pesquisa' Component={Pesquisa} />
       </Routes>
     </Router>
   );

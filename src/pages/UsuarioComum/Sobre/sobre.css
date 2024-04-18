@@ -26,13 +26,10 @@
   
   .boxInformationsDegrade {
       background: linear-gradient(to bottom, #8A00DE, #6B02AB);
-      /* padding: 3em;
-      margin-bottom: 0; */
       display: flex;
       flex-direction: column;
       justify-content: space-between !important;
 
-      /* Padding p/ alinhar as laterais */
       padding: 0rem 10rem 0rem 10rem;
   
     }
@@ -61,4 +58,88 @@
     
     #breadcrumbs {
       margin-left: 5em;
+    }
+
+    @media screen and (max-width: 280px){
+      .boxInformations p {
+        text-align: center;
+        max-width: 40%;
+      }
+      
+      .secaoPilares {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      #img-pilares {
+        width: 150px;
+      }
+    }
+    
+    @media screen and (min-width: 281px) and (max-width: 480px){
+      .boxInformations p {
+        text-align: center;
+        max-width: 60%;
+      }
+      
+      .secaoPilares {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      #img-pilares {
+        width: 250px;
+      }
+    }
+    
+    @media screen and (min-width: 481px) and (max-width: 768px){
+      #breadcrumbs{
+        margin-top: 6em !important;
+      }
+
+      .boxInformations p {
+        text-align: center;
+        max-width: 70%;
+      }
+      
+      .secaoPilares {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      #img-pilares {
+        width: 325px;
+      }
+    }
+    
+    @media screen and (min-width: 769px) and (max-width: 1024px){
+      .boxInformations p {
+        text-align: center;
+        max-width: 70%;
+      }
+      
+      .secaoPilares {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      #img-pilares {
+        width: 350px;
+      }
+    }
+    
+    @media screen and (min-width: 1025px) and (max-width: 1200px){
+      .boxInformations p {
+        text-align: center;
+        max-width: 70%;
+      }
+      
+      .secaoPilares {
+        display: flex;
+        flex-direction: row;
+      }
+    
+      #img-pilares {
+        width: 400px;
+      }
     }

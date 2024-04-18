@@ -58,7 +58,7 @@ function Home(){
         <MenuLateral></MenuLateral>
         <body>
             <nav className='linksExternos' id='barraLinks'>
-                <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={''}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={'/pesquisa'}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'MODA'} link={''}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'ARTESANATO'} link={''}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'TECNOLOGIA'} link={''}></BarraLinkExterno>

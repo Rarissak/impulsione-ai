@@ -1,0 +1,164 @@
+/* Estilos globais */
+* {
+    color: #FF7D1E;
+}
+
+/* Estilos para o componente FiltroPesquisa */
+#filtroPesquisa {
+    width: 16.875em; /* 270px convertido para EM */
+    height: 29.4375em; /* 471px convertido para EM */
+    padding: 2em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo exceder a altura */
+
+    /* Estilo da barra de rolagem */
+    scrollbar-width: thin;
+    scrollbar-color: #FF7D1E transparent;
+
+    &::-webkit-scrollbar {
+        width: 8px; /* Largura da barra de rolagem */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #FF7D1E; /* Cor da barra de rolagem */
+        border-radius: 10px; /* Bordas arredondadas */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* Fundo transparente */
+    }
+
+    &::-moz-scrollbar {
+        width: 8px; /* Largura da barra de rolagem */
+    }
+
+    &::-moz-scrollbar-thumb {
+        background-color: #FF7D1E; /* Cor da barra de rolagem */
+        border-radius: 10px; /* Bordas arredondadas */
+    }
+
+    &::-moz-scrollbar-track {
+        background-color: transparent; /* Fundo transparente */
+    }
+}
+
+/* Estilos para o título */
+#titulo {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6em;
+}
+
+#titulo h2 {
+    color: #CE5700;
+    font-size: 1.2em;
+}
+
+/* Estilos para nicho e tempo de atuação */
+#nicho,
+#tempoAtuacao {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+#selecaoNicho,
+#selecaoTempo,
+#localizacao,
+#faixaPreco {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* Estilos para botões */
+button {
+    background-color: #FFF9F5;
+    color: #b5a194;
+}
+
+button:hover {
+    background-color: #ffe0cb;
+    color: #FF7D1E;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.selected {
+    color: #FF7D1E;
+}
+
+/* Estilos para sliders */
+.inputWithSlider {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.8em;
+}
+
+.inputWithSlider input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 0.375em; /* 6px convertido para EM */
+    border-radius: 5px;
+    background: #FFE0CB; /* Cor de fundo do slider */
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+.inputWithSlider input[type="range"]:hover {
+    opacity: 1;
+}
+
+.inputWithSlider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0.9375em; /* 15px convertido para EM */
+    height: 0.9375em; /* 15px convertido para EM */
+    border-radius: 50%;
+    background: #FF7D1E; /* Cor do botão do slider */
+    cursor: pointer;
+}
+
+.inputWithSlider input[type="range"]::-moz-range-thumb {
+    width: 0.9375em; /* 15px convertido para EM */
+    height: 0.9375em; /* 15px convertido para EM */
+    border-radius: 50%;
+    background: #FF7D1E; /* Cor do botão do slider no Firefox */
+    cursor: pointer;
+}
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 280px){
+
+}
+
+@media screen and (max-width: 320px){
+
+}
+
+@media screen and (max-width: 480px){
+    
+}
+
+@media screen and (max-width: 560px){
+
+}
+
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (max-width: 1024px){
+
+}
+
+@media screen and (max-width: 1200px){
+
+}

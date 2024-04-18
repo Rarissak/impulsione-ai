@@ -1,0 +1,90 @@
+#negocio {
+    width: 25em;
+    height: 11em;
+    background-color: white;
+    border-radius: 2em;
+    padding: 1.25em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+#negocio img {
+    border-radius: 0.625em;
+    width: 9.32em;
+    height: 9.32em;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-right: 1.25em;
+}
+
+#negocio a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+}
+
+#infoNegocio {
+    flex-grow: 1;
+}
+
+#name {
+    color: #8A00DE;
+    margin-bottom: 0.1em;
+    font-size: 1.4em;
+}
+
+#infoNegocio p:nth-child(2) {
+    color: #FF7D1E;
+    margin-bottom: 0.3125em;
+    font-size: 1em;
+}
+
+#infoNegocio p:nth-child(3) {
+    color: black;
+    margin-bottom: 0;
+    font-size: 0.78em;
+}
+
+/* #favoritos img{
+    width: 1rem;
+}
+
+#favoritos {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent !important;
+    margin-bottom: 1rem;
+} */
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 280px){
+
+}
+
+@media screen and (max-width: 320px){
+
+}
+
+@media screen and (max-width: 480px){
+    
+}
+
+@media screen and (max-width: 560px){
+
+}
+
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (max-width: 1024px){
+
+}
+
+@media screen and (max-width: 1200px){
+
+}
