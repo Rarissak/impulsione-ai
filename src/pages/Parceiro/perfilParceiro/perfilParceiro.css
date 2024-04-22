@@ -5,6 +5,7 @@ fieldset {
     /* Defina outras propriedades de estilo conforme necessário */
 }
 
+
 #sessaoMeusDados{
     display: flex;
     flex-direction: row;
@@ -47,6 +48,20 @@ fieldset {
     }
 
     
+}
+
+#imageCarrossel{
+    object-fit: cover;
+    aspect-ratio: 16/9 !important;
+    width: 18rem !important;
+    border-radius: 15px;
+}
+
+#imageProduto{
+    height: 10rem !important;
+    width: 10rem !important;
+    aspect-ratio: cover !important;
+    border-radius: 15px;
 }
 
 
@@ -98,7 +113,7 @@ fieldset {
 
                     
                     #imagemInput{
-                        display: none
+                        display: none;
                     }
 
                     .pictureImg{
@@ -153,8 +168,15 @@ fieldset {
         input:focus{
             outline: 1px solid #B695CA;
         }
+          
+
+        h3{
+            color: #FFE1CC;
+            font-size: 18px
+        }
 
         #addProdutos{
+
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
@@ -166,17 +188,26 @@ fieldset {
                 padding: 0.5rem 0.15rem;
                 width: 15rem;
             }
-        }
-        
-        
 
-        h3{
-            color: #FFE1CC;
-            font-size: 18px
-        }
+            .imagemProduto{
+                width: 10rem;
+                height: 10rem;
+                aspect-ratio: cover;
+                border-radius: 15px;
+                border: none;
+                background-color: #EBCBFF;
+                color: #B695CA;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor:pointer;
+                border: 2px dashed;
 
-        #addProdutos{
-
+                input{
+                    display: none;
+                }
+ 
+            }
             
             
             #imgCamposProduto{
@@ -372,24 +403,100 @@ fieldset {
 
         }
 
-        fieldset{
-            width: 100%;
+        #starAvaliacao{
             display: flex;
-            flex-direction: row !important;
-            background-color: red;
+            flex-direction: row;
+            gap: 1rem;
+            /* background-color: red; */
 
-            legend{
-                color: #FFA15D;
-                align-self: flex-start;
+
+            
+            
+            /* Ocultar o checkbox padrão */
+            input[type="checkbox"] {
+                display: none;
             }
 
-            ul{
-                display: flex;
-                flex-direction: row;
-                gap: 1rem
+            /* .star {
+                width: 20px;
+                height: 20px;
+                background-color: blue;
+                border-radius: 4px;
+                display: inline-block;
+                cursor: pointer;
+            } */
+
+            .starIcon{
+                border: none;
+                cursor: pointer;
+                color: #ffdfc9;
+                font-size: 40px;
             }
+
+            
+
+            .starIcon::before{
+                content: "\2605";
+            }
+
+            input[type="checkbox"]:checked + .starIcon {
+                content: "\2605";
+                color: #fc6500;
+
+            }
+
+            /* .testando::before{
+                color: blue;
+            } */
+
+            
+
 
         }
+
+        .avaliacaoPlataforma{
+            display: flex;
+            flex-direction: row;
+            gap: 0.75rem;
+            
+            .star-icon{
+                list-style-type: none;
+                border: 1px solid #fff;
+                cursor: pointer;
+                color: #ffe500;
+                font-size: 40px;/* alterar o tamanho das estrelas */
+            }
+            .star-icon::before{
+                content: "\2605";
+            }
+            
+            
+            .avaliacaoPlataforma:hover .star-icon::before{
+                content: "\2605";
+            
+            }
+            .star-icon:hover ~ .star-icon::before{
+                content: "\2606";
+            }
+        }
+        
+
+        /* .avaliacaoPlataforma:hover .star-icon::before{
+            content: "\2605";
+        }
+
+        .avaliacaoPlataforma{
+
+            .star-icon:hover ~ .star-icon::before{
+                content: "\2606";
+            }
+        
+        } */
+
+        /* .star-icon:hover ~ .star-icon::before{
+            content: "\2606";
+        } */
+          
         button{
             background-color: #FF7D1E;
             color: #ffffff;
@@ -505,7 +612,7 @@ fieldset {
 
 /* --------------------------- */
 
-.avaliacaoPlataforma{
+/* .avaliacaoPlataforma{
     display: flex;
    }
   .star-icon{
@@ -513,7 +620,7 @@ fieldset {
     border: 1px solid #fff;
     cursor: pointer;
     color: #ffe500;
-    font-size: 40px;/* alterar o tamanho das estrelas */
+    font-size: 40px;
   }
   .star-icon::before{
     content: "\2605";
@@ -526,4 +633,4 @@ fieldset {
   }
   .star-icon:hover ~ .star-icon::before{
     content: "\2606";
-  }
+  } */

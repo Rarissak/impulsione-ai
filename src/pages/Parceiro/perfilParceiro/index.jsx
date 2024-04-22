@@ -5,68 +5,74 @@ import Header from "../../../components/header/header"
 import MenuLateral from "../../../components/menuLateral/menuLateral"
 import MeusDados from "../../../components/meusDados/MeusDados"
 
+import StarTeste from "../../../assets/star-regular.svg";
+import Star from "./star";
+
+// import Image from 'react-image';
+// import ReactImage from 'react-image';
+
 import '../perfilParceiro/perfilParceiro.css'
 
-// import IconImage from '../../../assets/imagem.svg'
+import React, { useState } from 'react';
+import ImagePreview from './imagePreview'; // Importe o componente ImagePreview
+
 import IconEditar from '../../../assets/iconEditar.svg'
 import IconExcluir from '../../../assets/iconLoginModalClose.svg';
 import ImgTeste from '../../../assets/imgTeste.png'
 import ImgCarrossel from '../../../assets/gastronomiaTrufa.png'
 import BoxVideo from "../../../components/boxVideo/boxVideo"
-// import { Link } from "react-router-dom"
+
+const items = [...Array(5).keys()];
+
 
 function PerfilParceiro(){
+    const nomeParceiro = 'Keyalne';
+    const numVisitas = '10';
+    
+    const [selectedImage, setSelectedImage] = useState(null);
 
-    // var stars = document.querySelectorAll('.star-icon');
-                  
-    // document.addEventListener('click', function(e){
-    // var classStar = e.target.classList;
-    // if(!classStar.contains('ativo')){
-    //     stars.forEach(function(star){
-    //     star.classList.remove('ativo');
-    //     });
-    //     classStar.add('ativo');
-    //     console.log(e.target.getAttribute('data-avaliacao'));
-    // }
-    // });
+    const loadImage = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
 
-    var nomeParceiro = 'teste';
-    var numVisitas = 5;
+        reader.onload = () => {
+        setSelectedImage(reader.result);
+        };
+
+        reader.readAsDataURL(file);
+    };
+
+    const [selectedProduto, setSelectedProduto] = useState(null);
+
+    const loadProduto = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+        setSelectedProduto(reader.result);
+        };
+
+        reader.readAsDataURL(file);
+    };
 
 
+    const [activeIndex, setActiveIndex] = useState();
 
-    // const inputFile = document.querySelector('#imagemInput');
-    // const pictureImage = document.querySelector('.imagemPicture');
-    // const pictureImageText = 'Escolha uma imagem';
-    // pictureImage.innerHTML = pictureImageText;
+    const onClickStar = (index) => {
+        setActiveIndex((oldState) => (oldState === index ? undefined : index));
+    };
 
-    // inputFile.addEventListener('change', function(e){
-    //     const inputTarget = e.target;
-    //     const file = inputTarget.files[0]; 
-
-    //     if(file){
-    //         const reader = new FileReader();
-            
-    //         reader.addEventListener('load', function(e) {
-    //             const readerTarget = e.target;
-
-    //             const img = document.createElement('img');
-    //             img.src = readerTarget.result;
-    //             img.classList.add('pictureImg');
-
-    //             pictureImage.innerHTML = ' ';
-
-    //             pictureImage.appendChild(img);
-    //         })
-    //         reader.readAsDataURL(file)
-
-    //         pictureImage.innerHTML = 'Image selected';
-    //         console.log(file);
-    //     } else {
-    //         pictureImage.innerHTML = pictureImageText;
- 
-    //     }
-    // })
+    var stars =document.querySelectorAll('.star-icon')
+    document.addEventListener('click', function(e){
+        var classStar = e.target.classList;
+        if(!classStar.contains('ativo')){
+            stars.forEach(function(star){
+                star.classList.remove('ativo');
+            });
+            classStar.add('ativo');
+            console.log(e.target.getAttribute('avaliacaoPlataforma'));
+        }
+    });
 
     return(
         <>
@@ -90,36 +96,49 @@ function PerfilParceiro(){
                         <p>Clique aqui para ver algumas dicas do SEBRAE de como impulsionar seu negócio.</p>
                     </a>
                 </div>
-                <MeusDados></MeusDados>
+                {/* <MeusDados></MeusDados> */}
             </section>
             <section id='minhaVitrine'>
                 <BoxInfo title={'MINHA VITRINE'} idBox={'titleBoxRoxo'} idDivisor={'divisorRoxo'}></BoxInfo>
                 <div className="boxInformations" id='boxEditVitrine'>
-                    <div id='editCarrossel'>
-                        {/* <form method="post" enctype="multipart/form-data" id='addImgCarrossel'> */}
-                        <form id='addImgCarrossel'>
+                    <div id="editCarrossel">
+                        <form
+                            // method="post"
+                            encType="multipart/form-data"
+                            id="addImgCarrossel"
+                        >
                             <legend>IMAGENS DO CARROSSEL</legend>
-                            <label className="imagem" tabIndex={0} for='imagemInput'>
-                                <input type="file" accept="image/*" id="imagemInput"></input>
-                                {/* <span className="imagemPicture">Escolha sua Imagem
-                                <img src={IconImage} />
-                                </span> */}
-                                <span className="imagemPicture">
-                                    <img className="pictureImg" />
-                                </span>
-
+                            <label className="imagem" tabIndex={0} for="imagemInput">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                id="imagemInput"
+                                onChange={loadImage}
+                            />
+                            <ImagePreview src={selectedImage} id={'imageCarrossel'}/> {/* Passe selectedImage como prop */}
                             </label>
-                            <button type='submit'>ADICIONAR IMAGENS</button>
+                            <button type="submit">ADICIONAR IMAGENS</button>
                         </form>
                         <div className="itensCadastrados">
                             <ImgCarrosselCadastrada img={ImgCarrossel}></ImgCarrosselCadastrada>
                         </div>
                     </div>
+
                     <div id='editProdutos'>
-                        <form id='addProdutos'>
+                        <form 
+                            id='addProdutos'
+                        >
                             <h3>PRODUTOS</h3>
                             <div id='imgCamposProduto'>
-                                <input id='inputImg' type='file' accept="image/*"/>
+                                <label className="imagemProduto" tabIndex={1} for="inputImg">
+                                    <input 
+                                        id='inputImg' 
+                                        type='file' 
+                                        accept="image/*"
+                                        onChange={loadProduto}
+                                    />
+                                    <ImagePreview src={selectedProduto} id={'imageProduto'}/> {/* Passe selectedImage como prop */}
+                                </label>
                                 <div id='campos'>
                                     <fieldset>
                                         <legend>NOME DO PRODUTO</legend>
@@ -132,13 +151,12 @@ function PerfilParceiro(){
                                             <input type='number' step=".02"></input>
                                         </div>
                                     </fieldset>
-                                </div>
+                            </div>
                             </div>
                             <button type='submit'>ADICIONAR PRODUTO</button>
                         </form>
                         <div className="itensCadastrados">
                             <ProdutoCadastrado img={ImgTeste} nomeProduto={"teste"} preco={'5,50'}></ProdutoCadastrado>
-
                         </div>
                     </div>
                     <div id='editBiografia'>
@@ -173,19 +191,43 @@ function PerfilParceiro(){
                 <form id='formDepoimento'>
                     <label>Que tal deixar um depoimento na plataforma contando como foi sua experiência com o Impulsione aí?</label>
                     <textarea maxLength={150} placeholder="Deixe aqui seu depoimento"></textarea>
-                    {/* <fieldset>
-                        <legend>Avalie Nossa Plataforma:</legend>
-                        <img src={' '}/>
-                        <ul class="avaliacaoPlataforma">
-                            <li class="star-icon ativo" data-avaliacao="1"></li>
-                            <li class="star-icon" data-avaliacao="2"></li>
-                            <li class="star-icon" data-avaliacao="3"></li>
-                            <li class="star-icon" data-avaliacao="4"></li>
-                            <li class="star-icon" data-avaliacao="5"></li>
-                        </ul>
-                    </fieldset> */}
+                    <div id="starAvaliacao">
+                        <input type="checkbox" id="star1" name="star1" value="1"/>
+                        <label for="star1" className="starIcon">
+                            {/* <img className="starIcon" src={Star}></img> */}
+                        </label>
+                        <input type="checkbox" id="star2" name="star2" value="2"/>
+                        <label for="star2" className="starIcon">
+                            {/* <img className="starIcon" src={Star}></img> */}
+                        </label>
+                        <input type="checkbox" id="star3" name="star3" value="3"/>
+                        <label for="star3" className="starIcon">
+                            {/* <img className="starIcon" src={Star}></img> */}
+                        </label>
+                        <input type="checkbox" id="star4" name="star4" value="4"/>
+                        <label for="star4" className="starIcon">
+                            {/* <img className="starIcon" src={Star}></img> */}
+                        </label>
+                        <input type="checkbox" id="star5" name="star5" value="5"/>
+                        <label for="star5" className="starIcon">
+                            {/* <img className="starIcon" src={Star}></img> */}
+                        </label>
+
+                    </div> 
+
+                    <ul class="avaliacaoPlataforma">
+                        <li class="star-icon ativo" data-avaliacao="1"></li>
+                        <li class="star-icon" data-avaliacao="2"></li>
+                        <li class="star-icon" data-avaliacao="3"></li>
+                        <li class="star-icon" data-avaliacao="4"></li>
+                        <li class="star-icon" data-avaliacao="5"></li>
+                    </ul>
+                                   
                     <button type='submit'>ENVIAR DEPOIMENTO</button>
                 </form>
+
+                
+
 
             </section>
         </body>
