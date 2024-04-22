@@ -341,6 +341,10 @@ fieldset {
     }
 }
 
+#linhaRoxa{
+    border-color: #B741FF;
+    border: 3px solid #B741FF;
+}
 
 #areaDepoimentos{
     padding: 0;
@@ -349,7 +353,6 @@ fieldset {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin: 2rem 0;
     margin-bottom: 4rem;
 
     #tituloAreaDepoimentos {
@@ -357,11 +360,11 @@ fieldset {
         /* margin-top, margin-right, margin-bottom, e margin-left. */
         /* margin: 0em 30em 1em 0em; */
         /* width: 50%; */
-        padding: 0.25rem;
+        padding: 0.75rem;
         color: #FFFFFF;
         border-top-right-radius: 10em;
         border-bottom-right-radius: 10em;
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-bottom: 2rem;
         display: flex;
         justify-content: flex-start;
@@ -386,6 +389,7 @@ fieldset {
         label{
             color: #B741FF;
             align-self: flex-start;
+            font-weight: 500;
         }
 
         textarea{
@@ -396,62 +400,48 @@ fieldset {
             border-radius: 15px;
             border:none;
             outline: 1px solid #e1c5b1;
-            /* max-width: 100%;
-            min-width: 100%;
-            max-height: 5rem; */
             resize: none;
 
         }
 
+        #blocoAvaliacao{
+            display: flex;
+            flex-direction: row !important;
+            width: 100%;
+            align-items: center;
+            gap: 1.5rem;
+
+            h3{
+                color: #FFA15D;
+                margin-top: 0.5rem;
+            }
+        }
         #starAvaliacao{
             display: flex;
-            flex-direction: row;
+            flex-direction: row-reverse;
             gap: 1rem;
-            /* background-color: red; */
-
-
             
-            
-            /* Ocultar o checkbox padrão */
-            input[type="checkbox"] {
+            input[type="radio"] {
                 display: none;
             }
-
-            /* .star {
-                width: 20px;
-                height: 20px;
-                background-color: blue;
-                border-radius: 4px;
-                display: inline-block;
-                cursor: pointer;
-            } */
 
             .starIcon{
                 border: none;
                 cursor: pointer;
                 color: #ffdfc9;
                 font-size: 40px;
+                display: inline-block;
             }
-
-            
 
             .starIcon::before{
                 content: "\2605";
             }
 
-            input[type="checkbox"]:checked + .starIcon {
+            input[type="radio"]:checked ~ .starIcon {
                 content: "\2605";
                 color: #fc6500;
 
             }
-
-            /* .testando::before{
-                color: blue;
-            } */
-
-            
-
-
         }
 
         .avaliacaoPlataforma{
@@ -479,23 +469,6 @@ fieldset {
                 content: "\2606";
             }
         }
-        
-
-        /* .avaliacaoPlataforma:hover .star-icon::before{
-            content: "\2605";
-        }
-
-        .avaliacaoPlataforma{
-
-            .star-icon:hover ~ .star-icon::before{
-                content: "\2606";
-            }
-        
-        } */
-
-        /* .star-icon:hover ~ .star-icon::before{
-            content: "\2606";
-        } */
           
         button{
             background-color: #FF7D1E;

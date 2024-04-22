@@ -5,12 +5,6 @@ import Header from "../../../components/header/header"
 import MenuLateral from "../../../components/menuLateral/menuLateral"
 import MeusDados from "../../../components/meusDados/MeusDados"
 
-import StarTeste from "../../../assets/star-regular.svg";
-import Star from "./star";
-
-// import Image from 'react-image';
-// import ReactImage from 'react-image';
-
 import '../perfilParceiro/perfilParceiro.css'
 
 import React, { useState } from 'react';
@@ -18,12 +12,9 @@ import ImagePreview from './imagePreview'; // Importe o componente ImagePreview
 
 import IconEditar from '../../../assets/iconEditar.svg'
 import IconExcluir from '../../../assets/iconLoginModalClose.svg';
-import ImgTeste from '../../../assets/imgTeste.png'
-import ImgCarrossel from '../../../assets/gastronomiaTrufa.png'
-import BoxVideo from "../../../components/boxVideo/boxVideo"
-
-const items = [...Array(5).keys()];
-
+import ImgTeste from '../../../assets/imgTeste.png';
+import ImgCarrossel from '../../../assets/gastronomiaTrufa.png';
+import BoxVideo from "../../../components/boxVideo/boxVideo";
 
 function PerfilParceiro(){
     const nomeParceiro = 'Keyalne';
@@ -55,24 +46,18 @@ function PerfilParceiro(){
         reader.readAsDataURL(file);
     };
 
+    const [selectedStar, setSelectedStar] = useState(null);
 
-    const [activeIndex, setActiveIndex] = useState();
+        const handleChange = (event) => {
+        const selectedValue = parseInt(event.target.value);
+        setSelectedStar(selectedValue);
+        // console.log("O selecionado foi o", selectedValue);
 
-    const onClickStar = (index) => {
-        setActiveIndex((oldState) => (oldState === index ? undefined : index));
-    };
-
-    var stars =document.querySelectorAll('.star-icon')
-    document.addEventListener('click', function(e){
-        var classStar = e.target.classList;
-        if(!classStar.contains('ativo')){
-            stars.forEach(function(star){
-                star.classList.remove('ativo');
-            });
-            classStar.add('ativo');
-            console.log(e.target.getAttribute('avaliacaoPlataforma'));
+        for (let i = 1; i <= selectedValue; i++) {
+            const starElement = document.getElementById(`star${i}`);
+            starElement.checked = true;
         }
-    });
+    };
 
     return(
         <>
@@ -83,7 +68,7 @@ function PerfilParceiro(){
                 <BarraLinkInterno id='fundoLaranja' name={'MEUS DADOS'} idElemento={'sessaoMeusDados'}></BarraLinkInterno>
                 <BarraLinkInterno id='fundoLaranja' name={'MINHA VITRINE'} idElemento={'minhaVitrine'}></BarraLinkInterno>
                 <BarraLinkInterno id='fundoLaranja' name={'SEBRAE'} idElemento={'sebrae'}></BarraLinkInterno>
-                <BarraLinkInterno id='fundoLaranja' name={'DEPOIMENTOS'} idElemento={'areaDepoimento'}></BarraLinkInterno>                
+                <BarraLinkInterno id='fundoLaranja' name={'DEPOIMENTOS'} idElemento={'areaDepoimentos'}></BarraLinkInterno>                
             </nav>
             <section id='sessaoMeusDados'>
                 <div id='informacoesSessao'>
@@ -96,7 +81,7 @@ function PerfilParceiro(){
                         <p>Clique aqui para ver algumas dicas do SEBRAE de como impulsionar seu negócio.</p>
                     </a>
                 </div>
-                {/* <MeusDados></MeusDados> */}
+                <MeusDados></MeusDados>
             </section>
             <section id='minhaVitrine'>
                 <BoxInfo title={'MINHA VITRINE'} idBox={'titleBoxRoxo'} idDivisor={'divisorRoxo'}></BoxInfo>
@@ -184,51 +169,59 @@ function PerfilParceiro(){
             </section>
             <hr id='linhaRoxa'></hr>
             <section id='areaDepoimentos'>
-                {/* <div id='tituloDepoimentos'> */}
                 <div id='tituloAreaDepoimentos'>
                     <h2 className="title">DEPOIMENTO</h2>
                 </div>
                 <form id='formDepoimento'>
                     <label>Que tal deixar um depoimento na plataforma contando como foi sua experiência com o Impulsione aí?</label>
                     <textarea maxLength={150} placeholder="Deixe aqui seu depoimento"></textarea>
-                    <div id="starAvaliacao">
-                        <input type="checkbox" id="star1" name="star1" value="1"/>
-                        <label for="star1" className="starIcon">
-                            {/* <img className="starIcon" src={Star}></img> */}
-                        </label>
-                        <input type="checkbox" id="star2" name="star2" value="2"/>
-                        <label for="star2" className="starIcon">
-                            {/* <img className="starIcon" src={Star}></img> */}
-                        </label>
-                        <input type="checkbox" id="star3" name="star3" value="3"/>
-                        <label for="star3" className="starIcon">
-                            {/* <img className="starIcon" src={Star}></img> */}
-                        </label>
-                        <input type="checkbox" id="star4" name="star4" value="4"/>
-                        <label for="star4" className="starIcon">
-                            {/* <img className="starIcon" src={Star}></img> */}
-                        </label>
-                        <input type="checkbox" id="star5" name="star5" value="5"/>
-                        <label for="star5" className="starIcon">
-                            {/* <img className="starIcon" src={Star}></img> */}
-                        </label>
-
-                    </div> 
-
-                    <ul class="avaliacaoPlataforma">
-                        <li class="star-icon ativo" data-avaliacao="1"></li>
-                        <li class="star-icon" data-avaliacao="2"></li>
-                        <li class="star-icon" data-avaliacao="3"></li>
-                        <li class="star-icon" data-avaliacao="4"></li>
-                        <li class="star-icon" data-avaliacao="5"></li>
-                    </ul>
-                                   
+                    <div id='blocoAvaliacao'>
+                        <h3>Avalie nossa plataforma:</h3>
+                        <div id="starAvaliacao">
+                            <input 
+                                type="radio" 
+                                id="star5" 
+                                name="star" 
+                                value="5"
+                                onChange={handleChange}    
+                            />
+                            <label for="star5" className="starIcon"></label>
+                            <input 
+                                type="radio" 
+                                id="star4" 
+                                name="star" 
+                                value="4"
+                                onChange={handleChange}
+                            />
+                            <label for="star4" className="starIcon"></label>
+                            <input 
+                                type="radio" 
+                                id="star3" 
+                                name="star" 
+                                value="3"
+                                onChange={handleChange}
+                            />
+                            <label for="star3" className="starIcon testando"></label>
+                            <input 
+                                type="radio" 
+                                id="star2" 
+                                name="star" 
+                                value="2"
+                                onChange={handleChange}
+                            />
+                            <label for="star2" className="starIcon"></label>
+                            <input
+                                type="radio"
+                                id="star1"
+                                name="star"
+                                value="1"
+                                onChange={handleChange}
+                            />
+                            <label for="star1" className="starIcon"></label>
+                        </div>
+                    </div>    
                     <button type='submit'>ENVIAR DEPOIMENTO</button>
                 </form>
-
-                
-
-
             </section>
         </body>
         <Footer></Footer>
