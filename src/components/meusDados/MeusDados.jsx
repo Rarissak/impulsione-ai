@@ -4,7 +4,7 @@ import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
 import ProfileImg from '../../assets/trufasDoSim.png';
 
-import  {ToggleModalEditData, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
+import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
@@ -207,11 +207,18 @@ export function MostrarDadosAtualizados() {
 // função principal do arquivo
 function MeusDados()
 {
-
+    useEffect(() => {
+        ToggleModalEditData();
+      }, []);
    
 
     return(
+        
             <div>
+              
+            {<EditarDadosEmp/>}
+              
+                
                 <div id="form">
                    
                     <div className="boxForm">
@@ -329,8 +336,9 @@ function MeusDados()
                                         <button id="editButton" type="button" onClick={() => {
                                          PegandoDados(); ToggleModalEditData();
                                         }}>EDITAR DADOS</button>
+                                        
                                 </div>
-                            
+                                        
                            
 
                             <fieldset id="fieldSetConfigPlano" className=" corLaranja">
