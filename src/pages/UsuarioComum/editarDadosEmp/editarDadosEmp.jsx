@@ -1,51 +1,25 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from 'react-dom';
+import React, { useEffect } from "react";
 import './editarDadosEmp.css';
 // import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
 // Importando o icon do botão de fechar o modal.
 import iconModalClose from '../../../assets/iconLoginModalClose.svg';
-import BoxInfo from "../../../components/boxInfo/boxInfo";
+import {BoxInfoModal} from "../../../components/boxInfo/boxInfo";
 import InstagramIcon from '../../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../../assets/facebookRoxo.svg';
-import ProfileImg from '../../../assets/trufasDoSim.png';
-import FotoExemplo from "../../../assets/trufasDoSim.png";
+import ProfileImg from '../../../assets/gato.webp';
+import FotoExemplo from "../../../assets/trufasDoSim.png"
 import { PegandoDados, MostrarDadosAtualizados } from "../../../components/meusDados/MeusDados";
 
-//Função de fechar o modal. Ele vai adicionar a classe teste(anteriormente chamada de hide) na div loginCentralize, 
+//Função de fechar o modal. Ele vai adicionar a classe hide na div editarDadosCentralize, 
 //que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
 
-// export function AbrirModal()
-// {
-//     const editDataCentralize = document.querySelector("#editDataCentralize");
-//     editDataCentralize.classList.toggle("hide");
-//     const editDataBack = document.querySelector("#editDataBack");
-//     editDataBack.classList.toggle("hide");
-
-//     // if (loginCentralize && back) {
-//     //     loginCentralize.classList.toggle("teste");
-//     //     back.classList.toggle("teste");
-//     // } else {
-//     //     console.error("Elemento não encontrado. Verifique se os IDs '#loginCentralize' e '#back' estão corretos.");
-//     // }
-// }
-
-export function ToggleEditDataModal() {
-    const editDataModal = document.querySelector("#editDataModal"); // ID único
-    const editDataBack = document.querySelector("#editDataBack"); // ID único
-    
-    if (editDataModal && editDataBack) {
-        // ... (código original para mostrar/esconder os elementos)
-      } else {
-        console.error('Elementos "editDataModal" ou "editDataBack" não encontrados.');
-      }
-    
-    
-    
-    editDataModal.classList.toggle("esconder");
-    editDataBack.classList.toggle("esconder");
+export function ToggleModalEditData()
+{
+    const editarDadosCentralize = document.querySelector("#editarDadosCentralize");
+    editarDadosCentralize.classList.toggle("hideEditarDados");
+    const back = document.querySelector("#backEditarDados");
+    back.classList.toggle("hideEditarDados");
 }
-
-
 
 
 // Função que faz com que o campo recuse o input de letras no input. A função é colocada no evento onKeyDown -> ao pressionar a tecla.
@@ -295,28 +269,27 @@ function EditarDadosEmp()
     // a mensagem de error de digitação, caso seja false.
  
     return(
-        <div id="editDataBack" className="esconder">
+        <div id="backEditarDados" >
             
-            <div id="editDataModal" className="esconder">
+            <div id="editarDadosCentralize">
 
-                <div id="loginContainer">
+                <div id="editarDadosContainer">
 
                     <div>
-                        <button id = "closeModal" onClick={ToggleEditDataModal}>
+                        <button id = "closeModal" onClick={ToggleModalEditData}>
                             <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
                         </button>
                     </div>
-                    {/* <BoxInfo title={'Editar Dados'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfo> */}
-                   
-                    <BoxInfo title={'Editar Dados'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
-                    <div id="loginBody">
+                                       
+                    <BoxInfoModal title={'Editar Dados'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfoModal>
+                    <div id="editarDadosBody">
 
                         <div id="scroll">
                             {/*Contém todo o formulário e seus campos*/}
                             <form 
-                                id="formContainerModal" 
-                                onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); AbrirModal();}}
-                                onClick={ToggleEditDataModal}>
+                                id="formContainerModalEdit" 
+                                onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); ToggleModalEditData();}}
+                                onReset={ToggleModalEditData}>
                                 <div id="formTitle1">
                                     <h1>MEUS DADOS</h1>
                                 </div>
@@ -471,7 +444,5 @@ function EditarDadosEmp()
         </div>
     );
 }
-
-
 
 export default EditarDadosEmp;

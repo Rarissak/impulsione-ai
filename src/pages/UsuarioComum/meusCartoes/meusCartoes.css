@@ -11,7 +11,7 @@
 
 /*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
 o modal vai continuar na mesma posição.*/
-#backLogin
+#backCartao
 {
     position: fixed;
     top:50%;
@@ -21,7 +21,7 @@ o modal vai continuar na mesma posição.*/
 }
 
 /*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
-#loginCentralize
+#meusCartoesCentralize
 {
     width: 100vw;
     height: 100vh;
@@ -34,63 +34,69 @@ o modal vai continuar na mesma posição.*/
 }
    
 /*Definindo o tamanho do container do login*/
-#loginContainer
+#meusCartoesContainer
 {
     margin-top: -250px;
-    width: 36%;
+    width: 45%;
     height: 50%;
     z-index: 15;
 }
 
-/*Colocando o elemento loginHeader em cima do loginBody*/
-#loginHeader
-{
-    position: relative;
-    top: 15%;
-    left: 18%;
-    background-color: rgb(255, 255, 255);
-    padding: .7rem 6rem;
-    border-radius: 53px;
-    text-align: center;
-    width: 300px;
-    z-index: 5;
-}
 
-/*Configurando a fonte do loginHeader*/
-#loginHeader span
-{
-    font-family: 'Baloo 2', sans-serif;
-    color: #FF7D1E;
-    font-size: 40px;
-    font-weight:800;
-    position: relative;
-    bottom: 18px;
-}
 
 /*Configurando o elemento responsável pelos inputs de login*/
-#loginBody
+#meusCartoesBody
 {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     background-color: #ffffff;
     /* padding: 4rem 2.3rem  1.3rem 2.3rem; */
-    padding: 2rem;
+    padding: .5rem 3rem;
     z-index: 22;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
+#centralizeSides
+{
+    display: flex;
+    gap: 35px;
+}
+
+#leftSide
+{
+    display: flex;
+    margin-bottom: 25px;
+    flex-direction: column;
+    width: 25%;
+}
+
+#rightSide
+{
+    width: 100%;
+}
+
+
+
+/*Dando um espaço titulo dos inputs.*/
+#inputs
+{
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
 /*Configurando a aparencia dos inputs*/
-.loginInputs
+.meuPlanoInputs
 {
     display: flex;
     justify-content: center;
-    flex-direction: column;
+   
 }
 
-.loginInputs input
+.meuPlanoInputs input
 {
     background-color: #F3F3F3;
     border-radius: 23px;
@@ -100,63 +106,58 @@ o modal vai continuar na mesma posição.*/
 
 .nameInput
 {
-    color: #CC78FF;
+    color: #8A00DE;;
     font-weight: 700;  
+    margin-right: 15px;
 }
 
-/*Configurando o esqueci a senha*/
-.forgotPassword
+
+
+#bandeira
 {
-    color:#CE5700;
-    font-weight: 500;
-    font-size: 12px;
-    text-align: right;
-    cursor: pointer;
+    background-color: #F3F3F3;
+    border-radius: 23px;
+    border-color: #f3f3f300;
+    padding: .2rem .6rem;
 }
-
 
 /*Centralizando os botões do login*/
-#loginButtons
+#meusCartoesButtons
 {
     margin-top: 5px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-bottom: 15px
 }
-
 /*Estilizando os botões de longar e de não possuir cadastro*/
-#loginButtons button
+#meusCartoesButtons button
 {
     font-weight: 700;
     cursor: pointer;
-}
-
-#loginButtonSignIn
-{
     background-color: #FF7D1E;
     color: white;
-    padding: .1rem .1rem;
-    width: 120px;
+    padding: .1rem 4rem;
+   
+    
 }
 
-#loginButtonSignUp
+#meusCartoesButtons #cancel
 {
-    background-color: #ff7c1e00;
-    color: #FFA15D;
+    background-color: #CC78FF;
 }
 
-
-/*Os elementos com a classe hide, devem ficar invisiveis*/
-#loginCentralize.hideLogin, #backLogin.hideLogin
+/*Os elementos com a classe hideCartao, devem ficar invisiveis*/
+#meusCartoesCentralize.hideCartao, #backCartao.hideCartao
 {
     opacity: 0;
     pointer-events: none;
 }
 
-/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
+/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hideCartao, se cria o efeito:
 Aparecer e desaparecer*/
-#loginCentralize, #backLogin
+#meusCartoesCentralize, #backCartao
 {
     opacity: 1;
     transition: .5s;
@@ -192,77 +193,160 @@ Aparecer e desaparecer*/
     background-color: #FF7D1E;
 }
 
-#loginButtonSignUp {
+#meusCartoesButtonsignUp {
     text-decoration: none !important;
 }
 
-@media screen and (max-width: 1200px){
-   
-    #loginContainer
-    {
+/*Configuração do campo Plano escolhido*/
+.selectField label
+{
+    color: #8A00DE;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 15px;
+}
 
-        width: 38%;
-      
+.selectField select
+{
+    margin-top: 8px;
+    background: #CC78FF;
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 25px;
+    border-color: rgba(73, 4, 4, 0);
+    padding: .2rem .5rem;
+    text-align: left;
+    cursor: pointer;
+    width: 135px;
+   
+}
+
+.selectField div
+{
+    color: #CC78FF;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.selectField2
+{
+    display: flex;
+  
+}
+
+.selectField2 label
+{
+    color: #8A00DE;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.selectField2 select
+{
+    width: 80px;
+}
+
+.meuPlanoTitulo
+{
+    color: #FF7D1E;
+    font-size: 18px;
+    font-weight: 700;
+   
+}
+
+
+@media screen and (max-width: 1260px){
+   
+    #inputNome, #inputNumero
+    {
+        width: 90%;
+    }
+    #rightSide
+    {
+        width: 100%;
     }
 }
 
-@media screen and (max-width: 1024px){
-    #loginContainer
-    {
+@media screen and (max-width: 1249px){
 
-        width: 43%;
-      
+   #rightSide
+   {
+    width: 110%;
+   }
+   #meusCartoesContainer
+   {
+     width: 55%;
+   }
+}
+
+
+@media screen and (max-width: 1200px){
+   
+
+}
+
+@media screen and (max-width: 1024px){
+   
+    #meusCartoesContainer
+    {
+      width: 65%;
     }
+   
 }
 
 /* Tamanho criado por conta do componente carrossel */
 @media screen and (max-width: 840px){
- 
+   
+  
+    #inputNome, #inputNumero
+    {
+        width: 90%;
+    }
+   
 
 }
 /* Tamanho criado por conta do componente carrossel */
 
 @media screen and (max-width: 768px){
-    #loginContainer
+    #meusCartoesContainer
     {
+      width: 75%;
+    }
+}
+@media screen and (max-width: 649px){
+  
 
-        width: 46%;
-      
+    #meusCartoesButtons
+    {
+        justify-content: center;
+        gap:15px;
+        
+    }
+}
+@media screen and (max-width: 624px){
+    #meusCartoesContainer
+    {
+      width: 75%;
     }
 }
 
-@media screen and (max-width: 560px){
-    #loginContainer
-    {
 
-        width: 52%;
-      
-    }
+@media screen and (max-width: 560px){
+  
 }
 
 @media screen and (max-width: 480px){
-    #loginContainer
-    {
 
-        width: 56%;
-      
-    }
+
+  
 }
 
 @media screen and (max-width: 320px){
-    #loginContainer
-    {
 
-        width: 62%;
-      
-    }
 }
 
 @media screen and (max-width: 280px){
-    #loginContainer
-    {
 
-        width: 66%;
-      
-    }
 }
