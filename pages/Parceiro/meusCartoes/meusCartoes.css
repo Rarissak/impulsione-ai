@@ -1,0 +1,16 @@
+#caixaPrincipal{
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#titulo{
+    background-color: aqua;
+    border-radius: 3em;
+    padding: 1em;
+    margin: 1em;
+
+    display: flex;
+    justify-content: center;
+}
