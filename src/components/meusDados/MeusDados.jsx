@@ -1,11 +1,10 @@
-
-
 import React, {useEffect} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
-import ProfileImg from '../../assets/trufasDoSim.png';
-import EditarDadosEmp, {ToggleEditDataModal, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
+import ProfileImg from '../../assets/gato.webp';
+
+import  {ToggleModalEditData, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
@@ -240,7 +239,7 @@ function MeusDados()
                                    
                                 </div>
                                  
-
+                                    
                                 <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil"/>
                             </fieldset>
                                 
@@ -292,7 +291,7 @@ function MeusDados()
                                 {/*MEI*/}
                                 <div className="fieldType1">
                                     <span className="nameField">MEI</span>
-                                    <span className="conteudo" id="campoMEI">000000000000000</span>    
+                                    <span className="conteudo" id="campoMEI">12.345.678/0001-90</span>    
                                 </div>
                             </fieldset>
 
@@ -328,7 +327,7 @@ function MeusDados()
 
                                 <div className="buttonsFormEdit">  
                                         <button id="editButton" type="button" onClick={() => {
-                                         PegandoDados(); ToggleEditDataModal();
+                                         PegandoDados(); ToggleModalEditData();
                                         }}>EDITAR DADOS</button>
                                 </div>
                             
