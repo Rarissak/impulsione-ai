@@ -10,6 +10,7 @@ fieldset {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    gap: 5rem;
     padding: 0 10rem 0 10rem;
 
     #informacoesSessao{
@@ -69,7 +70,7 @@ fieldset {
 
     #boxEditVitrine{
         flex-direction: column !important;
-        padding: 2rem 10rem !important;
+        padding: 2rem 10rem;
         justify-content: space-between;
         width: 100%;
         gap: 3rem;
@@ -406,7 +407,7 @@ fieldset {
 
         #blocoAvaliacao{
             display: flex;
-            flex-direction: row !important;
+            flex-direction: row;
             width: 100%;
             align-items: center;
             gap: 1.5rem;
@@ -583,27 +584,502 @@ fieldset {
 
 
 
-/* --------------------------- */
+/* ---RESPONSIVO--- */
+@media screen and (max-width: 1200px){
+    /*CSS com os novos tamanhos/proporções*/
+    
+    /* Margin para manter a estrutura centralizada
+    - Colocar nas divs ou sections que possuem uma sessão
+    - Não sabe oque seria uma sessão? Falar com Keylane
+    - Caso o margin não tenha efeito ou não centralize como
+    esperado usar o padding com  as mesmas medidas. */
+    #sessaoMeusDados{
+        padding: 0 10rem;
+        margin-bottom: 3rem;
+    }
 
-/* .avaliacaoPlataforma{
-    display: flex;
-   }
-  .star-icon{
-    list-style-type: none;
-    border: 1px solid #fff;
-    cursor: pointer;
-    color: #ffe500;
-    font-size: 40px;
-  }
-  .star-icon::before{
-    content: "\2605";
-  }
-  .star-icon.ativo ~ .star-icon::before{
-    content: "\2606";
-  }
-  .avaliacao:hover .star-icon::before{
-    content: "\2605";
-  }
-  .star-icon:hover ~ .star-icon::before{
-    content: "\2606";
-  } */
+    #boxEditVitrine{
+        flex-direction: column !important;
+        padding: 2rem 10rem !important;
+        justify-content: space-between;
+        width: 100%;
+        gap: 3rem;
+
+        .imagem{
+            width: 14rem !important;
+        }
+    }
+
+    #imgCadastrada {
+
+        width: 16rem;
+
+        #imgCadCarrossel{
+            width: 14rem !important;        
+        }
+    }
+
+    .botaoExcluir {
+        background-color: #FF7D1E !important;
+        padding: 0.25rem !important;
+
+        img {
+            width: 1rem !important;
+        }
+    }
+
+    #addProdutos {
+        width: 50%;
+
+        .imagemProduto{
+            width: 8rem !important;
+            height: 8rem !important;
+            aspect-ratio: cover;
+        }
+
+        #campos{
+            input{
+                /* width: 12rem !important; */
+            }
+            legend{
+                font-size: 14px;
+            }
+        }
+    }
+
+    #produtoCadastrado{
+        border: 1px solid #FFE1CC;
+        padding: 0.75rem;
+        border-radius: 15px;
+        width: 10rem;
+        gap: 1rem;
+
+        #iconEditar{
+            width: 1.5rem !important;
+        }
+    
+    }
+
+    #infosProduto{
+
+        img {
+            width: 8rem !important;
+            height: 8rem !important;
+            border-radius: 15px;
+        }
+
+        h4 {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        #precoProduto {
+            display: flex;
+            flex-direction: row;
+            gap: 0.25rem;
+            font-weight: 700;
+        }
+    }
+
+    #formDepoimento{
+        padding: 0 10rem;
+    }
+    
+}
+    
+@media screen and (max-width: 1024px){
+    /*CSS com os novos tamanhos/proporções*/
+    
+    /* Margin ou padding para manter a estrutura padrão */
+    #sessaoMeusDados{
+        padding: 0rem 8rem;
+    }
+
+    #boxEditVitrine{
+        flex-direction: column !important;
+        padding: 2rem 8rem !important;
+
+        justify-content: space-between;
+        width: 100%;
+        gap: 3rem;
+    }
+
+    #formDepoimento{
+        padding: 0 8rem !important;
+    }
+
+    #tituloAreaDepoimentos {
+
+        h2 {
+            color: #FFFFFF;
+            font-size: 28px !important;
+            text-align: start;
+            padding-left: 8rem !important;
+            padding-right: 2rem;
+        }
+    }
+    
+}
+    
+/* Media Querie especifica para manter a estrutura */
+@media screen and (max-width: 920px){
+    /* Margin ou padding para manter a estrutura padrão */
+    #sessaoMeusDados{
+        padding: 0rem 5rem !important;
+    }
+    #boxEditVitrine{
+        flex-direction: column !important;
+        padding: 1rem 5rem !important;
+        justify-content: space-between;
+        width: 100%;
+        gap: 3rem;
+    }
+
+    #formDepoimento{
+        padding: 0 5rem !important;
+
+    }
+
+    #tituloAreaDepoimentos {
+
+        h2 {
+            color: #FFFFFF;
+            font-size: 26px !important;
+            text-align: start;
+            padding-left: 5rem !important;
+            padding-right: 2rem;
+        }
+    }
+
+    
+}
+    
+@media screen and (max-width: 768px){
+    /*CSS com os novos tamanhos/proporções*/
+    #sessaoMeusDados{
+        padding: 0rem 2rem;
+        flex-direction: column;
+    }
+
+    #boxEditVitrine{
+        flex-direction: column !important;
+        padding: 0.75rem 2rem !important;
+        justify-content: space-between;
+        width: 100%;
+        gap: 3rem;
+
+        .imagem{
+            width: 12rem !important;
+        }
+    }
+
+
+    #imgCadastrada {
+
+        width: 14rem;
+
+        #imgCadCarrossel{
+            width: 12rem !important;        
+        }
+
+        
+    }
+
+    .botaoExcluir {
+        background-color: #FF7D1E !important;
+        padding: 0.25rem;
+
+        img {
+            width: 1rem !important;
+        }
+    }
+
+    #editProdutos{
+        flex-direction: column !important;
+        gap: 2rem
+    }
+
+    #addProdutos {
+        width: 100%;
+        flex-direction: column !important;
+
+
+        #imgCamposProduto{
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .imagemProduto{
+            width: 6rem !important;
+            height: 6rem !important;
+            aspect-ratio: cover;
+        }
+
+        #campos{
+            input{
+                /* width: 12rem !important; */
+            }
+            legend{
+                font-size: 14px;
+            }
+        }
+    }
+
+    #produtoCadastrado{
+        border: 1px solid #FFE1CC;
+        padding: 0.75rem;
+        border-radius: 15px;
+        width: 8rem;
+        gap: 1rem;
+
+        #iconEditar{
+            width: 1.5rem !important;
+        }
+    
+    }
+
+    #infosProduto{
+
+        img {
+            width: 6rem !important;
+            height: 6rem !important;
+            border-radius: 15px;
+        }
+
+        h4 {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        #precoProduto {
+            display: flex;
+            flex-direction: row;
+            gap: 0.25rem;
+            font-weight: 700;
+        }
+    }
+
+
+    #formDepoimento{
+        padding: 0 2rem !important;
+
+        label{
+            align-self: flex-start;
+            font-weight: 500;
+            font-size: 14px !important;
+        }
+
+        .starIcon{
+            font-size: 30px !important;
+        }
+
+        #blocoAvaliacao{
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0rem !important;
+
+            h3{
+                font-size: 14px;
+            }
+        }
+    }
+
+    #tituloAreaDepoimentos {
+
+        h2 {
+            color: #FFFFFF;
+            font-size: 24px !important;
+            text-align: start;
+            padding-left: 2rem !important;
+            padding-right: 1rem;
+        }
+    }
+}
+    
+@media screen and (max-width: 560px){
+/*CSS com os novos tamanhos/proporções*/
+    
+    /* Margin ou padding para manter a estrutura padrão */
+    #sessaoMeusDados{
+        padding: 0rem 2rem;
+    }
+
+    #boxEditVitrine{
+        flex-direction: column !important;
+        padding: 0.75rem 2rem !important;
+        justify-content: space-between;
+        width: 100%;
+        gap: 3rem;
+        
+        #editCarrossel{
+            flex-direction: column;
+        }
+
+        .imagem{
+            width: 10rem !important;
+        }
+    }
+
+    #imgCadastrada {
+
+        width: 12rem !important;
+
+        #imgCadCarrossel{
+            width: 10rem !important;        
+        }
+
+        
+    }
+
+    .botaoExcluir {
+        background-color: #FF7D1E !important;
+        padding: 0.15rem;
+
+        img {
+            width: 0.75rem !important;
+        }
+    }
+
+    button[type=submit]{
+        background-color: #FFA767;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 12px !important;
+        padding: 0.35rem 1rem !important;
+        width: auto !important;
+    }
+
+    #editProdutos{
+        flex-direction: column !important;
+        gap: 2rem;
+    }
+
+    #addProdutos {
+        width: 100%;
+        flex-direction: column !important;
+
+
+        #imgCamposProduto{
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .imagemProduto{
+            width: 5rem !important;
+            height: 5rem !important;
+            aspect-ratio: cover;
+        }
+
+        #campos{
+            input{
+                /* width: 12rem !important; */
+            }
+            legend{
+                font-size: 14px;
+            }
+        }
+    }
+
+    #produtoCadastrado{
+        border: 1px solid #FFE1CC;
+        padding: 0.75rem;
+        border-radius: 15px;
+        width: 6rem;
+        gap: 1rem;
+
+        #iconEditar{
+            width: 1.5rem !important;
+        }
+    
+    }
+
+    #infosProduto{
+
+        img {
+            width: 5rem !important;
+            height: 5rem !important;
+            border-radius: 15px;
+        }
+
+        h4 {
+            font-size: 14px !important;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        #precoProduto {
+            display: flex;
+            flex-direction: row;
+            gap: 0.25rem;
+            font-weight: 700;
+
+            p{
+                font-size: 12px !important;
+            }
+        }
+
+        
+    }
+
+    #botoesAlterar{
+        button{
+            width: 1.5rem;
+            height: 1.75rem;
+
+            #iconEditar{
+                width: 1rem !important;
+            }
+        }
+    }
+
+    #formDepoimento{
+        padding: 0 2rem !important;
+    }
+}
+    
+@media screen and (max-width: 480px){
+    /*CSS com os novos tamanhos/proporções*/
+    
+
+}
+    
+@media screen and (max-width: 320px){
+    /*CSS com os novos tamanhos/proporções*/
+    
+    /* Margin ou padding para manter a estrutura padrão */
+    #sessaoMeusDados{
+        padding: 0rem 0.5rem;
+    }
+
+    #boxEditVitrine{
+        flex-direction: column !important;
+        padding: 0.5rem !important;
+        justify-content: space-between;
+        width: 100%;
+        gap: 3rem;
+    }
+
+    #formDepoimento{
+        padding: 0 0.5rem !important;
+    }
+
+    #tituloAreaDepoimentos {
+
+        h2 {
+            color: #FFFFFF;
+            font-size: 20px !important;
+            text-align: start;
+            padding-left: 0.5rem !important;
+            padding-right: 0.25rem;
+        }
+    }
+}
+    
+@media screen and (max-width: 280px){
+/*CSS com os novos tamanhos/proporções*/
+}
+

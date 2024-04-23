@@ -81,7 +81,9 @@ function PerfilParceiro(){
                         <p>Clique aqui para ver algumas dicas do SEBRAE de como impulsionar seu negócio.</p>
                     </a>
                 </div>
-                <MeusDados></MeusDados>
+                <div id='dimensaoMeusDados'>
+                    <MeusDados></MeusDados>
+                </div>
             </section>
             <section id='minhaVitrine'>
                 <BoxInfo title={'MINHA VITRINE'} idBox={'titleBoxRoxo'} idDivisor={'divisorRoxo'}></BoxInfo>
@@ -246,7 +248,7 @@ function ProdutoCadastrado({img, nomeProduto, preco}){
                     <img src={IconExcluir} alt='botão para excluir'/>
                 </button>
                 <button>
-                    <img src={IconEditar} alt='botão para editar'/>
+                    <img id="iconEditar" src={IconEditar} alt='botão para editar'/>
                 </button>
             </div>
         </section>   
@@ -256,7 +258,7 @@ function ProdutoCadastrado({img, nomeProduto, preco}){
 function ImgCarrosselCadastrada({img}){
     return (
         <section id='imgCadastrada'>
-            <img src={img} alt="imagem do carrossel"/>
+            <img id='imgCadCarrossel' src={img} alt="imagem do carrossel"/>
             <button className='botaoExcluir'>
                 <img src={IconExcluir} alt='botão para excluir'/>
             </button>
