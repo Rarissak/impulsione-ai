@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
-import ProfileImg from '../../assets/gato.webp';
+import ProfileImg from '../../assets/trufasDoSim.png';
 
 import  {ToggleModalEditData, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
 

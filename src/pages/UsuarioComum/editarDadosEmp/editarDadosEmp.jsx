@@ -3,10 +3,10 @@ import './editarDadosEmp.css';
 // import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
 // Importando o icon do botão de fechar o modal.
 import iconModalClose from '../../../assets/iconLoginModalClose.svg';
-import {BoxInfoModal} from "../../../components/boxInfo/boxInfo";
+import BoxInfo from "../../../components/boxInfo/boxInfo";
 import InstagramIcon from '../../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../../assets/facebookRoxo.svg';
-import ProfileImg from '../../../assets/gato.webp';
+import ProfileImg from '../../../assets/trufasDoSim.png';
 import FotoExemplo from "../../../assets/trufasDoSim.png"
 import { PegandoDados, MostrarDadosAtualizados } from "../../../components/meusDados/MeusDados";
 
@@ -269,7 +269,7 @@ function EditarDadosEmp()
     // a mensagem de error de digitação, caso seja false.
  
     return(
-        <div id="backEditarDados" >
+        <div id="backEditarDados">
             
             <div id="editarDadosCentralize">
 
@@ -281,7 +281,7 @@ function EditarDadosEmp()
                         </button>
                     </div>
                                        
-                    <BoxInfoModal title={'Editar Dados'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfoModal>
+                    <BoxInfo title={'Editar Dados'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
                     <div id="editarDadosBody">
 
                         <div id="scroll">
