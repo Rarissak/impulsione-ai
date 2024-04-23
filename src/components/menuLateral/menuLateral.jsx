@@ -90,28 +90,28 @@ function MenuLateral(LoginPerfil, linkPerfil){
 
                 <ul id='barraLinksResponsivo'>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>GASTRONOMIA</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>GASTRONOMIA</Link>
                     </li>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>MODA</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>MODA</Link>
                     </li>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>ARTESANATO</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>ARTESANATO</Link>
                     </li>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>TECNOLOGIA</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>TECNOLOGIA</Link>
                     </li>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>EDUCAÇÃO</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>EDUCAÇÃO</Link>
                     </li>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>SAÚDE</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>SAÚDE</Link>
                     </li>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>ESTÉTICA</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>ESTÉTICA</Link>
                     </li>
                     <li>
-                        <Link to=' ' className='linksResponsivo'>DIVERSOS</Link>
+                        <Link to='/pesquisa' className='linksResponsivo'>DIVERSOS</Link>
                     </li>
                 </ul>
             </ul>

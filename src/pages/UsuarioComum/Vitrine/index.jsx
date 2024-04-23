@@ -41,13 +41,13 @@ function Vitrine(){
 
                 <nav className='linksExternos' id='barraLinks'>
                     <BarraLinkExterno id='fundoRoxoClaro' name={'GASTRONOMIA'} link={'/pesquisa'}></BarraLinkExterno>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'MODA'} link={''}></BarraLinkExterno>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'ARTESANATO'} link={''}></BarraLinkExterno>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'TECNOLOGIA'} link={''}></BarraLinkExterno>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'EDUCAÇÃO'} link={''}></BarraLinkExterno>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'SAÚDE'} link={''}></BarraLinkExterno>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'ESTÉTICA'} link={''}></BarraLinkExterno>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'DIVERSOS'} link={''}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'MODA'} link={'/pesquisa'}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'ARTESANATO'} link={'/pesquisa'}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'TECNOLOGIA'} link={'/pesquisa'}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'EDUCAÇÃO'} link={'/pesquisa'}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'SAÚDE'} link={'/pesquisa'}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'ESTÉTICA'} link={'/pesquisa'}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'DIVERSOS'} link={'/pesquisa'}></BarraLinkExterno>
                 </nav>
 
                 <section className="bloco1">

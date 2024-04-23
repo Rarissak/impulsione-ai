@@ -47,6 +47,21 @@ ul{
     gap: 2rem;   
 }
 
+/* Edição scroll */
+.menuLateral::-webkit-scrollbar {
+    width: 12px; /* largura da barra de rolagem */
+}
+
+.menuLateral::-webkit-scrollbar-track {
+    background: #2C0048; /* cor de fundo da área da barra de rolagem */
+}
+
+.menuLateral::-webkit-scrollbar-thumb {
+    background: #4a0675; /* cor do indicador da barra de rolagem */
+    border-radius: 6px; /* borda arredondada do indicador */
+}
+/* Edição scroll */
+
 .menuLateral {
     list-style-type: none;
     padding: 0;
@@ -59,6 +74,7 @@ ul{
     bottom: 0;
     z-index: 9999;
     height: 100%;
+    overflow-y: scroll;
 
     #botaoSair {
         display: flex;

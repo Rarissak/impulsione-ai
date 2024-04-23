@@ -59,13 +59,13 @@ function Home(){
         <body>
             <nav className='linksExternos' id='barraLinks'>
                 <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={'/pesquisa'}></BarraLinkExterno>
-                <BarraLinkExterno id='fundoLaranja' name={'MODA'} link={''}></BarraLinkExterno>
-                <BarraLinkExterno id='fundoLaranja' name={'ARTESANATO'} link={''}></BarraLinkExterno>
-                <BarraLinkExterno id='fundoLaranja' name={'TECNOLOGIA'} link={''}></BarraLinkExterno>
-                <BarraLinkExterno id='fundoLaranja' name={'EDUCAÇÃO'} link={''}></BarraLinkExterno>
-                <BarraLinkExterno id='fundoLaranja' name={'SAÚDE'} link={''}></BarraLinkExterno>
-                <BarraLinkExterno id='fundoLaranja' name={'ESTÉTICA'} link={''}></BarraLinkExterno>
-                <BarraLinkExterno id='fundoLaranja' name={'DIVERSOS'} link={''}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'MODA'} link={'/pesquisa'}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'ARTESANATO'} link={'/pesquisa'}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'TECNOLOGIA'} link={'/pesquisa'}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'EDUCAÇÃO'} link={'/pesquisa'}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'SAÚDE'} link={'/pesquisa'}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'ESTÉTICA'} link={'/pesquisa'}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'DIVERSOS'} link={'/pesquisa'}></BarraLinkExterno>
             </nav>
             
             <div className="carrossel">
