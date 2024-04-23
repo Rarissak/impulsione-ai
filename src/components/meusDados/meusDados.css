@@ -10,9 +10,6 @@
     font-family: 'Inter';
 }
 
-/*Colocando o elemento loginHeader em cima do loginBody*/
-
-
 /*Configurando a fonte do loginHeader*/
 #formTitle1 
 {
@@ -46,11 +43,12 @@
 
 #formContainer
 {
-    width: 50%;
+    width: 100%;
     background-color: transparent;
     /* gap: 2rem;
     display: flex;
     flex-direction: column; */
+    margin: 0 !important;
 }
 
 
@@ -338,8 +336,9 @@
 
 #fotoPerfil
 {
-    width: 120px;
-    border-radius: 75px;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 100%;
 }
 
  /*Campo dos negócios*/
@@ -438,20 +437,20 @@
 /* Tamanho criado por conta do componente carrossel */
 @media screen and (max-width: 840px){
 
-    #formContainer
+    /* #formContainer
     {
         width: 60%;
-    }
+    } */
 
 }
 /* Tamanho criado por conta do componente carrossel */
 
 @media screen and (max-width: 768px){
    
-    #formContainer
+    /* #formContainer
     {
         width: 70%;
-    }
+    } */
 
 }
 
@@ -477,12 +476,12 @@
   
 }
 @media screen and (max-width: 560px){
-    #formContainer
+    /* #formContainer
     {
         width: 90%;
         
         
-    }
+    } */
     .fieldSetConfig
     {
         flex-direction: column;
@@ -543,10 +542,10 @@
 }
 
 @media screen and (max-width: 320px){
-  #formContainer
+  /* #formContainer
   {
     margin-left: -65px;
-  }
+  } */
 }
 
 @media screen and (max-width: 280px){
