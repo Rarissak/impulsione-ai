@@ -40,7 +40,7 @@ function Vitrine(){
             <div className='blocoRoxo'>
 
                 <nav className='linksExternos' id='barraLinks'>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'GASTRONOMIA'} link={''}></BarraLinkExterno>
+                    <BarraLinkExterno id='fundoRoxoClaro' name={'GASTRONOMIA'} link={'/pesquisa'}></BarraLinkExterno>
                     <BarraLinkExterno id='fundoRoxoClaro' name={'MODA'} link={''}></BarraLinkExterno>
                     <BarraLinkExterno id='fundoRoxoClaro' name={'ARTESANATO'} link={''}></BarraLinkExterno>
                     <BarraLinkExterno id='fundoRoxoClaro' name={'TECNOLOGIA'} link={''}></BarraLinkExterno>

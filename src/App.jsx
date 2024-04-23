@@ -15,6 +15,7 @@ import AlterarSenha from '../src/pages/UsuarioComum/changePassword/changePasswor
 import Admin from '../src/pages/Admin/index.jsx';
 import PerfilParceiro from './pages/Parceiro/perfilParceiro/index.jsx';
 // import EsqueciSenha from './pages/UsuarioComum/forgotPassword/esqueciSenha.jsx';
+import Pesquisa from './pages/UsuarioComum/Pesquisa/pesquisa.jsx';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route path='/alterarSenha' Component={AlterarSenha}/>
         <Route path='/admin' Component={Admin} />
         <Route path='/perfilParceiro' Component={PerfilParceiro} />
+
+        <Route path='/pesquisa' Component={Pesquisa} />
       </Routes>
     </Router>
   );
