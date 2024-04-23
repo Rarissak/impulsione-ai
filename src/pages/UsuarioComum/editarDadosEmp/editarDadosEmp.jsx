@@ -15,8 +15,10 @@ import { PegandoDados, MostrarDadosAtualizados } from "../../../components/meusD
 
 export function ToggleModalEditData()
 {
+
     const editarDadosCentralize = document.querySelector("#editarDadosCentralize");
     editarDadosCentralize.classList.toggle("hideEditarDados");
+
     const back = document.querySelector("#backEditarDados");
     back.classList.toggle("hideEditarDados");
 }
@@ -260,7 +262,8 @@ export function PegandoDadosAtualizados()
 
 function EditarDadosEmp()
 {
-  
+    
+
     useEffect(() => {
 
         MostrarDados();
@@ -269,11 +272,11 @@ function EditarDadosEmp()
     // a mensagem de error de digitação, caso seja false.
  
     return(
-        <div id="backEditarDados">
+        <div id="backEditarDados" className="hideEditarDados">
             
-            <div id="editarDadosCentralize">
+            <div id="editarDadosCentralize" className="hideEditarDados">
 
-                <div id="editarDadosContainer">
+                <div id="editarDadosContainer" >
 
                     <div>
                         <button id = "closeModal" onClick={ToggleModalEditData}>
@@ -289,7 +292,7 @@ function EditarDadosEmp()
                             <form 
                                 id="formContainerModalEdit" 
                                 onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); ToggleModalEditData();}}
-                                onReset={ToggleModalEditData}>
+                               >
                                 <div id="formTitle1">
                                     <h1>MEUS DADOS</h1>
                                 </div>

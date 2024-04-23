@@ -18,7 +18,7 @@ o modal vai continuar na mesma posição.*/
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 5;
+    z-index: 1122;
 }
 
 /*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
@@ -30,7 +30,7 @@ o modal vai continuar na mesma posição.*/
     background-color: #38005AA1;
     justify-content: center;
     align-items: center;
-    z-index: 22;
+    
     
 }
    
