@@ -1,7 +1,9 @@
+/* Importando fontes do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
 
-*{
+/* Definições gerais */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -9,20 +11,49 @@
     font-size: 16px;
 }
 
-/*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
-o modal vai continuar na mesma posição.*/
-#back
-{
-    position: fixed;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
+body {
+    background-color: #EBCBFF;
 }
 
-/*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
-#meusCartoesCentralize
-{
+/* Container principal */
+.boxInformationsC {
+    background-color: #ffff;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10em;
+    padding-right: 10em;
+}
+
+/* Botão "Cadastre um novo cartão" */
+.novoCartaoButton {
+    width: 322px;
+    height: 33px;
+    border-radius: 20px; /* Bordas BEM arredondadas */
+    border: 2px solid #8A00DE; /* Cor da borda */
+    background-color: #FFFFFF; /* Background branco */
+    color: #CC78FF; /* Cor da fonte */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px; /* Ajuste o espaçamento conforme necessário */
+}
+
+.novoCartaoButton:hover {
+    background-color: #8A00DE; /* Altera o background ao passar o mouse */
+    color: #FFFFFF; /* Altera a cor da fonte ao passar o mouse */
+}
+
+.novoCartao {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    flex-direction: column; /* Garante que os elementos sejam dispostos em coluna */
+}
+
+
+/* Centralizando todos os elementos do componente no centro da tela */
+#meusCartoesCentralize {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -30,27 +61,21 @@ o modal vai continuar na mesma posição.*/
     justify-content: center;
     align-items: center;
     z-index: 22;
-  
 }
-   
-/*Definindo o tamanho do container do login*/
-#meusCartoesContainer
-{
+
+/* Definindo o tamanho do container do login */
+#meusCartoesContainer {
     margin-top: -250px;
     width: 45%;
     height: 50%;
     z-index: 15;
 }
 
-
-
-/*Configurando o elemento responsável pelos inputs de login*/
-#meusCartoesBody
-{
+/* Configurando o elemento responsável pelos inputs de login */
+#meusCartoesBody {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     background-color: #ffffff;
-    /* padding: 4rem 2.3rem  1.3rem 2.3rem; */
     padding: .5rem 3rem;
     z-index: 22;
     display: flex;
@@ -58,156 +83,91 @@ o modal vai continuar na mesma posição.*/
     gap: 20px;
 }
 
-#centralizeSides
-{
+#centralizeSides {
     display: flex;
     gap: 35px;
 }
 
-#leftSide
-{
+#leftSide {
     display: flex;
     margin-bottom: 25px;
     flex-direction: column;
     width: 25%;
 }
 
-#rightSide
-{
+#rightSide {
     width: 100%;
 }
 
-
-
-/*Dando um espaço titulo dos inputs.*/
-#inputs
-{
+/* Dando um espaço título dos inputs */
+#inputs {
     margin-top: 15px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
 }
 
-/*Configurando a aparencia dos inputs*/
-.meuPlanoInputs
-{
+/* Configurando a aparência dos inputs */
+.meuPlanoInputs {
     display: flex;
-    justify-content: center;
-   
 }
 
-.meuPlanoInputs input
-{
+.meuPlanoInputs input {
     background-color: #F3F3F3;
     border-radius: 23px;
     border-color: #f3f3f300;
     padding: .2rem .6rem;
 }
 
-.nameInput
-{
-    color: #8A00DE;;
+.nameInput {
+    color: #8A00DE;
     font-weight: 700;  
     margin-right: 15px;
 }
 
-
-
-#bandeira
-{
+#bandeira {
     background-color: #F3F3F3;
     border-radius: 23px;
     border-color: #f3f3f300;
     padding: .2rem .6rem;
 }
 
-/*Centralizando os botões do login*/
-#meusCartoesButtons
-{
+/* Centralizando os botões do login */
+#meusCartoesButtons {
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2px;
-    margin-bottom: 15px
+    margin-bottom: 15px;
 }
-/*Estilizando os botões de longar e de não possuir cadastro*/
-#meusCartoesButtons button
-{
+
+/* Estilizando os botões de logar e de não possuir cadastro */
+#meusCartoesButtons button {
     font-weight: 700;
     cursor: pointer;
     background-color: #FF7D1E;
     color: white;
-    padding: .1rem 4rem;
-   
-    
+    padding: .1rem 4rem; 
 }
 
-#meusCartoesButtons #cancel
-{
+#meusCartoesButtons #cancel {
     background-color: #CC78FF;
-}
-
-/*Os elementos com a classe hide, devem ficar invisiveis*/
-#meusCartoesCentralize.hide, #back.hide
-{
-    opacity: 0;
-    pointer-events: none;
-}
-
-/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
-Aparecer e desaparecer*/
-#meusCartoesCentralize, #back
-{
-    opacity: 1;
-    transition: .5s;
-    pointer-events: all;
-}
-
-/*Estilizando os botões responsáveis por abrir e fechar o modal*/
-#openModal
-{
-    margin-top: 25px;
-    margin-left: 5px;
-    cursor: pointer;
-}
-
-#closeModal
-{
-    position: relative;
-    border-radius: 50px;
-    padding: .5rem .7rem;
-    background-color: #ffffff00;
-    transition: .2s;
-    margin-left: 100%;
-    top: 10px !important;
-}
-
-#closeModal img{
-    width: 1.5rem;
-}
-
-#closeModal:hover
-{
-    transition: .2s;
-    background-color: #FF7D1E;
 }
 
 #meusCartoesButtonsignUp {
     text-decoration: none !important;
 }
 
-/*Configuração do campo Plano escolhido*/
-.selectField label
-{
+/* Configuração do campo Plano escolhido */
+.selectField label {
     color: #8A00DE;
     font-size: 16px;
     font-weight: 700;
     margin-right: 15px;
 }
 
-.selectField select
-{
+.selectField select {
     margin-top: 8px;
     background: #CC78FF;
     color: white;
@@ -218,135 +178,77 @@ Aparecer e desaparecer*/
     padding: .2rem .5rem;
     text-align: left;
     cursor: pointer;
-    width: 135px;
-   
+    width: 135px; 
 }
 
-.selectField div
-{
+.selectField div {
     color: #CC78FF;
     margin-top: 15px;
     margin-left: 10px;
 }
 
-.selectField2
-{
+.selectField2 {
     display: flex;
-  
 }
 
-.selectField2 label
-{
+.selectField2 label {
     color: #8A00DE;
     font-size: 16px;
     font-weight: 700;
     margin-right: 15px;
 }
 
-.selectField2 select
-{
+.selectField2 select {
     width: 80px;
 }
 
-.meuPlanoTitulo
-{
+.meuPlanoTitulo {
     color: #FF7D1E;
     font-size: 18px;
     font-weight: 700;
-   
 }
 
-
-@media screen and (max-width: 1260px){
-   
-    #inputNome, #inputNumero
-    {
+/* Responsividade */
+@media screen and (max-width: 1260px) {
+    #inputNome, #inputNumero {
         width: 90%;
     }
-    #rightSide
-    {
+    #rightSide {
         width: 100%;
     }
 }
 
-@media screen and (max-width: 1249px){
-
-   #rightSide
-   {
-    width: 110%;
-   }
-   #meusCartoesContainer
-   {
-     width: 55%;
-   }
-}
-
-
-@media screen and (max-width: 1200px){
-   
-
-}
-
-@media screen and (max-width: 1024px){
-   
-    #meusCartoesContainer
-    {
-      width: 65%;
+@media screen and (max-width: 1249px) {
+    #rightSide {
+        width: 110%;
     }
-   
+    #meusCartoesContainer {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #meusCartoesContainer {
+        width: 65%;
+    }
 }
 
 /* Tamanho criado por conta do componente carrossel */
-@media screen and (max-width: 840px){
-   
-  
-    #inputNome, #inputNumero
-    {
+@media screen and (max-width: 840px) {
+    #inputNome, #inputNumero {
         width: 90%;
     }
-   
-
 }
-/* Tamanho criado por conta do componente carrossel */
 
-@media screen and (max-width: 768px){
-    #meusCartoesContainer
-    {
-      width: 75%;
+@media screen and (max-width: 768px) {
+    #meusCartoesContainer {
+        width: 75%;
     }
 }
-@media screen and (max-width: 649px){
-  
 
-    #meusCartoesButtons
-    {
+@media screen and (max-width: 649px) {
+    #meusCartoesButtons {
         justify-content: center;
         gap:15px;
-        
     }
-}
-@media screen and (max-width: 624px){
-    #meusCartoesContainer
-    {
-      width: 75%;
-    }
-}
-
-
-@media screen and (max-width: 560px){
-  
-}
-
-@media screen and (max-width: 480px){
-
-
-  
-}
-
-@media screen and (max-width: 320px){
-
-}
-
-@media screen and (max-width: 280px){
-
 }
