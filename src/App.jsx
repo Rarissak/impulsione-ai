@@ -17,6 +17,7 @@ import PerfilParceiro from './pages/Parceiro/perfilParceiro/index.jsx';
 // import EsqueciSenha from './pages/UsuarioComum/forgotPassword/esqueciSenha.jsx';
 import Pesquisa from './pages/UsuarioComum/Pesquisa/pesquisa.jsx';
 import MeusCartoes from './pages/UsuarioComum/meusCartoes/meusCartoes.jsx';
+import MeuPlano from './pages/UsuarioComum/meuPlano/meuPlano.jsx';
 import UserProfile from './components/userProfile/userProfile.jsx';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
 
         <Route path='/pesquisa' Component={Pesquisa} />
         <Route path='/meusCartoes' Component={MeusCartoes} />
+        <Route path='/meuPlano' Component={MeuPlano} />
       </Routes>
     </Router>
   );
