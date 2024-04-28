@@ -91,7 +91,7 @@ const MeusCartoes = () => {
             <Header />
             <MenuLateral></MenuLateral>
 
-            <body>
+            <body id='body'>
                 <nav className='linksExternos' id='barraLinks'>
                     <BarraLinkExterno
                         id='fundoRoxoClaro'
@@ -117,7 +117,7 @@ const MeusCartoes = () => {
                                 <SelecionarCartao
                                     key={cartao.id}
                                     id={cartao.id}
-                                    textoBotao={`${cartao.texto.substring(0, 3)} - ${cartao.nome}`}
+                                    textoBotao={`${cartao.texto.substring(0, 4)} - ${cartao.nome}`}
                                     selecionado={botaoSelecionado === cartao.id}
                                     onClick={() => handleSelecionarBotao(cartao.id)}
                                     onTrashIconClick={() => handleExcluirCartao(cartao.id)}
