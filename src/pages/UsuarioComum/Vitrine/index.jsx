@@ -55,7 +55,7 @@ function Vitrine(){
                         <button id='favoritos' onClick={Favoritar}>
                             <img id='botaoFavoritar' src={HeartLine}/>
                         </button>
-                        <h1 className='title'>Trufas do Sim</h1>
+                        <h1 className='title'>Do Sim</h1>
                         <p>Nosso propósito é juntar todos os recursos para nosso casamento, então além de você comer uma trufa deliciosa e feita com muito amor & oração, você ainda vai tá ajudando a investir no nosso dia do sim!!!</p>
                         <a href='#bloco2' className='buttonInfo'>VER PRODUTOS</a>
                     </div>

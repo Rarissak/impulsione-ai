@@ -1,17 +1,18 @@
 #negocio {
-    width: 25em;
-    height: 11em;
+    width: 28em;
+    /* height: 11em; */
     background-color: white;
-    border-radius: 2em;
+    border-radius: 10px;
     padding: 1.25em;
     box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     overflow: hidden;
+    justify-content: space-between !important;
 }
 
 #negocio img {
-    border-radius: 0.625em;
+    border-radius: 10px;
     width: 9.32em;
     height: 9.32em;
     object-fit: cover;
@@ -27,6 +28,24 @@
 
 #infoNegocio {
     flex-grow: 1;
+}
+
+.favoritarNegocio{
+    width: 2rem !important;
+    height: 2rem !important;
+}
+
+#botao-coracao{
+    width: 2rem !important;
+    height: 2rem !important;
+}
+
+#texto-limitado{
+    display: -webkit-box; /* Compatibilidade com navegadores antigos */
+    display: -webkit-line-clamp; /* Compatibilidade com navegadores antigos */
+    -webkit-box-orient: vertical !important; /* Define a direção do layout */
+    line-clamp: 2 !important; /* Define o número máximo de linhas */
+    overflow: hidden; /* Oculta o texto que excede o limite */
 }
 
 #name {

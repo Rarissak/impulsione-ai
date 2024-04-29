@@ -5,7 +5,9 @@ import EmptyHeart from "../../assets/emptyHeartIcon.svg";
 import FotoExemplo from "../../assets/fotoExemplo.jpg";
 import TitleBorda from '../featured/titleBorda.jsx'
 import Gato from '../../assets/gato.webp';
-import Trufa from '../../assets/trufasDoSim.png'
+import Trufa from '../../assets/trufasDoSim.png';
+import Negocio from "../negocio/negocio.jsx";
+
 // função principal do arquivo
 
 
@@ -121,10 +123,24 @@ export function Recomendacoes()
             </div>
 
             <div id="recomendados">
-                <Recomendado imgReco={FotoExemplo} recoTitle={'Tapiocária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas'} recoIcon={EmptyHeart}/>
+                <Negocio
+                    link={'/vitrine'} 
+                    img={Trufa}
+                    name={'Do Sim'}
+                    nicho={'Gastronomia'}
+                    descricao={'Nosso propósito é juntar todos os recursos para nosso casamento, então além de você comer uma trufa deliciosa e feita com muito amor & oração, você ainda vai tá ajudando a investir no nosso dia do sim!!!'}>
+                </Negocio>
+                <Negocio
+                    link={'/vitrine'} 
+                    img={Trufa}
+                    name={'Do Sim'}
+                    nicho={'Gastronomia'}
+                    descricao={'Nosso propósito é juntar todos os recursos para nosso casamento, então além de você comer uma trufa deliciosa e feita com muito amor & oração, você ainda vai tá ajudando a investir no nosso dia do sim!!!'}>
+                </Negocio>
+                {/* <Recomendado imgReco={FotoExemplo} recoTitle={'Tapiocária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas'} recoIcon={EmptyHeart}/>
                 <Recomendado imgReco={Gato} recoTitle={'Tapiocária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas, asdmasdaksd asjdkajsdkjasdk asjdkajsdkasd'} recoIcon={EmptyHeart}/>
                 <Recomendado imgReco={Trufa} recoTitle={'Trufária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas'} recoIcon={EmptyHeart}/>
-                <Recomendado imgReco={FotoExemplo} recoTitle={'Tapiocária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas'} recoIcon={EmptyHeart}/>
+                <Recomendado imgReco={FotoExemplo} recoTitle={'Tapiocária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas'} recoIcon={EmptyHeart}/> */}
             </div>
         </div>
     );

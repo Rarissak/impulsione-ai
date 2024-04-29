@@ -13,14 +13,14 @@ function Negocio({link, img, name, nicho, descricao}){
                 <div id='infoNegocio'>
                     <h3 id='name'>{name}</h3>
                     <p>{nicho}</p>
-                    <p>{descricao}</p>
+                    <p id="texto-limitado">{descricao}</p>
                 </div>
             </Link>
-            {/* <div id='botao-coracao'>
+            <div id='botao-coracao'>
                 <button id='favoritos' onClick={Favoritar}>
-                    <img id='botaoFavoritar' src={HeartLine}/>
+                    <img id='botaoFavoritar' className='favoritarNegocio' src={HeartLine}/>
                 </button>
-            </div> */}
+            </div>
         </div> 
     )
 }
