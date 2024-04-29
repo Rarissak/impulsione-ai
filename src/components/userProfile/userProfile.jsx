@@ -125,7 +125,6 @@ export function Recomendacoes()
                 <Recomendado imgReco={Gato} recoTitle={'Tapiocária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas, asdmasdaksd asjdkajsdkjasdk asjdkajsdkasd'} recoIcon={EmptyHeart}/>
                 <Recomendado imgReco={Trufa} recoTitle={'Trufária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas'} recoIcon={EmptyHeart}/>
                 <Recomendado imgReco={FotoExemplo} recoTitle={'Tapiocária'} recoTipoEstabe={'Barraca'} recoDesc={'Uma pequena loja em busca de novas vendas'} recoIcon={EmptyHeart}/>
-          
             </div>
         </div>
     );
@@ -139,15 +138,14 @@ function UserProfile()
     return(
             <div id="componente">
                <div id="corFundo">
-                <div id="form">
+                <div id="formUserPro">
                     
-                    <div id="boxForm">
+                    <div id="boxFormUserPro">
 
                          <UserData/>
 
                          <Vitrine/>
 
-                            
                     </div>
 
                 </div>
