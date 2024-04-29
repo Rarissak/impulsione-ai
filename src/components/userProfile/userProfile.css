@@ -19,7 +19,7 @@ html{
 }
 
     /*Camada dos meus dados e vitrine*/
-#boxForm
+#boxFormUserPro
 {
     background-color: #FFF9F5;
     display: flex;
@@ -36,8 +36,6 @@ html{
 {
     background-color:#FFF9F5;
 }
-
-
 
 /*Configurando a fonte do loginHeader*/
 #formTitle1 
@@ -58,9 +56,9 @@ html{
 
 
 
-#form
+#formUserPro
 {
-  width: 100vw;
+  max-width: 100vw;
   margin-top: 5rem;
   display: flex;
   justify-content: center;
@@ -108,7 +106,7 @@ html{
 
 
 /*Definindo o formato e cor do fundo do input*/
-#form input
+#formUserPro input
 {
     background-color: #f3f3f3;
     border-radius: 25px;
@@ -156,17 +154,24 @@ html{
 
 #recomendacoes
 {
-    margin: 3rem 8rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
     transition: .2s;
-   
+    flex-wrap: wrap;
+}
+
+#recomTitle
+{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0rem 6rem;
+    align-items: center;
 }
 
 #recomendados
 {
+    margin: 3rem 8rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -193,6 +198,8 @@ html{
     max-width: 455px;
     
 }
+
+
 
 .recomendado button
 {
@@ -232,7 +239,6 @@ html{
     font-size: 15px;
     font-weight: 400;
     color: #595959;
-    background-color: blue;
     text-align: justify;
 
 }
@@ -359,15 +365,15 @@ html{
 }
 
 @media screen and (max-width: 1200px){
-
+    #recomendacoes
+    {
+        margin: 2rem 6rem;
+    }
    
 }
 
 @media screen and (max-width: 1124px){
-    #recomendacoes
-    {
-        margin: 2rem 9rem;
-    }
+ 
 }
 
 @media screen and (max-width: 1024px){
@@ -378,17 +384,12 @@ html{
 }
 
 @media screen and (max-width: 920px){
-    #vitrineContainer
-    {
-        margin-left: -30px;
-    }
-    #boxForm
-    {
-        justify-content: center;
-    }
+   
+
     #formContainer
     {
         width: 50%;
+        flex-direction: column;
     }
   
    
@@ -407,11 +408,8 @@ html{
         margin: 2rem 5rem;
     }
    
-    .boxForm
-    {
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+   
+  
 }
 
 @media screen and (max-width: 667px){
@@ -424,11 +422,7 @@ html{
 }
 @media screen and (max-width: 560px){
 
-    #titleBorda
-    {
-        width: 99%;
-    }
-
+  
     #recomendacoes
     {
         margin: .1rem;
@@ -440,6 +434,11 @@ html{
         margin: .5rem;
         margin-top: 25px;
     }
+    
+    #recomTitle
+    {
+        padding: 0rem 2.5rem;
+    }
 }
 
 @media screen and (max-width: 536px){
@@ -448,11 +447,12 @@ html{
         width: 100%;
     }
 
-   
+  
 
 }
 
 @media screen and (max-width: 480px){
+   
    
 }
 
@@ -475,4 +475,3 @@ html{
 @media screen and (max-width: 280px){
 	
 }
-
