@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import './editarDadosEmp.css';
 // import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
 // Importando o icon do botão de fechar o modal.
-import iconModalClose from '../../../assets/iconLoginModalClose.svg';
-import BoxInfo from "../../../components/boxInfo/boxInfo";
-import InstagramIcon from '../../../assets/instagramRoxo.svg';
-import FacebookIcon from '../../../assets/facebookRoxo.svg';
-import ProfileImg from '../../../assets/trufasDoSim.png';
-import FotoExemplo from "../../../assets/trufasDoSim.png"
-import { PegandoDados, MostrarDadosAtualizados } from "../../../components/meusDados/MeusDados";
+import iconModalClose from '../../assets/iconLoginModalClose.svg';
+import BoxInfo from "../boxInfo/boxInfo";
+import InstagramIcon from '../../assets/instagramRoxo.svg';
+import FacebookIcon from '../../assets/facebookRoxo.svg';
+// import ProfileImg from '../../../assets/trufasDoSim.png';
+import FotoExemplo from "../../assets/trufasDoSim.png"
+import { PegandoDados, MostrarDadosAtualizados } from "../meusDados/MeusDados";
+
 
 //Função de fechar o modal. Ele vai adicionar a classe hide na div editarDadosCentralize, 
 //que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
@@ -262,8 +263,6 @@ export function PegandoDadosAtualizados()
 
 function EditarDadosEmp()
 {
-    
-
     useEffect(() => {
 
         MostrarDados();
@@ -293,10 +292,10 @@ function EditarDadosEmp()
                                 id="formContainerModalEdit" 
                                 onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); ToggleModalEditData();}}
                                >
-                                <div id="formTitle1">
+                                {/* <div id="formTitle1">
                                     <h1>MEUS DADOS</h1>
                                 </div>
-                                <h1  id="formTitle">Meus Dados</h1>
+                                <h1  id="formTitle">Meus Dados</h1> */}
                                 
                                 <fieldset id="fieldSetFoto">
                                     <div id="separarCampos">
@@ -314,7 +313,7 @@ function EditarDadosEmp()
                                     </div>
                                     
                                         
-                                        <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil2"/>
+                                        {/* <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil2"/> */}
                                         <div className="fieldType1" style={{marginBottom: '15px', marginTop: '15px'}}>
                                         <span className="nameField">Escolhar uma foto</span>
                                         <input type="file" id="inputImg" src={FotoExemplo}/>

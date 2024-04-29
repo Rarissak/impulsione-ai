@@ -4,7 +4,7 @@ import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
 import ProfileImg from '../../assets/trufasDoSim.png';
 
-import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
+import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../editarDadosEmp/editarDadosEmp.jsx';
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
@@ -237,11 +237,9 @@ function MeusDados()
                                     <span className="conteudo" id="campoDataNascimento">00/00/0000</span>
                                 </div> 
                                     
-                                    </div>
-                                    
-                                        
-                                    <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil"/>
-                                </fieldset>
+                            </div>                
+                            <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil"/>
+                        </fieldset>
                                     
                         {/*Campo das informações pessoais*/}
                         <fieldset className = "fieldSetConfig">        
