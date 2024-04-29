@@ -16,7 +16,7 @@ import Admin from '../src/pages/Admin/index.jsx';
 import PerfilParceiro from './pages/Parceiro/perfilParceiro/index.jsx';
 // import EsqueciSenha from './pages/UsuarioComum/forgotPassword/esqueciSenha.jsx';
 import Pesquisa from './pages/UsuarioComum/Pesquisa/pesquisa.jsx';
-import UserProfile from './components/userProfile/userProfile.jsx';
+import PerfilUsuario from './pages/UsuarioComum/PerfilUsuario/perfilUsuario.jsx';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         <Route path='/cadastroUsuario' Component={CadastroUsuario} />
         <Route path='/cadastroParceiro' Component={CadastroParceiro} />
 
-        <Route path='/perfilUsuario' Component={UserProfile}/>
+        <Route path='/perfilUsuario' Component={PerfilUsuario}/>
 
         <Route path='/vitrine' Component={Vitrine} />
         <Route path='/esqueciSenha' Component={EsqueciSenha}/>
