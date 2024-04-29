@@ -11,7 +11,7 @@
 
 /*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
 o modal vai continuar na mesma posição.*/
-#back
+#backLogin
 {
     position: fixed;
     top:50%;
@@ -148,7 +148,7 @@ o modal vai continuar na mesma posição.*/
 
 
 /*Os elementos com a classe hide, devem ficar invisiveis*/
-#loginCentralize.hide, #back.hide
+#loginCentralize.hideLogin, #backLogin.hideLogin
 {
     opacity: 0;
     pointer-events: none;
@@ -156,7 +156,7 @@ o modal vai continuar na mesma posição.*/
 
 /*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
 Aparecer e desaparecer*/
-#loginCentralize, #back
+#loginCentralize, #backLogin
 {
     opacity: 1;
     transition: .5s;

@@ -12,17 +12,17 @@
 
 /*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
 o modal vai continuar na mesma posição.*/
-#back
+#backEditarDados
 {
     position: fixed;
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 5;
+    z-index: 1122;
 }
 
 /*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
-#loginCentralize
+#editarDadosCentralize
 {
     width: 100vw;
     height: 100vh;
@@ -30,12 +30,12 @@ o modal vai continuar na mesma posição.*/
     background-color: #38005AA1;
     justify-content: center;
     align-items: center;
-    z-index: 22;
+    
     
 }
    
 /*Definindo o tamanho do container do login*/
-#loginContainer
+#editarDadosContainer
 {
     margin-top: -145px;
     width: 60%;
@@ -52,7 +52,7 @@ o modal vai continuar na mesma posição.*/
 }
 
 
-#formContainerModal input, #formContainerModal select
+#formContainerModalEdit input, #formContainerModalEdit select
 {
     background-color: #f3f3f3;
     border-radius: 25px;
@@ -60,12 +60,12 @@ o modal vai continuar na mesma posição.*/
     padding: .2rem .6rem;
 }
 
-#formContainerModal fieldset
+#formContainerModalEdit fieldset
 {
     border-color: #ce560000;
 }
 
-#formContainerModal
+#formContainerModalEdit
 {
    margin-bottom: 255px;
    
@@ -73,7 +73,7 @@ o modal vai continuar na mesma posição.*/
 
 
 
-/*Colocando o elemento loginHeader em cima do loginBody*/
+/*Colocando o elemento loginHeader em cima do editarDadosBody*/
 #loginHeader
 {
     position: relative;
@@ -108,7 +108,7 @@ o modal vai continuar na mesma posição.*/
 }
 
 /*Configurando o elemento responsável pelos inputs de login*/
-#loginBody
+#editarDadosBody
 {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -200,7 +200,7 @@ o modal vai continuar na mesma posição.*/
 
 
 /*Os elementos com a classe hide, devem ficar invisiveis*/
-#loginCentralize.hide, #back.hide
+#editarDadosCentralize.hideEditarDados, #backEditarDados.hideEditarDados
 {
     opacity: 0;
     pointer-events: none;
@@ -208,7 +208,7 @@ o modal vai continuar na mesma posição.*/
 
 /*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
 Aparecer e desaparecer*/
-#loginCentralize, #back
+#editarDadosCentralize, #backEditarDados
 {
     opacity: 1;
     transition: .5s;
@@ -265,7 +265,7 @@ Aparecer e desaparecer*/
 /* Tamanho criado por conta do componente carrossel */
 
 @media screen and (max-width: 768px){
-    #loginContainer
+    #editarDadosContainer
     {
 
         width: 46%;
@@ -274,7 +274,7 @@ Aparecer e desaparecer*/
 }
 
 @media screen and (max-width: 560px){
-    #loginContainer
+    #editarDadosContainer
     {
 
         width: 52%;
@@ -283,7 +283,7 @@ Aparecer e desaparecer*/
 }
 
 @media screen and (max-width: 480px){
-    #loginContainer
+    #editarDadosContainer
     {
 
         width: 56%;
@@ -292,7 +292,7 @@ Aparecer e desaparecer*/
 }
 
 @media screen and (max-width: 320px){
-    #loginContainer
+    #editarDadosContainer
     {
 
         width: 62%;
@@ -301,7 +301,7 @@ Aparecer e desaparecer*/
 }
 
 @media screen and (max-width: 280px){
-    #loginContainer
+    #editarDadosContainer
     {
 
         width: 66%;

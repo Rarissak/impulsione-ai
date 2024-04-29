@@ -14,9 +14,9 @@ que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
 export function ToggleModal()
 {
     const loginCentralize = document.querySelector("#loginCentralize");
-    loginCentralize.classList.toggle("hide");
-    const back = document.querySelector("#back");
-    back.classList.toggle("hide");
+    loginCentralize.classList.toggle("hideLogin");
+    const back = document.querySelector("#backLogin");
+    back.classList.toggle("hideLogin");
 }
 
 
@@ -51,9 +51,9 @@ function Login()
     // };
 
     return(
-        <div id="back" className="hide">
+        <div id="backLogin" className="hideLogin">
             
-            <div id="loginCentralize" className="hide" >
+            <div id="loginCentralize" className="hideLogin" >
 
                 <div id="loginContainer">
 
@@ -63,7 +63,6 @@ function Login()
                         </button>
                     </div>
                                        
-                    {/* <BoxInfo title={'Login'} idBox='titleBoxBranco' idModal='loginBox' idDivisor='divisorBranco'></BoxInfo> */}
                     <BoxInfo title={'Login'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
                     <div id="loginBody">
 

@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
-import ProfileImg from '../../assets/gato.webp';
+import ProfileImg from '../../assets/trufasDoSim.png';
 
-import EditarDadosEmp, {ToggleModal, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
+import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../../pages/UsuarioComum/editarDadosEmp/editarDadosEmp.jsx';
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
@@ -205,119 +205,147 @@ export function MostrarDadosAtualizados() {
 
 
 // função principal do arquivo
-function MeusDados(){
+function MeusDados()
+{
+    useEffect(() => {
+        ToggleModalEditData();
+      }, []);
+   
 
-    return(    
-        // <div id="form"  className="corVermelha">
-                   
-            <div>
+    return(
+        
+        <div>  
+            {<EditarDadosEmp/>}
+            <div id="form">    
+                <div>
+                    {/*Contém todo o formulário e seus campos*/}
+                    <form id="formContainer" className="boxMeusDados">
+                        <div id="formTitle1">
+                            <h1>MEUS DADOS</h1>
+                        </div>                            
+                        <fieldset id="fieldSetFoto">
+                            <div id="separarCampos">
+                                {/*NOME COMPLETO*/}
+                                <div className="fieldType1">
+                                    <span className="nameField">Nome Completo</span>
+                                    <span className="conteudo" id="campoNome">Nome Completo ncncnnnnl</span>
+                                </div>
 
-                {/*Contém todo o formulário e seus campos*/}
-                <form id="formContainer" className="boxMeusDados">
-                    <div id="formTitle1">
-                        <h1>MEUS DADOS</h1>
-                    </div>                            
-                    <fieldset id="fieldSetFoto">
-                        <div id="separarCampos">
-                            {/*NOME COMPLETO*/}
+                                {/*DATA DE NASCIMENTO*/}
+                                <div className="fieldType1">
+                                    <span className="nameField">Data de Nascimento</span>
+                                    <span className="conteudo" id="campoDataNascimento">00/00/0000</span>
+                                </div> 
+                                    
+                                    </div>
+                                    
+                                        
+                                    <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil"/>
+                                </fieldset>
+                                    
+                        {/*Campo das informações pessoais*/}
+                        <fieldset className = "fieldSetConfig">        
+                            {/*CPF*/}
                             <div className="fieldType1">
-                                <span className="nameField">Nome Completo</span>
-                                <span className="conteudo" id="campoNome">Nome Completo ncncnnnnl</span>
+                                <span className="nameField">CPF</span>
+                                <span className="conteudo" id="campoCPF">000.000.000-00</span>
                             </div>
 
-                            {/*DATA DE NASCIMENTO*/}
+                            {/*Endereço completo*/}
                             <div className="fieldType1">
-                                <span className="nameField">Data de Nascimento</span>
-                                <span className="conteudo" id="campoDataNascimento">00/00/0000</span>
-                            </div> 
-                                   
-                        </div>
-                                       
-                        <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil"/>
-
-                    </fieldset>
+                                <span className="nameField">Endereço Completo</span>
+                                <span className="conteudo" id="campoEndereco">Rua/Avenida, nº 00 - Bairro, Cidade - UF</span>
+                            </div>
+                        </fieldset>
                                 
-                    {/*Campo das informações pessoais*/}
-                    <fieldset className = "fieldSetConfig">        
-                        {/*CPF*/}
-                        <div className="fieldType1">
-                            <span className="nameField">CPF</span>
-                            <span className="conteudo" id="campoCPF">000.000.000-00</span>
-                        </div>
+                        {/*CAMPO DA SENHA*/}
+                        <fieldset id="fieldSetNegocio" className=" corLaranja ">
+                            {/*Nome do Negócio*/}
+                            <div className="fieldType1">
+                                <span className="nameField">Nome do negócio</span>
+                                <span className="conteudo" id="campoNomeNegocio">Gastronomia</span>    
+                            </div>
 
-                        {/*Endereço completo*/}
-                        <div className="fieldType1">
-                            <span className="nameField">Endereço Completo</span>
-                            <span className="conteudo" id="campoEndereco">Rua/Avenida, nº 00 - Bairro, Cidade - UF</span>
-                        </div>
-                    </fieldset>
+                            {/*Nicho*/}
+                            <div className="fieldType1">
+                                <span className="nameField">Nicho do Trabalho</span>
+                                <span className="conteudo" id="campoNicho">Gastronomia</span>    
+                            </div>
+                                    
+                            {/*Modalidade de Serviço*/}
+                            <div className="fieldType1">
+                                <span className="nameField">Modalidade de Serviço</span>
+                                <span className="conteudo" id="campoModalidade">Híbrido</span>    
+                            </div>
+                                
+                            {/*Site do Negócio*/}
+                            <div className="fieldType1">
+                                <span className="nameField">Site do Negócio</span>
+                                <span className="conteudo" id="campoSite">Não possui</span>    
+                            </div>
+                                    
+                                    {/*MEI*/}
+                                    <div className="fieldType1">
+                                        <span className="nameField">MEI</span>
+                                        <span className="conteudo" id="campoMEI">12.345.678/0001-90</span>    
+                                    </div>
+                                </fieldset>
+
+                        <fieldset id="fieldSetEmail">
+                            {/*Email Cadastrado*/}
+                            <div className="fieldType1">
+                                <span className="nameField">Email Cadastrado</span>
+                                <span className="conteudo" id="campoEmail">algumacoisa@gmail.com</span>    
+                            </div>
+
+                            {/*Número de Contato*/}
+                            <div className="fieldType1">
+                                <span className="nameField">Número de Contato</span>
+                                <span className="conteudo" id="campoTel">(81) 40028922</span>    
+                            </div>
+                        </fieldset>
+                                
+                        <fieldset id="fieldSetIcon">                
+                            {/*Instagram*/}
+                            <div className="fieldType2 iconCenter">
+                                <img src={InstagramIcon}  alt="Icone do instagram" />
+                                <span className="conteudo" id="campoInsta">@perfil do instagram</span>    
+                            </div>
+
+                            {/*Facebook*/}
+                            <div className="fieldType2 iconCenter">
+                                <img src={FacebookIcon}  alt="Icone do facebook"/>
+                                <span className="conteudo" id="campoFace">perfil do facebook</span>    
+                            </div>                    
+                        </fieldset>
+
+                                    <div className="buttonsFormEdit">  
+                                            <button id="editButton" type="button" onClick={() => {
+                                            PegandoDados(); ToggleModalEditData();
+                                            }}>EDITAR DADOS</button>
+                                            
+                                    </div>
+                                            
                             
-                    {/*CAMPO DA SENHA*/}
-                    <fieldset id="fieldSetNegocio" className=" corLaranja ">
-                        {/*Nome do Negócio*/}
-                        <div className="fieldType1">
-                            <span className="nameField">Nome do negócio</span>
-                            <span className="conteudo" id="campoNomeNegocio">Gastronomia</span>    
-                        </div>
 
-                        {/*Nicho*/}
-                        <div className="fieldType1">
-                            <span className="nameField">Nicho do Trabalho</span>
-                            <span className="conteudo" id="campoNicho">Gastronomia</span>    
-                        </div>
-                                
-                        {/*Modalidade de Serviço*/}
-                        <div className="fieldType1">
-                            <span className="nameField">Modalidade de Serviço</span>
-                            <span className="conteudo" id="campoModalidade">Híbrido</span>    
-                        </div>
-                              
-                        {/*Site do Negócio*/}
-                        <div className="fieldType1">
-                            <span className="nameField">Site do Negócio</span>
-                            <span className="conteudo" id="campoSite">Não possui</span>    
-                        </div>
-                                
-                        {/*MEI*/}
-                        <div className="fieldType1">
-                            <span className="nameField">MEI</span>
-                            <span className="conteudo" id="campoMEI">000000000000000</span>    
-                        </div>
-                    </fieldset>
+                                <fieldset id="fieldSetConfigPlano" className=" corLaranja">
+                                    {/*Plano Escolhido*/}
+                                    <div className="fieldType1">
+                                        <span className="nameField">Plano escolhido</span>
+                                        <span className="conteudo">Silver</span>    
+                                    </div>
 
-                    <fieldset id="fieldSetEmail">
-                        {/*Email Cadastrado*/}
-                        <div className="fieldType1">
-                            <span className="nameField">Email Cadastrado</span>
-                            <span className="conteudo" id="campoEmail">algumacoisa@gmail.com</span>    
-                        </div>
+                                    {/*Cartão Cadastrado*/}
+                                    <div className="fieldType1">
+                                        <span className="nameField">Cartão cadastrado</span>
+                                        <span className="conteudo">(Nome do cartão)</span>    
+                                    </div>
 
-                        {/*Número de Contato*/}
-                        <div className="fieldType1">
-                            <span className="nameField">Número de Contato</span>
-                            <span className="conteudo" id="campoTel">(81) 40028922</span>    
-                        </div>
-                    </fieldset>
-                            
-                    <fieldset id="fieldSetIcon">                
-                        {/*Instagram*/}
-                        <div className="fieldType2 iconCenter">
-                            <img src={InstagramIcon}  alt="Icone do instagram" />
-                            <span className="conteudo" id="campoInsta">@perfil do instagram</span>    
-                        </div>
-
-                        {/*Facebook*/}
-                        <div className="fieldType2 iconCenter">
-                            <img src={FacebookIcon}  alt="Icone do facebook"/>
-                            <span className="conteudo" id="campoFace">perfil do facebook</span>    
-                        </div>                    
-                    </fieldset>
-
-                    <div className="buttonsFormEdit">  
-                        <button id="editButton" type="button" onClick={() => {
-                            PegandoDados(); ToggleModal();
-                            }}>EDITAR DADOS
-                        </button>
+                                    <div className="buttonsForm">  
+                                        <button id="alterarButton">ALTERAR PLANO</button>
+                                    </div>
+                                </fieldset>
+                    </form>
                     </div>
 
                     <fieldset id="fieldSetConfigPlano" className=" corLaranja">
@@ -337,8 +365,8 @@ function MeusDados(){
                             <button id="alterarButton">ALTERAR PLANO</button>
                         </div>
                     </fieldset>
-                </form>
-            </div>
+                </div>
+        </div>
     );
 }
 

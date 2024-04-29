@@ -11,7 +11,7 @@
 
 /*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
 o modal vai continuar na mesma posição.*/
-#back
+#backCartao
 {
     position: fixed;
     top:50%;
@@ -148,16 +148,16 @@ o modal vai continuar na mesma posição.*/
     background-color: #CC78FF;
 }
 
-/*Os elementos com a classe hide, devem ficar invisiveis*/
-#meusCartoesCentralize.hide, #back.hide
+/*Os elementos com a classe hideCartao, devem ficar invisiveis*/
+#meusCartoesCentralize.hideCartao, #backCartao.hideCartao
 {
     opacity: 0;
     pointer-events: none;
 }
 
-/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
+/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hideCartao, se cria o efeito:
 Aparecer e desaparecer*/
-#meusCartoesCentralize, #back
+#meusCartoesCentralize, #backCartao
 {
     opacity: 1;
     transition: .5s;

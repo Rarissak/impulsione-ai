@@ -8,12 +8,13 @@ import {BoxInfoModal} from "../../../components/boxInfo/boxInfo/boxInfo";
 
  {/*Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
 que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
-export function ToggleModal()
+export function ToggleModalCartao()
 {
     const loginCentralize = document.querySelector("#meusCartoesCentralize");
-    loginCentralize.classList.toggle("hide");
-    const back = document.querySelector("#back");
-    back.classList.toggle("hide");
+    loginCentralize.classList.toggle("hideCartao");
+
+    const back = document.querySelector("#backCartao");
+    back.classList.toggle("hideCartao");
 }
 
 // Função que impede o inserimento de letras nos campos: cpf e mei
@@ -32,14 +33,14 @@ function MeusCartoes()
 {
 
     return(
-        <div id="back" >
+        <div id="backCartao" >
             
             <div id="meusCartoesCentralize" >
 
                 <div id="meusCartoesContainer">
 
                     <div>
-                        <button id="closeModal" onClick={ToggleModal}>
+                        <button id="closeModal" onClick={ToggleModalCartao}>
                             <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
                         </button>
                     </div>

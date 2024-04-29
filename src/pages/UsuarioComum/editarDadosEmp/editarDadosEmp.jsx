@@ -6,19 +6,21 @@ import iconModalClose from '../../../assets/iconLoginModalClose.svg';
 import BoxInfo from "../../../components/boxInfo/boxInfo";
 import InstagramIcon from '../../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../../assets/facebookRoxo.svg';
-import ProfileImg from '../../../assets/gato.webp';
+import ProfileImg from '../../../assets/trufasDoSim.png';
 import FotoExemplo from "../../../assets/trufasDoSim.png"
 import { PegandoDados, MostrarDadosAtualizados } from "../../../components/meusDados/MeusDados";
 
-//Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
+//Função de fechar o modal. Ele vai adicionar a classe hide na div editarDadosCentralize, 
 //que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
 
-export function ToggleModal()
+export function ToggleModalEditData()
 {
-    const loginCentralize = document.querySelector("#loginCentralize");
-    loginCentralize.classList.toggle("hide");
-    const back = document.querySelector("#back");
-    back.classList.toggle("hide");
+
+    const editarDadosCentralize = document.querySelector("#editarDadosCentralize");
+    editarDadosCentralize.classList.toggle("hideEditarDados");
+
+    const back = document.querySelector("#backEditarDados");
+    back.classList.toggle("hideEditarDados");
 }
 
 
@@ -260,7 +262,8 @@ export function PegandoDadosAtualizados()
 
 function EditarDadosEmp()
 {
-  
+    
+
     useEffect(() => {
 
         MostrarDados();
@@ -269,27 +272,27 @@ function EditarDadosEmp()
     // a mensagem de error de digitação, caso seja false.
  
     return(
-        <div id="back" className="hide">
+        <div id="backEditarDados" className="hideEditarDados">
             
-            <div id="loginCentralize" className="hide">
+            <div id="editarDadosCentralize" className="hideEditarDados">
 
-                <div id="loginContainer">
+                <div id="editarDadosContainer" >
 
                     <div>
-                        <button id = "closeModal" onClick={ToggleModal}>
+                        <button id = "closeModal" onClick={ToggleModalEditData}>
                             <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
                         </button>
                     </div>
                                        
                     <BoxInfo title={'Editar Dados'} idBox='titleBoxBranco' idDivisor='divisorBranco'></BoxInfo>
-                    <div id="loginBody">
+                    <div id="editarDadosBody">
 
                         <div id="scroll">
                             {/*Contém todo o formulário e seus campos*/}
                             <form 
-                                id="formContainerModal" 
-                                onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); ToggleModal();}}
-                                onReset={ToggleModal}>
+                                id="formContainerModalEdit" 
+                                onSubmit={(event)=>{ event.preventDefault(); MostrarDadosAtualizados(); ToggleModalEditData();}}
+                               >
                                 <div id="formTitle1">
                                     <h1>MEUS DADOS</h1>
                                 </div>
