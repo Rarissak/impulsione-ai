@@ -8,13 +8,15 @@
         text-align: start;
     }
 
-    #solicitacoes {
+    .centroAdm {
         width: 80%;
         margin: 0 auto; 
-        padding-top: 2rem;
+        /* padding-top: 2rem; */
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
+
+        /* background-color: red; */
 
         h1 {
             color: #8A00DE;

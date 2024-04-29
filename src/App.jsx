@@ -12,11 +12,12 @@ import CadastroUsuario from '../src/pages/UsuarioComum/SignUpUser/SignUpUser.jsx
 import CadastroParceiro from '../src/pages/Parceiro/SignUpPartner/SignUpPartner.jsx';
 import EsqueciSenha from '../src/pages/UsuarioComum/forgotPassword/forgotPassword.jsx';
 import AlterarSenha from '../src/pages/UsuarioComum/changePassword/changePassword.jsx';
-import Admin from '../src/pages/Admin/index.jsx';
+import Admin from './pages/Admin/adminSolicitacoes/index.jsx';
 import PerfilParceiro from './pages/Parceiro/perfilParceiro/index.jsx';
 // import EsqueciSenha from './pages/UsuarioComum/forgotPassword/esqueciSenha.jsx';
 import Pesquisa from './pages/UsuarioComum/Pesquisa/pesquisa.jsx';
 import UserProfile from './components/userProfile/userProfile.jsx';
+import AdminPlanos from './pages/Admin/adminPlanos/index.jsx';
 
 function App() {
   return (
@@ -34,8 +35,9 @@ function App() {
         <Route path='/vitrine' Component={Vitrine} />
         <Route path='/esqueciSenha' Component={EsqueciSenha}/>
         <Route path='/alterarSenha' Component={AlterarSenha}/>
-        <Route path='/admin' Component={Admin} />
+        <Route path='/adminSolicitacoes' Component={Admin} />
         <Route path='/perfilParceiro' Component={PerfilParceiro} />
+        <Route path='/adminPlanos' Component={AdminPlanos} />
 
         <Route path='/pesquisa' Component={Pesquisa} />
       </Routes>
