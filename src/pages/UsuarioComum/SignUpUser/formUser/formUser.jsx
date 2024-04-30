@@ -89,9 +89,17 @@ function FormUser()
             localStorage.setItem('email', dados.email);
 
             
-            handleSubmitEmail();
+            handleSubmitEmail({
+                ownerRef: "Suporte",
+                emailFrom: "impulsioneai@gmail.com",
+                emailTo: dados.email,
+                subject: "Bem-vindo (a) ao ImpulsioneAI",
+                text: "Bem-vindo(a) ao ImpulsioneAi! Estamos muito felizes em tê-lo(a) conosco! A nossa plataforma foi criada para lhe ajudar na divulgação do seu trabalho. Qualquer dúvida é só entrar em contato!"
+    
+            });
 
             CadastroRealizado();
+            window.location.href = "/";
         
         } catch (erro) {
             console.error('Ocorreu um erro ao enviar o formulário:', erro);
@@ -109,10 +117,11 @@ function FormUser()
         emailTo: localStorage.getItem('email'),
         subject: "Bem-vindo (a) ao ImpulsioneAI",
         text: "Bem-vindo(a) ao ImpulsioneAi! Estamos muito felizes em tê-lo(a) conosco! A nossa plataforma foi criada para lhe ajudar na divulgação do seu trabalho. Qualquer dúvida é só entrar em contato!"
+    
     });
 
-    const handleSubmitEmail = async () => {
-        event.preventDefault();
+    const handleSubmitEmail = async (dadosEmail) => {
+        
 
         try {
             const resposta = await axios.post('http://localhost:8080/email', dadosEmail);
@@ -124,7 +133,7 @@ function FormUser()
     };
 
     const handleChangeEmail = (event) => {
-        setDadosEmail({ ...dadosEmail, [event.target.name]: event.target.value });
+        setEmail(event.target.value);
     };
 
 
