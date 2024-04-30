@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import './meusCartoes.css';
 import Header from '../../../components/header/header.jsx';
 import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
-import BarraLinkExterno from '../../../components/barraLinkExterno/BarraLinkExterno.jsx';
 import Footer from '../../../components/footer/footer.jsx';
 import BoxInfo from '../../../components/boxInfo/boxInfo.jsx';
 import SelecionarCartao from '../../../components/selecionarCartao/selecionarCartao.jsx';
@@ -92,73 +92,78 @@ const MeusCartoes = () => {
             <MenuLateral></MenuLateral>
 
             <body id='body'>
-                <nav className='linksExternos' id='barraLinks'>
-                    <BarraLinkExterno
-                        id='fundoRoxoClaro'
-                        name={'MEUS CARTÕES'}
-                        link={'/meusCartoes'} />
 
-                    <BarraLinkExterno
-                        id='fundoLaranja'
-                        name={'MEU PLANO'}
-                        link={'/meuPlano'} />
-                </nav>
+                <div id="buttonCentralize">
+                    <Link
+                    to='/meusCartoes'>
+                        <button className="buttons" id='buttonSelecionado'>Meus Cartões</button>
+                    </Link>
+                    <Link
+                    to='/meuPlano'>
+                        <button className="buttons" id=''>Meu Plano</button>
+                    </Link>
+                </div>
+
+                
 
                 <section id='boxInfos'>
-                    <BoxInfo
-                        title={"Meus Cartões"}
-                        idBox={'titleBoxBranco'}
-                        idDivisor={'divisorBranco'} />
+                <div id="meusCartoesContainer">
+
+                        <BoxInfo
+                            title={"Meus Cartões"}
+                            idBox={'titleBoxBranco'}
+                            idDivisor={'divisorBranco'} 
+                        />
 
 
-                    <div className="boxInformationsC">
-                        <div id="meusCartoesSelecao">
-                            {cartoes.map((cartao) => (
-                                <SelecionarCartao
-                                    key={cartao.id}
-                                    id={cartao.id}
-                                    textoBotao={`${cartao.texto.substring(0, 4)} - ${cartao.nome}`}
-                                    selecionado={botaoSelecionado === cartao.id}
-                                    onClick={() => handleSelecionarBotao(cartao.id)}
-                                    onTrashIconClick={() => handleExcluirCartao(cartao.id)}
-                                />
-                            ))}
+                        <div className="boxInformationsC">
+                            <div id="meusCartoesSelecao">
+                                {cartoes.map((cartao) => (
+                                    <SelecionarCartao
+                                        key={cartao.id}
+                                        id={cartao.id}
+                                        textoBotao={`${cartao.texto.substring(0, 4)} - ${cartao.nome}`}
+                                        selecionado={botaoSelecionado === cartao.id}
+                                        onClick={() => handleSelecionarBotao(cartao.id)}
+                                        onTrashIconClick={() => handleExcluirCartao(cartao.id)}
+                                    />
+                                ))}
 
-                        </div>
+                            </div>
 
-                        <div className='novoCartao'>
-                            {/* Botão "Cadastre um novo cartão" */}
-                            {!exibirAreaInput && cartoes.length < 3 && (
-                                <button type="button" className="novoCartaoButton" onClick={handleExibirAreaInput}>Cadastre um novo cartão</button>
-                            )}
-                        </div>
+                            <div className='novoCartao'>
+                                {/* Botão "Cadastre um novo cartão" */}
+                                {!exibirAreaInput && cartoes.length < 3 && (
+                                    <button type="button" className="novoCartaoButton" onClick={handleExibirAreaInput}>Cadastre um novo cartão</button>
+                                )}
+                            </div>
 
-                        {/* Área de input dos cartões */}
-                        {exibirAreaInput && (
-                            <form id="meusCartoesBody">
-                                <div id="centralizeSides">
-                                    <div id="rightSide">
-                                        <span className="meuPlanoTitulo">INSIRA DADOS DO CARTÃO</span>
-                                        <div id="inputs">
-                                            <div className="meuPlanoInputs">
+                            {/* Área de input dos cartões */}
+                            {exibirAreaInput && (
+                                <form id="meusCartoesBody">
+                                    <div id='meusCartoes'>
+                                        <h1 id='titleCartao'>CADASTRE UM NOVO CARTÃO</h1>
+                                        <div id="inputs_cartoes">
+                                            <div className="meusCartoesInputs">
                                                 <span className="nameInput">Número</span>
                                                 <input type="text" value={numero} onChange={(e) => setNumero(e.target.value)} onKeyDown={apenasNumeros} required size={38} id="inputNumero" />
                                             </div>
-                                            <div className="meuPlanoInputs">
+                                            <div className="meusCartoesInputs">
                                                 <span className="nameInput">Nome</span>
                                                 <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} size={40} required id="inputNome" />
                                             </div>
-                                            <div className="meuPlanoInputs">
+                                            <div className="meusCartoesInputs">
                                                 <span className="nameInput">Data</span>
-                                                <input type="text" value={mesAno} onChange={(e) => setMesAno(e.target.value)} id="mesAno" name="mesAno" pattern="\d{2}/\d{2}" title="Digite o formato MM/AA (mês/ano)" required size={2} />
+                                                <input type="text" value={mesAno} onChange={(e) => setMesAno(e.target.value)} id="mesAno" name="mesAno" placeholder="MM/YY" pattern="\d{2}/\d{2}" title="Digite o formato MM/AA (mês/ano)" required size={2} />
                                             </div>
-                                            <div className="meuPlanoInputs">
+                                            <div className="meusCartoesInputs">
                                                 <span className="nameInput">CVV</span>
                                                 <input type="number" value={cvv} onChange={(e) => setCvv(e.target.value)} min={0} max={999} required />
                                             </div>
                                             <div className="selectField2">
                                                 <label htmlFor="bandeira">Bandeira</label>
                                                 <select id="bandeira" value={bandeira} onChange={(e) => setBandeira(e.target.value)} name="bandeira" className="meuPlanoInputs" required>
+                                                    <option value="">Selecione</option>
                                                     <option value="Visa">Visa</option>
                                                     <option value="Mastercard">Mastercard</option>
                                                     <option value="American Express">American Express</option>
@@ -168,13 +173,13 @@ const MeusCartoes = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="meusCartoesButtons">
-                                    <button type="button" onClick={handleCancelar} id="cancel">Cancelar</button>
-                                    <button type="button" onClick={handleAdicionarCartao}>Salvar</button> {/* Alterado para type="button" */}
-                                </div>
-                            </form>
-                        )}
+                                    <div id="meusCartoesButtons">
+                                        <button type="button" onClick={handleCancelar} id="cancel">Cancelar</button>
+                                        <button type="button" onClick={handleAdicionarCartao}>Salvar</button> {/* Alterado para type="button" */}
+                                    </div>
+                                </form>
+                            )}
+                        </div>
                     </div>
                 </section>
             </body>

@@ -4,19 +4,8 @@
 
 /* Corpo */
 #body {
-    background-color: #EBCBFF;
+    background-color: #f6e8ff;
 } /*  ta como id para não mudar TODAS as paginas para o fundo roxinho dessa */
-
-/* Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente */
-#meuPlanoCentralize {
-    background-color: #EBCBFF;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 22;
-}
 
 /* Definindo o tamanho do container do login */
 #meuPlanoContainer {
@@ -38,9 +27,15 @@
     gap: 20px;
 }
 
-#centralizeSides {
+#meuPlanoC {
     display: flex;
-    gap: 35px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#escolherPlano #selectField{
+    display: flex;
+    flex-direction: column;
 }
 
 #leftSide {
@@ -73,6 +68,20 @@
     border-radius: 23px;
     border-color: #f3f3f300;
     padding: .2rem .6rem;
+}
+
+
+#titleLaranja {
+    color: #FF7D1E;
+}
+
+#secaoBeneficios h1{
+    font-size: 18px;
+}
+
+#secaoBeneficios p{
+    font-size: 14px;
+    color: #FF7D1E;
 }
 
 .nameInput {
@@ -152,6 +161,11 @@ Aparecer e desaparecer */
     text-decoration: none !important;
 }
 
+.selectField {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Configuração do campo Plano escolhido */
 .selectField label {
     color: #8A00DE;
@@ -163,19 +177,23 @@ Aparecer e desaparecer */
 .selectField select {
     margin-top: 8px;
     background: #CC78FF;
-    color: white;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 300;
     border-radius: 25px;
-    border-color: rgba(73, 4, 4, 0);
+    border-color: rgba(0, 0, 0, 0);
     padding: .2rem .5rem;
     text-align: left;
     cursor: pointer;
     width: 135px;
 }
 
+.selectField select option {
+    color: #ffffff; /* Cor do texto dos itens do dropdown */
+}
+
 .selectField div {
-    color: #CC78FF;
+     color: #CC78FF; /*  */
     margin-top: 15px;
     margin-left: 10px;
 }
