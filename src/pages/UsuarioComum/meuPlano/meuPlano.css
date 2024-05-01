@@ -1,56 +1,25 @@
+/* Importando fontes do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-}
+/* Corpo */
+#body {
+    background-color: #f6e8ff;
+} /*  ta como id para não mudar TODAS as paginas para o fundo roxinho dessa */
 
-/*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
-o modal vai continuar na mesma posição.*/
-#back
-{
-    position: fixed;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-}
-
-/*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
-#meuPlanoCentralize
-{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background-color: #38005AA1;
-    justify-content: center;
-    align-items: center;
-    z-index: 22;
-  
-}
-   
-/*Definindo o tamanho do container do login*/
-#meuPlanoContainer
-{
+/* Definindo o tamanho do container do login */
+#meuPlanoContainer {
     margin-top: -250px;
     width: 58%;
     height: 50%;
     z-index: 15;
 }
 
-
-
-/*Configurando o elemento responsável pelos inputs de login*/
-#meuPlanoBody
-{
+/* Configurando o elemento responsável pelos inputs de login */
+#meuPlanoBody {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     background-color: #ffffff;
-    /* padding: 4rem 2.3rem  1.3rem 2.3rem; */
     padding: .5rem 3rem;
     z-index: 22;
     display: flex;
@@ -58,72 +27,78 @@ o modal vai continuar na mesma posição.*/
     gap: 20px;
 }
 
-#centralizeSides
-{
+#meuPlanoC {
     display: flex;
-    gap: 35px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-#leftSide
-{
+#escolherPlano #selectField{
+    display: flex;
+    flex-direction: column;
+}
+
+#leftSide {
     display: flex;
     margin-bottom: 25px;
     flex-direction: column;
     width: 25%;
 }
 
-#rightSide
-{
+#rightSide {
     width: 75%;
 }
 
-
-
-/*Dando um espaço titulo dos inputs.*/
-#inputs
-{
+/* Dando um espaço título dos inputs */
+#inputs {
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-/*Configurando a aparencia dos inputs*/
-.meuPlanoInputs
-{
+/* Configurando a aparência dos inputs */
+.meuPlanoInputs {
     display: flex;
     justify-content: center;
-   
 }
 
-.meuPlanoInputs input
-{
+.meuPlanoInputs input {
     background-color: #F3F3F3;
     border-radius: 23px;
     border-color: #f3f3f300;
     padding: .2rem .6rem;
 }
 
-.nameInput
-{
+
+#titleLaranja {
+    color: #FF7D1E;
+}
+
+#secaoBeneficios h1{
+    font-size: 18px;
+}
+
+#secaoBeneficios p{
+    font-size: 14px;
+    color: #FF7D1E;
+}
+
+.nameInput {
     color: #8A00DE;;
     font-weight: 700;  
     margin-right: 15px;
 }
 
-
-
-#bandeira
-{
+#bandeira {
     background-color: #F3F3F3;
     border-radius: 23px;
     border-color: #f3f3f300;
     padding: .2rem .6rem;
 }
 
-/*Centralizando os botões do login*/
-#meuPlanoButtons
-{
+/* Centralizando os botões do login */
+#meuPlanoButtons {
     margin-top: 5px;
     display: flex;
     flex-direction: column;
@@ -131,9 +106,8 @@ o modal vai continuar na mesma posição.*/
     gap: 8px;
 }
 
-/*Estilizando os botões de longar e de não possuir cadastro*/
-#meuPlanoButtons button
-{
+/* Estilizando os botões de logar e de não possuir cadastro */
+#meuPlanoButtons button {
     font-weight: 700;
     cursor: pointer;
     background-color: #FF7D1E;
@@ -143,33 +117,28 @@ o modal vai continuar na mesma posição.*/
     margin-bottom: 25px;
 }
 
-
-/*Os elementos com a classe hide, devem ficar invisiveis*/
-#meuPlanoCentralize.hide, #back.hide
-{
+/* Os elementos com a classe hide, devem ficar invisíveis */
+#meuPlanoCentralize.hide, #back.hide {
     opacity: 0;
     pointer-events: none;
 }
 
-/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
-Aparecer e desaparecer*/
-#meuPlanoCentralize, #back
-{
+/* Configurando o protótipo da animação de aparecimento, juntando com o código da classe hide, se cria o efeito:
+Aparecer e desaparecer */
+#meuPlanoCentralize, #back {
     opacity: 1;
     transition: .5s;
     pointer-events: all;
 }
 
-/*Estilizando os botões responsáveis por abrir e fechar o modal*/
-#openModal
-{
+/* Estilizando os botões responsáveis por abrir e fechar o modal */
+#openModal {
     margin-top: 25px;
     margin-left: 5px;
     cursor: pointer;
 }
 
-#closeModal
-{
+#closeModal {
     position: relative;
     border-radius: 50px;
     padding: .5rem .7rem;
@@ -179,12 +148,11 @@ Aparecer e desaparecer*/
     top: 10px !important;
 }
 
-#closeModal img{
+#closeModal img {
     width: 1.5rem;
 }
 
-#closeModal:hover
-{
+#closeModal:hover {
     transition: .2s;
     background-color: #FF7D1E;
 }
@@ -193,130 +161,84 @@ Aparecer e desaparecer*/
     text-decoration: none !important;
 }
 
-/*Configuração do campo Plano escolhido*/
-.selectField label
-{
+.selectField {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Configuração do campo Plano escolhido */
+.selectField label {
     color: #8A00DE;
     font-size: 16px;
     font-weight: 700;
     margin-right: 15px;
 }
 
-.selectField select
-{
+.selectField select {
     margin-top: 8px;
     background: #CC78FF;
-    color: white;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 300;
     border-radius: 25px;
-    border-color: rgba(73, 4, 4, 0);
+    border-color: rgba(0, 0, 0, 0);
     padding: .2rem .5rem;
     text-align: left;
     cursor: pointer;
     width: 135px;
-   
 }
 
-.selectField div
-{
-    color: #CC78FF;
+.selectField select option {
+    color: #ffffff; /* Cor do texto dos itens do dropdown */
+}
+
+.selectField div {
+     color: #CC78FF; /*  */
     margin-top: 15px;
     margin-left: 10px;
 }
 
-.selectField2
-{
+.selectField2 {
     display: flex;
-  
 }
 
-.selectField2 label
-{
+.selectField2 label {
     color: #8A00DE;
     font-size: 16px;
     font-weight: 700;
     margin-right: 15px;
 }
 
-.selectField2 select
-{
+.selectField2 select {
     width: 80px;
 }
 
-.meuPlanoTitulo
-{
+.meuPlanoTitulo {
     color: #FF7D1E;
     font-size: 18px;
     font-weight: 700;
-   
 }
 
-
-@media screen and (max-width: 1260px){
-   
-    #inputNome, #inputNumero
-    {
+@media screen and (max-width: 1260px) {
+    #inputNome, #inputNumero {
         width: 90%;
     }
 }
 
-@media screen and (max-width: 1200px){
-   
-
-}
-
-@media screen and (max-width: 1024px){
-   
-
-   
-}
-
-/* Tamanho criado por conta do componente carrossel */
-@media screen and (max-width: 840px){
-    #meuPlanoContainer
-    {
-
+@media screen and (max-width: 840px) {
+    #meuPlanoContainer {
         width: 75%;
-      
     }
-    #centralizeSides
-    {
-        
+
+    #centralizeSides {
         flex-direction: column;
     }
 
-    #leftSide
-    {
+    #leftSide {
         width: 100%;
     }
 
-    #rightSide
-    {
+    #rightSide {
         width: 100%;
     }
-
-}
-/* Tamanho criado por conta do componente carrossel */
-
-@media screen and (max-width: 768px){
-
-}
-
-@media screen and (max-width: 560px){
-   
-}
-
-@media screen and (max-width: 480px){
-
-
-  
-}
-
-@media screen and (max-width: 320px){
-
-}
-
-@media screen and (max-width: 280px){
-
 }

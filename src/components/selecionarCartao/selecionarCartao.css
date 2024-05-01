@@ -1,0 +1,49 @@
+.cartao {
+    display: flex;
+    align-items: center;
+  }
+  
+  .botao {
+    background-color: #CC78FF;
+    border: none;
+    padding: 0.7em;
+    margin: 0.5em;
+    border-radius: 5em; /* Bordas bem redondas */
+    cursor: pointer;
+    overflow: hidden; /* Impede overflows */
+    display: flex; /* Layout flexível */
+    align-items: center; /* Alinhar itens ao centro */
+    flex-direction: row-reverse;
+    justify-content: space-between; /* Alinha os itens no botão */
+}
+
+.botao:hover {
+    background-color: #B35FE6; /* Hover um pouco mais claro */
+}
+
+.botao p {
+    color: #FFFFFF;
+    margin-left: 0.4em;
+  }
+  
+  .botao input[type='checkbox'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #D9D9D9; /* Caixa de seleção cinza */
+    border-radius: 50%; /* Caixa de seleção redonda */
+    width: 2em; /* Tamanho da caixa de seleção */
+    height: 2em; /* Tamanho da caixa de seleção */
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .botao input[type='checkbox']:checked {
+    background-color: #FF7D1E; /* Cor quando marcada */
+  }
+  
+  .icone-lixo {
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
