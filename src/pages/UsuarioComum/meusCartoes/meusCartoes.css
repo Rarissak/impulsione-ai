@@ -6,9 +6,9 @@
     background-color: #f6e8ff;
 } /*  ta como id para não mudar TODAS as paginas para o fundo roxinho dessa */
 
-<<<<<<< HEAD
-/*Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
-o modal vai continuar na mesma posição.*/
+/* <<<<<<< HEAD
+Tornando o componente fixo e centralizado na tela, mesmo que scrollarmos o site para baixo 
+o modal vai continuar na mesma posição.
 #backCartao
 {
     position: fixed;
@@ -18,13 +18,13 @@ o modal vai continuar na mesma posição.*/
     z-index: 5;
 }
 
-/*Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente*/
+Centralizando todos os elementos do componente no centro da tela. E definindo o tamanho final do componente
 #meusCartoesCentralize
 {
     width: 100vw;
-=======
+======= */
 #boxInfos {
->>>>>>> tela-meuPlano
+/* >>>>>>> tela-meuPlano */
     height: 100vh;
     overflow: hidden;
 }
@@ -135,16 +135,15 @@ o modal vai continuar na mesma posição.*/
     background-color: #CC78FF;
 }
 
-<<<<<<< HEAD
-/*Os elementos com a classe hideCartao, devem ficar invisiveis*/
+/* <<<<<<< HEAD
 #meusCartoesCentralize.hideCartao, #backCartao.hideCartao
 {
     opacity: 0;
     pointer-events: none;
 }
 
-/*Configurando o protótipo da animação de aparecimento, juntando com o código da classe hideCartao, se cria o efeito:
-Aparecer e desaparecer*/
+Configurando o protótipo da animação de aparecimento, juntando com o código da classe hideCartao, se cria o efeito:
+Aparecer e desaparecer
 #meusCartoesCentralize, #backCartao
 {
     opacity: 1;
@@ -152,7 +151,7 @@ Aparecer e desaparecer*/
     pointer-events: all;
 }
 
-/*Estilizando os botões responsáveis por abrir e fechar o modal*/
+Estilizando os botões responsáveis por abrir e fechar o modal
 #openModal
 {
     margin-top: 25px;
@@ -182,7 +181,7 @@ Aparecer e desaparecer*/
 }
 
 =======
->>>>>>> tela-meuPlano
+>>>>>>> tela-meuPlano */
 #meusCartoesButtonsignUp {
     text-decoration: none !important;
 }

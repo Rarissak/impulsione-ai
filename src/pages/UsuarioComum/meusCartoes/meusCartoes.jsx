@@ -7,21 +7,21 @@ import Footer from '../../../components/footer/footer.jsx';
 import BoxInfo from '../../../components/boxInfo/boxInfo.jsx';
 import SelecionarCartao from '../../../components/selecionarCartao/selecionarCartao.jsx';
 
-<<<<<<< HEAD
- {/*Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
-que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
-export function ToggleModalCartao()
-{
-    const loginCentralize = document.querySelector("#meusCartoesCentralize");
-    loginCentralize.classList.toggle("hideCartao");
+// <<<<<<< HEAD
+//  Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
+// que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.
+// export function ToggleModalCartao()
+// {
+//     const loginCentralize = document.querySelector("#meusCartoesCentralize");
+//     loginCentralize.classList.toggle("hideCartao");
 
-    const back = document.querySelector("#backCartao");
-    back.classList.toggle("hideCartao");
-}
+//     const back = document.querySelector("#backCartao");
+//     back.classList.toggle("hideCartao");
+// }
 
 // Função que impede o inserimento de letras nos campos: cpf e mei
-=======
->>>>>>> tela-meuPlano
+// =======
+// >>>>>>> tela-meuPlano
 function apenasNumeros(evt) {
     const charCode = evt.which ? evt.which : evt.keyCode;
     if (charCode >= 65 && charCode <= 90 || charCode >= 97 && charCode <= 122) {
@@ -40,16 +40,16 @@ const MeusCartoes = () => {
     const [botaoSelecionado, setBotaoSelecionado] = useState(null);
     const [exibirAreaInput, setExibirAreaInput] = useState(false); // Estado para controlar a exibição da área de input dos cartões
 
-<<<<<<< HEAD
-    return(
-        <div id="backCartao" >
+// <<<<<<< HEAD
+//     return(
+//         <div id="backCartao" >
             
-            <div id="meusCartoesCentralize" >
-=======
+//             <div id="meusCartoesCentralize" >
+// =======
     const handleSelecionarBotao = (id) => {
         setBotaoSelecionado(id);
     };
->>>>>>> tela-meuPlano
+// >>>>>>> tela-meuPlano
 
     const handleAdicionarCartao = () => {
         if (cartoes.length >= 3) {
@@ -57,27 +57,27 @@ const MeusCartoes = () => {
             return;
         }
 
-<<<<<<< HEAD
-                    <div>
-                        <button id="closeModal" onClick={ToggleModalCartao}>
-                            <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
-                        </button>
-                    </div>
+// <<<<<<< HEAD
+//                     <div>
+//                         <button id="closeModal" onClick={ToggleModalCartao}>
+//                             <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
+//                         </button>
+//                     </div>
                                        
-                    <BoxInfoModal title={'Meus Cartões'} idBox='titleBoxBranco' idModal='meusCartoesBox' idDivisor='divisorBranco'></BoxInfoModal>
-                    <form id="meusCartoesBody">
+//                     <BoxInfoModal title={'Meus Cartões'} idBox='titleBoxBranco' idModal='meusCartoesBox' idDivisor='divisorBranco'></BoxInfoModal>
+//                     <form id="meusCartoesBody">
                     
-                        <div id="centralizeSides">
-                                {/*Separando o lado esquerdo do direito no modal*/}
+//                         <div id="centralizeSides">
+//                                 {/*Separando o lado esquerdo do direito no modal*/}
                            
-                            <div id="rightSide">
-                                <span className="meuPlanoTitulo">INSIRA DADOS DO CARTÃO</span>   
-=======
+//                             <div id="rightSide">
+//                                 <span className="meuPlanoTitulo">INSIRA DADOS DO CARTÃO</span>   
+// =======
         if (!numero || !nome || !mesAno || !cvv || !bandeira) {
             alert('Preencha todos os campos para adicionar um novo cartão.');
             return;
         }
->>>>>>> tela-meuPlano
+// >>>>>>> tela-meuPlano
 
         const novoCartao = {
             id: contadorCartoes + 1,
