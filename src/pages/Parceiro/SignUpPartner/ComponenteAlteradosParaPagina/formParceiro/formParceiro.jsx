@@ -125,17 +125,17 @@ function FormPartner()
         site: '',
         telefone: '',
         email: '',
-        planoEscolhido: '',
+        planoAssinatura: '',
         instagram: '',
         facebook: '',
-        nicho: '',
+        idNicho: '',
         modalidade: '',
-        endereco: {} // Inicialmente vazio, será atualizado posteriormente
+        endereco: {}
     });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(dados);
+        
         try {
             const resposta = await axios.post('http://localhost:8080/empreendedores', dados);
             console.log(resposta.data);
@@ -153,6 +153,7 @@ function FormPartner()
             });
 
             CadastroRealizado();
+            window.location.href = "/";
 
         } catch (erro) {
             console.error('Ocorreu um erro ao enviar o formulário:', erro);
@@ -422,16 +423,16 @@ function FormPartner()
                                 {/*NICHO*/}
                                 <div className="fieldType1 nichoSelecao">
                                     <label className="nameField" htmlFor="nichoNegocio">*Qual nicho seu de trabalho?</label>
-                                    <select id="nichoNegocio"  value={dados.nicho} onChange={handleChange}>
+                                    <select id="nichoNegocio"  name="idNicho" value={dados.idNicho} onChange={handleChange}>
                                         <option value="">Selecione o Nicho</option>
-                                        <option value="gastronomia">Gastronomia</option>
-                                        <option value="moda">Moda</option>
-                                        <option value="artesanato">Artesanato</option>
-                                        <option value="tecnologia">Tecnologia</option>
-                                        <option value="educacao">Educação</option>
-                                        <option value="saude">Saúde</option>
-                                        <option value="estetica">Estética</option>
-                                        <option value="diversos">Diversos</option>
+                                        <option value="1">Gastronomia</option>
+                                        <option value="2">Moda</option>
+                                        <option value="3">Artesanato</option>
+                                        <option value="4">Tecnologia</option>
+                                        <option value="5">Educação</option>
+                                        <option value="6">Saúde</option>
+                                        <option value="7">Estética</option>
+                                        <option value="8">Diversos</option>
                                     </select>
                                 </div>
                                 
@@ -475,7 +476,7 @@ function FormPartner()
                                         name="site"
                                         value={dados.site}
                                         onChange={handleChange}
-                                        // required
+                                        required
                                         size={24}/>
                                 </div>
                             </fieldset>
@@ -483,11 +484,11 @@ function FormPartner()
                             {/*PLANO ESCOLHIDO*/}
                             <div id="selectField">
                                 <label htmlFor="membership">*Plano Escolhido</label>
-                                <select id="membership"  value={dados.planoEscolhido} onChange={handleChange}>
+                                <select id="membership" name="planoAssinatura" value={dados.planoAssinatura} onChange={handleChange}>
                                     <option value="">Selecione</option>
-                                    <option value="free">Gratuito</option>
+                                    <option value="Gratuito">Gratuito</option>
                                     <option value="bronze">Bronze</option>
-                                    <option value="diamond">Diamante</option>
+                                    <option value="Diamante">Diamante</option>
                                 </select>
                             </div>
 
