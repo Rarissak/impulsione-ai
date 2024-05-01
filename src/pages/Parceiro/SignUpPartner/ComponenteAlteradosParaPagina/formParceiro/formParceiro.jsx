@@ -107,6 +107,14 @@ function FormPartner()
     };
 
     // Validação do código (Jhonnatas)
+    const [dadosEndereco, setDadosEndereco] = useState({
+        uf: '',
+        cidade: '',
+        bairro: '',
+        logradouro: '',
+        numero: ''
+    });
+
     const [dados, setDadosEmpreendedor] = useState({
         nomeCompleto: '',
         dataNascimento: '',
@@ -121,11 +129,13 @@ function FormPartner()
         instagram: '',
         facebook: '',
         nicho: '',
-        modalidade: ''
+        modalidade: '',
+        endereco: {} // Inicialmente vazio, será atualizado posteriormente
     });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(dados);
         try {
             const resposta = await axios.post('http://localhost:8080/empreendedores', dados);
             console.log(resposta.data);
@@ -133,11 +143,10 @@ function FormPartner()
             localStorage.setItem('cpf', dados.cpf);
             localStorage.setItem('email', dados.email);
 
-            handleSubmitEndereco();
             handleSubmitEmail();
 
             CadastroRealizado();
-        
+
         } catch (erro) {
             console.error('Ocorreu um erro ao enviar o formulário:', erro);
             alert("Desculpe, ocorreu um erro no cadastro :(  Tente novamente mais tarde.");
@@ -145,36 +154,25 @@ function FormPartner()
     };
 
     const handleChange = (event) => {
-        setDadosEmpreendedor({ ...dados, [event.target.name]: event.target.value });
+        const { name, value } = event.target;
+        setDadosEmpreendedor(prevDados => ({
+            ...prevDados,
+            [name]: value,
+            endereco: {
+                ...prevDados.endereco,
+                [name]: value
+            }
+        }));
+        setDadosEndereco(prevEndereco => ({
+            ...prevEndereco,
+            [name]: value
+        }));
     };
 
-
-
-    const [dadosEndereco, setDadosEndereco] = useState({
-        uf: '',
-        cidade: '',
-        bairro: '',
-        logadouro: '',
-        numero: '',
-        cpfEmpreendedor: localStorage.getItem('cpf')
-    });
-
-    const handleSubmitEndereco = async () => {
-        event.preventDefault();
-
-        try {
-            const resposta = await axios.post('http://localhost:8080/endereco', dadosEndereco);
-            console.log(resposta.data);
-            
-        } catch (erro) {
-            console.error('Ocorreu um erro ao enviar o formulário:', erro);
-        }
-    };
-
+    
     const handleChangeEndereco = (event) => {
         setDadosEndereco({ ...dadosEndereco, [event.target.name]: event.target.value });
     };
-
 
     const [dadosEmail, setDadosEmail] = useState({
         ownerRef: "Suporte",
@@ -190,7 +188,7 @@ function FormPartner()
         try {
             const resposta = await axios.post('http://localhost:8080/email', dadosEmail);
             console.log(resposta.data);
-            
+
         } catch (erro) {
             console.error('Ocorreu um erro ao enviar o e-mail:', erro);
         }
@@ -305,7 +303,7 @@ function FormPartner()
                                     size={4}
                                     name="uf"
                                     value={dadosEndereco.uf}
-                                    onChange={handleChangeEndereco}/>
+                                    onChange={handleChange}/>
                                 </div>
 
                                 {/*CIDADE*/}
@@ -317,7 +315,7 @@ function FormPartner()
                                     size={12}
                                     name="cidade"
                                     value={dadosEndereco.cidade}
-                                    onChange={handleChangeEndereco}/>
+                                    onChange={handleChange}/>
                                 </div>
 
                                 {/*BAIRRO*/}
@@ -329,7 +327,7 @@ function FormPartner()
                                     size={12}
                                     name="bairro"
                                     value={dadosEndereco.bairro}
-                                    onChange={handleChangeEndereco}/>
+                                    onChange={handleChange}/>
                                 </div>
                                 
                                 {/*LOGADOURO*/}
@@ -339,9 +337,9 @@ function FormPartner()
                                     type="text"
                                     required
                                     size={34}
-                                    name="logadouro"
-                                    value={dadosEndereco.logadouro}
-                                    onChange={handleChangeEndereco}/>
+                                    name="logradouro"
+                                    value={dadosEndereco.logradouro}
+                                    onChange={handleChange}/>
                                 </div>
 
                                 {/*NÚMERO DA CASA OU APARTAMENTO*/}
@@ -355,7 +353,7 @@ function FormPartner()
                                         placeholder="'s/n' para sem número"
                                         name="numero"
                                         value={dadosEndereco.numero}
-                                        onChange={handleChangeEndereco}
+                                        onChange={handleChange}
                                     />
                                     
                                 </div>
