@@ -19,7 +19,7 @@ function Pesquisa() {
 
       <body>
         <nav className='linksExternos' id='barraLinks'>
-                <BarraLinkExterno id='fundoRoxoClaro' name={'GASTRONOMIA'} link={'/pesquisa'}></BarraLinkExterno>
+                <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={'/pesquisa'}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'MODA'} link={'/pesquisa'}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'ARTESANATO'} link={'/pesquisa'}></BarraLinkExterno>
                 <BarraLinkExterno id='fundoLaranja' name={'TECNOLOGIA'} link={'/pesquisa'}></BarraLinkExterno>
@@ -34,7 +34,7 @@ function Pesquisa() {
         <div id='filtro'>
             {/* Aqui está o componente FiltroPesquisa */}
             <FiltroPesquisa
-              nicho={['Gastronomia', 'Moda', 'Tecnologia', 'Esportes', 'Arte', 'Música', 'Educação', 'Saúde']}
+              nicho={['GASTRONOMIA', 'MODA', 'ARTESANATO', 'TECNOLOGIA', 'EDUCAÇÃO', 'SAÚDE', 'ESTÉTICA', 'DIVERSOS']}
               tempoAtuacao={['Menos de 6 meses', '1 ano', '2 anos', '3-5 anos', '+ de 6 anos']}
               distanciaMin={1}
               distanciaMax={500}
@@ -43,7 +43,7 @@ function Pesquisa() {
             />
           </div>
 
-          <div id='negocios'>
+           <div id='negocios'> {/*a paginação deve funcionar aqui */}
 
             <Negocio 
             link={'/vitrine'} 
@@ -135,8 +135,8 @@ function Pesquisa() {
                 <Destaque idBox={'quadradoLaranja'} path={'/vitrine'} foto={''} nome={'Trufas do Sim'} nicho={'Gastronomia'} />
                 <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Fisio em casa'} nicho={'Saúde'} />
                 <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Artelane'} nicho={'Artesanato'} />
-                {/* <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Vintage Vibe'} nicho={'Moda'} />
-                <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Pitágoras'} nicho={'Educação'} /> */}
+                <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Vintage Vibe'} nicho={'Moda'} />
+                <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Pitágoras'} nicho={'Educação'} />
             </div>
         </div>
       </body>
