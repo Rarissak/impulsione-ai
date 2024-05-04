@@ -6,6 +6,7 @@ import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
 import Footer from '../../../components/footer/footer.jsx';
 import BoxInfo from '../../../components/boxInfo/boxInfo.jsx';
 import SelecionarCartao from '../../../components/selecionarCartao/selecionarCartao.jsx';
+import axios from 'axios';
 
 // <<<<<<< HEAD
 //  Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
@@ -125,6 +126,34 @@ const MeusCartoes = () => {
         setExibirAreaInput(false);
     };
 
+    //Integração com o Back-End 
+
+    const [dadosCartao, setDadosCartao] = useState({
+        numeroCartao:'',
+        nomeCartao: '',
+        dataValidade: '',
+        cvv: '',
+        bandeira: '',
+        id: localStorage.getItem("id")
+    });
+
+    const handleChange = (event) => {
+        setDadosCartao({ ...dadosCartao, [event.target.name]: event.target.value });
+    };
+
+    const handleSubmitCartao = async (event) => {
+        event.preventDefault();
+        console.log(dadosCartao);
+        try {
+            const resposta = await axios.post('http://localhost:8080/cartao', dadosCartao);
+            console.log(resposta.data);
+            alert("Cartão cadastrado com sucesso!");
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o formulário:', erro);
+            alert("Desculpe, ocorreu um erro no cadastro :(  Tente novamente mais tarde.");
+        }
+    };
+
     return (
         <>
             <Header />
@@ -179,29 +208,29 @@ const MeusCartoes = () => {
 
                             {/* Área de input dos cartões */}
                             {exibirAreaInput && (
-                                <form id="meusCartoesBody">
+                                <form id="meusCartoesBody" onSubmit={handleSubmitCartao}>
                                     <div id='meusCartoes'>
                                         <h1 id='titleCartao'>CADASTRE UM NOVO CARTÃO</h1>
                                         <div id="inputs_cartoes">
                                             <div className="meusCartoesInputs">
                                                 <span className="nameInput">Número</span>
-                                                <input type="text" value={numero} onChange={(e) => setNumero(e.target.value)} onKeyDown={apenasNumeros} required size={38} id="inputNumero" />
+                                                <input type="text" name='numeroCartao' value={dadosCartao.numeroCartao} onChange={handleChange} onKeyDown={apenasNumeros} required size={38} id="inputNumero" />
                                             </div>
                                             <div className="meusCartoesInputs">
                                                 <span className="nameInput">Nome</span>
-                                                <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} size={40} required id="inputNome" />
+                                                <input type="text" name='nomeCartao' value={dadosCartao.nomeCartao} onChange={handleChange} size={40} required id="inputNome" />
                                             </div>
                                             <div className="meusCartoesInputs">
                                                 <span className="nameInput">Data</span>
-                                                <input type="text" value={mesAno} onChange={(e) => setMesAno(e.target.value)} id="mesAno" name="mesAno" placeholder="MM/YY" pattern="\d{2}/\d{2}" title="Digite o formato MM/AA (mês/ano)" required size={2} />
+                                                <input type="text" value={dadosCartao.dataValidade} onChange={handleChange} id="mesAno" name="dataValidade" placeholder="MM/YY" pattern="\d{2}/\d{2}" title="Digite o formato MM/AA (mês/ano)" required size={2} />
                                             </div>
                                             <div className="meusCartoesInputs">
                                                 <span className="nameInput">CVV</span>
-                                                <input type="number" value={cvv} onChange={(e) => setCvv(e.target.value)} min={0} max={999} required />
+                                                <input type="number" name='cvv' value={dadosCartao.cvv} onChange={handleChange} min={0} max={999} required />
                                             </div>
                                             <div className="selectField2">
                                                 <label htmlFor="bandeira">Bandeira</label>
-                                                <select id="bandeira" value={bandeira} onChange={(e) => setBandeira(e.target.value)} name="bandeira" className="meuPlanoInputs" required>
+                                                <select id="bandeira" value={dadosCartao.bandeira} onChange={handleChange} name="bandeira" className="meuPlanoInputs" required>
                                                     <option value="">Selecione</option>
                                                     <option value="Visa">Visa</option>
                                                     <option value="Mastercard">Mastercard</option>
@@ -214,7 +243,8 @@ const MeusCartoes = () => {
                                     </div>
                                     <div id="meusCartoesButtons">
                                         <button type="button" onClick={handleCancelar} id="cancel">Cancelar</button>
-                                        <button type="button" onClick={handleAdicionarCartao}>Salvar</button> {/* Alterado para type="button" */}
+                                        {/* <button type="submit" onClick={handleAdicionarCartao}>Salvar</button> Alterado para type="button" */}
+                                        <button type="submit">Salvar</button> {/* Alterado para type="button" */}
                                     </div>
                                 </form>
                             )}
