@@ -109,8 +109,12 @@
     padding: 1rem 10rem 3rem 10rem !important;
 }
 
+/*Deixando os elementos centralizados na tela. */
 #linhaDestaques {
     gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .destaquesBloco3 {
@@ -271,6 +275,37 @@
     scale: 1.02 !important;
 }
 
+
+#mensagemCarregamentoAreaParceiro
+{
+   
+    background-color: #eb6b10;
+    border-radius: 15px;
+    padding: 3rem;
+    margin: auto;
+    border-bottom: 5px solid #4400ff;
+}
+
+#mensagemCarregamentoAreaParceiro h1
+{
+    animation: textShadowAnimation2 5s infinite alternate;
+    animation-timing-function: ease-in-out;
+    font-size: 32px;
+    color:#ffffff; 
+    
+}
+
+@keyframes textShadowAnimation2 {
+    0% {
+      text-shadow: none; /* Inicia sem sombra */
+    }
+    50% {
+        text-shadow: rgb(25, 0, 255) 2px 2px 4px ;
+    }
+    100% {
+      text-shadow: none; /* Retorna para sem sombra no final da animação */
+    }
+  }
 
 
 /* RRESPONSIVO */
