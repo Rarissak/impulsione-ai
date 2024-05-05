@@ -36,6 +36,11 @@ function Login()
            
             console.log(error);
         })
+        .finally(()=>{
+            window.location.reload();
+        })
+
+        
     }
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
