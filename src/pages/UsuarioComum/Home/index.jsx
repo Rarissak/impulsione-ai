@@ -55,11 +55,17 @@ function Home() {
         method: 'GET',
         url: 'empreendedores'
     })
-    const [nichos, nichosoading, nichoError] = useAxios({
+    const [nichos, nichosloading, nichoError] = useAxios({
         axiosInstance: axiosInstance,
         method: 'GET',
         url: 'nichos'
     })
+    const [depoimentos, depoimentosLoading, depoimentosError] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: 'depoimento'
+    })
+    console.log(depoimentos)
 
 
 
@@ -125,7 +131,7 @@ function Home() {
                 <div id='destaques'>
                     <TitleBorda title={'Destaques'}></TitleBorda>
                     <div id='linhaDestaques'>
-                        {empreendedoresDestaque.map((empreendedor, index) => (
+                        {empreendedoresDestaque.slice(0,5).map((empreendedor, index) => (
                             <Destaque
                                 key={index}
                                 idBox={'quadradoLaranja'}
@@ -141,9 +147,16 @@ function Home() {
                     <h2>DEPOIMENTOS DOS PARCEIROS</h2>
                 </div>
                 <div id='depoimentos'>
-                    <Depoimentos imagemSrc={PerfilIcon} nome='Catia' nicho='Bolos' review='Proin sed consequat metus, eu posuere lectus. Etiam id sem nec sem dictum blandit. Cras ut massa porttitor, malesuada sem eget, placerat nisl.' />
-                    <Depoimentos imagemSrc={PerfilIcon} nome='Fernanda' nicho='Artezanato' review='Proin sed consequat metus, eu posuere lectus. Etiam id sem nec sem dictum blandit. Cras ut massa porttitor, malesuada sem eget, placerat nisl.' />
-                    <Depoimentos imagemSrc={PerfilIcon} nome='Catia' nicho='Web' review='Proin sed consequat metus, eu posuere lectus. Etiam id sem nec sem dictum blandit. Cras ut massa porttitor, malesuada sem eget, placerat nisl.' />
+                    {depoimentos.slice(0,3).map((depoimento, index) => (
+                        <Depoimentos 
+                            imagemSrc={PerfilIcon}
+                            nome={depoimento?.empreendedor.nomeExibicao} 
+                            nicho={depoimento?.empreendedor.nicho.nicho} 
+                            review={depoimento?.depoimento}
+                          />
+                    ))}
+                    
+                    
                 </div>
             </body>
             <Footer></Footer>
