@@ -13,7 +13,6 @@ export default function useAxios(configRequest) {
                     ...othersConfig,
                 })
 
-                console.log(res.data)
                 setData(res.data)
                 
             }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect} from 'react';
 import './header.css';
 import '../../index.css';
 import HandshakeIconSvg from '../../assets/handshakeIcon.svg';
@@ -7,9 +7,34 @@ import UserIconSvg from '../../assets/userIcon.svg';
 import LogoDescritivaIcon from '../../assets/logoDescritivaIcon.svg';
 import { Link } from 'react-router-dom';
 import Login, { ToggleModal } from '../../pages/UsuarioComum/login/login';
+import useAxios from '../../hook/useAxios';
+import axiosInstance from '../../helper/axiosInstance.js';
 
 function Header()
-{
+{  const token = localStorage.getItem('token')
+   const id = localStorage.getItem('id')
+   const uri = localStorage.getItem('uri')
+
+    const [isLogado, setLogado] = useState(false)
+   
+    useEffect(() => {
+        if (token != null) {
+            setLogado(true);
+        }
+    }, [token]);
+
+    
+    const [usuarioLogado, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: uri + '/' + id
+    })
+    
+    function logout() {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     const handleComponentLogin = () => {
         ToggleModal();
      };
@@ -51,14 +76,27 @@ function Header()
                     </div>
                     
                     {/* Botão de login */}
+                    {!isLogado && (
                     <button 
                     id='headerLogin'
                     className='centralizeItems, headerScreenButtons'
                     onClick={handleComponentLogin}>
                         <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
                         <span>Login</span>  
-                    </button>
-                    {<Login />}
+                    </button>)}
+                    { !isLogado && <Login />}
+
+
+                    {isLogado && (
+                         <button 
+                         id='headerLogin'
+                         className='centralizeItems, headerScreenButtons'
+                         onClick={logout}>
+                             <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
+                             <span>{usuarioLogado.nomeExibicao}</span>  
+                         </button>)}
+
+                    
 
 
                     <Link

@@ -7,6 +7,11 @@ import Footer from '../../../components/footer/footer.jsx';
 import BoxInfo from '../../../components/boxInfo/boxInfo.jsx';
 import SelecionarCartao from '../../../components/selecionarCartao/selecionarCartao.jsx';
 import axios from 'axios';
+// import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
+// Importando o icon do botão de fechar o modal.
+// import iconModalClose from '../../../assets/iconLoginModalClose.svg';
+// import BoxInfo from "../../../components/boxInfo/boxInfo";
+//import { Link } from "react-router-dom";
 
 // <<<<<<< HEAD
 //  Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
