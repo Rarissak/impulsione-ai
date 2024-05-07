@@ -93,7 +93,7 @@ function Header()
                          className='centralizeItems, headerScreenButtons'
                          onClick={logout}>
                              <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
-                             <span>{usuarioLogado.nomeExibicao}</span>  
+                             <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
                          </button>)}
 
                     

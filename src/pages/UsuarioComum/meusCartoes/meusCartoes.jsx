@@ -150,7 +150,13 @@ const MeusCartoes = () => {
         event.preventDefault();
         console.log(dadosCartao);
         try {
-            const resposta = await axios.post('http://localhost:8080/cartao', dadosCartao);
+            const token = localStorage.getItem('token'); 
+            const config = {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            };
+            const resposta = await axios.post('http://localhost:8080/cartao', dadosCartao, config);
             console.log(resposta.data);
             alert("Cartão cadastrado com sucesso!");
         } catch (erro) {
