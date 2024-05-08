@@ -29,7 +29,7 @@ import Saude01 from '../../../assets/saudeFisio.png'
 import Saude02 from '../../../assets/saudeEstetica.png'
 import Tecnologia from '../../../assets/tecnologia.png'
 import Propaganda from '../../../assets/propagandaImpulsioneAi.png'
-import GatoTeste from "../../../assets/gato.webp";
+import Teste from "../../../assets/trufasDoSim.png";
     
 //Imagens detaques
 import TrufasDoSim from '../../../assets/trufasDoSim.png';
@@ -193,7 +193,7 @@ function CarrosselIntegrado()
         "4": Saude02,
         "5": Gastronomia,
         "6": Educacao,
-        "algo": GatoTeste,
+        "algo": Teste,
         "23": Propaganda,
         "25": Tecnologia
     }
