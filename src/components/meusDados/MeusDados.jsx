@@ -5,6 +5,10 @@ import FacebookIcon from '../../assets/facebookRoxo.svg';
 import ProfileImg from '../../assets/trufasDoSim.png';
 
 import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../editarDadosEmp/editarDadosEmp.jsx';
+import axiosInstance from '../../helper/axiosInstance.js';
+import useAxios from "../../hook/useAxios.js";
+import axios from "axios"; 
+
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
@@ -210,6 +214,40 @@ function MeusDados()
     useEffect(() => {
         ToggleModalEditData();
       }, []);
+
+    const token = localStorage.getItem('token')
+      const id = localStorage.getItem('id')
+      const uri = localStorage.getItem('uri')
+   
+      const [usuarioLogado, loading, error] = useAxios({
+          axiosInstance: axiosInstance,
+          method: 'GET',
+          url: uri + '/' + id
+      })
+   
+      const nomeCompleto = usuarioLogado.nomeCompleto;
+      const dtNasc = usuarioLogado.dataNascimento;
+      const cpf = usuarioLogado.cpf;
+      const nomeNegocio = usuarioLogado.nomeEmpreendimento;
+    //   const nichoNegocio = usuarioLogado.nicho.nicho;
+      const modalidade = usuarioLogado.modalidade;
+      const site = usuarioLogado.site;
+      const mei = usuarioLogado.mei;
+      const email = usuarioLogado.email;
+      const telefone = usuarioLogado.telefone;
+      const instagram = usuarioLogado.instagram;
+      const facebook = usuarioLogado.facebook;
+      const plano = usuarioLogado.planoAssinatura;
+
+      //endereco
+    //   const uf = usuarioLogado.endereco.uf;
+    //   const cidade = usuarioLogado.endereco.cidade;
+    //   const bairo = usuarioLogado.endereco.bairro;  
+    //   const logradouro = usuarioLogado.endereco.logradouro;
+    //   const numero = usuarioLogado.endereco.numero;
+
+    // cartão
+    // const nomeCartao = usuarioLogado.cartao.nomeCartao
    
 
     return(
@@ -228,13 +266,13 @@ function MeusDados()
                                 {/*NOME COMPLETO*/}
                                 <div className="fieldType1">
                                     <span className="nameField">Nome Completo</span>
-                                    <span className="conteudo" id="campoNome">Nome Completo ncncnnnnl</span>
+                                    <span className="conteudo" id="campoNome">{nomeCompleto}</span>
                                 </div>
 
                                 {/*DATA DE NASCIMENTO*/}
                                 <div className="fieldType1">
                                     <span className="nameField">Data de Nascimento</span>
-                                    <span className="conteudo" id="campoDataNascimento">00/00/0000</span>
+                                    <span className="conteudo" id="campoDataNascimento">{dtNasc}</span>
                                 </div> 
                                     
                             </div>                
@@ -246,13 +284,13 @@ function MeusDados()
                             {/*CPF*/}
                             <div className="fieldType1">
                                 <span className="nameField">CPF</span>
-                                <span className="conteudo" id="campoCPF">000.000.000-00</span>
+                                <span className="conteudo" id="campoCPF">{cpf}</span>
                             </div>
 
                             {/*Endereço completo*/}
                             <div className="fieldType1">
                                 <span className="nameField">Endereço Completo</span>
-                                <span className="conteudo" id="campoEndereco">Rua/Avenida, nº 00 - Bairro, Cidade - UF</span>
+                                {/* <span className="conteudo" id="campoEndereco">{logradouro}, {numero} - {bairo}, {cidade} - {uf}</span> */}
                             </div>
                         </fieldset>
                                 
@@ -261,31 +299,31 @@ function MeusDados()
                             {/*Nome do Negócio*/}
                             <div className="fieldType1">
                                 <span className="nameField">Nome do negócio</span>
-                                <span className="conteudo" id="campoNomeNegocio">Gastronomia</span>    
+                                <span className="conteudo" id="campoNomeNegocio">{nomeNegocio}</span>    
                             </div>
 
                             {/*Nicho*/}
                             <div className="fieldType1">
                                 <span className="nameField">Nicho do Trabalho</span>
-                                <span className="conteudo" id="campoNicho">Gastronomia</span>    
+                                {/* <span className="conteudo" id="campoNicho">{nichoNegocio}</span>     */}
                             </div>
                                     
                             {/*Modalidade de Serviço*/}
                             <div className="fieldType1">
                                 <span className="nameField">Modalidade de Serviço</span>
-                                <span className="conteudo" id="campoModalidade">Híbrido</span>    
+                                <span className="conteudo" id="campoModalidade">{modalidade}</span>    
                             </div>
                                 
                             {/*Site do Negócio*/}
                             <div className="fieldType1">
                                 <span className="nameField">Site do Negócio</span>
-                                <span className="conteudo" id="campoSite">Não possui</span>    
+                                <span className="conteudo" id="campoSite">{site}</span>    
                             </div>
                                     
                                     {/*MEI*/}
                                     <div className="fieldType1">
                                         <span className="nameField">MEI</span>
-                                        <span className="conteudo" id="campoMEI">12.345.678/0001-90</span>    
+                                        <span className="conteudo" id="campoMEI">{mei}</span>    
                                     </div>
                                 </fieldset>
 
@@ -293,13 +331,13 @@ function MeusDados()
                             {/*Email Cadastrado*/}
                             <div className="fieldType1">
                                 <span className="nameField">Email Cadastrado</span>
-                                <span className="conteudo" id="campoEmail">algumacoisa@gmail.com</span>    
+                                <span className="conteudo" id="campoEmail">{email}</span>    
                             </div>
 
                             {/*Número de Contato*/}
                             <div className="fieldType1">
                                 <span className="nameField">Número de Contato</span>
-                                <span className="conteudo" id="campoTel">(81) 40028922</span>    
+                                <span className="conteudo" id="campoTel">{telefone}</span>    
                             </div>
                         </fieldset>
                                 
@@ -307,13 +345,13 @@ function MeusDados()
                             {/*Instagram*/}
                             <div className="fieldType2 iconCenter">
                                 <img src={InstagramIcon}  alt="Icone do instagram" />
-                                <span className="conteudo" id="campoInsta">@perfil do instagram</span>    
+                                <span className="conteudo" id="campoInsta">{instagram}</span>    
                             </div>
 
                             {/*Facebook*/}
                             <div className="fieldType2 iconCenter">
                                 <img src={FacebookIcon}  alt="Icone do facebook"/>
-                                <span className="conteudo" id="campoFace">perfil do facebook</span>    
+                                <span className="conteudo" id="campoFace">{facebook}</span>    
                             </div>                    
                         </fieldset>
 
@@ -330,7 +368,7 @@ function MeusDados()
                                     {/*Plano Escolhido*/}
                                     <div className="fieldType1">
                                         <span className="nameField">Plano escolhido</span>
-                                        <span className="conteudo">Silver</span>    
+                                        <span className="conteudo">{plano}</span>    
                                     </div>
 
                                     {/*Cartão Cadastrado*/}
