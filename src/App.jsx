@@ -38,8 +38,11 @@ function App() {
         <Route path='/adminSolicitacoes' Component={Admin} />
         <Route path='/perfilParceiro' Component={PerfilParceiro} />
         <Route path='/adminPlanos' Component={AdminPlanos} />
-
         <Route path='/pesquisa' Component={Pesquisa} />
+        <Route path='/pesquisa/nicho/:nicho' Component={Pesquisa} />
+        <Route path='/pesquisa/:pesquisaUsuario' Component={Pesquisa} />
+
+
       </Routes>
     </Router>
   );
