@@ -22,6 +22,12 @@ function Pesquisa() {
     method: 'GET',
     url: 'nichos'
   })
+  
+  const [empreendedores, loading, error] = useAxios({
+    axiosInstance: axiosInstance,
+    method: 'GET',
+    url: 'empreendedores'
+  })
 
   if (nicho) {
 
@@ -86,12 +92,16 @@ function Pesquisa() {
           <div id='destaques'>
             <TitleBorda title={'Recomendações'}></TitleBorda>
             <div id='linhaDestaques'>
-              <Destaque idBox={'quadradoLaranja'} path={'/vitrine'} foto={''} nome={'Trufas do Sim'} nicho={'Gastronomia'} />
-              <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Fisio em casa'} nicho={'Saúde'} />
-              <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Artelane'} nicho={'Artesanato'} />
-              {/* <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Vintage Vibe'} nicho={'Moda'} />
-                  <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Pitágoras'} nicho={'Educação'} /> */}
-            </div>
+                        {empreendedores?.slice(0, 5).map((empreendedor, index) => (
+                            <Destaque
+                                key={empreendedor.idEmpreededor}
+                                idBox={'quadradoLaranja'}
+                                path={'/vitrine'}
+                                foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                                nome={empreendedor?.nomeEmpreendimento}
+                                nicho={empreendedor?.nicho.nicho} />
+                        ))}
+                    </div>
           </div>
         </body>
         <Footer />
@@ -160,12 +170,16 @@ function Pesquisa() {
           <div id='destaques'>
             <TitleBorda title={'Recomendações'}></TitleBorda>
             <div id='linhaDestaques'>
-              <Destaque idBox={'quadradoLaranja'} path={'/vitrine'} foto={''} nome={'Trufas do Sim'} nicho={'Gastronomia'} />
-              <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Fisio em casa'} nicho={'Saúde'} />
-              <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Artelane'} nicho={'Artesanato'} />
-              {/* <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Vintage Vibe'} nicho={'Moda'} />
-                  <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Pitágoras'} nicho={'Educação'} /> */}
-            </div>
+                        {empreendedores?.slice(0, 5).map((empreendedor) => (
+                            <Destaque
+                                key={empreendedor.idEmpreededor}
+                                idBox={'quadradoLaranja'}
+                                path={'/vitrine'}
+                                foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                                nome={empreendedor?.nomeEmpreendimento}
+                                nicho={empreendedor?.nicho.nicho} />
+                        ))}
+                    </div>
           </div>
         </body>
         <Footer />
@@ -174,11 +188,6 @@ function Pesquisa() {
 
   }
   
-  const [empreendedores, loading, error] = useAxios({
-    axiosInstance: axiosInstance,
-    method: 'GET',
-    url: 'empreendedores'
-  })
   return (<>
     <Header />
     <MenuLateral></MenuLateral>
@@ -234,12 +243,16 @@ function Pesquisa() {
       <div id='destaques'>
         <TitleBorda title={'Recomendações'}></TitleBorda>
         <div id='linhaDestaques'>
-          <Destaque idBox={'quadradoLaranja'} path={'/vitrine'} foto={''} nome={'Trufas do Sim'} nicho={'Gastronomia'} />
-          <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Fisio em casa'} nicho={'Saúde'} />
-          <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Artelane'} nicho={'Artesanato'} />
-          {/* <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Vintage Vibe'} nicho={'Moda'} />
-              <Destaque idBox={'quadradoLaranja'} path={''} foto={''} nome={'Pitágoras'} nicho={'Educação'} /> */}
-        </div>
+                        {empreendedores.slice(0, 5).map((empreendedor, index) => (
+                            <Destaque
+                                key={empreendedor.idEmpreededor}
+                                idBox={'quadradoLaranja'}
+                                path={'/vitrine'}
+                                foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                                nome={empreendedor?.nomeEmpreendimento}
+                                nicho={empreendedor?.nicho.nicho} />
+                        ))}
+                    </div>
       </div>
     </body>
     <Footer />
