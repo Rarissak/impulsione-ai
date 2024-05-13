@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import './meusCartoes.css';
 import Header from '../../../components/header/header.jsx';
@@ -7,26 +7,7 @@ import Footer from '../../../components/footer/footer.jsx';
 import BoxInfo from '../../../components/boxInfo/boxInfo.jsx';
 import SelecionarCartao from '../../../components/selecionarCartao/selecionarCartao.jsx';
 import axios from 'axios';
-// import ModalForgetPassword, {ToggleModalForgot} from "../forgotPassword/forgotPassword";
-// Importando o icon do botão de fechar o modal.
-// import iconModalClose from '../../../assets/iconLoginModalClose.svg';
-// import BoxInfo from "../../../components/boxInfo/boxInfo";
-//import { Link } from "react-router-dom";
 
-// <<<<<<< HEAD
-//  Função de fechar o modal. Ele vai adicionar a classe hide na div loginCentralize, 
-// que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.
-// export function ToggleModalCartao()
-// {
-//     const loginCentralize = document.querySelector("#meusCartoesCentralize");
-//     loginCentralize.classList.toggle("hideCartao");
-
-//     const back = document.querySelector("#backCartao");
-//     back.classList.toggle("hideCartao");
-// }
-
-// Função que impede o inserimento de letras nos campos: cpf e mei
-// =======
 // >>>>>>> tela-meuPlano
 function apenasNumeros(evt) {
     const charCode = evt.which ? evt.which : evt.keyCode;
@@ -38,20 +19,15 @@ function apenasNumeros(evt) {
 const MeusCartoes = () => {
     const [cartoes, setCartoes] = useState([]);
     const [contadorCartoes, setContadorCartoes] = useState(0);
-    const [numero, setNumero] = useState('');
-    const [nome, setNome] = useState('');
-    const [mesAno, setMesAno] = useState('');
-    const [cvv, setCvv] = useState('');
-    const [bandeira, setBandeira] = useState('');
+    const [numero, setNumero] = "**** **** **** ****";
+    const [nome, setNome] = localStorage.getItem("nomeCartao");
+    const [mesAno, setMesAno] = localStorage.getItem("dataValidade");
+    const [cvv, setCvv] = "***";
+    const [bandeira, setBandeira] = localStorage.getItem("bandeira");
     const [botaoSelecionado, setBotaoSelecionado] = useState(null);
     const [exibirAreaInput, setExibirAreaInput] = useState(false); // Estado para controlar a exibição da área de input dos cartões
 
-// <<<<<<< HEAD
-//     return(
-//         <div id="backCartao" >
-            
-//             <div id="meusCartoesCentralize" >
-// =======
+
     const handleSelecionarBotao = (id) => {
         setBotaoSelecionado(id);
     };
@@ -63,22 +39,7 @@ const MeusCartoes = () => {
             return;
         }
 
-// <<<<<<< HEAD
-//                     <div>
-//                         <button id="closeModal" onClick={ToggleModalCartao}>
-//                             <img src={iconModalClose} alt="icone para fechar o modal, tem formato de X"/>
-//                         </button>
-//                     </div>
-                                       
-//                     <BoxInfoModal title={'Meus Cartões'} idBox='titleBoxBranco' idModal='meusCartoesBox' idDivisor='divisorBranco'></BoxInfoModal>
-//                     <form id="meusCartoesBody">
-                    
-//                         <div id="centralizeSides">
-//                                 {/*Separando o lado esquerdo do direito no modal*/}
-                           
-//                             <div id="rightSide">
-//                                 <span className="meuPlanoTitulo">INSIRA DADOS DO CARTÃO</span>   
-// =======
+
         if (!numero || !nome || !mesAno || !cvv || !bandeira) {
             alert('Preencha todos os campos para adicionar um novo cartão.');
             return;
@@ -121,17 +82,44 @@ const MeusCartoes = () => {
     };
 
     const handleCancelar = () => {
-        // Limpar os campos ao cancelar
-        setNumero('');
-        setNome('');
-        setMesAno('');
-        setCvv('');
-        setBandeira('');
-        // Ocultar a área de input dos cartões ao cancelar
+        // // Limpar os campos ao cancelar
+        // setNumero('');
+        // setNome('');
+        // setMesAno('');
+        // setCvv('');
+        // setBandeira('');
+        // // Ocultar a área de input dos cartões ao cancelar
         setExibirAreaInput(false);
     };
 
     //Integração com o Back-End 
+
+
+    //Listar cartões
+
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/cartao/' + localStorage.getItem('id'));
+            setData(response.data);
+
+            
+            localStorage.setItem('dataValidade', response.data.dataValidade);
+            localStorage.setItem('nomeCartao', response.data.nomeCartao);
+            localStorage.setItem('bandeira', response.data.bandeira);
+            handleAdicionarCartao();
+        } catch (error) {
+            setError(error);
+        }
+        setIsLoading(false);
+        };
+
+        fetchData();
+    }, []);
 
     const [dadosCartao, setDadosCartao] = useState({
         numeroCartao:'',
@@ -159,6 +147,7 @@ const MeusCartoes = () => {
             const resposta = await axios.post('http://localhost:8080/cartao', dadosCartao, config);
             console.log(resposta.data);
             alert("Cartão cadastrado com sucesso!");
+            
         } catch (erro) {
             console.error('Ocorreu um erro ao enviar o formulário:', erro);
             alert("Desculpe, ocorreu um erro no cadastro :(  Tente novamente mais tarde.");
