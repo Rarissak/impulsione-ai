@@ -25,6 +25,7 @@ const [mesAno, setMesAno] = useState('');
 const [cvv, setCvv] = useState('***');
 const [bandeira, setBandeira] = useState('');
 const [primeirosDigitos, setPrimeirosDigitos] = useState('');
+const [idCartao, setIdCartao] = useState('');
 const [botaoSelecionado, setBotaoSelecionado] = useState(null);
 const [exibirAreaInput, setExibirAreaInput] = useState(false); // Estado para controlar a exibição da área de input dos cartões
 const [data, setData] = useState(null);
@@ -94,12 +95,14 @@ useEffect(() => {
             const response = await axios.get('http://localhost:8080/cartao/' + localStorage.getItem('id'));
             const cartao = response.data;
             // console.log(cartao);
+            
 
             setData(cartao);
             setNome(cartao.nomeCartao);
             setMesAno(cartao.dataValidade);
             setBandeira(cartao.bandeira);
             setPrimeirosDigitos(cartao.primeirosDigitos); // Aqui está a correção
+            setIdCartao(cartao.idCartao);
 
             // Adicionar o cartão diretamente no estado
             const novoCartao = {
@@ -109,7 +112,8 @@ useEffect(() => {
                 mesAno: cartao.dataValidade,
                 cvv: '***', // Como não temos o CVV completo, usamos um placeholder
                 bandeira: cartao.bandeira,
-                primeirosDigitos: cartao.primeirosDigitos // Aqui está a correção
+                primeirosDigitos: cartao.primeirosDigitos,
+                idCartao: cartao.idCartao// Aqui está a correção
             };
             setContadorCartoes(contadorCartoes + 1);
             setCartoes([...cartoes, novoCartao]);
@@ -124,6 +128,8 @@ useEffect(() => {
 }, []);
 
     //Fim Listar cartões
+
+    //Cadastrar cartão
 
     const [dadosCartao, setDadosCartao] = useState({
         numeroCartao: '',
@@ -168,6 +174,30 @@ useEffect(() => {
         }
     };
 
+    //Fim cadastrar cartão
+
+    //Deletar cartão
+    
+    const deleteCartao = async (idCartao) => {
+        try {
+          const response = await fetch(`http://localhost:8080/deleteCartao/${idCartao}`, {
+            method: 'DELETE',
+          });
+    
+          if (response.ok) {
+            // Removendo o cartão deletado do estado local
+            setCartoes(cartoes.filter(cartao => cartao.idCartao !== idCartao));
+            alert("Cartão deletado com sucesso!");
+          } else {
+            console.error('Erro ao deletar o cartão');
+          }
+        } catch (error) {
+          console.error('Erro na requisição', error);
+        }
+      };
+
+    //Fim deletar cartão
+
     return (
         <>
             <Header />
@@ -207,7 +237,7 @@ useEffect(() => {
                                         textoBotao={`${cartao.primeirosDigitos} - ${cartao.nome}`}
                                         selecionado={botaoSelecionado === cartao.id}
                                         onClick={() => handleSelecionarBotao(cartao.id)}
-                                        onTrashIconClick={() => handleExcluirCartao(cartao.id)}
+                                        onTrashIconClick={() => deleteCartao(cartao.idCartao)}
                                     />
                                 ))}
 
