@@ -16,12 +16,19 @@ import { useEffect } from 'react';
 function Pesquisa() {
 
   const { nicho, pesquisaUsuario } = useParams();
-  let nichoPesquisado = null;
-  let nichosPesquisadoloading = false;
-  let nichosPesquisadoError = "";
-  let pesquisa = null;
-  let pesquisadoloading = false;
-  let pesquisaError = "";
+ 
+   const [nichoPesquisado, nichosPesquisadoloading, nichosPesquisadoError] = useAxiosWithDependecies({
+      axiosInstance: axiosInstance,
+      method: 'GET',
+      url: 'nichos/nome/' + nicho
+    }, [nicho]);
+ 
+   const [pesquisa, pesquisadoloading, pesquisaError] = useAxiosWithDependecies({
+      axiosInstance: axiosInstance,
+      method: "GET",
+      url: "buscar/empreendedores/" + pesquisaUsuario
+    }, [pesquisaUsuario]);
+  
 
   const [nichos, nichosloading, nichoError] = useAxios({
     axiosInstance: axiosInstance,
@@ -37,11 +44,6 @@ function Pesquisa() {
 
   if (nicho) {
 
-      [nichoPesquisado, nichosPesquisadoloading, nichosPesquisadoError] = useAxiosWithDependecies({
-      axiosInstance: axiosInstance,
-      method: 'GET',
-      url: 'nichos/nome/' + nicho
-    }, [nicho])
     return (
       <>
         <Header />
@@ -115,11 +117,6 @@ function Pesquisa() {
     )
   }
   else if (pesquisaUsuario) {
-      [pesquisa, pesquisadoloading, pesquisaError] = useAxiosWithDependecies({
-      axiosInstance: axiosInstance,
-      method: "GET",
-      url: "buscar/empreendedores/" + pesquisaUsuario
-    }, [pesquisaUsuario])
     return (
       <>
         <Header />
@@ -192,6 +189,8 @@ function Pesquisa() {
     )
 
   }
+
+  
   
   return (<>
     <Header />
