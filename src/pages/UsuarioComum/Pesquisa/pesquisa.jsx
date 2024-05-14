@@ -16,6 +16,12 @@ import { useEffect } from 'react';
 function Pesquisa() {
 
   const { nicho, pesquisaUsuario } = useParams();
+  let nichoPesquisado = null;
+  let nichosPesquisadoloading = false;
+  let nichosPesquisadoError = "";
+  let pesquisa = null;
+  let pesquisadoloading = false;
+  let pesquisaError = "";
 
   const [nichos, nichosloading, nichoError] = useAxios({
     axiosInstance: axiosInstance,
@@ -31,7 +37,7 @@ function Pesquisa() {
 
   if (nicho) {
 
-    const [nichoPesquisado, nichosPesquisadoloading, nichosPesquisadoError] = useAxiosWithDependecies({
+      [nichoPesquisado, nichosPesquisadoloading, nichosPesquisadoError] = useAxiosWithDependecies({
       axiosInstance: axiosInstance,
       method: 'GET',
       url: 'nichos/nome/' + nicho
@@ -109,7 +115,7 @@ function Pesquisa() {
     )
   }
   else if (pesquisaUsuario) {
-    const [pesquisa, pesquisadoloading, pesquisaError] = useAxiosWithDependecies({
+      [pesquisa, pesquisadoloading, pesquisaError] = useAxiosWithDependecies({
       axiosInstance: axiosInstance,
       method: "GET",
       url: "buscar/empreendedores/" + pesquisaUsuario
@@ -147,8 +153,8 @@ function Pesquisa() {
             </div>
 
             <div id='negocios'>
-
-              {!pesquisadoloading && pesquisa?.map((empreendimento) => (
+              
+              {!pesquisadoloading && pesquisa !== null &&( pesquisa?.map((empreendimento) => (
                 <Negocio
                   img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
                   key={empreendimento.idEmpreededor}
@@ -158,9 +164,8 @@ function Pesquisa() {
                   descricao={empreendimento.biografia}
 
                 />
-              ))}
-
-              {pesquisadoloading && (
+              )))}
+                           {pesquisadoloading && (
                 <h1>LOADING...</h1>
               )}
             </div>

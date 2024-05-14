@@ -14,7 +14,7 @@ function Header() {
     const token = localStorage.getItem('token')
     const id = localStorage.getItem('id')
     const uri = localStorage.getItem('uri')
-    const [itemPesquisa, setItemPesquisa] = useState()
+    const [itemPesquisa, setItemPesquisa] = useState("")
 
     const handleInputChange = (event) => {
         setItemPesquisa(event.target.value);
@@ -22,7 +22,7 @@ function Header() {
 
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            return(<Link to={`/pesquisa/${itemPesquisa}`}></Link>)
+            window.location.href = `/pesquisa/${itemPesquisa}`
         }
     };
 
@@ -39,7 +39,7 @@ function Header() {
         axiosInstance: axiosInstance,
         method: 'GET',
         url: uri + '/' + id
-    },[isLogado])
+    }, [isLogado])
 
     function logout() {
         localStorage.clear();
@@ -84,10 +84,18 @@ function Header() {
                             onChange={handleInputChange}
                             onKeyDown={handleKeyPress}
                         />
-                        <Link to={`/pesquisa/${itemPesquisa}`}>
-                         <img src={SearchIconSvg} alt="Icone de Lupa, com o sentido de buscar informações" />
-                        </Link>
-                       
+
+                        <img src={SearchIconSvg} onClick={() => {
+                            console.log(itemPesquisa) 
+                            if (itemPesquisa === undefined) {
+                                window.location.href = `/pesquisa`
+                            }
+                            window.location.href = `/pesquisa/${itemPesquisa}`
+                        }}
+                            style={{ cursor: 'pointer' }}
+                            alt="Icone de Lupa, com o sentido de buscar informações" />
+
+
                     </div>
 
                     {/* Botão de login */}
