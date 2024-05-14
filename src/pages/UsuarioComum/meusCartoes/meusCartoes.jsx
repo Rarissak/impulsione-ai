@@ -18,125 +18,139 @@ function apenasNumeros(evt) {
 
 const MeusCartoes = () => {
     const [cartoes, setCartoes] = useState([]);
-    const [contadorCartoes, setContadorCartoes] = useState(0);
-    const [numero, setNumero] = "**** **** **** ****";
-    const [nome, setNome] = localStorage.getItem("nomeCartao");
-    const [mesAno, setMesAno] = localStorage.getItem("dataValidade");
-    const [cvv, setCvv] = "***";
-    const [bandeira, setBandeira] = localStorage.getItem("bandeira");
-    const [botaoSelecionado, setBotaoSelecionado] = useState(null);
-    const [exibirAreaInput, setExibirAreaInput] = useState(false); // Estado para controlar a exibição da área de input dos cartões
+const [contadorCartoes, setContadorCartoes] = useState(0);
+const [numero, setNumero] = useState("**** **** **** ****");
+const [nome, setNome] = useState('');
+const [mesAno, setMesAno] = useState('');
+const [cvv, setCvv] = useState('***');
+const [bandeira, setBandeira] = useState('');
+const [primeirosDigitos, setPrimeirosDigitos] = useState('');
+const [botaoSelecionado, setBotaoSelecionado] = useState(null);
+const [exibirAreaInput, setExibirAreaInput] = useState(false); // Estado para controlar a exibição da área de input dos cartões
+const [data, setData] = useState(null);
+const [isLoading, setIsLoading] = useState(true);
+const [error, setError] = useState(null);
 
+const handleSelecionarBotao = (id) => {
+    setBotaoSelecionado(id);
+};
 
-    const handleSelecionarBotao = (id) => {
-        setBotaoSelecionado(id);
-    };
-// >>>>>>> tela-meuPlano
+const handleAdicionarCartao = () => {
+    if (cartoes.length >= 3) {
+        alert('Limite máximo de 3 cartões atingido. Remova um cartão existente para adicionar um novo.');
+        return;
+    }
 
-    const handleAdicionarCartao = () => {
-        if (cartoes.length >= 3) {
-            alert('Limite máximo de 3 cartões atingido. Remova um cartão existente para adicionar um novo.');
-            return;
-        }
+    if (!numero || !nome || !mesAno || !cvv || !bandeira) {
+        alert('Preencha todos os campos para adicionar um novo cartão.');
+        return;
+    }
 
-
-        if (!numero || !nome || !mesAno || !cvv || !bandeira) {
-            alert('Preencha todos os campos para adicionar um novo cartão.');
-            return;
-        }
-// >>>>>>> tela-meuPlano
-
-        const novoCartao = {
-            id: contadorCartoes + 1,
-            texto: numero, // Usando o número como texto para representar o cartão
-            nome: nome,
-            mesAno: mesAno,
-            cvv: cvv,
-            bandeira: bandeira,
-        };
-
-        setContadorCartoes(contadorCartoes + 1);
-        setCartoes([...cartoes, novoCartao]);
-        // Limpar os campos após adicionar o cartão
-        setNumero('');
-        setNome('');
-        setMesAno('');
-        setCvv('');
-        setBandeira('');
-        // Ocultar a área de input dos cartões após adicionar com sucesso
-        setExibirAreaInput(false);
+    const novoCartao = {
+        id: contadorCartoes + 1,
+        texto: numero, // Usando o número como texto para representar o cartão
+        nome: nome,
+        mesAno: mesAno,
+        cvv: cvv,
+        bandeira: bandeira,
+        primeirosDigitos: primeirosDigitos
     };
 
-    const handleExcluirCartao = (id) => {
-        const novosCartoes = cartoes.filter((cartao) => cartao.id !== id);
-        setCartoes(novosCartoes);
+    setContadorCartoes(contadorCartoes + 1);
+    setCartoes([...cartoes, novoCartao]);
+    // Limpar os campos após adicionar o cartão
+    setNumero('**** **** **** ****');
+    setNome('');
+    setMesAno('');
+    setCvv('***');
+    setBandeira('');
+    setPrimeirosDigitos('');
+    
+    // Ocultar a área de input dos cartões após adicionar com sucesso
+    setExibirAreaInput(false);
+};
 
-        // Desselecionar o botão se o cartão excluído for o botão selecionado
-        if (id === botaoSelecionado) {
-            setBotaoSelecionado(null);
-        }
-    };
+const handleExcluirCartao = (id) => {
+    const novosCartoes = cartoes.filter((cartao) => cartao.id !== id);
+    setCartoes(novosCartoes);
 
-    const handleExibirAreaInput = () => {
-        setExibirAreaInput(true);
-    };
+    // Desselecionar o botão se o cartão excluído for o botão selecionado
+    if (id === botaoSelecionado) {
+        setBotaoSelecionado(null);
+    }
+};
 
-    const handleCancelar = () => {
-        // // Limpar os campos ao cancelar
-        // setNumero('');
-        // setNome('');
-        // setMesAno('');
-        // setCvv('');
-        // setBandeira('');
-        // // Ocultar a área de input dos cartões ao cancelar
-        setExibirAreaInput(false);
-    };
+const handleExibirAreaInput = () => {
+    setExibirAreaInput(true);
+};
 
-    //Integração com o Back-End 
+const handleCancelar = () => {
+    setExibirAreaInput(false);
+};
 
-
-    //Listar cartões
-
-    const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
+useEffect(() => {
+    const fetchData = async () => {
         try {
             const response = await axios.get('http://localhost:8080/cartao/' + localStorage.getItem('id'));
-            setData(response.data);
+            const cartao = response.data;
+            // console.log(cartao);
 
-            
-            localStorage.setItem('dataValidade', response.data.dataValidade);
-            localStorage.setItem('nomeCartao', response.data.nomeCartao);
-            localStorage.setItem('bandeira', response.data.bandeira);
-            handleAdicionarCartao();
+            setData(cartao);
+            setNome(cartao.nomeCartao);
+            setMesAno(cartao.dataValidade);
+            setBandeira(cartao.bandeira);
+            setPrimeirosDigitos(cartao.primeirosDigitos); // Aqui está a correção
+
+            // Adicionar o cartão diretamente no estado
+            const novoCartao = {
+                id: contadorCartoes + 1,
+                texto: "**** **** **** ****", // Como não temos o número completo, usamos um placeholder
+                nome: cartao.nomeCartao,
+                mesAno: cartao.dataValidade,
+                cvv: '***', // Como não temos o CVV completo, usamos um placeholder
+                bandeira: cartao.bandeira,
+                primeirosDigitos: cartao.primeirosDigitos // Aqui está a correção
+            };
+            setContadorCartoes(contadorCartoes + 1);
+            setCartoes([...cartoes, novoCartao]);
+
         } catch (error) {
             setError(error);
         }
         setIsLoading(false);
-        };
+    };
 
-        fetchData();
-    }, []);
+    fetchData();
+}, []);
+
+    //Fim Listar cartões
 
     const [dadosCartao, setDadosCartao] = useState({
-        numeroCartao:'',
+        numeroCartao: '',
         nomeCartao: '',
         dataValidade: '',
         cvv: '',
         bandeira: '',
-        idEmpreendedor: localStorage.getItem("id")
+        idEmpreendedor: localStorage.getItem("id"),
+        PrimeirosDigitos: ''
     });
-
+    
     const handleChange = (event) => {
         setDadosCartao({ ...dadosCartao, [event.target.name]: event.target.value });
     };
-
+    
     const handleSubmitCartao = async (event) => {
         event.preventDefault();
-        console.log(dadosCartao);
+    
+        // Verificar se numeroCartao tem pelo menos 4 caracteres
+        const primeirosDigitos = dadosCartao.numeroCartao.length >= 4 
+            ? dadosCartao.numeroCartao.slice(0, 4) 
+            : '';
+    
+        const dadosCartaoAtualizados = { ...dadosCartao, PrimeirosDigitos: primeirosDigitos };
+    
+        console.log(dadosCartaoAtualizados);
+    
         try {
             const token = localStorage.getItem('token'); 
             const config = {
@@ -144,10 +158,10 @@ const MeusCartoes = () => {
                     'Authorization': `Bearer ${token}`
                 }
             };
-            const resposta = await axios.post('http://localhost:8080/cartao', dadosCartao, config);
-            console.log(resposta.data);
+            const resposta = await axios.post('http://localhost:8080/cartao', dadosCartaoAtualizados, config);
+            // console.log(resposta.data);
             alert("Cartão cadastrado com sucesso!");
-            
+            window.location = "/meusCartoes";
         } catch (erro) {
             console.error('Ocorreu um erro ao enviar o formulário:', erro);
             alert("Desculpe, ocorreu um erro no cadastro :(  Tente novamente mais tarde.");
@@ -190,7 +204,7 @@ const MeusCartoes = () => {
                                     <SelecionarCartao
                                         key={cartao.id}
                                         id={cartao.id}
-                                        textoBotao={`${cartao.texto.substring(0, 4)} - ${cartao.nome}`}
+                                        textoBotao={`${cartao.primeirosDigitos} - ${cartao.nome}`}
                                         selecionado={botaoSelecionado === cartao.id}
                                         onClick={() => handleSelecionarBotao(cartao.id)}
                                         onTrashIconClick={() => handleExcluirCartao(cartao.id)}
