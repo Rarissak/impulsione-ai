@@ -213,17 +213,17 @@ function MeusDados()
 {
     useEffect(() => {
         ToggleModalEditData();
-      }, []);
+    }, []);
 
     const token = localStorage.getItem('token')
-      const id = localStorage.getItem('id')
-      const uri = localStorage.getItem('uri')
+    const id = localStorage.getItem('id')
+    const uri = localStorage.getItem('uri')
    
-      const [usuarioLogado, loading, error] = useAxios({
-          axiosInstance: axiosInstance,
-          method: 'GET',
-          url: uri + '/' + id
-      })
+    const [usuarioLogado, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: uri + '/' + id
+    })
    
       const nomeCompleto = usuarioLogado.nomeCompleto;
       const dtNasc = usuarioLogado.dataNascimento;

@@ -68,21 +68,6 @@ function PerfilParceiro(){
     };
     //---------------------------------
 
-    
-    //Codigo referente as estrelas do depoimento
-    const [selectedStar, setSelectedStar] = useState(null);
-
-        const handleChange = (event) => {
-        const selectedValue = parseInt(event.target.value);
-        setSelectedStar(selectedValue);
-        // console.log("O selecionado foi o", selectedValue);
-
-        for (let i = 1; i <= selectedValue; i++) {
-            const starElement = document.getElementById(`star${i}`);
-            starElement.checked = true;
-        }
-    };
-    //---------------------------------
 
 
     //Pegando os produtos
@@ -95,12 +80,83 @@ function PerfilParceiro(){
     
     
     //Cadastrando os produtos
+
+
+    // const empreendedorId = localStorage.getItem('id');
+
+    // axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+    // .then(response => {
+    //     const empreendedor = response.data;
+    //     const nicho = empreendedor.nicho;
+    //     if (!nicho) {
+    //     console.log('Nicho não encontrado para este empreendedor');
+    //     } else {
+    //     console.log('Nicho do empreendedor:', nicho);
+    //     }
+    // })
+    // .catch(error => {
+    //     console.error('Erro ao obter o nicho do empreendedor:', error);
+    // });
+
+
+
+    // Função para obter o ID do nicho associado ao empreendedor
+    async function getNichoIdDoEmpreendedor(empreendedorId) {
+        try {
+        // Obter todos os nichos disponíveis
+        const responseNichos = await axios.get('http://localhost:8080/nichos');
+        const nichos = responseNichos.data;
+    
+        // Encontrar o nicho associado ao empreendedor
+        let nichoId = null;
+        nichos.forEach(nicho => {
+            nicho.empreendimentos.forEach(empreendedor => {
+            if (empreendedor.idEmpreededor === empreendedorId) {
+                nichoId = nicho.idNicho;
+            }
+            });
+        });
+    
+        return nichoId;
+        } catch (error) {
+        console.error('Erro ao obter o ID do nicho do empreendedor:', error);
+        throw error;
+        }
+    }
+    
+    // Uso da função para obter o ID do nicho associado a um empreendedor específico
+    const empreendedorId = localStorage.getItem('id');
+    getNichoIdDoEmpreendedor(empreendedorId)
+        .then(nichoId => {
+            if (nichoId) {
+                console.log('ID do nicho associado ao empreendedor:', nichoId);
+            } else {
+                console.log('Nenhum nicho encontrado para o empreendedor com o ID fornecido.');
+            }
+        })
+        .catch(error => {
+        console.error('Erro ao obter o ID do nicho associado ao empreendedor:', error);
+        });
+
+
+    // {
+    //     "idEmpreendedor": "id_do_empreendedor_aqui",
+    //     "nome": "Nome do Produto",
+    //     "preco": 50.99,
+    //     "urlFoto": "https://example.com/imagem.jpg",
+    //     "nicho": {
+    //       "idNicho": "id_do_nicho_aqui"
+    //     }
+    //   }
+
     const [dados, setProdutos] = useState({
+        idEmpreendedor: localStorage.getItem('id'),
         nome: '',
         preco: '',
         urlFoto: '',
-        idEmpreendedor: usuarioLogado.id,
-        nicho: usuarioLogado.nicho
+        nicho: {
+            idNicho: ''
+        }
     });
 
     const handleSubmit = async (dados) => {
@@ -145,15 +201,32 @@ function PerfilParceiro(){
 
     const [dadosDepoimento, setDepoimento] = useState({
         depoimento: '',
-        empreendedores: id
+        idEmpreendedor: localStorage.getItem('id'),
+        qtdEstrelas: ''
     });
+
+        //Codigo referente as estrelas do depoimento
+        const [selectedStar, setSelectedStar] = useState(null);
+
+            const handleChange = (event) => {
+                const selectedValue = parseInt(event.target.value);
+                setDepoimento({...dadosDepoimento, qtdEstrelas:selectedValue});
+                setSelectedStar(selectedValue);
+                // console.log("O selecionado foi o", selectedValue);
+
+                for (let i = 1; i <= selectedValue; i++) {
+                    const starElement = document.getElementById(`star${i}`);
+                    starElement.checked = true;
+                }
+            };
+        //---------------------------------
 
     const handleSubmitDepoimento = async (event) => {
         event.preventDefault();
 
-        try {
-            // console.log('chegou aqui');
+        console.log(dadosDepoimento)
 
+        try {
             const token = localStorage.getItem('token'); 
             const config = {
                 headers: {
@@ -161,8 +234,11 @@ function PerfilParceiro(){
                 }
             };
 
+            setDepoimento({ ...dadosDepoimento});
+
+            console.log(dadosDepoimento);
+
             const response = await axiosInstance.post('http://localhost:8080/depoimento', dadosDepoimento);
-            console.log(response.data);
 
             console.log('Depoimento enviado com sucesso:', response.data);
         } catch (error) {
@@ -170,40 +246,13 @@ function PerfilParceiro(){
         }
     };
 
-
-    // const handleSubmitDepoimento = async (dadosDepoimento) => {
-    //     event.preventDefault();
-
-    //     try {
-    //         // console.log('chegou aqui');
-
-    //         const token = localStorage.getItem('token'); 
-    //         const config = {
-    //             headers: {
-    //                 'Authorization': `Bearer ${token}`
-    //             }
-    //         };
-
-    //         const response = await axiosInstance.post('http://localhost:8080/depoimento', dadosDepoimento);
-    //         console.log(response.data);
-
-    //         console.log('Depoimento enviado com sucesso:', response.data);
-    //     } catch (error) {
-    //         console.error('Erro ao enviar o depoimento para o banco de dados:', error.message);
-    //     }
-    // };
-
     const handleChangeDepoimento = (event) => {
+        // console.log("teste");
+        // console.log("Valor do depoimento:", event.target.value); // Adicione este console.log para verificar o valor do depoimento
         setDepoimento({ ...dadosDepoimento, [event.target.name]: event.target.value });
     };
 
-    // const handleChangeDepoimento = (event) => {
-    //     const { name, value } = event.target;
-    //     setDepoimentos(prevDados => ({
-    //         ...prevDados,
-    //         [name]: value,
-    //     }));
-    // };
+    
     //---------------------------------
     
 
@@ -361,7 +410,8 @@ function PerfilParceiro(){
                         maxLength={150}
                         placeholder="Deixe aqui seu depoimento"
                         value={dadosDepoimento.depoimento}
-                        onChange={handleChangeDepoimento}
+                        name='depoimento'
+                        onInput={handleChangeDepoimento}
                     ></textarea>
                     <div id='blocoAvaliacao'>
                         <h3>Avalie nossa plataforma:</h3>
