@@ -72,7 +72,7 @@ html{
 #formContainer
 {
     min-width: 315px;
-    max-width: 443px;
+    max-width: 412px;
     
 }
 
@@ -340,37 +340,6 @@ html{
     gap: 15px;
 
 }
-
-#mensagemCarregamento
-{
-   
-    background-color: #eb6b10;
-    border-radius: 15px;
-    padding: 3rem;
-    margin: auto;
-    border-bottom: 5px solid #4400ff;
-}
-
-#mensagemCarregamento h1
-{
-    animation: textShadowAnimation 5s infinite alternate;
-    animation-timing-function: ease-in-out;
-    font-size: 32px;
-    color:#ffffff; 
-    
-}
-
-@keyframes textShadowAnimation {
-    0% {
-      text-shadow: none; /* Inicia sem sombra */
-    }
-    50% {
-        text-shadow: rgb(25, 0, 255) 2px 2px 4px ;
-    }
-    100% {
-      text-shadow: none; /* Retorna para sem sombra no final da animação */
-    }
-  }
 
  /*Fazendo a mensagem de invaliz ficar em baixo do input*/
 #ajustandoMensagemInvalida

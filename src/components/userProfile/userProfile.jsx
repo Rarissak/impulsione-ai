@@ -4,75 +4,94 @@ import Heart from '../../assets/fullHeartIcon.svg';
 import EmptyHeart from "../../assets/emptyHeartIcon.svg";
 import FotoExemplo from "../../assets/fotoExemplo.jpg";
 import TitleBorda from '../featured/titleBorda.jsx'
-import Gato from '../../assets/gato.webp';
-import Trufa from '../../assets/trufasDoSim.png'
 // função principal do arquivo
 import axiosInstance from '../../helper/axiosInstance.js';
 import useAxios from '../../hook/useAxios.js';
-import axios from "axios";
 
 // Tornando os subcompenentes exportáveis solo
 export function UserData()
 {
-    //Simulando como este subcomponente iria pegar as informações do usuário apartir do localStorage
-    const [userInfo, setUserInfo] = useState(null);
+
+    const [userId, setUserId] = useState(null);
    
-     
+
     useEffect(() => {
-         // Recuperando as informações do localStorage
-         const storedUserInfo = localStorage.getItem('loginInfo'); 
-         setUserInfo(JSON.parse(storedUserInfo));
-         //.log(userInfo); // verificando se está sendo obtido
-        
-       }, []);
+        const idUser = localStorage.getItem('id'); 
+       
+        setUserId(idUser);
+       
+      }, []);
+     
+    const [usuario, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url:`/usuarios/${userId}`
+    })
+    
+    
+    // não mostrar nada 
+    if(usuario === undefined)
+    {
+        return null;
+    }
+    
+    const formatDate = (isoString) => {
+        const date = new Date(isoString);
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = date.getUTCFullYear();
+        return `${day}/${month}/${year}`;
+    };
 
     return(
-        // {/*Contém todo o formulário e seus campos*/}
-         <div id="formContainer">
-                            
-                            
-                            
-         <div id="fieldSetFoto">
-             <div id="formTitle1">
-                 <h1>MEUS DADOS</h1>
-             </div>
-             {/*NOME COMPLETO*/}
-              {userInfo ? (
-                    <div id="fieldSetFoto">
-                     <div className="fieldType1">
-                 <span className="nameField">Nome Completo</span>
-                 <span className="conteudo">{userInfo.nomeCompleto}</span>
-             </div>
-         
-             <div id="duploField">
-                 {/*DATA DE NASCIMENTO*/}
-                 <div className="fieldType1">
-                 <span className="nameField">Data de Nascimento</span>
-                 <span className="conteudo">{userInfo.dataNascimento}</span>
-             </div> 
-                     {/*CPF*/}
-             <div className="fieldType1">
-                     <span className="nameField">CPF</span>
-                     <span className="conteudo">{userInfo.cpf}</span>
-             </div>
-             </div>
-             
-             {/*Endereço completo*/}
-             <div className="fieldType1">
-                 <span className="nameField">Email Cadastrado</span>
-                 <span className="conteudo">{userInfo.email}</span>    
-             </div>
-         </div>
-                   
-                ) : (
-                    <p>Nenhuma informação do usuário encontrada.</p>
-                )}
-            
-         <div className="buttonsFormEdit">  
-             <button id="editButton">EDITAR DADOS</button>
-         </div>
-      </div>
-     </div>
+        <div>
+            {/*Verificando se tem algo para ser mostrado*/}
+       
+              <div id="formContainer">           
+                <div id="fieldSetFoto">
+                  <div id="formTitle1">
+                      <h1>MEUS DADOS</h1>
+                  </div>
+                  {/*NOME COMPLETO*/}
+                   {usuario ? (
+                         <div id="fieldSetFoto">
+                          <div className="fieldType1">
+                      <span className="nameField">Nome Completo</span>
+                      <span className="conteudo">{usuario.nome}</span>
+                  </div>
+              
+                  <div id="duploField">
+                      {/*DATA DE NASCIMENTO*/}
+                      <div className="fieldType1">
+                      <span className="nameField">Data de Nascimento</span>
+                      <span className="conteudo">{formatDate(usuario.dataNascimento)}</span>
+                  </div> 
+                          {/*CPF*/}
+                  <div className="fieldType1">
+                          <span className="nameField">CPF</span>
+                          <span className="conteudo">{usuario.cpf}</span>
+                  </div>
+                  </div>
+                  
+                  {/*Endereço completo*/}
+                  <div className="fieldType1">
+                      <span className="nameField">Email Cadastrado</span>
+                      <span className="conteudo">{usuario.email}</span>    
+                  </div>
+              </div>
+                        
+                     ) : (
+                         <p>Nenhuma informação do usuário encontrada.</p>
+                     )}
+                 
+              <div className="buttonsFormEdit">  
+                  <button id="editButton">EDITAR DADOS</button>
+              </div>
+           </div>
+          </div>
+     
+    </div>
+       
     );
 }
 
@@ -171,9 +190,9 @@ export function Recomendacoes()
                             <Recomendado
                             key={index}
                             imgReco={FotoExemplo}
-                            recoTitle={empreendedor.nomeEmpreendimento}
-                            recoTipoEstabe={empreendedor.nicho.nicho}
-                            recoDesc={empreendedor.biografia}
+                            recoTitle={empreendedor?.nomeEmpreendimento}
+                            recoTipoEstabe={empreendedor?.nicho.nicho}
+                            recoDesc={empreendedor?.biografia}
                             recoIcon={EmptyHeart}
                             />
                         ))
@@ -200,17 +219,24 @@ export function Recomendacoes()
 function UserProfile()
 {
 
-    // Simulação de dados recebidos ao 'longar'
-    const login = {
-        nomeCompleto: "Fulano de Tal",
-        dataNascimento: "12/11/1990",
-        cpf: "123.456.783-00",
-        email: "fulano@example.com"
-      };
-
-      
-      localStorage.setItem('loginInfo', JSON.stringify(login));
+    // Código de teste ¬¬ -> pega o primeiro usuário da lista retornada e coloca o id dele no localStorage
+         // Para Ent o id ser usado.
+     const [usuarios, loading1, error1] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url:`/usuarios`
+    })
     
+    console.log(usuarios);
+
+    // Se o array retornado for nulo, retornar.
+    if(usuarios.length === 0)
+    {
+        return null;
+    }
+    
+    // descompactando o id. e transformando em string.
+    localStorage.setItem('id', JSON.stringify(usuarios[0].idUsuario)); 
 
     return(
             <div id="componente">
