@@ -189,8 +189,6 @@ function Pesquisa() {
     )
 
   }
-
-  
   
   return (<>
     <Header />
