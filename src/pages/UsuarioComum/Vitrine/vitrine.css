@@ -200,3 +200,9 @@
 #inputAvaliacao button {
     background-color: #FFE1CC;
 }
+
+#produtos-nao-carregados {
+    color: #ffffff;
+    background-color: red;
+    padding: 1em;
+}
