@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
@@ -239,15 +239,103 @@ function MeusDados()
       const facebook = usuarioLogado.facebook;
       const plano = usuarioLogado.planoAssinatura;
 
-      //endereco
+    //endereco
     //   const uf = usuarioLogado.endereco.uf;
     //   const cidade = usuarioLogado.endereco.cidade;
-    //   const bairo = usuarioLogado.endereco.bairro;  
+    //   const bairro = usuarioLogado.endereco.bairro;  
     //   const logradouro = usuarioLogado.endereco.logradouro;
     //   const numero = usuarioLogado.endereco.numero;
+    //   console.log(uf)
+    //   console.log(cidade)
+    //   console.log(bairro)
+    //   console.log(logradouro)
+    //   console.log(numero)
+    // console.log("testando endereco que vem do usuarioLogado: ", usuarioLogado.endereco)
+
+    // 
+
+    
 
     // cartão
     // const nomeCartao = usuarioLogado.cartao.nomeCartao
+
+
+    //GET DO ENDEREÇO
+        const empreendedorId = localStorage.getItem('id'); 
+
+        const [uf, setUf] = useState('');
+        const [cidade, setCidade] = useState('');
+        const [logradouro, setLogradouro] = useState('');
+        const [numero, setNumero] = useState('');
+        const [bairro, setBairro] = useState('');
+
+        axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+        .then(response => {
+            const empreendedor = response.data;
+
+            const { endereco } = empreendedor;
+    
+            setUf(endereco.uf);
+            setCidade(endereco.cidade);
+            setBairro(endereco.bairro);  
+            setLogradouro(endereco.logradouro);
+            setNumero(endereco.numero);
+
+            console.log("UF:", endereco.uf);
+            console.log("Cidade:", endereco.cidade);
+            console.log("Bairro:", endereco.bairro);
+            console.log("Logradouro:", endereco.logradouro);
+            console.log("Número:", endereco.numero);
+        })
+        .catch(error => {
+            // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);
+        });
+    //----------------
+
+    //GET DO NICHO
+        const [nicho, setNicho] = useState('');
+        
+        axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+        .then(response => {
+            const empreendedor = response.data;
+
+            const { nicho } = empreendedor;
+
+            setNicho(nicho.nicho);
+
+            console.log("Nicho:", nicho.nicho);
+        })
+        .catch(error => {
+            // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);
+        });
+    //----------------
+
+    //GET DO CARTÃO
+        const [PrimeirosDigitos, setPrimeirosDigitos] = useState('');
+        const [nomeCartao, setNomeCartao] = useState('');
+      
+        axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+        .then(response => {
+            const empreendedor = response.data;
+
+            const { cartao } = empreendedor;
+
+            if (!nomeCartao && !PrimeirosDigitos) {
+                setNomeCartao("Não possui cartão cadastrado");
+                setPrimeirosDigitos(" ");
+            } else {
+                setNomeCartao(cartao.nomeCartao);
+                setPrimeirosDigitos(cartao.PrimeirosDigitos);
+            }
+
+            console.log("Nome Cartão:", cartao.nomeCartao);
+            console.log("Nome Cartão:", cartao.PrimeirosDigitos);
+        })
+        .catch(error => {
+            // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);
+        });
+    //----------------
+
    
 
     return(
@@ -290,7 +378,7 @@ function MeusDados()
                             {/*Endereço completo*/}
                             <div className="fieldType1">
                                 <span className="nameField">Endereço Completo</span>
-                                {/* <span className="conteudo" id="campoEndereco">{logradouro}, {numero} - {bairo}, {cidade} - {uf}</span> */}
+                                <span className="conteudo" id="campoEndereco">{logradouro}, {numero} - {bairro}, {cidade} - {uf}</span>
                             </div>
                         </fieldset>
                                 
@@ -305,7 +393,7 @@ function MeusDados()
                             {/*Nicho*/}
                             <div className="fieldType1">
                                 <span className="nameField">Nicho do Trabalho</span>
-                                {/* <span className="conteudo" id="campoNicho">{nichoNegocio}</span>     */}
+                                <span className="conteudo" id="campoNicho">{nicho}</span>    
                             </div>
                                     
                             {/*Modalidade de Serviço*/}
@@ -364,7 +452,7 @@ function MeusDados()
                                             
                             
 
-                                <fieldset id="fieldSetConfigPlano" className=" corLaranja">
+                                <fieldset id="fieldSetConfigPlano" className="corLaranja">
                                     {/*Plano Escolhido*/}
                                     <div className="fieldType1">
                                         <span className="nameField">Plano escolhido</span>
@@ -374,7 +462,7 @@ function MeusDados()
                                     {/*Cartão Cadastrado*/}
                                     <div className="fieldType1">
                                         <span className="nameField">Cartão cadastrado</span>
-                                        <span className="conteudo">(Nome do cartão)</span>    
+                                        <span className="conteudo">{nomeCartao} - {PrimeirosDigitos}</span>    
                                     </div>
 
                                     <div className="buttonsForm">  
@@ -384,14 +472,12 @@ function MeusDados()
                     </form>
                     </div>
 
-                    <fieldset id="fieldSetConfigPlano" className=" corLaranja">
-                        {/*Plano Escolhido*/}
+                    {/* <fieldset id="fieldSetConfigPlano" className=" corLaranja">
                         <div className="fieldType1">
                             <span className="nameField">Plano escolhido</span>
                             <span className="conteudo">Silver</span>    
                         </div>
 
-                        {/*Cartão Cadastrado*/}
                         <div className="fieldType1">
                             <span className="nameField">Cartão cadastrado</span>
                             <span className="conteudo">(Nome do cartão)</span>    
@@ -400,7 +486,7 @@ function MeusDados()
                         <div className="buttonsForm">  
                             <button id="alterarButton">ALTERAR PLANO</button>
                         </div>
-                    </fieldset>
+                    </fieldset> */}
                 </div>
         </div>
     );
