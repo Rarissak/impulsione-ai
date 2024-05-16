@@ -32,7 +32,7 @@ function AdminPlanos(){
                             nomePlano={plano.nome}
                             valorPlano={plano.preco}
                             beneficios={plano.beneficios.split(",")}
-                        
+                            idPLano={plano.idPlanoAssinatura}
                         />
                     ))
                 )}
