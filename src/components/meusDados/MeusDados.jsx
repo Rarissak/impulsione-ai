@@ -13,7 +13,6 @@ import axios from "axios";
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
 {
-    
     try {
          // Pega dados
          const elementoNome = document.getElementById("campoNome");
@@ -140,7 +139,6 @@ export function MostrarDadosAtualizados() {
     try {
         const testeDados = PegandoDadosAtualizados();
         
-
         const elementoNome = document.getElementById("campoNome");
         const elementoDataNascimento = document.getElementById("campoDataNascimento");
         const elementoFotoPerfil = document.getElementById("fotoPerfil");
@@ -229,7 +227,6 @@ function MeusDados()
       const dtNasc = usuarioLogado.dataNascimento;
       const cpf = usuarioLogado.cpf;
       const nomeNegocio = usuarioLogado.nomeEmpreendimento;
-    //   const nichoNegocio = usuarioLogado.nicho.nicho;
       const modalidade = usuarioLogado.modalidade;
       const site = usuarioLogado.site;
       const mei = usuarioLogado.mei;
@@ -238,27 +235,6 @@ function MeusDados()
       const instagram = usuarioLogado.instagram;
       const facebook = usuarioLogado.facebook;
       const plano = usuarioLogado.planoAssinatura;
-
-    //endereco
-    //   const uf = usuarioLogado.endereco.uf;
-    //   const cidade = usuarioLogado.endereco.cidade;
-    //   const bairro = usuarioLogado.endereco.bairro;  
-    //   const logradouro = usuarioLogado.endereco.logradouro;
-    //   const numero = usuarioLogado.endereco.numero;
-    //   console.log(uf)
-    //   console.log(cidade)
-    //   console.log(bairro)
-    //   console.log(logradouro)
-    //   console.log(numero)
-    // console.log("testando endereco que vem do usuarioLogado: ", usuarioLogado.endereco)
-
-    // 
-
-    
-
-    // cartão
-    // const nomeCartao = usuarioLogado.cartao.nomeCartao
-
 
     //GET DO ENDEREÇO
         const empreendedorId = localStorage.getItem('id'); 
@@ -336,6 +312,9 @@ function MeusDados()
         });
     //----------------
 
+    //PUT - ATUALIZANDO OS DADOS 
+
+    //--------------------------
    
 
     return(
