@@ -41,76 +41,6 @@ function Vitrine() {
     const [error, setError] = useState(null);
     const [produtos, setProdutos] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const responseEmpreendedor = await axios.get('http://localhost:8080/empreendedores/' + localStorage.getItem('id'));
-    //             const empreendedor = responseEmpreendedor.data;
-
-    //             setIdEmpreendedor(empreendedor.idEmpreendedor);
-    //             setNomeEmpreendimento(empreendedor.nomeEmpreendimento);
-    //             setBiografia(empreendedor.biografia);
-    //             setNomeExibicao(empreendedor.nomeExibicao);
-    //             setModalidade(empreendedor.modalidade);
-    //             setSite(empreendedor.site);
-    //             setEmail(empreendedor.email);
-    //             setFacebook(empreendedor.facebook);
-    //             setInstagram(empreendedor.instagram);
-    //             setTelefone(empreendedor.telefone);
-    //             setIdNicho(empreendedor.idNicho);
-
-    //             const responseProdutos = await axios.get('http://localhost:8080/produtos/' + localStorage.getItem('id'));
-    //             setProdutos(responseProdutos.data);
-
-    //             setIsLoading(false);
-    //         } catch (error) {
-    //             setError(error);
-    //             setIsLoading(false);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, []);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const id = localStorage.getItem('id');
-    //             console.log('Fetching empreendedor with ID:', id);
-                
-    //             const responseEmpreendedor = await axios.get(`http://localhost:8080/empreendedores/${id}`);
-    //             const empreendedor = responseEmpreendedor.data;
-    //             console.log('Empreendedor data:', empreendedor);
-    
-    //             setIdEmpreendedor(empreendedor.idEmpreendedor);
-    //             setNomeEmpreendimento(empreendedor.nomeEmpreendimento);
-    //             setBiografia(empreendedor.biografia);
-    //             setNomeExibicao(empreendedor.nomeExibicao);
-    //             setModalidade(empreendedor.modalidade);
-    //             setSite(empreendedor.site);
-    //             setEmail(empreendedor.email);
-    //             setFacebook(empreendedor.facebook);
-    //             setInstagram(empreendedor.instagram);
-    //             setTelefone(empreendedor.telefone);
-    //             setIdNicho(empreendedor.idNicho);
-    
-    //             console.log('Fetching produtos with ID:', id);
-    //             const responseProdutos = await axios.get(`http://localhost:8080/produtos/${id}`);
-    //             const produtos = responseProdutos.data;
-    //             console.log('Produtos data:', produtos);
-    //             setProdutos(produtos);
-    
-    //             setIsLoading(false);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //             setError(error);
-    //             setIsLoading(false);
-    //         }
-    //     };
-    
-    //     fetchData();
-    // }, []);
-    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -196,22 +126,6 @@ function Vitrine() {
                         img7={Propaganda}
                     />
                 </section>
-
-                {/* <section className="bloco2" id="bloco2">
-                    <div id="titleText">
-                        <h2 id="textBranco">Nossos Produtos</h2>
-                    </div>
-                    <div id="gradeProdutos">
-                        {produtos.map(produto => (
-                            <Produto
-                                key={produto.id} // Verifique a estrutura do objeto retornado pela API para garantir a chave correta
-                                img={produto.urlFoto}
-                                name={produto.nome}
-                                price={produto.preco.toFixed(2)}
-                            />
-                        ))}
-                    </div>
-                </section> */}
 
             <section className="bloco2" id="bloco2">
                 <div id="titleText">
