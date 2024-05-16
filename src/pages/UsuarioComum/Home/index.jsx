@@ -65,10 +65,6 @@ function Home() {
         method: 'GET',
         url: 'depoimento'
     })
-    console.log(depoimentos)
-
-
-
 
     return (
         <>
@@ -77,13 +73,12 @@ function Home() {
             <MenuLateral></MenuLateral>
             <body>
                 <nav className='linksExternos' id='barraLinks'>
-
                     {nichos.map((nicho, index) => (
                         <BarraLinkExterno
-                            key={index} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
+                            key={nicho.id} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
                             id='fundoLaranja'
                             name={nicho?.nicho.toUpperCase()}
-                            link='/pesquisa'
+                            link={`/pesquisa/nicho/${nicho.nicho}`}
                         />
                     ))}
                 </nav>
@@ -131,7 +126,7 @@ function Home() {
                 <div id='destaques'>
                     <TitleBorda title={'Destaques'}></TitleBorda>
                     <div id='linhaDestaques'>
-                        {empreendedoresDestaque.slice(0,5).map((empreendedor, index) => (
+                        {empreendedoresDestaque.slice(0, 5).map((empreendedor, index) => (
                             <Destaque
                                 key={index}
                                 idBox={'quadradoLaranja'}
@@ -147,16 +142,16 @@ function Home() {
                     <h2>DEPOIMENTOS DOS PARCEIROS</h2>
                 </div>
                 <div id='depoimentos'>
-                    {depoimentos.slice(0,3).map((depoimento, index) => (
-                        <Depoimentos 
+                    {depoimentos.slice(0, 3).map((depoimento, index) => (
+                        <Depoimentos
                             imagemSrc={PerfilIcon}
-                            nome={depoimento?.empreendedor.nomeExibicao} 
-                            nicho={depoimento?.empreendedor.nicho.nicho} 
+                            nome={depoimento?.empreendedor.nomeExibicao}
+                            nicho={depoimento?.empreendedor.nicho.nicho}
                             review={depoimento?.depoimento}
-                          />
+                        />
                     ))}
-                    
-                    
+
+
                 </div>
             </body>
             <Footer></Footer>

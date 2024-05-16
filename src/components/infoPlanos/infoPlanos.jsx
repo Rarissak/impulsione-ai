@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../infoPlanos/infoPlanos.css';
 import IconLixeira from '../../assets/lixeira.svg'
+import axiosInstance, { axiosInstanceToken } from '../../helper/axiosInstance';
+import useAxios, { useAxiosWithDependecies, useAxiosWithDependeciesOnChange } from '../../hook/useAxios';
 
 
 // function adicionarBeneficio() {
@@ -33,14 +35,93 @@ import IconLixeira from '../../assets/lixeira.svg'
 // }
 
 
-function InfoPlanos({nomePlano, valorPlano, beneficio, beneficios}){
+function InfoPlanos({nomePlano, valorPlano, idPLano, beneficios}){
 
-    const lista = beneficios;
-
+    const [ListaBeneficios,setBeneficios] = useState([]);
+    const [novoNomePlano, setNovoNomePlano] = useState('')
+    const [novovalorPlano, setNovoValorPlano] = useState(0.00) 
     const [atualizarPlano, setAtualizarPlano] = useState(false);
+    const [isDelete, setDelete] = useState(false);
+
+    useEffect(()=>{
+        setBeneficios(beneficios)
+        setNovoNomePlano(nomePlano)
+        setNovoValorPlano(valorPlano)
+    },[])
+    
+    function deleteBeneficio(index) {
+        setBeneficios(prevBeneficios => {
+            const newBeneficios = [...prevBeneficios];
+            newBeneficios.splice(index, 1);
+            return newBeneficios;
+        });
+    }
+
+    const enviarDados = () => {
+        
+        axiosInstanceToken().put("/assinaturas/" + idPLano,{
+            nome: novoNomePlano,
+            descricao: "nova desc",
+            beneficios: ListaBeneficios.join(","),
+            preco: novovalorPlano
+        })
+        .then((res) =>{
+            console.log(res.data)
+         }).catch((error) => {
+            
+             console.log(error);
+         })
+         .finally(()=>{
+             setDelete(false)
+             window.location.reload()
+         })
+    }
+
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Qualquer lógica adicional de manipulação do valor pode ser feita aqui
+        console.log('Valor submetido:');
+    };
+    const adicionarBeneficio = (event) => {
+        
+        if (event.key === 'Enter') {
+            event.preventDefault()
+            const novoBeneficio = event.target.value;
+            setBeneficios(prevBeneficios => [...prevBeneficios, novoBeneficio]);
+            event.target.value = '';
+        }
+    };
+
+    const mudarNomePlano = (event) => {
+        setNovoNomePlano(event.target.value)
+    };
+
+    const mudarValorPlano = (event) => {
+        setNovoValorPlano(event.target.value)
+    };
 
     const toggleAtualizar = () => {
+       
         setAtualizarPlano(!atualizarPlano);
+        
+    };
+
+    const toggleExcluir = async () => {
+       
+        setDelete(true)
+        await axiosInstanceToken().delete("/assinaturas/" + idPLano)
+        .then((res) =>{
+          console.log(res.data)
+       }).catch((error) => {
+          
+           console.log(error);
+       })
+       .finally(()=>{
+           setDelete(false)
+           window.location.reload()
+       })
+        
     };
 
     return(
@@ -59,12 +140,12 @@ function InfoPlanos({nomePlano, valorPlano, beneficio, beneficios}){
                 </div>
                 <div>
                     <h3>Benefícios:</h3>
-                    {lista.map((item) => (
+                    {beneficios.map((item) => (
                         <li className='dado' key={item}>{item}</li>
                     ))}
                 </div>
                 <div id='botoesPlanos'>
-                    <button className='botaoVermelho title'>Excluir Plano</button>
+                    <button onClick={toggleExcluir} className='botaoVermelho title'>Excluir Plano</button>
                     <button onClick={toggleAtualizar} id='atualizar' className="title">Atualizar Plano</button>
                 </div>
             </div>
@@ -75,58 +156,30 @@ function InfoPlanos({nomePlano, valorPlano, beneficio, beneficios}){
                     <div>
                        <fieldset>
                             <label>Nome do Plano</label>
-                            <input type='text'></input>
+                            <input type='text' value={nomePlano} onChange={mudarNomePlano} ></input>
                         </fieldset>
                         <fieldset>
                             <label>Valor do Plano</label>
                             <div className="textoRow">
                                 <h3>R$</h3>
-                                <input type='number'></input>                            </div>
+                                <input type='number' value={valorPlano} onChange={mudarValorPlano}></input>                            </div>
                         </fieldset> 
                     </div>
                     <fieldset>
                         <label>Benefícios</label>
-                        <input type='text'></input>
-                        <div className='outroBeneficio'>
-                            <input type='text'></input>
-                            <button className="title" id='excluirBeneficio'>
-                                <img src={IconLixeira} alt='icon de lixeira'></img>
+                        <input type='text'  onKeyDown={adicionarBeneficio}></input>
+                        {ListaBeneficios.map((beneficio, index) => (
+                            <div className='outroBeneficio' key={idPLano + index}>
+                            <input type='text' placeholder ={beneficio}></input>
+                            <button onClick={() => deleteBeneficio(index)} className="title" type='button' id='excluirBeneficio' >
+                                <img src={IconLixeira}  alt='icon de lixeira'></img>
                             </button>
                         </div>
-                        <div className='outroBeneficio'>
-                            <input type='text'></input>
-                            <button className="title" id='excluirBeneficio'>
-                                <img src={IconLixeira} alt='icon de lixeira'></img>
-                            </button>
-                        </div>
-                        <div className='outroBeneficio'>
-                            <input type='text'></input>
-                            <button className="title" id='excluirBeneficio'>
-                                <img src={IconLixeira} alt='icon de lixeira'></img>
-                            </button>
-                        </div>
-                        <div className='outroBeneficio'>
-                            <input type='text'></input>
-                            <button className="title" id='excluirBeneficio'>
-                                <img src={IconLixeira} alt='icon de lixeira'></img>    
-                            </button>
-                        </div>
-                        {/* {beneficios.map((beneficio) => (
-                            <div key={beneficio.id} className="outroBeneficio">
-                                <input type="text" value={beneficio.valor} onChange={(e) => {
-                                const updatedBeneficios = [...beneficios];
-                                updatedBeneficios.find((b) => b.id === beneficio.id).valor = e.target.value;
-                                setBeneficios(updatedBeneficios);
-                                }} />
-                                <button className="title" onClick={() => removerBeneficio(beneficio.id)}>apagar</button>
-                            </div>
-                        ))} */}
-                        {/* <button className="title" id="addBeneficio" onClick={adicionarBeneficio}>adicionar benefício</button> */}
-                        {/* <button className="title" id="addBeneficio">adicionar benefício</button> */}
+                        ))}
                     </fieldset>
                     <div>
                         <button className="title botaoVermelho" type='reset'>Cancelar</button>
-                        <button className="title" type='submit'>Confirmar Atualização</button>
+                        <button className="title" type='submit' onClick={enviarDados}>Confirmar Atualização</button>
                     </div>
                 </form>
             )}
