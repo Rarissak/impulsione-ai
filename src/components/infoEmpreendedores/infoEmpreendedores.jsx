@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import "../infoEmpreendedores/InfoEmpreendedores.css"
+import axiosInstance, { axiosInstanceToken } from '../../helper/axiosInstance';
 
-function InfoEmpreendedores({nicho,nomeEmpreendedor, nomeNegocio, data, horario, endereco, mei, modalidade, plano, insta, email, numContato, face}){
+function InfoEmpreendedores({idEmpreendedor, nicho,nomeEmpreendedor, nomeNegocio, data, horario, endereco, mei, modalidade, plano, insta, email, numContato, face}){
     
     const [motivosDispensar, setMotivosDispensar] = useState(false);
 
@@ -15,6 +16,33 @@ function InfoEmpreendedores({nicho,nomeEmpreendedor, nomeNegocio, data, horario,
         setExpandir(!expandir);
     };
 
+    const aceitarSolicitacao = () =>{
+        
+        axiosInstanceToken().put("/admin/solicitacoes/" + idEmpreendedor)
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+        .finally(() => {
+            window.location.reload()
+        })
+
+    }
+    const recusarSolicitacao = () =>{
+        axiosInstanceToken().delete("/admin/solicitacoes/" + idEmpreendedor)
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+        .finally(() => {
+            window.location.reload()
+        })
+
+    }
 
     return(
         <section id='blocoInfoNegocio'>
@@ -72,7 +100,7 @@ function InfoEmpreendedores({nicho,nomeEmpreendedor, nomeNegocio, data, horario,
                     </div>
                     <div id='buttonsAceitarDispensar'>
                         <button onClick={toggleDispensar} id='dispensar' className="title">Dispensar</button>
-                        <button id='aceitar' className="title">Aceitar</button>
+                        <button id='aceitar' className="title" onClick={aceitarSolicitacao}>Aceitar</button>
                     </div>
                     {motivosDispensar && (
                         <section id='motivosDispensa'>
@@ -100,7 +128,7 @@ function InfoEmpreendedores({nicho,nomeEmpreendedor, nomeNegocio, data, horario,
                                         </label>
                                     </div> 
                                 </div>
-                                <button type='submit' className="title">CONFIRMAR MOTIVO</button>
+                                <button type='submit' className="title" onClick={recusarSolicitacao}>CONFIRMAR MOTIVO</button>
                             </form>
                         </section>
                     )}

@@ -13,10 +13,6 @@ function Admin(){
         url:"admin/solicitacoes" 
     })
 
-    console.log(empreendedoresInativos)
-
-
-
     return (
         <body id='pageAdmin'>
             <h1 className='title' id='tituloPagina'>PÁGINA DO ADMINISTRADOR</h1>
@@ -32,6 +28,7 @@ function Admin(){
                     {!InfoEmpreendedoresInativosLoading && ( empreendedoresInativos.map((empreendedorInativo) => (
                         <InfoEmpreendedores
                             key={empreendedorInativo.idEmpreededor}
+                            idEmpreendedor={empreendedorInativo.idEmpreededor}
                             nomeEmpreendedor={empreendedorInativo.nomeCompleto}
                             nomeNegocio={empreendedorInativo.nomeEmpreendimento}
                             data={"17/05/2024"}
@@ -44,14 +41,9 @@ function Admin(){
                             email={empreendedorInativo.email}
                             numContato={empreendedorInativo.telefone}
                             face={empreendedorInativo.facebook}
-
-                        
-                        
-                        
                         />
                     ))
                    ) }
-                  
                 </div>
             </div>
 
