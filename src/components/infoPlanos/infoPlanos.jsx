@@ -72,8 +72,7 @@ function InfoPlanos({nomePlano, valorPlano, idPLano, beneficios}){
              console.log(error);
          })
          .finally(()=>{
-             setDelete(false)
-             window.location.reload()
+     
          })
     }
 
