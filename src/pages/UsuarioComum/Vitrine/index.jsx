@@ -84,45 +84,6 @@ function Vitrine() {
         fetchData();
     }, []);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const id = localStorage.getItem('id');
-    //             console.log('Fetching empreendedor with ID:', id);
-                
-    //             const responseEmpreendedor = await axios.get(`http://localhost:8080/empreendedores/${id}`);
-    //             const empreendedor = responseEmpreendedor.data;
-    //             console.log('Empreendedor data:', empreendedor);
-    
-    //             setIdEmpreendedor(empreendedor.idEmpreendedor);
-    //             setNomeEmpreendimento(empreendedor.nomeEmpreendimento);
-    //             setBiografia(empreendedor.biografia);
-    //             setNomeExibicao(empreendedor.nomeExibicao);
-    //             setModalidade(empreendedor.modalidade);
-    //             setSite(empreendedor.site);
-    //             setEmail(empreendedor.email);
-    //             setFacebook(empreendedor.facebook);
-    //             setInstagram(empreendedor.instagram);
-    //             setTelefone(empreendedor.telefone);
-    //             setIdNicho(empreendedor.idNicho);
-
-    //             // Fetch produtos separately if not included in the empreendedor response
-    //             const responseProdutos = await axios.get(`http://localhost:8080/produtos?empreendedorId=${id}`);
-    //             const produtosData = responseProdutos.data;
-    //             console.log('Produtos data:', produtosData);
-    //             setProdutos(produtosData);
-
-    //             setIsLoading(false);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //             setError(error);
-    //             setIsLoading(false);
-    //         }
-    //     };
-    
-    //     fetchData();
-    // }, []);
-
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -175,7 +136,7 @@ function Vitrine() {
                         {produtos.length > 0 ? (
                             produtos.map(produto => (
                                 <Produto
-                                    key={produto.idProduto} // Verifique a estrutura do objeto retornado pela API para garantir a chave correta
+                                    key={produto.idProduto}
                                     img={produto.urlFoto}
                                     name={produto.nome}
                                     price={produto.preco.toFixed(2)}
