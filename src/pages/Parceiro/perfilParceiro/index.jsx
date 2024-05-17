@@ -32,6 +32,8 @@ function PerfilParceiro(){
         url: uri + '/' + id
     })
 
+    // const 
+
     const apelidoParceiro = usuarioLogado.nomeExibicao;
     const numVisitas = usuarioLogado.numeroVisitas;
       
@@ -52,7 +54,7 @@ function PerfilParceiro(){
     //---------------------------------
     
 
-    //Pré visualização de imagem carrossel
+    //Pré visualização de imagem Produto
     const [selectedProduto, setSelectedProduto] = useState(null);
 
     const loadProduto = (e) => {
@@ -82,61 +84,61 @@ function PerfilParceiro(){
     //Cadastrando os produtos
 
 
-    // const empreendedorId = localStorage.getItem('id');
+    const empreendedorId = localStorage.getItem('id');
 
-    // axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
-    // .then(response => {
-    //     const empreendedor = response.data;
-    //     const nicho = empreendedor.nicho;
-    //     if (!nicho) {
-    //     console.log('Nicho não encontrado para este empreendedor');
-    //     } else {
-    //     console.log('Nicho do empreendedor:', nicho);
-    //     }
-    // })
-    // .catch(error => {
-    //     console.error('Erro ao obter o nicho do empreendedor:', error);
-    // });
+        // axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+        // .then(response => {
+        //     const empreendedor = response.data;
+        //     const nicho = empreendedor.nicho;
+        //     if (!nicho) {
+        //     console.log('Nicho não encontrado para este empreendedor');
+        //     } else {
+        //     console.log('Nicho do empreendedor:', nicho);
+        //     }
+        // })
+        // .catch(error => {
+        //     console.error('Erro ao obter o nicho do empreendedor:', error);
+        // });
 
 
 
-    // Função para obter o ID do nicho associado ao empreendedor
-    async function getNichoIdDoEmpreendedor(empreendedorId) {
-        try {
-        // Obter todos os nichos disponíveis
-        const responseNichos = await axios.get('http://localhost:8080/nichos');
-        const nichos = responseNichos.data;
-    
-        // Encontrar o nicho associado ao empreendedor
-        let nichoId = null;
-        nichos.forEach(nicho => {
-            nicho.empreendimentos.forEach(empreendedor => {
-            if (empreendedor.idEmpreededor === empreendedorId) {
-                nichoId = nicho.idNicho;
-            }
-            });
-        });
-    
-        return nichoId;
-        } catch (error) {
-        console.error('Erro ao obter o ID do nicho do empreendedor:', error);
-        throw error;
-        }
-    }
+        // // Função para obter o ID do nicho associado ao empreendedor
+        // async function getNichoIdDoEmpreendedor(empreendedorId) {
+        //     try {
+        //     // Obter todos os nichos disponíveis
+        //     const responseNichos = await axios.get('http://localhost:8080/nichos');
+        //     const nichos = responseNichos.data;
+        
+        //     // Encontrar o nicho associado ao empreendedor
+        //     let nichoId = null;
+        //     nichos.forEach(nicho => {
+        //         nicho.empreendimentos.forEach(empreendedor => {
+        //         if (empreendedor.idEmpreededor === empreendedorId) {
+        //             nichoId = nicho.idNicho;
+        //         }
+        //         });
+        //     });
+        
+        //     return nichoId;
+        //     } catch (error) {
+        //     console.error('Erro ao obter o ID do nicho do empreendedor:', error);
+        //     throw error;
+        //     }
+        // }
     
     // Uso da função para obter o ID do nicho associado a um empreendedor específico
-    const empreendedorId = localStorage.getItem('id');
-    getNichoIdDoEmpreendedor(empreendedorId)
-        .then(nichoId => {
-            if (nichoId) {
-                console.log('ID do nicho associado ao empreendedor:', nichoId);
-            } else {
-                console.log('Nenhum nicho encontrado para o empreendedor com o ID fornecido.');
-            }
-        })
-        .catch(error => {
-        console.error('Erro ao obter o ID do nicho associado ao empreendedor:', error);
-        });
+    // const empreendedorId = localStorage.getItem('id');
+        // getNichoIdDoEmpreendedor(empreendedorId)
+        //     .then(nichoId => {
+        //         if (nichoId) {
+        //             console.log('ID do nicho associado ao empreendedor:', nichoId);
+        //         } else {
+        //             console.log('Nenhum nicho encontrado para o empreendedor com o ID fornecido.');
+        //         }
+        //     })
+        //     .catch(error => {
+        //     console.error('Erro ao obter o ID do nicho associado ao empreendedor:', error);
+        //     });
 
 
     // {
@@ -183,9 +185,9 @@ function PerfilParceiro(){
     };
 
 
-    const handleChangeProduto = (event) => {
-        setProdutos({ ...dados, [event.target.name]: event.target.value });
-    };
+    // const handleChangeProduto = (event) => {
+    //     setProdutos({ ...dados, [event.target.name]: event.target.value });
+    // };
 
     // const handleChangeProduto = (event) => {
     //     const { name, value } = event.target;
@@ -199,65 +201,84 @@ function PerfilParceiro(){
 
     //Cadastrando os depoimentos
 
-    const [dadosDepoimento, setDepoimento] = useState({
-        depoimento: '',
-        idEmpreendedor: localStorage.getItem('id'),
-        qtdEstrelas: ''
-    });
+        const [dadosDepoimento, setDepoimento] = useState({
+            depoimento: '',
+            idEmpreendedor: localStorage.getItem('id'),
+            qtdEstrelas: ''
+        });
 
-        //Codigo referente as estrelas do depoimento
-        const [selectedStar, setSelectedStar] = useState(null);
+            //Codigo referente as estrelas do depoimento
+                const [selectedStar, setSelectedStar] = useState(null);
 
-            const handleChange = (event) => {
-                const selectedValue = parseInt(event.target.value);
-                setDepoimento({...dadosDepoimento, qtdEstrelas:selectedValue});
-                setSelectedStar(selectedValue);
-                // console.log("O selecionado foi o", selectedValue);
+                    const handleChange = (event) => {
+                        const selectedValue = parseInt(event.target.value);
+                        setDepoimento({...dadosDepoimento, qtdEstrelas:selectedValue});
+                        setSelectedStar(selectedValue);
+                        // console.log("O selecionado foi o", selectedValue);
 
-                for (let i = 1; i <= selectedValue; i++) {
-                    const starElement = document.getElementById(`star${i}`);
-                    starElement.checked = true;
-                }
-            };
-        //---------------------------------
+                        for (let i = 1; i <= selectedValue; i++) {
+                            const starElement = document.getElementById(`star${i}`);
+                            starElement.checked = true;
+                        }
+                    };
+            //---------------------------------
 
-    const handleSubmitDepoimento = async (event) => {
-        event.preventDefault();
+        const handleSubmitDepoimento = async (event) => {
+            event.preventDefault();
+            console.log(dadosDepoimento)
 
-        console.log(dadosDepoimento)
+            try {
+                const token = localStorage.getItem('token'); 
+                const config = {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                };
+                setDepoimento({ ...dadosDepoimento});
+                console.log(dadosDepoimento);
+                
+                const response = await axiosInstance.post('http://localhost:8080/depoimento', dadosDepoimento);
+                console.log('Depoimento enviado com sucesso:', response.data);
+            } catch (error) {
+                console.error('Erro ao enviar o depoimento para o banco de dados:', error.message);
+            }
+        };
 
-        try {
-            const token = localStorage.getItem('token'); 
-            const config = {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            };
-
-            setDepoimento({ ...dadosDepoimento});
-
-            console.log(dadosDepoimento);
-
-            const response = await axiosInstance.post('http://localhost:8080/depoimento', dadosDepoimento);
-
-            console.log('Depoimento enviado com sucesso:', response.data);
-        } catch (error) {
-            console.error('Erro ao enviar o depoimento para o banco de dados:', error.message);
-        }
-    };
-
-    const handleChangeDepoimento = (event) => {
-        // console.log("teste");
-        // console.log("Valor do depoimento:", event.target.value); // Adicione este console.log para verificar o valor do depoimento
-        setDepoimento({ ...dadosDepoimento, [event.target.name]: event.target.value });
-    };
-
-    
+        const handleChangeDepoimento = (event) => {
+            // console.log("teste");
+            // console.log("Valor do depoimento:", event.target.value); // Adicione este console.log para verificar o valor do depoimento
+            setDepoimento({ ...dadosDepoimento, [event.target.name]: event.target.value });
+        };    
     //---------------------------------
     
 
-    //Cadastro 
+    //Atualizar Biografia
 
+        const handleSubmitBiografia = async (event) => {
+            event.preventDefault();
+
+
+            const novaBiografia = document.getElementById('textareaBiografia').value;
+
+            console.log(novaBiografia)
+
+            //a const empreendedorId já foi declarada lá em cima 
+            const empreendedorId = localStorage.getItem('id');
+            console.log(empreendedorId)
+
+            axios.put(`http://localhost:8080/editarBiografia/${empreendedorId}`, {
+                biografia: novaBiografia
+            })
+            .then(response => {
+                console.log('Biografia atualizada com sucesso:', response.data);
+            })
+            .catch(error => {
+                console.error('Erro ao atualizar biografia:', error);
+            });
+
+        }
+        
+    //---------------------------------
 
 
 
@@ -338,7 +359,7 @@ function PerfilParceiro(){
                                             type='text'
                                             name='nome'
                                             value={dados.nome}
-                                            onChange={handleChangeProduto}
+                                            // onChange={handleChangeProduto}
                                         ></input>
                                     </fieldset>
                                     <fieldset>
@@ -350,7 +371,7 @@ function PerfilParceiro(){
                                                 step=".02"
                                                 name='preco'
                                                 value={dados.preco}
-                                                onChange={handleChangeProduto}
+                                                // onChange={handleChangeProduto}
                                             ></input>
                                         </div>
                                     </fieldset>
@@ -371,13 +392,16 @@ function PerfilParceiro(){
                         </div>
                     </div>
                     <div id='editBiografia'>
-                        <form id='addBiografia'>
+                        <form 
+                            id='addBiografia'
+                            onSubmit={handleSubmitBiografia}
+                        >
                             <legend>BIOGRAFIA</legend>
-                            <textarea></textarea>
+                            <textarea id='textareaBiografia'></textarea>
                             <button type='submit'>ADICIONAR BIOGRAFIA</button>
                         </form>
                     </div>
-                    <div id='editAlcance'>
+                    {/* <div id='editAlcance'>
                         <form>
                             <legend>QUAIS REGIÕESS SEU NEGÓCIO ATENDE?</legend>
                             <div>
@@ -390,7 +414,7 @@ function PerfilParceiro(){
                             </div>
                             <button type='submit'>SALVAR</button>
                         </form>
-                    </div>
+                    </div> */}
                 </div>
             </section>
             <section id='sebrae'>

@@ -4,7 +4,9 @@ import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
 import ProfileImg from '../../assets/trufasDoSim.png';
 
-import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../editarDadosEmp/editarDadosEmp.jsx';
+import EditarDadosEmp, {ToggleModalEditData} from '../editarDadosEmp/editarDadosEmp.jsx';
+// import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../editarDadosEmp/editarDadosEmp.jsx';
+
 import axiosInstance from '../../helper/axiosInstance.js';
 import useAxios from "../../hook/useAxios.js";
 import axios from "axios"; 
@@ -223,18 +225,20 @@ function MeusDados()
         url: uri + '/' + id
     })
    
-      const nomeCompleto = usuarioLogado.nomeCompleto;
-      const dtNasc = usuarioLogado.dataNascimento;
-      const cpf = usuarioLogado.cpf;
-      const nomeNegocio = usuarioLogado.nomeEmpreendimento;
-      const modalidade = usuarioLogado.modalidade;
-      const site = usuarioLogado.site;
-      const mei = usuarioLogado.mei;
-      const email = usuarioLogado.email;
-      const telefone = usuarioLogado.telefone;
-      const instagram = usuarioLogado.instagram;
-      const facebook = usuarioLogado.facebook;
-      const plano = usuarioLogado.planoAssinatura;
+      let nomeCompleto = usuarioLogado.nomeCompleto;
+      let dtNasc = usuarioLogado.dataNascimento;
+      let cpf = usuarioLogado.cpf;
+      let nomeNegocio = usuarioLogado.nomeEmpreendimento;
+      let modalidade = usuarioLogado.modalidade;
+      let site = usuarioLogado.site;
+      let mei = usuarioLogado.mei;
+      let email = usuarioLogado.email;
+      let telefone = usuarioLogado.telefone;
+      let instagram = usuarioLogado.instagram;
+      let facebook = usuarioLogado.facebook;
+      let plano = usuarioLogado.planoAssinatura;
+
+
 
     //GET DO ENDEREÇO
         const empreendedorId = localStorage.getItem('id'); 
