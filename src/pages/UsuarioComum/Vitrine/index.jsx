@@ -16,13 +16,13 @@ import CopiarTexto from '../../../utils/copiarTexto';
 import UserIcon from '../../../assets/userIcon.svg';
 
 // Imagens do carrossel
-import Artesanado from '../../../assets/artesanato.png'
-import Educacao from '../../../assets/educacaoAula.png'
-import Gastronomia from '../../../assets/gastronomiaTrufa.png'
-import Saude01 from '../../../assets/saudeFisio.png'
-import Saude02 from '../../../assets/saudeEstetica.png'
-import Tecnologia from '../../../assets/tecnologia.png'
-import Propaganda from '../../../assets/propagandaImpulsioneAi.png'
+import Artesanado from '../../../assets/artesanato.png';
+import Educacao from '../../../assets/educacaoAula.png';
+import Gastronomia from '../../../assets/gastronomiaTrufa.png';
+import Saude01 from '../../../assets/saudeFisio.png';
+import Saude02 from '../../../assets/saudeEstetica.png';
+import Tecnologia from '../../../assets/tecnologia.png';
+import Propaganda from '../../../assets/propagandaImpulsioneAi.png';
 import MenuLateral from '../../../components/menuLateral/menuLateral';
 
 function Vitrine() {
@@ -40,17 +40,18 @@ function Vitrine() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [produtos, setProdutos] = useState([]);
+    const [avaliacoes, setAvaliacoes] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const id = localStorage.getItem('id');
                 console.log('Fetching empreendedor with ID:', id);
-                
+
                 const responseEmpreendedor = await axios.get(`http://localhost:8080/empreendedores/${id}`);
                 const empreendedor = responseEmpreendedor.data;
                 console.log('Empreendedor data:', empreendedor);
-    
+
                 setIdEmpreendedor(empreendedor.idEmpreendedor);
                 setNomeEmpreendimento(empreendedor.nomeEmpreendimento);
                 setBiografia(empreendedor.biografia);
@@ -62,26 +63,65 @@ function Vitrine() {
                 setInstagram(empreendedor.instagram);
                 setTelefone(empreendedor.telefone);
                 setIdNicho(empreendedor.idNicho);
-    
-                console.log('Fetching produtos with ID:', id);
-                const responseProdutos = await axios.get(`http://localhost:8080/produtos/${id}`);
-                const produtos = responseProdutos.data;
-                console.log('Produtos data:', produtos);
+
+                const { produtos } = empreendedor;
+                console.log(produtos)
                 setProdutos(produtos);
-    
+
+                const responseAvaliacoes = await axios.get(`http://localhost:8080/avaliacao`);
+                const avaliacoes = responseAvaliacoes.data;
+                console.log('Avaliacoes data:', avaliacoes);
+                setAvaliacoes(avaliacoes);
+
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
-                // Aqui você pode decidir o que fazer quando ocorrer um erro ao carregar os produtos
-                // Por exemplo, você pode definir os produtos como uma lista vazia e continuar com o carregamento da página
                 setProdutos([]);
                 setIsLoading(false);
             }
         };
-    
+
         fetchData();
     }, []);
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const id = localStorage.getItem('id');
+    //             console.log('Fetching empreendedor with ID:', id);
+                
+    //             const responseEmpreendedor = await axios.get(`http://localhost:8080/empreendedores/${id}`);
+    //             const empreendedor = responseEmpreendedor.data;
+    //             console.log('Empreendedor data:', empreendedor);
     
+    //             setIdEmpreendedor(empreendedor.idEmpreendedor);
+    //             setNomeEmpreendimento(empreendedor.nomeEmpreendimento);
+    //             setBiografia(empreendedor.biografia);
+    //             setNomeExibicao(empreendedor.nomeExibicao);
+    //             setModalidade(empreendedor.modalidade);
+    //             setSite(empreendedor.site);
+    //             setEmail(empreendedor.email);
+    //             setFacebook(empreendedor.facebook);
+    //             setInstagram(empreendedor.instagram);
+    //             setTelefone(empreendedor.telefone);
+    //             setIdNicho(empreendedor.idNicho);
+
+    //             // Fetch produtos separately if not included in the empreendedor response
+    //             const responseProdutos = await axios.get(`http://localhost:8080/produtos?empreendedorId=${id}`);
+    //             const produtosData = responseProdutos.data;
+    //             console.log('Produtos data:', produtosData);
+    //             setProdutos(produtosData);
+
+    //             setIsLoading(false);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //             setError(error);
+    //             setIsLoading(false);
+    //         }
+    //     };
+    
+    //     fetchData();
+    // }, []);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -127,60 +167,55 @@ function Vitrine() {
                     />
                 </section>
 
-            <section className="bloco2" id="bloco2">
-                <div id="titleText">
-                    <h2 id="textBranco">Nossos Produtos</h2>
-                </div>
-                <div id="gradeProdutos">
-                    {produtos.length > 0 ? (
-                        produtos.map(produto => (
-                            <Produto
-                                key={produto.id} // Verifique a estrutura do objeto retornado pela API para garantir a chave correta
-                                img={produto.urlFoto}
-                                name={produto.nome}
-                                price={produto.preco.toFixed(2)}
-                            />
-                        ))
-                    ) : (
-                        <div id="produtos-nao-carregados">
-                            <p>Produtos não adicionados ou não lidos</p>
-                        </div>
-                    )}
-                </div>
-            </section>
-
-                            
-            </div>
-
-            <section id="bloco3">
-                <BoxInfo title={"Avaliações"} idBox={'titleBoxLaranja'} idDivisor={'divisorLaranja'} />
-                <div className='avaliacoes' id="boxLaranja">
-                    <div className='boxAvaliacoes'>
-                        <div className='caixaAvaliacao'>
-                            <h3>Keylane Cardoso</h3>
-                            <p>Fusce nibh nibh, scelerisque vitae libero in, fermentum condimentum ligula. Nullam lobortis ullamcorper sapien, quis euismod tellus porta non.</p>
-                        </div>
-                        <div className='caixaAvaliacao'>
-                            <h3>Nome da Pessoa</h3>
-                            <p>Fusce nibh nibh, scelerisque vitae libero in, fermentum condimentum ligula. Nullam lobortis ullamcorper sapien, quis euismod tellus porta non.</p>
-                        </div>
-                        <div className='caixaAvaliacao'>
-                            <h3>Nome da Pessoa</h3>
-                            <p>Fusce nibh nibh, scelerisque vitae libero in, fermentum condimentum ligula. Nullam lobortis ullamcorper sapien, quis euismod tellus porta non.</p>
-                        </div>
-                        <div className='caixaAvaliacao'>
-                            <h3>Nome da Pessoa</h3>
-                            <p>Fusce nibh nibh, scelerisque vitae libero in, fermentum condimentum ligula. Nullam lobortis ullamcorper sapien, quis euismod tellus porta non.</p>
-                        </div>
+                <section className="bloco2" id="bloco2">
+                    <div id="titleText">
+                        <h2 id="textBranco">Nossos Produtos</h2>
                     </div>
-                    <form id='inputAvaliacao'>
-                        <input type='text' placeholder="Insira sua avaliação" maxLength={100} />
-                        <button type="submit">
-                            <img src={SendMensage} alt='Enviar avaliação' />
-                        </button>
-                    </form>
-                </div>
-            </section>
+                    <div id="gradeProdutos">
+                        {produtos.length > 0 ? (
+                            produtos.map(produto => (
+                                <Produto
+                                    key={produto.idProduto} // Verifique a estrutura do objeto retornado pela API para garantir a chave correta
+                                    img={produto.urlFoto}
+                                    name={produto.nome}
+                                    price={produto.preco.toFixed(2)}
+                                />
+                            ))
+                        ) : (
+                            <div id="produtos-nao-carregados">
+                                <p>Produtos não adicionados ou não lidos</p>
+                            </div>
+                        )}
+                    </div>
+                </section>
+
+            </div>
+            
+            <section id="bloco3">
+                    <BoxInfo title={"Avaliações"} idBox={'titleBoxLaranja'} idDivisor={'divisorLaranja'} />
+                    <div className='avaliacoes' id="boxLaranja">
+                        <div className='boxAvaliacoes'>
+                            {avaliacoes.length > 0 ? (
+                                avaliacoes.map(avaliacao => (
+                                    <div className='caixaAvaliacao' key={avaliacao.id}>
+                                        <h3>{avaliacao.usuario.nome}</h3>
+                                        <p>{avaliacao.avaliacao}</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className='caixaAvaliacao'>
+                                    <p>Avaliações não disponíveis</p>
+                                </div>
+                            )}
+                        </div>
+                        <form id='inputAvaliacao'>
+                            <input type='text' placeholder="Insira sua avaliação" maxLength={100} />
+                            <button type="submit">
+                                <img src={SendMensage} alt='Enviar avaliação' />
+                            </button>
+                        </form>
+                    </div>
+                </section>
 
             <section id='bloco4'>
                 <div id='conteudoBloco'>
