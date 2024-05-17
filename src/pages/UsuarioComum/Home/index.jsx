@@ -133,7 +133,8 @@ function Home() {
                                 path={'/vitrine'}
                                 foto={TrufasDoSim}
                                 nome={empreendedor?.nomeEmpreendimento}
-                                nicho={empreendedor?.nicho.nicho} />
+                                // nicho={empreendedor?.nicho.nicho} 
+                                />
                         ))}
                     </div>
                 </div>

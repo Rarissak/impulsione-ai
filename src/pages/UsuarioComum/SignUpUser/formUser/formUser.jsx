@@ -21,7 +21,7 @@ function isValidEmail(email){
 // Função responsável por mostrar a mensagem de cadastro realizado com sucesso.
 function CadastroRealizado()
 {
-    return alert("Seu cadastro foi enviado com sucesso. Por favor aguarde a validação da conta via o e-mail cadastrado!");
+    return alert("Seu cadastro foi realizado com sucesso. Faça login e aproveite nossa plataforma!");
 }
 
 // Função que faz com que o campo recuse o input de letras no input. A função é colocada no evento onKeyDown -> ao pressionar a tecla.
@@ -84,6 +84,7 @@ function FormUser()
         try {
             const resposta = await axios.post('http://localhost:8080/usuarios', dados);
             console.log(resposta.data);
+            const primeiroNome = resposta.data.nomeExibicao;
 
             
             localStorage.setItem('email', dados.email);
@@ -94,8 +95,7 @@ function FormUser()
                 emailFrom: "impulsioneai@gmail.com",
                 emailTo: dados.email,
                 subject: "Bem-vindo (a) ao ImpulsioneAI",
-                text: "Bem-vindo(a) ao ImpulsioneAi! Estamos muito felizes em tê-lo(a) conosco! A nossa plataforma foi criada para lhe ajudar na divulgação do seu trabalho. Qualquer dúvida é só entrar em contato!"
-    
+                text: "Olá " + primeiroNome + "," + "\n\nSeja muito bem-vindo à nossa plataforma! Estamos animados em tê-lo(a) conosco." + "\n\n Aqui você encontrará um universo de possibilidades para explorar, aprender e conectar-se. Nossa missão é tornar sua experiência aqui incrível, oferecendo recursos e ferramentas que ajudarão você a atingir seus objetivos." + "\n\nEstamos aqui para ajudar em cada passo do caminho. Se tiver alguma dúvida ou precisar de suporte, não hesite em entrar em contato conosco." + "\n\nMais uma vez, obrigado por se juntar a nós. Estamos ansiosos para ver você prosperar e fazer parte da nossa comunidade." + "\n\nCumprimentos," + "\n\nEquipe Impulsione aí."
             });
 
             CadastroRealizado();
