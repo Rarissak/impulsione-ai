@@ -16,8 +16,14 @@ import Admin from './pages/Admin/adminSolicitacoes/index.jsx';
 import PerfilParceiro from './pages/Parceiro/perfilParceiro/index.jsx';
 // import EsqueciSenha from './pages/UsuarioComum/forgotPassword/esqueciSenha.jsx';
 import Pesquisa from './pages/UsuarioComum/Pesquisa/pesquisa.jsx';
+// <<<<<<< HEAD
 import AdminPlanos from './pages/Admin/adminPlanos/index.jsx';
 import PerfilUsuario from './pages/UsuarioComum/PerfilUsuario/perfilUsuario.jsx';
+// =======
+import MeusCartoes from './pages/UsuarioComum/meusCartoes/meusCartoes.jsx';
+import MeuPlano from './pages/UsuarioComum/meuPlano/meuPlano.jsx';
+// import UserProfile from './components/userProfile/userProfile.jsx';
+// >>>>>>> tela-meuPlano
 
 function App() {
   return (
@@ -41,8 +47,8 @@ function App() {
         <Route path='/pesquisa' Component={Pesquisa} />
         <Route path='/pesquisa/nicho/:nicho' Component={Pesquisa} />
         <Route path='/pesquisa/:pesquisaUsuario' Component={Pesquisa} />
-
-
+        <Route path='/meusCartoes' Component={MeusCartoes} />
+        <Route path='/meuPlano' Component={MeuPlano} />
       </Routes>
     </Router>
   );

@@ -1,9 +1,22 @@
 import '../adminSolicitacoes/admin.css'
 import InfoEmpreendedores from '../../../components/infoEmpreendedores/infoEmpreendedores.jsx'
 import BarraLinkExterno from '../../../components/barraLinkExterno/BarraLinkExterno.jsx'
+import useAxios from '../../../hook/useAxios.js'
+import axiosInstance, { axiosInstanceToken } from '../../../helper/axiosInstance.js'
 
 //FAZER O FOR PARA AS INFORMAÇÕES SE REPETIREM
 function Admin(){
+
+    const [empreendedoresInativos, InfoEmpreendedoresInativosLoading, empreendedoresInativosError] = useAxios({
+        axiosInstance: axiosInstanceToken(),
+        method:"GET",
+        url:"admin/solicitacoes" 
+    })
+
+    console.log(empreendedoresInativos)
+
+
+
     return (
         <body id='pageAdmin'>
             <h1 className='title' id='tituloPagina'>PÁGINA DO ADMINISTRADOR</h1>
@@ -16,22 +29,29 @@ function Admin(){
             <div className='centroAdm'>
                 <h1 className='title'>SOLICITAÇÕES DE CADASTRO</h1>
                 <div>
-                    <InfoEmpreendedores
-                        nicho={'teste'}
-                        nomeEmpreendedor={'teste'}
-                        nomeNegocio={'teste'}
-                        data={'teste'}
-                        horario={'teste'}
-                        endereco={'teste'}
-                        mei={'teste'}
-                        modalidade={'teste'}
-                        plano={'teste'}
-                        insta={'teste'}
-                        email={'teste'}
-                        numContato={'teste'}
-                        face={'teste'}
-                        >
-                    </InfoEmpreendedores>
+                    {!InfoEmpreendedoresInativosLoading && ( empreendedoresInativos.map((empreendedorInativo) => (
+                        <InfoEmpreendedores
+                            key={empreendedorInativo.idEmpreededor}
+                            nomeEmpreendedor={empreendedorInativo.nomeCompleto}
+                            nomeNegocio={empreendedorInativo.nomeEmpreendimento}
+                            data={"17/05/2024"}
+                            horario={"9:45"}
+                            mei={empreendedorInativo.mei}
+                            nicho={empreendedorInativo.nicho.nicho}
+                            modalidade={empreendedorInativo.modalidade}
+                            plano={empreendedorInativo.planoAssinatura}
+                            insta={empreendedorInativo.instagram}
+                            email={empreendedorInativo.email}
+                            numContato={empreendedorInativo.telefone}
+                            face={empreendedorInativo.facebook}
+
+                        
+                        
+                        
+                        />
+                    ))
+                   ) }
+                  
                 </div>
             </div>
 

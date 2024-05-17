@@ -1,10 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import '../../../index.css';
 // import '././././index.css';
 import './areaParceiro.css';
 import Header from '../../../components/header/header';
 import Footer from '../../../components/footer/footer';
-import Carrossel from '../../../components/carrossel/carrossel';
+import Carrossel from '../../../components/carrosselPorArray/carrossel.jsx';
 import BarraLinkInterno from '../../../components/barraLinkInterno/barraLinkInterno';
 import BoxInfo from '../../../components/boxInfo/boxInfo';
 import BoxVideo from '../../../components/boxVideo/boxVideo';
@@ -29,6 +29,7 @@ import Saude01 from '../../../assets/saudeFisio.png'
 import Saude02 from '../../../assets/saudeEstetica.png'
 import Tecnologia from '../../../assets/tecnologia.png'
 import Propaganda from '../../../assets/propagandaImpulsioneAi.png'
+import Teste from "../../../assets/trufasDoSim.png";
     
 //Imagens detaques
 import TrufasDoSim from '../../../assets/trufasDoSim.png';
@@ -42,6 +43,178 @@ import vintageVibe from '../../../assets/vintageVibe.png';
 import Login, { ToggleModal } from '../login/login.jsx';
 import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
     
+import axiosInstance from '../../../helper/axiosInstance.js';
+import useAxios from '../../../hook/useAxios.js';
+
+  
+
+// Subcomponente do destaque Integrado.
+function Destaques()
+{
+    const [destaques, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url:'verificaPlanosEmpreendedores'
+    })
+
+
+    //console.log(destaques);
+    
+    // não mostrar nada 
+    if(destaques === undefined)
+    {
+        return null;
+    }
+
+   
+    // geramdo componentes com informações vindas do banco.
+    return(
+        <div className='destaquesBloco3' id="boxLaranja">
+            <div id='linhaDestaques'>  
+             {destaques.length > 0 ? (
+                destaques.map((destaque, index) => (
+                    <Destaque
+                    key={index}
+                    idBox={'quadradoBranco'}
+                    path={''} // Pegar o path do banco tbm?
+                    foto={TrufasDoSim} // Mias tarde -> Trocar pela foto do banco
+                    nome={destaque.nomeEmpreendimento}
+                    nicho={destaque.nicho.nicho}
+                    />
+                ))
+                ) : (
+                    // tá com uma animaçãozinha de mudar a cor do texto para um pouco azulado
+                    <div id="mensagemCarregamentoAreaParceiro">
+                    
+                        <h1>Contéudo está sendo carregado!</h1>
+                    </div>
+                )}
+                </div> 
+           
+        </div>
+     
+            
+    );
+    
+}
+
+
+
+// Subcomponente dos planos integrado
+function Planos() {
+    
+    const [planos, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: 'assinaturas'
+    });
+
+    console.log(planos);
+    
+    // Se não houver planos carregados ainda, retorne null
+    if (planos === undefined) {
+        return null;
+    }
+
+    // Subcomponente para ajudar na hora de integrar
+    function VantagemComp({icone, vantagem})
+    {
+        return(
+            <div className='vantagem'>
+                <img src={icone} alt="Icon de verificado"/> 
+                <p>{vantagem}</p>
+            </div>
+        );
+    
+    }
+
+    // Função para separar os beneficios que vem do back.
+    // os 255 caracters do banco n são suficiente para todos os benéficios serem postos.
+    function separarString(string) {
+
+        // Usando o método split para separar a string pelo caractere ".", ent no banco o ponto separa as strings.
+        const arraySeparado = string.split(".");
+
+        // apagando o ultimo elemento, pois está vindo vázio.
+        arraySeparado.pop();
+       
+        // console.log(arraySeparado);
+
+        // Retornando o array separado
+        return arraySeparado;
+    }
+
+    return (
+        <section id="bloco5" className='planos'>
+            <TituloBorda title='Nossos Planos'></TituloBorda>
+            <div id="boxPlanos">
+                {planos.length > 0 ? (
+                    planos.map((plano, index) => (
+                        <div className='plano' key={index}>
+                            {/* Verificando se plano.beneficios está definido antes de chamar separarString */}
+                            {plano.beneficios && separarString(plano.beneficios).map((beneficio, index2) => (
+                               
+                                <VantagemComp
+                                    key={index2}
+                                    icone={IconVerificacao}
+                                    vantagem={beneficio} // Alterado para exibir cada vantagem
+                                />
+                            ))}
+                            <button className='buttonPlanos'>Plano {plano.nome}</button>
+                        </div>
+                    ))
+                ) : (
+                    // exibir uma mensagem de carregamento
+                    <div id="mensagemCarregamentoAreaParceiro">
+                        <h1>Conteúdo está sendo carregado!</h1>
+                    </div>
+                )}
+            </div>
+        </section>
+    );
+}
+
+
+function CarrosselIntegrado()
+{
+    // Puxando os empreendedores que optiram por adquirir um plano
+  //  const [imagens, loading, error] = useAxios({
+  //      axiosInstance: axiosInstance,
+  //      method: 'GET',
+  //      url:'verificaPlanosEmpreendedores'
+  //  })
+    //console.log(destaques);
+    
+    let imagens = 
+    {
+        "1": Artelane,
+        "2": Artesanado,
+        "3": Saude01,
+        "4": Saude02,
+        "5": Gastronomia,
+        "6": Educacao,
+        "algo": Teste,
+        "23": Propaganda,
+        "25": Tecnologia
+    }
+    
+    
+    // não mostrar nada 
+    if(imagens === undefined)
+    {
+        return null;
+    }
+
+    return(
+       
+        // Convertendo json em array
+        <Carrossel
+            imagens={Object.values(imagens)}
+            idDegrade={'degradeRoxo'}
+        />
+    );
+    
+}
 
 function AreaParceiro(){
 
@@ -83,16 +256,7 @@ function AreaParceiro(){
                         <button className='botaoInfo' id='linkCadastro'>TORNE-SE UM PARCEIRO</button>
                     </Link>
                 </div>
-                <Carrossel
-                    img1={Artesanado}
-                    img2={Saude01}
-                    img3={Gastronomia}
-                    img4={Tecnologia}
-                    img5={Saude02}
-                    img6={Educacao}
-                    img7={Propaganda}
-                    idDegrade={'degradeRoxo'}
-                />
+               <CarrosselIntegrado/>
                 </section>
 
                 <section className="bloco2">
@@ -119,15 +283,8 @@ function AreaParceiro(){
 
             <section id="bloco3">
                 <BoxInfo title={"Empreendedores que indicam o Impulsione Aí"} idBox={'titleBoxLaranja'} idDivisor={'divisorLaranja'}></BoxInfo>
-                <div className='destaquesBloco3' id="boxLaranja">
-                    <div id='linhaDestaques'>
-                        <Destaque idBox={'quadradoBranco'} path={'/vitrine'} foto={TrufasDoSim} nome={'Trufas do Sim'} nicho={'Gastronomia'}></Destaque>
-                        <Destaque idBox={'quadradoBranco'} path={''} foto={Fisio} nome={'Fisio em casa'} nicho={'Saúde'}></Destaque>
-                        <Destaque idBox={'quadradoBranco'} path={''} foto={Artelane} nome={'Artelane'} nicho={'Artesanato'}></Destaque>
-                        <Destaque idBox={'quadradoBranco'} path={''} foto={vintageVibe} nome={'Vintage Vibe'} nicho={'Moda'}></Destaque>
-                        <Destaque idBox={'quadradoBranco'} path={''} foto={pitagoras} nome={'Pitágoras'} nicho={'Educação'}></Destaque>
-                    </div>
-                </div>
+                
+                <Destaques/>
             </section>
 
             <section className="bloco4">
@@ -137,70 +294,7 @@ function AreaParceiro(){
                 </BoxVideo>
             </section>
 
-            <section id="bloco5" className='planos'>
-                <TituloBorda title='Nossos Planos'></TituloBorda>
-                <div id="boxPlanos">
-                    <div className='plano'>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Acesso completo à Área do Parceiro;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/>
-                            <p>Exposição dos seus produtos na Vitrine;</p>
-                        </div>
-                        <button className='buttonPlanos'>Começar GRÁTIS</button>
-                    </div>
-                    <div className='plano'>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Acesso completo à Área do Parceiro;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Exposição dos seus produtos na Vitrine;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Anúncios do seu negócio na plataforma;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Seus produtos serão priorizados nas pesquisas dos usuários;</p>
-                        </div>
-                        <button className='buttonPlanos'>Plano SILVER</button>
-                    </div>
-                    <div className='plano'>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Acesso completo à Área do Parceiro;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Exposição dos seus produtos na Vitrine;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Anúncios do seu negócio na plataforma;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Seus produtos serão priorizados nas pesquisas dos usuários;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Seu negócio será exposto nos destaques;</p>
-                        </div>
-                        <div className='vantagem'>
-                            <img src={IconVerificacao} alt="Icon de verificado"/> 
-                            <p>Seu negócio será recomendado para outros usuários;</p>
-                        </div>
-                        <button className='buttonPlanos'>Plano GOLD</button>
-                    </div>
-                
-                </div>    
-
-            </section>
+          <Planos/>
                 
         </body>
 

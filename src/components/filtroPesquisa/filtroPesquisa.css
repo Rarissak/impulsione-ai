@@ -1,10 +1,14 @@
 /* Estilos globais */
+/* <<<<<<< HEAD */
 /* * {
     color: #FF7D1E;
 } */
+/* =======
+>>>>>>> tela-meuPlano */
 
 /* Estilos para o componente FiltroPesquisa */
 #filtroPesquisa {
+    color: #FF7D1E;
     width: 16.875em; /* 270px convertido para EM */
     height: 29.4375em; /* 471px convertido para EM */
     padding: 2em;

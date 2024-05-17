@@ -156,13 +156,13 @@ function InfoPlanos({nomePlano, valorPlano, idPLano, beneficios}){
                     <div>
                        <fieldset>
                             <label>Nome do Plano</label>
-                            <input type='text' value={nomePlano} onChange={mudarNomePlano} ></input>
+                            <input type='text' placeholder={nomePlano} onChange={mudarNomePlano} ></input>
                         </fieldset>
                         <fieldset>
                             <label>Valor do Plano</label>
                             <div className="textoRow">
                                 <h3>R$</h3>
-                                <input type='number' value={valorPlano} onChange={mudarValorPlano}></input>                            </div>
+                                <input type='number' placeholder={valorPlano} onChange={mudarValorPlano}></input>                            </div>
                         </fieldset> 
                     </div>
                     <fieldset>
@@ -170,7 +170,7 @@ function InfoPlanos({nomePlano, valorPlano, idPLano, beneficios}){
                         <input type='text'  onKeyDown={adicionarBeneficio}></input>
                         {ListaBeneficios.map((beneficio, index) => (
                             <div className='outroBeneficio' key={idPLano + index}>
-                            <input type='text' placeholder ={beneficio}></input>
+                            <input type='text' value ={beneficio}></input>
                             <button onClick={() => deleteBeneficio(index)} className="title" type='button' id='excluirBeneficio' >
                                 <img src={IconLixeira}  alt='icon de lixeira'></img>
                             </button>

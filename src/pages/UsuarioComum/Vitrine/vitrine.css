@@ -47,14 +47,11 @@
 
 
 .boxAvaliacoes {
-    /* display: grid;
-    grid-template-columns: 40rem 40rem;
-    gap: 5rem;
-    width: 80%; */
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: space-between;
+    width: 100%; /* Alterado para ocupar toda a largura disponível */
 }
 
 .caixaAvaliacao {
@@ -64,22 +61,18 @@
     display: grid;
     gap: 0.75rem;
     border-radius: 20px;
-    width: 48%;
+    width: calc(50% - 1rem); /* Calculado para ocupar metade do espaço disponível com espaço para a margem */
 }
-
 
 .avaliacoes {
     padding-bottom: 2em;
     width: 100%;
-    display: grid !important ;
+    display: flex !important;
+    flex-wrap: wrap; /* Alterado para permitir que as avaliações se ajustem automaticamente em várias linhas */
     justify-content: center;
     align-items: flex-start;
-    justify-content: space-around;
     background-color: #dfdfdf;
-    
-    /* Padding para alinhar a div */
-    padding-left: 10rem;
-    padding-right: 10rem;
+    padding: 2rem; /* Ajustado para fornecer um espaçamento uniforme */
 }
 
 #inputAvaliacao {
@@ -88,6 +81,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 5rem;
+    width: 100%; /* Alterado para ocupar toda a largura disponível */
 }
 
 #inputAvaliacao img {
@@ -103,7 +97,7 @@
     border-style: none;
     outline: none;
     padding: 1.25rem;
-    width: 100%;
+    width: calc(100% - 4rem); /* Calculado para ocupar quase toda a largura disponível, com espaço para o botão */
     border-radius: 30px;
     margin-right: 1rem;
 }
@@ -111,6 +105,7 @@
 #inputAvaliacao input:focus {
     border: 1px solid #dfdfdf; 
 }
+
 
 /* Bloco 4 */
 
@@ -199,4 +194,10 @@
 
 #inputAvaliacao button {
     background-color: #FFE1CC;
+}
+
+#produtos-nao-carregados {
+    color: #ffffff;
+    background-color: red;
+    padding: 1em;
 }

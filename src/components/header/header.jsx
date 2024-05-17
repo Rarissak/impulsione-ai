@@ -118,10 +118,6 @@ function Header() {
                             <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon' />
                             <span>{usuarioLogado.nomeExibicao}</span>
                         </button>)}
-
-
-
-
                     <Link
                         id='headerParceiros'
                         className='centralizeItems, headerScreenLinks'
