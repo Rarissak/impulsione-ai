@@ -240,6 +240,17 @@ function MeusDados()
 
 
 
+      const isoDate = dtNasc;
+      const date = new Date(isoDate);
+      
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth() retorna meses de 0 a 11
+      const year = date.getFullYear();
+      
+      const formattedDate = `${day}/${month}/${year}`;
+
+
+
     //GET DO ENDEREÇO
         const empreendedorId = localStorage.getItem('id'); 
 
@@ -344,7 +355,7 @@ function MeusDados()
                                 {/*DATA DE NASCIMENTO*/}
                                 <div className="fieldType1">
                                     <span className="nameField">Data de Nascimento</span>
-                                    <span className="conteudo" id="campoDataNascimento">{dtNasc}</span>
+                                    <span className="conteudo" id="campoDataNascimento">{formattedDate}</span>
                                 </div> 
                                     
                             </div>                
