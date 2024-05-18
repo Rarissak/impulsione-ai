@@ -96,7 +96,7 @@ function Home() {
                     />
                     <div className='carrossel_texto'>
                         <img src={LogoColorida} alt="Logo" />
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate optio quisquam, beatae eligendi nesciunt architecto distinctio molestiae tenetur in aperiam! Facere, et hic. Doloribus, sit ea nemo nihil itaque ab.</p>
+                        <p>Uma plataforma que busca criar o ambiente perfeito para impulsionar seu negócio aí onde você está. E ajuda a conectar empreendedores e compradores.</p>
                     </div>
                 </div>
 
