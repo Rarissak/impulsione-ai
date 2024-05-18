@@ -7,9 +7,9 @@ import MeusDados from "../../../components/meusDados/MeusDados"
 
 import '../perfilParceiro/perfilParceiro.css'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ImagePreview from './imagePreview'; // Importe o componente ImagePreview
-import axiosInstance from '../../../helper/axiosInstance.js';
+import axiosInstance, { axiosInstanceToken } from '../../../helper/axiosInstance.js';
 import useAxios from '../../../hook/useAxios.js';
 import axios from "axios"; 
 
@@ -31,8 +31,6 @@ function PerfilParceiro(){
         method: 'GET',
         url: uri + '/' + id
     })
-
-    // const 
 
     const apelidoParceiro = usuarioLogado.nomeExibicao;
     const numVisitas = usuarioLogado.numeroVisitas;
@@ -83,88 +81,43 @@ function PerfilParceiro(){
     
     //Cadastrando os produtos
 
+        //GET DO NICHO
+        const [nicho, setNicho] = useState('');
 
-    const empreendedorId = localStorage.getItem('id');
+        useEffect(() => {
+            axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
+            .then(response => {
+                const empreendedor = response.data;
+                const { nicho } = empreendedor;
+                setNicho(nicho.id);
+                console.log("TESTE Nicho:", nicho.id);
+            })
+            .catch(error => {
+                console.error('Erro ao obter os detalhes do empreendedor:', error);
+            });
+        }, []);
 
-        // axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
-        // .then(response => {
-        //     const empreendedor = response.data;
-        //     const nicho = empreendedor.nicho;
-        //     if (!nicho) {
-        //     console.log('Nicho não encontrado para este empreendedor');
-        //     } else {
-        //     console.log('Nicho do empreendedor:', nicho);
-        //     }
-        // })
-        // .catch(error => {
-        //     console.error('Erro ao obter o nicho do empreendedor:', error);
-        // });
-
-
-
-        // // Função para obter o ID do nicho associado ao empreendedor
-        // async function getNichoIdDoEmpreendedor(empreendedorId) {
-        //     try {
-        //     // Obter todos os nichos disponíveis
-        //     const responseNichos = await axios.get('http://localhost:8080/nichos');
-        //     const nichos = responseNichos.data;
-        
-        //     // Encontrar o nicho associado ao empreendedor
-        //     let nichoId = null;
-        //     nichos.forEach(nicho => {
-        //         nicho.empreendimentos.forEach(empreendedor => {
-        //         if (empreendedor.idEmpreededor === empreendedorId) {
-        //             nichoId = nicho.idNicho;
-        //         }
-        //         });
-        //     });
-        
-        //     return nichoId;
-        //     } catch (error) {
-        //     console.error('Erro ao obter o ID do nicho do empreendedor:', error);
-        //     throw error;
-        //     }
-        // }
-    
-    // Uso da função para obter o ID do nicho associado a um empreendedor específico
-    // const empreendedorId = localStorage.getItem('id');
-        // getNichoIdDoEmpreendedor(empreendedorId)
-        //     .then(nichoId => {
-        //         if (nichoId) {
-        //             console.log('ID do nicho associado ao empreendedor:', nichoId);
-        //         } else {
-        //             console.log('Nenhum nicho encontrado para o empreendedor com o ID fornecido.');
-        //         }
-        //     })
-        //     .catch(error => {
-        //     console.error('Erro ao obter o ID do nicho associado ao empreendedor:', error);
-        //     });
-
-
-    // {
-    //     "idEmpreendedor": "id_do_empreendedor_aqui",
-    //     "nome": "Nome do Produto",
-    //     "preco": 50.99,
-    //     "urlFoto": "https://example.com/imagem.jpg",
-    //     "nicho": {
-    //       "idNicho": "id_do_nicho_aqui"
-    //     }
-    //   }
-
-    const [dados, setProdutos] = useState({
-        idEmpreendedor: localStorage.getItem('id'),
+    const [dadosProduto, setDadosProduto] = useState({
         nome: '',
         preco: '',
-        urlFoto: '',
-        nicho: {
-            idNicho: ''
-        }
+        urlFoto: 'https://cdn-icons-png.flaticon.com/512/4129/4129437.png',
+        idNicho: nicho,
+        empreendedor: localStorage.getItem('id')
     });
 
-    const handleSubmit = async (dados) => {
+    useEffect(() => {
+        setDadosProduto(prevState => ({ ...prevState, idNicho: nicho }));
+    }, [nicho]);
+
+    const handleChangeProduto = (event) => {
+        setDadosProduto({ ...dadosProduto, [event.target.name]: event.target.value });
+    };
+
+    const handleSubmitProduto = async (event) => {
         event.preventDefault();
 
-        console.log(dados);
+        console.log(dadosProduto);
+
         try {
             const token = localStorage.getItem('token'); 
             const config = {
@@ -172,31 +125,77 @@ function PerfilParceiro(){
                     'Authorization': `Bearer ${token}`
                 }
             };
-
-            dados.urlFoto = selectedProduto;
-            const response = await axiosInstance.post('http://localhost:8080/produtos', dados);
-            
-            console.log(response.data);
-
-            console.log('Dados enviados com sucesso:', response.data);
-        } catch (error) {
-            console.error('Erro ao enviar dados para o banco de dados:', error.message);
+            const resposta = await axios.post('http://localhost:8080/produtos', dadosProduto, config);
+            console.log(resposta.data);
+            alert("Produto cadastrado com sucesso!");
+            window.location = "/perfilParceiro";
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o formulário:', erro);
+            alert("Desculpe, ocorreu um erro no cadastro :( Tente novamente mais tarde.");
         }
     };
 
+    //-----------------------Fim cadastrar produto
 
-    // const handleChangeProduto = (event) => {
-    //     setProdutos({ ...dados, [event.target.name]: event.target.value });
+
+    //Deletar Produto
+
+    // const [produto, setProduto] = useState('');
+
+    //     useEffect(() => {
+    //         axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
+    //         .then(response => {
+    //             const empreendedor = response.data;
+    //             const { produto } = empreendedor;
+    //             setProduto(produto.idProduto);
+    //             console.log("TESTE Produto:", produto.idProduto);
+    //         })
+    //         .catch(error => {
+    //             console.error('Erro ao obter os detalhes do empreendedor:', error);
+    //         });
+    //     }, []);
+    
+    // const deleteProduto = async (idCartao) => {
+    //     try {
+    //       const response = await fetch(`http://localhost:8080/deleteCartao/${idCartao}`, {
+    //         method: 'DELETE',
+    //       });
+    
+    //       if (response.ok) {
+    //         // Removendo o cartão deletado do estado local
+    //         setCartoes(cartoes.filter(cartao => cartao.idCartao !== idCartao));
+    //         alert("Cartão deletado com sucesso!");
+    //       } else {
+    //         console.error('Erro ao deletar o cartão');
+    //       }
+    //     } catch (error) {
+    //       console.error('Erro na requisição', error);
+    //     }
+    //   };
+
+    //Fim deletar produto
+
+
+
+
+    // const handleDelete = async () => {
+    //     try {
+    //         const response = await axios.delete(`http://localhost:8080/produtos/` + idProduto);
+    //         if (response.status === 200) {
+    //             onDelete(idProduto); // Chame a função onDelete passada como prop para atualizar a lista de produtos
+    //             alert("Produto excluído com sucesso!");
+    //         } else {
+    //             console.error('Erro ao excluir o produto');
+    //         }
+    //     } catch (error) {
+    //         console.error('Erro na requisição', error);
+    //     }
     // };
 
-    // const handleChangeProduto = (event) => {
-    //     const { name, value } = event.target;
-    //     setProdutos(prevDados => ({
-    //         ...prevDados,
-    //         [name]: value,
-    //     }));
-    // };
-    //---------------------------------
+
+
+
+
 
 
     //Cadastrando os depoimentos
@@ -221,7 +220,7 @@ function PerfilParceiro(){
                             starElement.checked = true;
                         }
                     };
-            //---------------------------------
+            //---------------------------------Fim código
 
         const handleSubmitDepoimento = async (event) => {
             event.preventDefault();
@@ -249,14 +248,13 @@ function PerfilParceiro(){
             // console.log("Valor do depoimento:", event.target.value); // Adicione este console.log para verificar o valor do depoimento
             setDepoimento({ ...dadosDepoimento, [event.target.name]: event.target.value });
         };    
-    //---------------------------------
+    //---------------------------------Fim cadastro Depoimento
     
 
     //Atualizar Biografia
 
         const handleSubmitBiografia = async (event) => {
             event.preventDefault();
-
 
             const novaBiografia = document.getElementById('textareaBiografia').value;
 
@@ -279,6 +277,9 @@ function PerfilParceiro(){
         }
         
     //---------------------------------
+
+
+    
 
 
 
@@ -336,10 +337,9 @@ function PerfilParceiro(){
                     </div>
 
                     <div id='editProdutos'>
-                        
                         <form 
                             id='addProdutos'
-                            onSubmit={handleSubmit}
+                            onSubmit={handleSubmitProduto}
                         >
                             <h3>PRODUTOS</h3>
                             <div id='imgCamposProduto'>
@@ -358,8 +358,8 @@ function PerfilParceiro(){
                                         <input 
                                             type='text'
                                             name='nome'
-                                            value={dados.nome}
-                                            // onChange={handleChangeProduto}
+                                            value={dadosProduto.nome}
+                                            onChange={handleChangeProduto}
                                         ></input>
                                     </fieldset>
                                     <fieldset>
@@ -370,8 +370,8 @@ function PerfilParceiro(){
                                                 type='number' 
                                                 step=".02"
                                                 name='preco'
-                                                value={dados.preco}
-                                                // onChange={handleChangeProduto}
+                                                value={dadosProduto.preco}
+                                                onChange={handleChangeProduto}
                                             ></input>
                                         </div>
                                     </fieldset>
@@ -383,12 +383,12 @@ function PerfilParceiro(){
                             {produtos.map((produto, index) => (
                                 <ProdutoCadastrado
                                     key={index} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
-                                    img={ImgTeste}
+                                    idProduto={produto?.idProduto}
+                                    img={produto?.urlFoto}
                                     nomeProduto={produto?.nome}
                                     preco={produto?.preco}
                                 />
                             ))}
-                            <ProdutoCadastrado img={ImgTeste} nomeProduto={"teste"} preco={'5,50'}></ProdutoCadastrado>
                         </div>
                     </div>
                     <div id='editBiografia'>
@@ -492,7 +492,21 @@ function PerfilParceiro(){
 }
 export default PerfilParceiro
 
-function ProdutoCadastrado({img, nomeProduto, preco}){
+function ProdutoCadastrado({idProduto, img, nomeProduto, preco}){
+
+    const handleDelete = async () => {
+        await axiosInstanceToken().delete("/produtos/" + idProduto)
+        .then((res) => {
+            console.log("Deu certo:" , res.data)
+        })
+        .catch((err) => {
+            console.log("Deus erro:", err)
+        })
+        .finally(() => {
+            window.location.reload()
+        })
+    };
+
     return (
         <section id='produtoCadastrado'>
             <div id='infosProduto'>
@@ -504,7 +518,10 @@ function ProdutoCadastrado({img, nomeProduto, preco}){
                 </div>
             </div>
             <div id='botoesAlterar'>
-                <button className='botaoExcluir'>
+                <button 
+                    className='botaoExcluir'
+                    onClick={handleDelete}
+                >
                     <img src={IconExcluir} alt='botão para excluir'/>
                 </button>
                 <button>

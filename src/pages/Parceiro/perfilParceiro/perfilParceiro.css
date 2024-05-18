@@ -5,6 +5,13 @@ fieldset {
     /* Defina outras propriedades de estilo conforme necessário */
 }
 
+.itensCadastrados{
+    display:flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+}
+
 
 #sessaoMeusDados{
     display: flex;
