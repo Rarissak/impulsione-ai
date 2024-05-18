@@ -119,7 +119,7 @@ function Pesquisa() {
           <nav className='linksExternos' id='barraLinks'>
             {nichos.map((nicho, index) => (
               <BarraLinkExterno
-                key={nicho.id} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
+                key={nicho.id}
                 id='fundoLaranja'
                 name={nicho?.nicho.toUpperCase()}
                 link={`/pesquisa/nicho/${nicho.nicho}`}
@@ -138,7 +138,7 @@ function Pesquisa() {
                   key={empreendimento.idEmpreededor}
                   link={'/vitrine'}
                   name={empreendimento.nomeEmpreendimento}
-                  nicho={empreendimento.nicho.nicho}
+                   nicho={empreendimento.nicho.nicho}
                   descricao={empreendimento.biografia}
 
                 />
@@ -153,6 +153,7 @@ function Pesquisa() {
           <div id='destaques'>
             <TitleBorda title={'Recomendações'}></TitleBorda>
             <div id='linhaDestaques'>
+
               {empreendedores?.slice(0, 5).map((empreendedor) => (
                 <Destaque
                   key={empreendedor.idEmpreededor}

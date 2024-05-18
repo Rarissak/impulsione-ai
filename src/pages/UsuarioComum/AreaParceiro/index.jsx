@@ -79,7 +79,7 @@ function Destaques()
                     path={''} // Pegar o path do banco tbm?
                     foto={TrufasDoSim} // Mias tarde -> Trocar pela foto do banco
                     nome={destaque.nomeEmpreendimento}
-                    nicho={destaque.nicho.nicho}
+                    // nicho={destaque.nicho.nicho}
                     />
                 ))
                 ) : (

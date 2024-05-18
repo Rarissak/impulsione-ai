@@ -3,7 +3,7 @@ import axiosInstance from '../../../helper/axiosInstance';
 import useAxios from '../../../hook/useAxios';
 import '../adminSolicitacoes/admin.css'
 import React, { useState } from 'react'; // Importe o useState
-
+import BarraLinkExterno from '../../../components/barraLinkExterno/BarraLinkExterno';
 
 
 function AdminPlanos(){
@@ -19,23 +19,27 @@ function AdminPlanos(){
 
     return(
         <body id='pageAdmin'>
-            <h2>TESTE</h2>
-            <h1 className='title' id='tituloPagina'>PÁGINA DO ADMINISTRADOR</h1>
+            <h1 className='title' id='tituloPaginaAdmin'>PÁGINA DO ADMINISTRADOR</h1>
             <div id='barraLinks'>
-                <h3>Solicitações de Cadastro</h3>
-                <h3>Alterar Planos</h3>
+                <BarraLinkExterno name={"SOLICITAÇÕES DE CADASTRO"} id={'fundoRoxoClaro'} link={'/adminSolicitacoes'}></BarraLinkExterno>
+                <BarraLinkExterno name={"ALTERAR PLANOS"} id={'fundoRoxoClaro'} link={'/adminPlanos'}></BarraLinkExterno>
             </div>
             <div className='centroAdm'>
-                {!planosLoading && (
-                    planos?.map((plano) => (
-                        <InfoPlanos
-                            nomePlano={plano.nome}
-                            valorPlano={plano.preco}
-                            beneficios={plano.beneficios.split(",")}
-                            idPLano={plano.idPlanoAssinatura}
-                        />
-                    ))
-                )}
+                <h1 className='title'>Informações dos Planos</h1>
+                <div>
+                    {!planosLoading && (
+                        planos?.map((plano) => (
+                            <InfoPlanos
+                                nomePlano={plano.nome}
+                                valorPlano={plano.preco}
+                                beneficios={plano.beneficios.split(",")}
+                                idPLano={plano.idPlanoAssinatura}
+                            />
+                        ))
+                    )}
+                </div>
+
+                
                 
 
             </div>

@@ -1,11 +1,17 @@
 #pageAdmin {
     margin: 0 !important;
     
-    #tituloPagina {
-        color: #FFA15D;
+    #tituloPaginaAdmin {
+        color: #FFFFFF;
         font-size: 25px !important;
-        margin: 1rem;
+        margin: 0;
+        margin-top: 0 !important;
         text-align: start;
+        background-color: #FFA15D;
+        width: 30%;
+        border-top-right-radius: 10rem;
+        border-bottom-right-radius: 10rem;
+        padding: 1.5rem;
     }
 
     .centroAdm {

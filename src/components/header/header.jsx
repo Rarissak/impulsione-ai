@@ -111,13 +111,14 @@ function Header() {
 
 
                     {isLogado && (
-                        <button
-                            id='headerLogin'
-                            className='centralizeItems, headerScreenButtons'
-                            onClick={logout}>
-                            <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon' />
-                            <span>{usuarioLogado.nomeExibicao}</span>
-                        </button>)}
+
+                         <button 
+                         id='headerLogin'
+                         className='centralizeItems, headerScreenButtons'
+                         onClick={logout}>
+                             <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
+                             <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
+                         </button>)}
                     <Link
                         id='headerParceiros'
                         className='centralizeItems, headerScreenLinks'
