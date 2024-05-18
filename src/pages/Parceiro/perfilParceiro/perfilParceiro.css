@@ -504,9 +504,43 @@ fieldset {
 
 }
 
+#visualizarAlterarProduto{
+    display:flex;
+    flex-direction: row;
+}
 
+#alterarProduto{
+    display: flex;
+    flex: row;
+    background-color: rgba(80, 23, 115, 0.562);
+    padding-left: 1rem;
+    padding: 0.75rem;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 
+#precoNomeProduto{
+    display:flex;
+    flex-direction: row;
+    gap: 1rem;
+}
 
+#tituloAlterar{
+    font-size: 25px;
+    color:#ffba88
+}
+
+#divBotoesUp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+}
+
+.botoesUpdate{
+    padding: 0.15rem 1.15rem 0.15rem 1.15rem  !important;
+    background-color: #FF7D1E !important;
+    width: auto !important;
+}
 
 #produtoCadastrado{
     border: 1px solid #FFE1CC;
@@ -1102,4 +1136,29 @@ fieldset {
 @media screen and (max-width: 280px){
 /*CSS com os novos tamanhos/proporções*/
 }
+
+
+
+
+/* Customizando a barra de rolagem para navegadores WebKit */
+::-webkit-scrollbar {
+    /* margin-top: 1rem !important; */
+    width: 5px; /* Largura da scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #8A00DE; /* Cor do fundo da track */
+    border-radius: 10px; /* Arredondando a track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ae51e8; /* Cor do thumb (parte que você arrasta) */
+    border-radius: 10px; /* Arredondando o thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FFA767; /* Cor do thumb ao passar o mouse */
+}
+
+
 

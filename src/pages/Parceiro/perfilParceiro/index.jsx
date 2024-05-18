@@ -14,17 +14,21 @@ import useAxios from '../../../hook/useAxios.js';
 import axios from "axios"; 
 
 
+
 import IconEditar from '../../../assets/iconEditar.svg'
 import IconExcluir from '../../../assets/iconLoginModalClose.svg';
 import ImgTeste from '../../../assets/imgTeste.png';
 import ImgCarrossel from '../../../assets/gastronomiaTrufa.png';
 import BoxVideo from "../../../components/boxVideo/boxVideo";
+import EditarDadosProduto from "../../../components/editarDadosProduto/editarProduto.jsx"
 
 
 function PerfilParceiro(){
     const token = localStorage.getItem('token')
     const id = localStorage.getItem('id')
     const uri = localStorage.getItem('uri')
+
+    console.log("TOKEN:", token);
  
     const [usuarioLogado, loading, error] = useAxios({
         axiosInstance: axiosInstance,
@@ -235,15 +239,31 @@ const handleSubmitProduto = async (event) => {
     //---------------------------------
 
 
-    
+    const [showEditModal, setShowEditModal] = useState(false);
 
+    const handleToggleEditModal = () => {
+        setShowEditModal(!showEditModal);
+    };
 
+    const handleCloseEditModal = () => {
+        setShowEditModal(false);
+    };
+
+   
+    const [idProdutoUp, setIdProdutoUp] = useState('');
+
+    const idTemporario = () => {
+        setIdProdutoUp('vazio');
+    };
 
 
     return(
         <>
+        {/* Se showEditModal for true, renderiza o modal de edição */}
+        {/* {showEditModal && <EditarDadosProduto handleCloseModal={handleCloseEditModal} />} */}
         <Header></Header>
         <MenuLateral></MenuLateral>
+        {/* <EditarDadosProduto></EditarDadosProduto> */}
         <body>
             <nav id='barraLinks'>
                 <BarraLinkInterno id='fundoLaranja' name={'MEUS DADOS'} idElemento={'sessaoMeusDados'}></BarraLinkInterno>
@@ -344,6 +364,7 @@ const handleSubmitProduto = async (event) => {
                             </div>
                             <button type='submit'>ADICIONAR PRODUTO</button>
                         </form>
+                        {showEditModal && <EditarDadosProduto handleCloseModal={handleCloseEditModal} idProduto={idProdutoUp} />}
                         <div className="itensCadastrados">
                             {produtos.map((produto, index) => (
                                 <ProdutoCadastrado
@@ -352,6 +373,7 @@ const handleSubmitProduto = async (event) => {
                                     img={produto?.urlFoto}
                                     nomeProduto={produto?.nome}
                                     preco={produto?.preco}
+                                    setShowEditModal={setShowEditModal}
                                 />
                             ))}
                         </div>
@@ -457,7 +479,7 @@ const handleSubmitProduto = async (event) => {
 }
 export default PerfilParceiro
 
-function ProdutoCadastrado({idProduto, img, nomeProduto, preco}){
+function ProdutoCadastrado({idProduto, img, nomeProduto, preco, setShowEditModal}){
 
     const handleDelete = async () => {
         await axiosInstanceToken().delete("/produtos/" + idProduto)
@@ -472,20 +494,82 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco}){
         })
     };
 
-    // const handleUpdate = async () => {
-    //     await axiosInstanceToken().delete("/produtos/" + idProduto)
-    //     .then((res) => {
-    //         console.log("Deu certo:" , res.data)
-    //     })
-    //     .catch((err) => {
-    //         console.log("Deus erro:", err)
-    //     })
-    //     .finally(() => {
-    //         window.location.reload()
-    //     })
-    // };
+    console.log("ATENÇÃO ID PRODUTO:", idProduto);
+
+    const [expandir, setExpandir] = useState(false);
+
+    const toggleVerMais = () => {
+        setExpandir(!expandir);
+    };
+
+
+    //INICIO PUT
+
+    // console.log("Id produto:", idProduto);
+    // console.log("modal:", handleCloseModal);
+    const token = localStorage.getItem('token')
+    const id = localStorage.getItem('id')
+    const uri = localStorage.getItem('uri')
+ 
+    const [usuarioLogado, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: uri + '/' + id
+    })
+
+    //Get do nicho
+        const [nicho, setNicho] = useState('');
+
+        useEffect(() => {
+            axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
+                .then(response => {
+                    const empreendedor = response.data;
+                    const { nicho } = empreendedor;
+                    setNicho(nicho.id);
+                    console.log("TESTE Nicho:", nicho.id);
+                })
+                .catch(error => {
+                    console.error('Erro ao obter os detalhes do empreendedor:', error);
+                });
+        }, []);
+    //Fim get nicho
+
+    const [dadosProdutoUpdate, setDadosProdutoUpdate] = useState({
+        nome: '',
+        preco: '',
+        urlFoto: '',
+        idNicho: nicho,
+        idEmpreendedor: localStorage.getItem('id')
+    });
+
+    const handleProduto = (event) => {
+        setDadosProdutoUpdate({ ...dadosProdutoUpdate, [event.target.name]: event.target.value });
+    };
+
+    const handleAlterarProduto = async (event) => {
+        event.preventDefault();
+        console.log("Id do produto:", idProduto);
+        console.log(dadosProdutoUpdate);
+
+        await axiosInstanceToken().put(`/produtos/` + idProduto, dadosProdutoUpdate) // Faça a requisição PUT para atualizar os dados do produto
+        .then((res) =>{
+            console.log("Dados alterados: ", res.data)
+            alert("Dados alterados com sucesso!")
+        })
+        .catch((err) => {
+            console.log("Erros: ", err)
+        })
+        .finally(() =>{
+            window.location.reload()
+        })   
+
+    };
+    //---------------FIM PUT
+
 
     return (
+        <>
+        <div id="visualizarAlterarProduto">
         <section id='produtoCadastrado'>
             <div id='infosProduto'>
                 <img src={img} alt='imagem do produto'></img>
@@ -502,13 +586,77 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco}){
                 >
                     <img src={IconExcluir} alt='botão para excluir'/>
                 </button>
-                <button
+                <button id="botaoUpdateProduto"
                     // onClick={handleUpdate}
+                    onClick={toggleVerMais}
                 >
                     <img id="iconEditar" src={IconEditar} alt='botão para editar'/>
                 </button>
             </div>
-        </section>   
+        </section>
+        {expandir && (
+            <section id='alterarProduto'>
+                <form 
+                    id='addProdutos' 
+                    onSubmit={handleAlterarProduto}
+                >
+                    <h4 className="title" id="tituloAlterar">ALTERE OS DADOS</h4>
+                    <div id='campos'>
+                        <fieldset>
+                            <legend>LINK IMAGEM</legend>
+                            <input 
+                                type='text'
+                                name='urlFoto'
+                                value={dadosProdutoUpdate.urlFoto}
+                                onChange={handleProduto}
+                            />
+                        </fieldset>
+                        <div id="precoNomeProduto">
+                            <fieldset>
+                                <legend>NOME DO PRODUTO</legend>
+                                <input 
+                                    type='text'
+                                    name='nome'
+                                    value={dadosProdutoUpdate.nome}
+                                    onChange={handleProduto}
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <legend>PREÇO</legend>
+                                <div id='precoProduto'>
+                                    <p>R$</p>
+                                    <input 
+                                        type='number' 
+                                        step=".02"
+                                        name='preco'
+                                        value={dadosProdutoUpdate.preco}
+                                        onChange={handleProduto}
+                                    />
+                                </div>
+                            </fieldset>
+                        </div>
+                        
+                    </div>
+                    <div id="divBotoesUp">
+                        <button 
+                            className="botoesUpdate"
+                            type='submit'
+                        >ATUALIZAR</button>
+                        <button
+                            className="botoesUpdate"
+                            type='reset'
+                            onClick={toggleVerMais}
+                        >CANCELAR</button>
+                    </div>
+                    
+                </form>
+
+            </section>
+        )}
+                    
+        </div>
+        </>
+        
     )
 }
 
