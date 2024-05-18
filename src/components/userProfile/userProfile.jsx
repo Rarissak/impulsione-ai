@@ -4,79 +4,91 @@ import Heart from '../../assets/fullHeartIcon.svg';
 import EmptyHeart from "../../assets/emptyHeartIcon.svg";
 import FotoExemplo from "../../assets/fotoExemplo.jpg";
 import TitleBorda from '../featured/titleBorda.jsx'
-import Gato from '../../assets/gato.webp';
-import Trufa from '../../assets/trufasDoSim.png'
 // função principal do arquivo
 import axiosInstance from '../../helper/axiosInstance.js';
 import useAxios from '../../hook/useAxios.js';
-import axios from "axios";
+
+    const userId = localStorage.getItem('id'); 
+
+    
 
 // Tornando os subcompenentes exportáveis solo
 export function UserData()
 {
-    //Simulando como este subcomponente iria pegar as informações do usuário apartir do localStorage
-    const [userInfo, setUserInfo] = useState(null);
-   
-     
-    useEffect(() => {
-         // Recuperando as informações do localStorage
-         const storedUserInfo = localStorage.getItem('loginInfo'); 
-         setUserInfo(JSON.parse(storedUserInfo));
-         //.log(userInfo); // verificando se está sendo obtido
-        
-       }, []);
+
+    const [usuario, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url:`/usuarios/${userId}`
+    })
+    
+    // não mostrar nada 
+    if(usuario === undefined)
+    {
+        return null;
+    }
+    
+    const formatDate = (isoString) => {
+        const date = new Date(isoString);
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = date.getUTCFullYear();
+        return `${day}/${month}/${year}`;
+    };
 
     return(
-        // {/*Contém todo o formulário e seus campos*/}
-         <div id="formContainer">
-                            
-                            
-                            
-         <div id="fieldSetFoto">
-             <div id="formTitle1">
-                 <h1>MEUS DADOS</h1>
-             </div>
-             {/*NOME COMPLETO*/}
-              {userInfo ? (
-                    <div id="fieldSetFoto">
-                     <div className="fieldType1">
-                 <span className="nameField">Nome Completo</span>
-                 <span className="conteudo">{userInfo.nomeCompleto}</span>
-             </div>
-         
-             <div id="duploField">
-                 {/*DATA DE NASCIMENTO*/}
-                 <div className="fieldType1">
-                 <span className="nameField">Data de Nascimento</span>
-                 <span className="conteudo">{userInfo.dataNascimento}</span>
-             </div> 
-                     {/*CPF*/}
-             <div className="fieldType1">
-                     <span className="nameField">CPF</span>
-                     <span className="conteudo">{userInfo.cpf}</span>
-             </div>
-             </div>
-             
-             {/*Endereço completo*/}
-             <div className="fieldType1">
-                 <span className="nameField">Email Cadastrado</span>
-                 <span className="conteudo">{userInfo.email}</span>    
-             </div>
-         </div>
-                   
-                ) : (
-                    <p>Nenhuma informação do usuário encontrada.</p>
-                )}
-            
-         <div className="buttonsFormEdit">  
-             <button id="editButton">EDITAR DADOS</button>
-         </div>
-      </div>
-     </div>
+        <div>
+            {/*Verificando se tem algo para ser mostrado*/}
+       
+              <div id="formContainerDataUser">           
+                <div id="fieldSetFoto">
+                  <div id="formTitle1">
+                      <h1>MEUS DADOS</h1>
+                  </div>
+                  {/*NOME COMPLETO*/}
+                   {usuario ? (
+                         <div id="fieldSetFoto">
+                          <div className="fieldType1">
+                      <span className="nameField">Nome Completo</span>
+                      <span className="conteudo">{usuario?.nome}</span>
+                  </div>
+              
+                  <div id="duploField">
+                      {/*DATA DE NASCIMENTO*/}
+                      <div className="fieldType1">
+                      <span className="nameField">Data de Nascimento</span>
+                      <span className="conteudo">{formatDate(usuario?.dataNascimento)}</span>
+                  </div> 
+                          {/*CPF*/}
+                  <div className="fieldType1">
+                          <span className="nameField">CPF</span>
+                          <span className="conteudo">{usuario?.cpf}</span>
+                  </div>
+                  </div>
+                  
+                  {/*Endereço completo*/}
+                  <div className="fieldType1">
+                      <span className="nameField">Email Cadastrado</span>
+                      <span className="conteudo">{usuario?.email}</span>    
+                  </div>
+              </div>
+                        
+                     ) : (
+                         <p>Nenhuma informação do usuário encontrada.</p>
+                     )}
+                 
+              <div className="buttonsFormEdit">  
+                  <button id="editButton">EDITAR DADOS</button>
+              </div>
+           </div>
+          </div>
+     
+    </div>
+       
     );
 }
 
-export function Favoritado({imgHeart, favTitle, favContent})
+function Favoritado({imgHeart, favTitle, favContent})
 {
     return(
         <div className="fieldType2">
@@ -92,26 +104,53 @@ export function Favoritado({imgHeart, favTitle, favContent})
     );
 }
 // Tornando os subcompenentes exportáveis solo
-export function Vitrine()
-{
-    return(
+function Vitrine() {
+    const [usuario, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: `/usuarios/${userId}`
+    });
+
+    if (usuario === undefined) {
+        return null;
+    }
+
+    const empFavoritados = usuario.empreendedoresFavoritos;
+
+    return (
         <div id="vitrineContainer">
             <div id="formTitle1">
                 <h1>VITRINES FAVORITAS</h1>
             </div>
 
-            {/*Função como tag favoritado*/}
-            <Favoritado imgHeart={Heart} favTitle={'Trufas do Sim'} favContent={'GASTRONOMIA'}/>
-            <Favoritado imgHeart={Heart} favTitle={'Nome do negócio'} favContent={'NICHO'}/>
-            <Favoritado imgHeart={Heart} favTitle={'Trufas do Sim'} favContent={'GASTRONOMIA'}/>
-            <Favoritado imgHeart={Heart} favTitle={'Trufas do Sim'} favContent={'GASTRONOMIA'}/>
-            <Favoritado imgHeart={Heart} favTitle={'Trufas do Sim'} favContent={'GASTRONOMIA'}/>
+            <div id="Favoritados">
+                {empFavoritados ? (
+                    empFavoritados.length > 0 ? (
+                        empFavoritados.map((empreendedor, index) => (
+                            <Favoritado
+                                key={index}
+                                imgHeart={Heart}
+                                favTitle={empreendedor?.nomeEmpreendimento}
+                                favContent={empreendedor?.nicho?.nicho}
+                            />
+                        ))
+                    ) : (
+                        <div id="mensagemCarregamento">
+                            <h1 id="recomTitle">Contéudo está sendo carregado!</h1>
+                        </div>
+                    )
+                ) : (
+                    <p>Nenhuma informação do usuário encontrada.</p>
+                )}
+            </div>
+           
         </div>
     );
 }
 
 
-export function Recomendado({imgReco, recoTitle, recoTipoEstabe, recoDesc, recoIcon})
+
+function Recomendado({imgReco, recoTitle, recoTipoEstabe, recoDesc, recoIcon})
 {
         
     return(
@@ -138,7 +177,7 @@ export function Recomendado({imgReco, recoTitle, recoTipoEstabe, recoDesc, recoI
 
 }
 // Tornando os subcompenentes exportáveis solo
-export function Recomendacoes()
+function Recomendacoes()
 {
 
     const [empreendimentoRecomendado, loading, error] = useAxios({
@@ -153,6 +192,8 @@ export function Recomendacoes()
     {
         return null;
     }
+    
+    console.log(empreendimentoRecomendado);
 
     return(
         <div>
@@ -171,9 +212,9 @@ export function Recomendacoes()
                             <Recomendado
                             key={index}
                             imgReco={FotoExemplo}
-                            recoTitle={empreendedor.nomeEmpreendimento}
-                            recoTipoEstabe={empreendedor.nicho.nicho}
-                            recoDesc={empreendedor.biografia}
+                            recoTitle={empreendedor?.nomeEmpreendimento}
+                            recoTipoEstabe={empreendedor?.nicho?.nicho}
+                            recoDesc={empreendedor?.biografia}
                             recoIcon={EmptyHeart}
                             />
                         ))
@@ -188,7 +229,8 @@ export function Recomendacoes()
                     </div>
                 </div>
         )  : (
-            <p>Nenhuma informação do usuário encontrada.</p>
+            
+            <p className="vitrineErro">Nenhuma informação do usuário encontrada.</p>
         )}
     </div>
        
@@ -200,20 +242,8 @@ export function Recomendacoes()
 function UserProfile()
 {
 
-    // Simulação de dados recebidos ao 'longar'
-    const login = {
-        nomeCompleto: "Fulano de Tal",
-        dataNascimento: "12/11/1990",
-        cpf: "123.456.783-00",
-        email: "fulano@example.com"
-      };
-
-      
-      localStorage.setItem('loginInfo', JSON.stringify(login));
-    
-
     return(
-            <div id="componente">
+            <div id="componenteUserPro">
                <div id="corFundo">
                 <div id="formUserPro">
                     

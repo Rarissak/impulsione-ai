@@ -21,6 +21,7 @@ html{
     /*Camada dos meus dados e vitrine*/
 #boxFormUserPro
 {
+    margin-top: 52px;
     background-color: #FFF9F5;
     display: flex;
     justify-content: space-evenly;
@@ -69,10 +70,11 @@ html{
 }
 
 
-#formContainer
+#formContainerDataUser
 {
+    margin-top: 31px;
     min-width: 315px;
-    max-width: 443px;
+    max-width: 412px;
     
 }
 
@@ -104,6 +106,18 @@ html{
     font-weight: 700;
 }
 
+
+
+/*Favoritados*/
+#Favoritados
+{
+    margin-top: -35px;
+}
+
+#Favoritados .vitrineErro
+{
+    margin: 0;
+}
 
 /*Definindo o formato e cor do fundo do input*/
 #formUserPro input
@@ -341,37 +355,6 @@ html{
 
 }
 
-#mensagemCarregamento
-{
-   
-    background-color: #eb6b10;
-    border-radius: 15px;
-    padding: 3rem;
-    margin: auto;
-    border-bottom: 5px solid #4400ff;
-}
-
-#mensagemCarregamento h1
-{
-    animation: textShadowAnimation 5s infinite alternate;
-    animation-timing-function: ease-in-out;
-    font-size: 32px;
-    color:#ffffff; 
-    
-}
-
-@keyframes textShadowAnimation {
-    0% {
-      text-shadow: none; /* Inicia sem sombra */
-    }
-    50% {
-        text-shadow: rgb(25, 0, 255) 2px 2px 4px ;
-    }
-    100% {
-      text-shadow: none; /* Retorna para sem sombra no final da animação */
-    }
-  }
-
  /*Fazendo a mensagem de invaliz ficar em baixo do input*/
 #ajustandoMensagemInvalida
 {
@@ -414,12 +397,19 @@ html{
 @media screen and (max-width: 920px){
    
 
-    #formContainer
+    #formContainerDataUser
     {
         width: 50%;
         flex-direction: column;
+        margin-left: 21%;
     }
-  
+
+    #boxFormUserPro
+    {
+        justify-content: center;
+    }
+
+   
    
 }
 /* Tamanho criado por conta do componente carrossel */
