@@ -29,7 +29,7 @@ function Sobre() {
 
   return (
     <>
-      <Header />
+      <Header></Header>
       <MenuLateral></MenuLateral>
 
       <body>
@@ -44,7 +44,7 @@ function Sobre() {
           <BarraLinkExterno id='fundoLaranja' name={'DIVERSOS'} link={'/pesquisa'}></BarraLinkExterno>
         </nav>
 
-        <nav id='breadcrumbs'><Breadcrumb crumbs={crumbs} /></nav>
+        {/* <nav id='breadcrumbs'><Breadcrumb crumbs={crumbs} /></nav> */}
 
         <div className="carrossel">
           <Carrossel
