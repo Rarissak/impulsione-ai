@@ -1,15 +1,20 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
 import ProfileImg from '../../assets/trufasDoSim.png';
 
-import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../editarDadosEmp/editarDadosEmp.jsx';
+import EditarDadosEmp, {ToggleModalEditData} from '../editarDadosEmp/editarDadosEmp.jsx';
+// import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../editarDadosEmp/editarDadosEmp.jsx';
+
+import axiosInstance from '../../helper/axiosInstance.js';
+import useAxios from "../../hook/useAxios.js";
+import axios from "axios"; 
+
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
 {
-    
     try {
          // Pega dados
          const elementoNome = document.getElementById("campoNome");
@@ -136,7 +141,6 @@ export function MostrarDadosAtualizados() {
     try {
         const testeDados = PegandoDadosAtualizados();
         
-
         const elementoNome = document.getElementById("campoNome");
         const elementoDataNascimento = document.getElementById("campoDataNascimento");
         const elementoFotoPerfil = document.getElementById("fotoPerfil");
@@ -209,7 +213,113 @@ function MeusDados()
 {
     useEffect(() => {
         ToggleModalEditData();
-      }, []);
+    }, []);
+
+    const token = localStorage.getItem('token')
+    const id = localStorage.getItem('id')
+    const uri = localStorage.getItem('uri')
+   
+    const [usuarioLogado, loading, error] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: uri + '/' + id
+    })
+   
+      let nomeCompleto = usuarioLogado.nomeCompleto;
+      let dtNasc = usuarioLogado.dataNascimento;
+      let cpf = usuarioLogado.cpf;
+      let nomeNegocio = usuarioLogado.nomeEmpreendimento;
+      let modalidade = usuarioLogado.modalidade;
+      let site = usuarioLogado.site;
+      let mei = usuarioLogado.mei;
+      let email = usuarioLogado.email;
+      let telefone = usuarioLogado.telefone;
+      let instagram = usuarioLogado.instagram;
+      let facebook = usuarioLogado.facebook;
+      let plano = usuarioLogado.planoAssinatura;
+
+
+
+    //GET DO ENDEREÇO
+        const empreendedorId = localStorage.getItem('id'); 
+
+        const [uf, setUf] = useState('');
+        const [cidade, setCidade] = useState('');
+        const [logradouro, setLogradouro] = useState('');
+        const [numero, setNumero] = useState('');
+        const [bairro, setBairro] = useState('');
+
+        axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+        .then(response => {
+            const empreendedor = response.data;
+
+            const { endereco } = empreendedor;
+    
+            setUf(endereco.uf);
+            setCidade(endereco.cidade);
+            setBairro(endereco.bairro);  
+            setLogradouro(endereco.logradouro);
+            setNumero(endereco.numero);
+
+            // console.log("UF:", endereco.uf);
+            // console.log("Cidade:", endereco.cidade);
+            // console.log("Bairro:", endereco.bairro);
+            // console.log("Logradouro:", endereco.logradouro);
+            // console.log("Número:", endereco.numero);
+        })
+        .catch(error => {
+            // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);
+        });
+    //----------------
+
+    //GET DO NICHO
+        const [nicho, setNicho] = useState('');
+        
+        axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+        .then(response => {
+            const empreendedor = response.data;
+
+            const { nicho } = empreendedor;
+
+            setNicho(nicho.nicho);
+            localStorage.setItem('idNicho', nicho.idNicho)
+
+            console.log("Nicho:", nicho.nicho);
+        })
+        .catch(error => {
+            // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);
+        });
+    //----------------
+
+    //GET DO CARTÃO
+        const [PrimeirosDigitos, setPrimeirosDigitos] = useState('');
+        const [nomeCartao, setNomeCartao] = useState('');
+      
+        axios.get(`http://localhost:8080/empreendedores/${empreendedorId}`)
+        .then(response => {
+            const empreendedor = response.data;
+
+            const { cartao } = empreendedor;
+
+            if (!nomeCartao && !PrimeirosDigitos) {
+                setNomeCartao("Não possui cartão cadastrado");
+                setPrimeirosDigitos(" ");
+            } else {
+                setNomeCartao(cartao.nomeCartao);
+                setPrimeirosDigitos(cartao.PrimeirosDigitos);
+            }
+
+            console.log("Nome Cartão:", cartao.nomeCartao);
+            console.log("Nome Cartão:", cartao.PrimeirosDigitos);
+        })
+        .catch(error => {
+            // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);
+        });
+    //----------------
+
+    //PUT - ATUALIZANDO OS DADOS 
+
+    //--------------------------
    
 
     return(
@@ -228,13 +338,13 @@ function MeusDados()
                                 {/*NOME COMPLETO*/}
                                 <div className="fieldType1">
                                     <span className="nameField">Nome Completo</span>
-                                    <span className="conteudo" id="campoNome">Nome Completo ncncnnnnl</span>
+                                    <span className="conteudo" id="campoNome">{nomeCompleto}</span>
                                 </div>
 
                                 {/*DATA DE NASCIMENTO*/}
                                 <div className="fieldType1">
                                     <span className="nameField">Data de Nascimento</span>
-                                    <span className="conteudo" id="campoDataNascimento">00/00/0000</span>
+                                    <span className="conteudo" id="campoDataNascimento">{dtNasc}</span>
                                 </div> 
                                     
                             </div>                
@@ -246,13 +356,13 @@ function MeusDados()
                             {/*CPF*/}
                             <div className="fieldType1">
                                 <span className="nameField">CPF</span>
-                                <span className="conteudo" id="campoCPF">000.000.000-00</span>
+                                <span className="conteudo" id="campoCPF">{cpf}</span>
                             </div>
 
                             {/*Endereço completo*/}
                             <div className="fieldType1">
                                 <span className="nameField">Endereço Completo</span>
-                                <span className="conteudo" id="campoEndereco">Rua/Avenida, nº 00 - Bairro, Cidade - UF</span>
+                                <span className="conteudo" id="campoEndereco">{logradouro}, {numero} - {bairro}, {cidade} - {uf}</span>
                             </div>
                         </fieldset>
                                 
@@ -261,31 +371,31 @@ function MeusDados()
                             {/*Nome do Negócio*/}
                             <div className="fieldType1">
                                 <span className="nameField">Nome do negócio</span>
-                                <span className="conteudo" id="campoNomeNegocio">Gastronomia</span>    
+                                <span className="conteudo" id="campoNomeNegocio">{nomeNegocio}</span>    
                             </div>
 
                             {/*Nicho*/}
                             <div className="fieldType1">
                                 <span className="nameField">Nicho do Trabalho</span>
-                                <span className="conteudo" id="campoNicho">Gastronomia</span>    
+                                <span className="conteudo" id="campoNicho">{nicho}</span>    
                             </div>
                                     
                             {/*Modalidade de Serviço*/}
                             <div className="fieldType1">
                                 <span className="nameField">Modalidade de Serviço</span>
-                                <span className="conteudo" id="campoModalidade">Híbrido</span>    
+                                <span className="conteudo" id="campoModalidade">{modalidade}</span>    
                             </div>
                                 
                             {/*Site do Negócio*/}
                             <div className="fieldType1">
                                 <span className="nameField">Site do Negócio</span>
-                                <span className="conteudo" id="campoSite">Não possui</span>    
+                                <span className="conteudo" id="campoSite">{site}</span>    
                             </div>
                                     
                                     {/*MEI*/}
                                     <div className="fieldType1">
                                         <span className="nameField">MEI</span>
-                                        <span className="conteudo" id="campoMEI">12.345.678/0001-90</span>    
+                                        <span className="conteudo" id="campoMEI">{mei}</span>    
                                     </div>
                                 </fieldset>
 
@@ -293,13 +403,13 @@ function MeusDados()
                             {/*Email Cadastrado*/}
                             <div className="fieldType1">
                                 <span className="nameField">Email Cadastrado</span>
-                                <span className="conteudo" id="campoEmail">algumacoisa@gmail.com</span>    
+                                <span className="conteudo" id="campoEmail">{email}</span>    
                             </div>
 
                             {/*Número de Contato*/}
                             <div className="fieldType1">
                                 <span className="nameField">Número de Contato</span>
-                                <span className="conteudo" id="campoTel">(81) 40028922</span>    
+                                <span className="conteudo" id="campoTel">{telefone}</span>    
                             </div>
                         </fieldset>
                                 
@@ -307,13 +417,13 @@ function MeusDados()
                             {/*Instagram*/}
                             <div className="fieldType2 iconCenter">
                                 <img src={InstagramIcon}  alt="Icone do instagram" />
-                                <span className="conteudo" id="campoInsta">@perfil do instagram</span>    
+                                <span className="conteudo" id="campoInsta">{instagram}</span>    
                             </div>
 
                             {/*Facebook*/}
                             <div className="fieldType2 iconCenter">
                                 <img src={FacebookIcon}  alt="Icone do facebook"/>
-                                <span className="conteudo" id="campoFace">perfil do facebook</span>    
+                                <span className="conteudo" id="campoFace">{facebook}</span>    
                             </div>                    
                         </fieldset>
 
@@ -326,17 +436,17 @@ function MeusDados()
                                             
                             
 
-                                <fieldset id="fieldSetConfigPlano" className=" corLaranja">
+                                <fieldset id="fieldSetConfigPlano" className="corLaranja">
                                     {/*Plano Escolhido*/}
                                     <div className="fieldType1">
                                         <span className="nameField">Plano escolhido</span>
-                                        <span className="conteudo">Silver</span>    
+                                        <span className="conteudo">{plano}</span>    
                                     </div>
 
                                     {/*Cartão Cadastrado*/}
                                     <div className="fieldType1">
                                         <span className="nameField">Cartão cadastrado</span>
-                                        <span className="conteudo">(Nome do cartão)</span>    
+                                        <span className="conteudo">{nomeCartao} - {PrimeirosDigitos}</span>    
                                     </div>
 
                                     <div className="buttonsForm">  
@@ -346,14 +456,12 @@ function MeusDados()
                     </form>
                     </div>
 
-                    <fieldset id="fieldSetConfigPlano" className=" corLaranja">
-                        {/*Plano Escolhido*/}
+                    {/* <fieldset id="fieldSetConfigPlano" className=" corLaranja">
                         <div className="fieldType1">
                             <span className="nameField">Plano escolhido</span>
                             <span className="conteudo">Silver</span>    
                         </div>
 
-                        {/*Cartão Cadastrado*/}
                         <div className="fieldType1">
                             <span className="nameField">Cartão cadastrado</span>
                             <span className="conteudo">(Nome do cartão)</span>    
@@ -362,7 +470,7 @@ function MeusDados()
                         <div className="buttonsForm">  
                             <button id="alterarButton">ALTERAR PLANO</button>
                         </div>
-                    </fieldset>
+                    </fieldset> */}
                 </div>
         </div>
     );
