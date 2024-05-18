@@ -20,7 +20,6 @@ import IconExcluir from '../../../assets/iconLoginModalClose.svg';
 import ImgTeste from '../../../assets/imgTeste.png';
 import ImgCarrossel from '../../../assets/gastronomiaTrufa.png';
 import BoxVideo from "../../../components/boxVideo/boxVideo";
-import EditarDadosProduto from "../../../components/editarDadosProduto/editarProduto.jsx"
 
 
 function PerfilParceiro(){
