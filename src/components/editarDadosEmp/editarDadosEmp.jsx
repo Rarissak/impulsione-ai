@@ -115,10 +115,15 @@ function EditarDadosEmp() {
 
         axios.put(`http://localhost:8080/empreendedores/${empreendedorId}`, jsonDados)
             .then(response => {
+                alert("Perfil atualizado com sucesso!");
                 console.log('Perfil atualizada com sucesso:', response.data);
             })
             .catch(error => {
+                alert("Não foi possivel atualizar seus dados :(");
                 console.error('Erro ao atualizar perfil:', error);
+            })
+            .finally(() => {
+                window.location.reload();            
             });
     };
 
