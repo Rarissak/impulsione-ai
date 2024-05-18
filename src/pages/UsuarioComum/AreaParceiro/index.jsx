@@ -76,7 +76,7 @@ function Destaques()
                     <Destaque
                     key={index}
                     idBox={'quadradoBranco'}
-                    path={''} // Pegar o path do banco tbm?
+                    path={'/vitrine/' + destaque.idEmpreededor} // Pegar o path do banco tbm?
                     foto={TrufasDoSim} // Mias tarde -> Trocar pela foto do banco
                     nome={destaque.nomeEmpreendimento}
                     // nicho={destaque.nicho.nicho}
