@@ -133,7 +133,7 @@ function Planos() {
     function separarString(string) {
 
         // Usando o método split para separar a string pelo caractere ".", ent no banco o ponto separa as strings.
-        const arraySeparado = string.split(".");
+        const arraySeparado = string.split(",");
 
         // apagando o ultimo elemento, pois está vindo vázio.
         arraySeparado.pop();
