@@ -188,6 +188,10 @@ const handleSubmitProduto = async (event) => {
                 alert("Não foi possivel enviar seu depoimento :(")
                 console.error('Erro ao enviar o depoimento para o banco de dados:', error.message);
             }
+
+            finally{
+                window.location.reload()
+            }
         };
 
         const handleChangeDepoimento = (event) => {
