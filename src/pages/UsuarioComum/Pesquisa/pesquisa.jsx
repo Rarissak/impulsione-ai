@@ -157,7 +157,7 @@ function Pesquisa() {
                   key={empreendimento.idEmpreededor}
                   link={'/vitrine'}
                   name={empreendimento.nomeEmpreendimento}
-                  nicho={empreendimento.nicho.nicho}
+                  // nicho={empreendimento.nicho.nicho}
                   descricao={empreendimento.biografia}
 
                 />
@@ -179,7 +179,8 @@ function Pesquisa() {
                                 path={'/vitrine'}
                                 foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
                                 nome={empreendedor?.nomeEmpreendimento}
-                                nicho={empreendedor?.nicho.nicho} />
+                                // nicho={empreendedor?.nicho.nicho} 
+                                />
                         ))}
                     </div>
           </div>
