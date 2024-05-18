@@ -15,10 +15,6 @@ import { useEffect } from 'react';
 
 function Pesquisa() {
 
-  // window.addEventListener('popstate', function (event) {
-  //   window.location.reload();
-  // });
-
   const { nicho, pesquisaUsuario } = useParams();
 
   const [nichoPesquisado, nichosPesquisadoloading, nichosPesquisadoError] = useAxiosWithDependecies({
@@ -75,7 +71,7 @@ function Pesquisa() {
                 <Negocio
                   img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
                   key={empreendimento.idEmpreededor}
-                  link={'/vitrine'}
+                  link={'/vitrine/' + empreendimento.idEmpreededor}
                   name={empreendimento.nomeEmpreendimento}
                   nicho={nichoPesquisado.nicho}
                   descricao={empreendimento.biografia}
@@ -97,7 +93,7 @@ function Pesquisa() {
                 <Destaque
                   key={empreendedor.idEmpreededor}
                   idBox={'quadradoLaranja'}
-                  path={'/vitrine'}
+                  path={'/vitrine/' + empreendedor.idEmpreededor}
                   foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
                   nome={empreendedor?.nomeEmpreendimento}
                   nicho={empreendedor?.nicho.nicho} />
@@ -136,7 +132,7 @@ function Pesquisa() {
                 <Negocio
                   img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
                   key={empreendimento.idEmpreededor}
-                  link={'/vitrine'}
+                  link={'/vitrine/' + empreendedor.idEmpreededor}
                   name={empreendimento.nomeEmpreendimento}
                    nicho={empreendimento.nicho.nicho}
                   descricao={empreendimento.biografia}
@@ -158,7 +154,7 @@ function Pesquisa() {
                 <Destaque
                   key={empreendedor.idEmpreededor}
                   idBox={'quadradoLaranja'}
-                  path={'/vitrine'}
+                  path={'/vitrine/' + empreendedor.idEmpreededor}
                   foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
                   nome={empreendedor?.nomeEmpreendimento}
                   nicho={empreendedor?.nicho.nicho} />
@@ -197,7 +193,7 @@ function Pesquisa() {
             <Negocio
               img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
               key={empreendimento.idEmpreededor}
-              link={'/vitrine'}
+              link={'/vitrine/' + empreendimento.idEmpreededor}
               name={empreendimento.nomeEmpreendimento}
               nicho={empreendimento.nicho.nicho}
               descricao={empreendimento.biografia}
@@ -219,7 +215,7 @@ function Pesquisa() {
             <Destaque
               key={empreendedor.idEmpreededor}
               idBox={'quadradoLaranja'}
-              path={'/vitrine'}
+              path={'/vitrine' + empreendedor.idEmpreededor}
               foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
               nome={empreendedor?.nomeEmpreendimento}
               nicho={empreendedor?.nicho.nicho} />

@@ -46,6 +46,10 @@ function Header() {
         window.location.reload();
     }
 
+    function perfil(){
+        window.location.href = "/perfilParceiro"
+    }
+
     const handleComponentLogin = () => {
         ToggleModal();
     };
@@ -111,7 +115,6 @@ function Header() {
 
 
                     {isLogado && (
-
                          <button 
                          id='headerLogin'
                          className='centralizeItems, headerScreenButtons'

@@ -128,13 +128,13 @@ function Home() {
                     <div id='linhaDestaques'>
                         {empreendedoresDestaque.slice(0, 5).map((empreendedor, index) => (
                             <Destaque
-                                key={index}
+                                key={empreendedor.idEmpreededor}
                                 idBox={'quadradoLaranja'}
-                                path={'/vitrine'}
+                                path={'/vitrine/' + empreendedor.idEmpreededor}
                                 foto={TrufasDoSim}
                                 nome={empreendedor?.nomeEmpreendimento}
-                                // nicho={empreendedor?.nicho.nicho} 
-                                />
+                                nicho={empreendedor?.nicho.nicho} 
+                            />
                         ))}
                     </div>
                 </div>

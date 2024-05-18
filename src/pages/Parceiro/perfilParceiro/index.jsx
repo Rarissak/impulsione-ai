@@ -135,11 +135,7 @@ const handleSubmitProduto = async (event) => {
     }
 };
 
-
-
-
     //Deletar Produto está no componente produto cadastrado
-
 
 
     //Cadastrando os depoimentos
@@ -233,12 +229,6 @@ const handleSubmitProduto = async (event) => {
         }
         
     //---------------------------------
-
-
-    
-
-
-
 
     return(
         <>
