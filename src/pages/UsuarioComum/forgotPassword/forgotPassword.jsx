@@ -54,7 +54,7 @@ function EsqueciSenha()
                         emailFrom: "impulsioneai@gmail.com",
                         emailTo: email,
                         subject: "Esqueceu a senha? Não se preocupe, estamos aqui para ajudar!",
-                        text: `Olá ${primeiroNome}, Recebemos sua solicitação de recuperação de senha. Para redefinir sua senha e recuperar o acesso à sua conta, utilize o código de acesso: ${codigoAleatorio}. Se precisar de mais alguma assistência, não hesite em nos contatar!`
+                        text: `Olá ${primeiroNome}, \n\nRecebemos sua solicitação de recuperação de senha. \n\nPara redefinir sua senha e recuperar o acesso à sua conta, utilize o código de acesso: ${codigoAleatorio}. \n\nSe precisar de mais alguma assistência, não hesite em nos contatar!`
                     });
 
                     window.location.href = "/alterarSenha";
