@@ -15,27 +15,31 @@ import { useEffect } from 'react';
 
 function Pesquisa() {
 
+  // window.addEventListener('popstate', function (event) {
+  //   window.location.reload();
+  // });
+
   const { nicho, pesquisaUsuario } = useParams();
- 
-   const [nichoPesquisado, nichosPesquisadoloading, nichosPesquisadoError] = useAxiosWithDependecies({
-      axiosInstance: axiosInstance,
-      method: 'GET',
-      url: 'nichos/nome/' + nicho
-    }, [nicho]);
- 
-   const [pesquisa, pesquisadoloading, pesquisaError] = useAxiosWithDependecies({
-      axiosInstance: axiosInstance,
-      method: "GET",
-      url: "buscar/empreendedores/" + pesquisaUsuario
-    }, [pesquisaUsuario]);
-  
+
+  const [nichoPesquisado, nichosPesquisadoloading, nichosPesquisadoError] = useAxiosWithDependecies({
+    axiosInstance: axiosInstance,
+    method: 'GET',
+    url: 'nichos/nome/' + nicho
+  }, [nicho]);
+
+  const [pesquisa, pesquisadoloading, pesquisaError] = useAxiosWithDependecies({
+    axiosInstance: axiosInstance,
+    method: "GET",
+    url: "buscar/empreendedores/" + pesquisaUsuario
+  }, [pesquisaUsuario]);
+
 
   const [nichos, nichosloading, nichoError] = useAxios({
     axiosInstance: axiosInstance,
     method: 'GET',
     url: 'nichos'
   })
-  
+
   const [empreendedores, loading, error] = useAxios({
     axiosInstance: axiosInstance,
     method: 'GET',
@@ -64,20 +68,9 @@ function Pesquisa() {
 
           <section id='sectionNegocios'>
 
-            <div id='filtro'>
-              {/* Aqui está o componente FiltroPesquisa */}
-              <FiltroPesquisa
-                nicho={['Gastronomia', 'Moda', 'Tecnologia', 'Esportes', 'Arte', 'Música', 'Educação', 'Saúde']}
-                tempoAtuacao={['Menos de 6 meses', '1 ano', '2 anos', '3-5 anos', '+ de 6 anos']}
-                distanciaMin={1}
-                distanciaMax={500}
-                faixaPrecoMin={50}
-                faixaPrecoMax={5000}
-              />
-            </div>
 
             <div id='negocios'>
-              
+
               {!nichosPesquisadoloading && nichoPesquisado?.empreendimentos?.map((empreendimento) => (
                 <Negocio
                   img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
@@ -100,16 +93,16 @@ function Pesquisa() {
           <div id='destaques'>
             <TitleBorda title={'Recomendações'}></TitleBorda>
             <div id='linhaDestaques'>
-                        {empreendedores?.slice(0, 5).map((empreendedor, index) => (
-                            <Destaque
-                                key={empreendedor.idEmpreededor}
-                                idBox={'quadradoLaranja'}
-                                path={'/vitrine'}
-                                foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
-                                nome={empreendedor?.nomeEmpreendimento}
-                                nicho={empreendedor?.nicho.nicho} />
-                        ))}
-                    </div>
+              {empreendedores?.slice(0, 5).map((empreendedor, index) => (
+                <Destaque
+                  key={empreendedor.idEmpreededor}
+                  idBox={'quadradoLaranja'}
+                  path={'/vitrine'}
+                  foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                  nome={empreendedor?.nomeEmpreendimento}
+                  nicho={empreendedor?.nicho.nicho} />
+              ))}
+            </div>
           </div>
         </body>
         <Footer />
@@ -123,7 +116,7 @@ function Pesquisa() {
         <MenuLateral></MenuLateral>
 
         <body>
-        <nav className='linksExternos' id='barraLinks'>
+          <nav className='linksExternos' id='barraLinks'>
             {nichos.map((nicho, index) => (
               <BarraLinkExterno
                 key={nicho.id} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
@@ -137,21 +130,9 @@ function Pesquisa() {
 
           <section id='sectionNegocios'>
 
-            <div id='filtro'>
-              {/* Aqui está o componente FiltroPesquisa */}
-              <FiltroPesquisa
-                nicho={['Gastronomia', 'Moda', 'Tecnologia', 'Esportes', 'Arte', 'Música', 'Educação', 'Saúde']}
-                tempoAtuacao={['Menos de 6 meses', '1 ano', '2 anos', '3-5 anos', '+ de 6 anos']}
-                distanciaMin={1}
-                distanciaMax={500}
-                faixaPrecoMin={50}
-                faixaPrecoMax={5000}
-              />
-            </div>
-
             <div id='negocios'>
-              
-              {!pesquisadoloading && pesquisa !== null &&( pesquisa?.map((empreendimento) => (
+
+              {!pesquisadoloading && pesquisa !== null && (pesquisa?.map((empreendimento) => (
                 <Negocio
                   img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
                   key={empreendimento.idEmpreededor}
@@ -162,7 +143,7 @@ function Pesquisa() {
 
                 />
               )))}
-                           {pesquisadoloading && (
+              {pesquisadoloading && (
                 <h1>LOADING...</h1>
               )}
             </div>
@@ -172,16 +153,16 @@ function Pesquisa() {
           <div id='destaques'>
             <TitleBorda title={'Recomendações'}></TitleBorda>
             <div id='linhaDestaques'>
-                        {empreendedores?.slice(0, 5).map((empreendedor) => (
-                            <Destaque
-                                key={empreendedor.idEmpreededor}
-                                idBox={'quadradoLaranja'}
-                                path={'/vitrine'}
-                                foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
-                                nome={empreendedor?.nomeEmpreendimento}
-                                nicho={empreendedor?.nicho.nicho} />
-                        ))}
-                    </div>
+              {empreendedores?.slice(0, 5).map((empreendedor) => (
+                <Destaque
+                  key={empreendedor.idEmpreededor}
+                  idBox={'quadradoLaranja'}
+                  path={'/vitrine'}
+                  foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                  nome={empreendedor?.nomeEmpreendimento}
+                  nicho={empreendedor?.nicho.nicho} />
+              ))}
+            </div>
           </div>
         </body>
         <Footer />
@@ -189,7 +170,7 @@ function Pesquisa() {
     )
 
   }
-  
+
   return (<>
     <Header />
     <MenuLateral></MenuLateral>
@@ -209,20 +190,8 @@ function Pesquisa() {
 
       <section id='sectionNegocios'>
 
-        <div id='filtro'>
-          {/* Aqui está o componente FiltroPesquisa */}
-          <FiltroPesquisa
-            nicho={['Gastronomia', 'Moda', 'Tecnologia', 'Esportes', 'Arte', 'Música', 'Educação', 'Saúde']}
-            tempoAtuacao={['Menos de 6 meses', '1 ano', '2 anos', '3-5 anos', '+ de 6 anos']}
-            distanciaMin={1}
-            distanciaMax={500}
-            faixaPrecoMin={50}
-            faixaPrecoMax={5000}
-          />
-        </div>
-
         <div id='negocios'>
-          
+
           {!loading && empreendedores?.map((empreendimento) => (
             <Negocio
               img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
@@ -245,16 +214,16 @@ function Pesquisa() {
       <div id='destaques'>
         <TitleBorda title={'Recomendações'}></TitleBorda>
         <div id='linhaDestaques'>
-                        {empreendedores.slice(0, 5).map((empreendedor, index) => (
-                            <Destaque
-                                key={empreendedor.idEmpreededor}
-                                idBox={'quadradoLaranja'}
-                                path={'/vitrine'}
-                                foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
-                                nome={empreendedor?.nomeEmpreendimento}
-                                nicho={empreendedor?.nicho.nicho} />
-                        ))}
-                    </div>
+          {empreendedores.slice(0, 5).map((empreendedor, index) => (
+            <Destaque
+              key={empreendedor.idEmpreededor}
+              idBox={'quadradoLaranja'}
+              path={'/vitrine'}
+              foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+              nome={empreendedor?.nomeEmpreendimento}
+              nicho={empreendedor?.nicho.nicho} />
+          ))}
+        </div>
       </div>
     </body>
     <Footer />

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../infoPlanos/infoPlanos.css';
 import IconLixeira from '../../assets/lixeira.svg'
 import axiosInstance, { axiosInstanceToken } from '../../helper/axiosInstance';
-import useAxios, { useAxiosWithDependecies, useAxiosWithDependeciesOnChange } from '../../hook/useAxios';
+import useAxios, { useAxiosWithDependecies} from '../../hook/useAxios';
 
 
 // function adicionarBeneficio() {

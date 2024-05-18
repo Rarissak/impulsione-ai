@@ -24,72 +24,44 @@ import Saude02 from '../../../assets/saudeEstetica.png';
 import Tecnologia from '../../../assets/tecnologia.png';
 import Propaganda from '../../../assets/propagandaImpulsioneAi.png';
 import MenuLateral from '../../../components/menuLateral/menuLateral';
+import useAxios, { useAxiosWithDependecies } from '../../../hook/useAxios';
+import axiosInstance from '../../../helper/axiosInstance';
+import { useParams } from 'react-router-dom';
 
 function Vitrine() {
-    const [idEmpreendedor, setIdEmpreendedor] = useState('');
-    const [nomeEmpreendimento, setNomeEmpreendimento] = useState('');
-    const [biografia, setBiografia] = useState('');
-    const [nomeExibicao, setNomeExibicao] = useState('');
-    const [modalidade, setModalidade] = useState('');
-    const [site, setSite] = useState('');
-    const [email, setEmail] = useState('');
-    const [facebook, setFacebook] = useState('');
-    const [instagram, setInstagram] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [idNicho, setIdNicho] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [produtos, setProdutos] = useState([]);
-    const [avaliacoes, setAvaliacoes] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const id = localStorage.getItem('id');
-                console.log('Fetching empreendedor with ID:', id);
+    const {idEmpreendedor} = useParams();
+    const usuarioLogado = {
+        token: localStorage.getItem("token"),
+        id: localStorage.getItem('id'),
+        uri: localStorage.getItem('uri')
+    }
+ 
+    const [nichos, nichosloading, nichoError] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: 'nichos'
+    })
+    const [empreendedor, empreendedoresLoading, empreendedorError] = useAxiosWithDependecies({
+        axiosInstance:axiosInstance,
+        method:"GET",
+        url:"/empreendedores/" + idEmpreendedor
+    },[idEmpreendedor])
 
-                const responseEmpreendedor = await axios.get(`http://localhost:8080/empreendedores/${id}`);
-                const empreendedor = responseEmpreendedor.data;
-                console.log('Empreendedor data:', empreendedor);
+    if (idEmpreendedor === undefined && usuarioLogado.uri == "empreendedores") {
+        window.location.href = "/vitrine/" + usuarioLogado.id
+    }else if(idEmpreendedor === undefined)
+    {
+        window.location.href ="/"
+    }
+   
 
-                setIdEmpreendedor(empreendedor.idEmpreendedor);
-                setNomeEmpreendimento(empreendedor.nomeEmpreendimento);
-                setBiografia(empreendedor.biografia);
-                setNomeExibicao(empreendedor.nomeExibicao);
-                setModalidade(empreendedor.modalidade);
-                setSite(empreendedor.site);
-                setEmail(empreendedor.email);
-                setFacebook(empreendedor.facebook);
-                setInstagram(empreendedor.instagram);
-                setTelefone(empreendedor.telefone);
-                setIdNicho(empreendedor.idNicho);
-
-                const { produtos } = empreendedor;
-                console.log(produtos)
-                setProdutos(produtos);
-
-                const responseAvaliacoes = await axios.get(`http://localhost:8080/avaliacao`);
-                const avaliacoes = responseAvaliacoes.data;
-                console.log('Avaliacoes data:', avaliacoes);
-                setAvaliacoes(avaliacoes);
-
-                setIsLoading(false);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setProdutos([]);
-                setIsLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    if (isLoading) {
+    if (empreendedoresLoading) {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
+    if (empreendedorError) {
+        return <div>Error: {empreendedorError.menssage}</div>;
     }
 
     return (
@@ -97,15 +69,15 @@ function Vitrine() {
             <Header />
             <MenuLateral />
             <div className='blocoRoxo'>
-                <nav className='linksExternos' id='barraLinks'>
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'GASTRONOMIA'} link={'/pesquisa'} />
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'MODA'} link={'/pesquisa'} />
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'ARTESANATO'} link={'/pesquisa'} />
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'TECNOLOGIA'} link={'/pesquisa'} />
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'EDUCAÇÃO'} link={'/pesquisa'} />
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'SAÚDE'} link={'/pesquisa'} />
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'ESTÉTICA'} link={'/pesquisa'} />
-                    <BarraLinkExterno id='fundoRoxoClaro' name={'DIVERSOS'} link={'/pesquisa'} />
+            <nav className='linksExternos' id='barraLinks'>
+                    {nichos.map((nicho, index) => (
+                        <BarraLinkExterno
+                            key={nicho.id} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
+                            id='fundoLaranja'
+                            name={nicho?.nicho.toUpperCase()}
+                            link={`/pesquisa/nicho/${nicho.nicho}`}
+                        />
+                    ))}
                 </nav>
 
                 <section className="bloco1">
@@ -113,8 +85,8 @@ function Vitrine() {
                         <button id='favoritos' onClick={Favoritar}>
                             <img id='botaoFavoritar' src={HeartLine} alt="Favoritar" />
                         </button>
-                        <h1 className='title'>{nomeEmpreendimento}</h1>
-                        <p>{biografia}</p>
+                        <h1 className='title'>{empreendedor.nomeEmpreendimento}</h1>
+                        <p>{empreendedor.biografia}</p>
                         <a href='#bloco2' className='buttonInfo'>VER PRODUTOS</a>
                     </div>
                     <Carrossel
@@ -133,8 +105,8 @@ function Vitrine() {
                         <h2 id="textBranco">Nossos Produtos</h2>
                     </div>
                     <div id="gradeProdutos">
-                        {produtos.length > 0 ? (
-                            produtos.map(produto => (
+                        {empreendedor.produtos.length > 0? (
+                            empreendedor.produtos.map(produto => (
                                 <Produto
                                     key={produto.idProduto}
                                     img={produto.urlFoto}
@@ -156,8 +128,8 @@ function Vitrine() {
                     <BoxInfo title={"Avaliações"} idBox={'titleBoxLaranja'} idDivisor={'divisorLaranja'} />
                     <div className='avaliacoes' id="boxLaranja">
                         <div className='boxAvaliacoes'>
-                            {avaliacoes.length > 0 ? (
-                                avaliacoes.map(avaliacao => (
+                            {empreendedor? (
+                                empreendedor.avaliacoes.map(avaliacao => (
                                     <div className='caixaAvaliacao' key={avaliacao.id}>
                                         <h3>{avaliacao.usuario.nome}</h3>
                                         <p>{avaliacao.avaliacao}</p>
@@ -185,10 +157,10 @@ function Vitrine() {
                         <div className='coluna' id='fotoNome'>
                             <img id='fotoPerfil' src={UserIcon} alt='Icon de perfil' />
                             <div id='fotoTexto'>
-                                <h1>{nomeEmpreendimento}</h1>
+                                <h1>{empreendedor.nomeEmpreendimento}</h1>
                                 <div id='colunaTexto'>
                                     <h5>Por:</h5>
-                                    <h4>{nomeExibicao}</h4>
+                                    <h4>{empreendedor.nomeExibicao}</h4>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +168,7 @@ function Vitrine() {
                         <div className='coluna'>
                             <div>
                                 <h2>MODALIDADE DO SERVIÇO</h2>
-                                <h4>{modalidade}</h4>
+                                <h4>{empreendedor.modalidade}</h4>
                             </div>
                             <h3>Recife e Região Metropolitana</h3>
                         </div>
@@ -204,22 +176,22 @@ function Vitrine() {
                             <div className='contatos'>
                                 <h4>EMAIL DE CONTATO</h4>
                                 <div className='contato'>
-                                    <CopiarTexto texto={email} />
-                                    <p>{email}</p>
+                                    <CopiarTexto texto={empreendedor.email} />
+                                    <p>{empreendedor.email}</p>
                                 </div>
                             </div>
                             <div className='contatos'>
                                 <h4>NÚMERO DE CONTATO</h4>
                                 <div className='contato'>
-                                    <CopiarTexto texto={telefone} />
-                                    <p>{telefone}</p>
+                                    <CopiarTexto texto={empreendedor.telefone} />
+                                    <p>{empreendedor.telefone}</p>
                                 </div>
                             </div>
-                            <a className='redeSocial' href={"https://" + instagram} target="_blank" rel="noopener noreferrer">
+                            <a className='redeSocial' href={"https://" + empreendedor.instagram} target="_blank" rel="noopener noreferrer">
                                 <img src={InstagramRoxo} alt='icon do instagram' />
                                 <p>Perfil Do Instagram</p>
                             </a>
-                            <a className='redeSocial' href={"https://" + facebook} target="_blank" rel="noopener noreferrer">
+                            <a className='redeSocial' href={"https://" + empreendedor.facebook} target="_blank" rel="noopener noreferrer">
                                 <img src={FacebookRoxo} alt='icon do facebook' />
                                 <p>Perfil Do Facebook</p>
                             </a>

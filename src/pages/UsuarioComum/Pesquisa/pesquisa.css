@@ -18,7 +18,7 @@
     grid-template-columns: auto auto; /* Define duas colunas de largura igual */
     grid-auto-rows: auto;
     gap: 2.1875em; /* Espaçamento entre os itens */
-    margin-left: 20em;
+
 }
 
 /* RESPONSIVO */

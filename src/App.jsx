@@ -35,10 +35,9 @@ function App() {
         <Route path='/login' Component={Login} />
         <Route path='/cadastroUsuario' Component={CadastroUsuario} />
         <Route path='/cadastroParceiro' Component={CadastroParceiro} />
-
         <Route path='/perfilUsuario' Component={PerfilUsuario}/>
-
-        <Route path='/vitrine' Component={Vitrine} />
+        <Route path='/vitrine/' Component={Vitrine} />
+        <Route path='/vitrine/:idEmpreendedor' Component={Vitrine} />
         <Route path='/esqueciSenha' Component={EsqueciSenha}/>
         <Route path='/alterarSenha' Component={AlterarSenha}/>
         <Route path='/adminSolicitacoes' Component={Admin} />

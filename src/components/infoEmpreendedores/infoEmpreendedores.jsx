@@ -16,9 +16,9 @@ function InfoEmpreendedores({idEmpreendedor, nicho,nomeEmpreendedor, nomeNegocio
         setExpandir(!expandir);
     };
 
-    const aceitarSolicitacao = () =>{
+    const aceitarSolicitacao =  async() =>{
         
-        axiosInstanceToken().put("/admin/solicitacoes/" + idEmpreendedor)
+       await axiosInstanceToken().put("/admin/solicitacoes/" + idEmpreendedor)
         .then((res) => {
             console.log(res.data)
         })
@@ -30,8 +30,8 @@ function InfoEmpreendedores({idEmpreendedor, nicho,nomeEmpreendedor, nomeNegocio
         })
 
     }
-    const recusarSolicitacao = () =>{
-        axiosInstanceToken().delete("/admin/solicitacoes/" + idEmpreendedor)
+    const recusarSolicitacao = async () =>{
+        await axiosInstanceToken().delete("/admin/solicitacoes/" + idEmpreendedor)
         .then((res) => {
             console.log(res.data)
         })
