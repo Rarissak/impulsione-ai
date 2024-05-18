@@ -79,122 +79,66 @@ function PerfilParceiro(){
     //---------------------------------
     
     
-    //Cadastrando os produtos
+    // Cadastrando os produtos
 
-        //GET DO NICHO
-        const [nicho, setNicho] = useState('');
+// GET DO NICHO
+const [nicho, setNicho] = useState('');
 
-        useEffect(() => {
-            axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
-            .then(response => {
-                const empreendedor = response.data;
-                const { nicho } = empreendedor;
-                setNicho(nicho.id);
-                console.log("TESTE Nicho:", nicho.id);
-            })
-            .catch(error => {
-                console.error('Erro ao obter os detalhes do empreendedor:', error);
-            });
-        }, []);
+useEffect(() => {
+    axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
+        .then(response => {
+            const empreendedor = response.data;
+            const { nicho } = empreendedor;
+            setNicho(nicho.id);
+            console.log("TESTE Nicho:", nicho.id);
+        })
+        .catch(error => {
+            console.error('Erro ao obter os detalhes do empreendedor:', error);
+        });
+}, []);
 
-    const [dadosProduto, setDadosProduto] = useState({
-        nome: '',
-        preco: '',
-        urlFoto: 'https://cdn-icons-png.flaticon.com/512/4129/4129437.png',
-        idNicho: nicho,
-        empreendedor: localStorage.getItem('id')
-    });
+const [dadosProduto, setDadosProduto] = useState({
+    nome: '',
+    preco: '',
+    urlFoto: '',
+    idNicho: nicho,
+    idEmpreendedor: localStorage.getItem('id')
+});
 
-    useEffect(() => {
-        setDadosProduto(prevState => ({ ...prevState, idNicho: nicho }));
-    }, [nicho]);
+useEffect(() => {
+    setDadosProduto(prevState => ({ ...prevState, idNicho: nicho }));
+}, [nicho]);
 
-    const handleChangeProduto = (event) => {
-        setDadosProduto({ ...dadosProduto, [event.target.name]: event.target.value });
-    };
+const handleChangeProduto = (event) => {
+    setDadosProduto({ ...dadosProduto, [event.target.name]: event.target.value });
+};
 
-    const handleSubmitProduto = async (event) => {
-        event.preventDefault();
+const handleSubmitProduto = async (event) => {
+    event.preventDefault();
 
-        console.log(dadosProduto);
+    console.log(dadosProduto);
+    const token = localStorage.getItem('token');
 
-        try {
-            const token = localStorage.getItem('token'); 
-            const config = {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            };
-            const resposta = await axios.post('http://localhost:8080/produtos', dadosProduto, config);
-            console.log(resposta.data);
-            alert("Produto cadastrado com sucesso!");
-            window.location = "/perfilParceiro";
-        } catch (erro) {
-            console.error('Ocorreu um erro ao enviar o formulário:', erro);
-            alert("Desculpe, ocorreu um erro no cadastro :( Tente novamente mais tarde.");
-        }
-    };
+    if (!token) {
+        alert("Você precisa estar logado");
+        return;
+    }
 
-    //-----------------------Fim cadastrar produto
-
-
-    //Deletar Produto
-
-    // const [produto, setProduto] = useState('');
-
-    //     useEffect(() => {
-    //         axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
-    //         .then(response => {
-    //             const empreendedor = response.data;
-    //             const { produto } = empreendedor;
-    //             setProduto(produto.idProduto);
-    //             console.log("TESTE Produto:", produto.idProduto);
-    //         })
-    //         .catch(error => {
-    //             console.error('Erro ao obter os detalhes do empreendedor:', error);
-    //         });
-    //     }, []);
-    
-    // const deleteProduto = async (idCartao) => {
-    //     try {
-    //       const response = await fetch(`http://localhost:8080/deleteCartao/${idCartao}`, {
-    //         method: 'DELETE',
-    //       });
-    
-    //       if (response.ok) {
-    //         // Removendo o cartão deletado do estado local
-    //         setCartoes(cartoes.filter(cartao => cartao.idCartao !== idCartao));
-    //         alert("Cartão deletado com sucesso!");
-    //       } else {
-    //         console.error('Erro ao deletar o cartão');
-    //       }
-    //     } catch (error) {
-    //       console.error('Erro na requisição', error);
-    //     }
-    //   };
-
-    //Fim deletar produto
+    try {
+        const response = await axiosInstanceToken().post("/produtos", dadosProduto);
+        alert("Produto cadastrado com sucesso");
+        setProdutoCadastrado(response.data);
+    } catch (err) {
+        console.log(err.message);
+    } finally {
+        window.location.reload();
+    }
+};
 
 
 
 
-    // const handleDelete = async () => {
-    //     try {
-    //         const response = await axios.delete(`http://localhost:8080/produtos/` + idProduto);
-    //         if (response.status === 200) {
-    //             onDelete(idProduto); // Chame a função onDelete passada como prop para atualizar a lista de produtos
-    //             alert("Produto excluído com sucesso!");
-    //         } else {
-    //             console.error('Erro ao excluir o produto');
-    //         }
-    //     } catch (error) {
-    //         console.error('Erro na requisição', error);
-    //     }
-    // };
-
-
-
-
+    //Deletar Produto está no componente produto cadastrado
 
 
 
@@ -238,7 +182,10 @@ function PerfilParceiro(){
                 
                 const response = await axiosInstance.post('http://localhost:8080/depoimento', dadosDepoimento);
                 console.log('Depoimento enviado com sucesso:', response.data);
+                alert("Depoimento enviado com sucesso!")
+
             } catch (error) {
+                alert("Não foi possivel enviar seu depoimento :(")
                 console.error('Erro ao enviar o depoimento para o banco de dados:', error.message);
             }
         };
@@ -268,10 +215,15 @@ function PerfilParceiro(){
                 biografia: novaBiografia
             })
             .then(response => {
+                alert("Biografia Atualizada!")
                 console.log('Biografia atualizada com sucesso:', response.data);
             })
             .catch(error => {
+                alert("Não foi possivel atualizar a biografia :(")
                 console.error('Erro ao atualizar biografia:', error);
+            })
+            .finally(() => {
+                window.location.reload()
             });
 
         }
@@ -353,6 +305,15 @@ function PerfilParceiro(){
                                     <ImagePreview src={selectedProduto} id={'imageProduto'}/> {/* Passe selectedImage como prop */}
                                 </label>
                                 <div id='campos'>
+                                    <fieldset>
+                                        <legend>Link Foto</legend>
+                                        <input 
+                                            type='text'
+                                            name='urlFoto'
+                                            value={dadosProduto.urlFoto}
+                                            onChange={handleChangeProduto}
+                                        ></input>
+                                        </fieldset>
                                     <fieldset>
                                         <legend>NOME DO PRODUTO</legend>
                                         <input 
@@ -507,6 +468,19 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco}){
         })
     };
 
+    // const handleUpdate = async () => {
+    //     await axiosInstanceToken().delete("/produtos/" + idProduto)
+    //     .then((res) => {
+    //         console.log("Deu certo:" , res.data)
+    //     })
+    //     .catch((err) => {
+    //         console.log("Deus erro:", err)
+    //     })
+    //     .finally(() => {
+    //         window.location.reload()
+    //     })
+    // };
+
     return (
         <section id='produtoCadastrado'>
             <div id='infosProduto'>
@@ -524,7 +498,9 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco}){
                 >
                     <img src={IconExcluir} alt='botão para excluir'/>
                 </button>
-                <button>
+                <button
+                    // onClick={handleUpdate}
+                >
                     <img id="iconEditar" src={IconEditar} alt='botão para editar'/>
                 </button>
             </div>

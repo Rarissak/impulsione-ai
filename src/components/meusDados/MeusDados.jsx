@@ -261,11 +261,11 @@ function MeusDados()
             setLogradouro(endereco.logradouro);
             setNumero(endereco.numero);
 
-            console.log("UF:", endereco.uf);
-            console.log("Cidade:", endereco.cidade);
-            console.log("Bairro:", endereco.bairro);
-            console.log("Logradouro:", endereco.logradouro);
-            console.log("Número:", endereco.numero);
+            // console.log("UF:", endereco.uf);
+            // console.log("Cidade:", endereco.cidade);
+            // console.log("Bairro:", endereco.bairro);
+            // console.log("Logradouro:", endereco.logradouro);
+            // console.log("Número:", endereco.numero);
         })
         .catch(error => {
             // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);
@@ -282,6 +282,7 @@ function MeusDados()
             const { nicho } = empreendedor;
 
             setNicho(nicho.nicho);
+            localStorage.setItem('idNicho', nicho.idNicho)
 
             console.log("Nicho:", nicho.nicho);
         })
