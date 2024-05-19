@@ -10,7 +10,9 @@ import EditarDadosEmp, {ToggleModalEditData} from '../editarDadosEmp/editarDados
 import axiosInstance from '../../helper/axiosInstance.js';
 import useAxios from "../../hook/useAxios.js";
 import axios from "axios"; 
-
+const handleButtonClick = () => {
+    window.location = '/meuPlano';
+};
 
 // Função que vai pegar todos os dados  dos 'campos' do componente meus dados
 export function PegandoDados()
@@ -461,7 +463,7 @@ function MeusDados()
                                     </div>
 
                                     <div className="buttonsForm">  
-                                        <button id="alterarButton">ALTERAR PLANO</button>
+                                        <button id="alterarButton" type="button" onClick={handleButtonClick}>ALTERAR PLANO</button>
                                     </div>
                                 </fieldset>
                     </form>
