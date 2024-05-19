@@ -65,7 +65,7 @@ function Home() {
         method: 'GET',
         url: 'depoimento'
     })
-
+    
     return (
         <>
             <Header></Header>
@@ -142,16 +142,17 @@ function Home() {
                     <h2>DEPOIMENTOS DOS PARCEIROS</h2>
                 </div>
                 <div id='depoimentos'>
-                    {depoimentos.slice(0, 3).map((depoimento, index) => (
+                    {depoimentos.slice(0, 4).map((depoimento, index) => (
+                        
                         <Depoimentos
+                            key={index}
                             imagemSrc={PerfilIcon}
                             nome={depoimento?.empreendedor.nomeExibicao}
                             nicho={depoimento?.empreendedor.nicho.nicho}
                             review={depoimento?.depoimento}
+                            qtdEstrelas={depoimento?.qtdEstrelas}
                         />
                     ))}
-
-
                 </div>
             </body>
             <Footer></Footer>
