@@ -130,14 +130,14 @@ function Pesquisa() {
 
               {!pesquisadoloading && pesquisa !== null && (pesquisa?.map((empreendimento) => (
                 <Negocio
-                  img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
-                  key={empreendimento.idEmpreededor}
-                  link={'/vitrine/' + empreendedores.idEmpreededor}
-                  name={empreendimento.nomeEmpreendimento}
-                   nicho={empreendimento.nicho.nicho}
-                  descricao={empreendimento.biografia}
+                img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                key={empreendimento.idEmpreededor}
+                link={'/vitrine/' + empreendimento.idEmpreededor}
+                name={empreendimento.nomeEmpreendimento}
+                nicho={nichoPesquisado.nicho}
+                descricao={empreendimento.biografia}
 
-                />
+              />
               )))}
               {pesquisadoloading && (
                 <h1>LOADING...</h1>
