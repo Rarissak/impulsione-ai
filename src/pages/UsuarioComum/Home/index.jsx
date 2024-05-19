@@ -68,7 +68,6 @@ function Home() {
 
     return (
         <>
-            {/* <MeusDados></MeusDados> */}
             <Header></Header>
             <MenuLateral></MenuLateral>
             <body>
@@ -100,7 +99,7 @@ function Home() {
                     </div>
                 </div>
 
-                <div id='boxInfos'>
+                <div id='boxInfosHome'>
                     <BoxInfo title={"NOSSO OBJETIVO"} idBox={'titleBoxRoxo'} idDivisor={'divisorRoxo'}></BoxInfo>
                     <div>
                         <div className="boxInformations">

@@ -7,7 +7,7 @@ function Informations({icon, titulo, texto}){
             <img id="iconInfo" src={icon} alt={titulo}></img>
             <div id='infos'>
                 <h2 id="titleInfo">{titulo}</h2>
-                <p id="textInfo">{texto}</p>
+                <h5 id="textInformations">{texto}</h5>
             </div>
         </div>
     )

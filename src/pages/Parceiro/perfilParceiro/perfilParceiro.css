@@ -517,6 +517,10 @@ fieldset {
     padding: 0.75rem;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+
+    legend{
+        font-size: 11px !important;
+    }
 }
 
 #precoNomeProduto{
@@ -526,7 +530,7 @@ fieldset {
 }
 
 #tituloAlterar{
-    font-size: 25px;
+    font-size: 15px;
     color:#ffba88
 }
 
@@ -540,6 +544,7 @@ fieldset {
     padding: 0.15rem 1.15rem 0.15rem 1.15rem  !important;
     background-color: #FF7D1E !important;
     width: auto !important;
+    font-size: 11px !important;
 }
 
 #produtoCadastrado{

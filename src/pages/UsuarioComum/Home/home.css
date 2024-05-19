@@ -23,7 +23,7 @@
 .carrossel {
     /* Margin nas laterais */
     margin: 3rem 10rem 3rem 10rem;
-    padding-top: 2rem;
+    padding-top: 0rem;
     display:flex;
     justify-content: space-between;
     flex-direction: row;
@@ -31,6 +31,11 @@
     /* margin: 2.5em 5.4em 2.5em 5.4em; */
     align-items: center;
 }
+
+#boxInfosHome{
+    margin: 0;
+}
+
 
 .carrossel p {
     color: #FF7D1E;
@@ -43,13 +48,13 @@
 #destaques {
     display: flex;
     flex-direction: column;
-    margin: 3em;
+    /* margin: 3em; */
     gap: 2rem;
     justify-content: center;
     align-items: center;
 
     /* Margin nas laterais */
-    margin: 5rem 10rem 5rem 10rem;
+    margin: 4rem 10rem 5rem 10rem;
 }
 
 #linhaDestaques{
@@ -193,6 +198,11 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 /* Tamanho criado por conta do componente carrossel */
 
 @media screen and (max-width: 768px){
+
+    .carrossel{
+        margin-top: 7rem !important;  
+    }
+
     .carrossel_texto img{ width: 15rem; }
 
     #tituloDepoimentos {
@@ -214,6 +224,10 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 
     .carrossel_texto p{
         text-align: center !important;
+    }
+
+    #destaques{
+        margin-top: 3rem !important;
     }
 }
 
@@ -243,7 +257,7 @@ No momento que os quadrados quererem se juntar ele vai debrar linha. */
 
     #destaques { margin: 5rem 2rem 2rem 2rem; }
 
-    .carrossel { margin: 3rem 2rem 3rem 2rem !important; }
+    .carrossel { margin: 7rem 2rem 2rem 2rem !important;}
 
 }
 
