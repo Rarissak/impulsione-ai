@@ -149,7 +149,7 @@ function FormPartner()
                 emailFrom: "impulsioneai@gmail.com",
                 emailTo: dados.email,
                 subject: "Bem-vindo (a) ao Impulsione AI",
-                text: "Olá " + primeiroNome + "," +"\n\nFicamos muito felizes em saber que você deseja ser um parceiro Impulsione aí. \n\nPodemos te pedir um favor? \n\nAguarda um pouquinho para conferirmos seus dados, para assim, te aceitar? \n\nAqui prezamos pela confiabilidade entre nossos parceiros. Entao, fica tranquilo(a)! \n\nEnquanto isso, por que você não navega na nossa plataforma e descobre novas funções disponíveis?" + "\n\nwww.impulsioneai.com.br" + "\n\nEsperamos ter receber em breve! \n\nAtenciosamente, Equipe Impulsione aí."
+                text: "Olá " + primeiroNome + "," +"\n\nFicamos muito felizes em saber que você deseja ser um parceiro Impulsione aí. \n\nPodemos te pedir um favor? \n\nAguarda um pouquinho para conferirmos seus dados, para assim, te aceitar? \n\nAqui prezamos pela confiabilidade entre nossos parceiros. Entao, fica tranquilo(a)! \n\nEnquanto isso, por que você não navega na nossa plataforma e descobre novas funções disponíveis?" + "\n\nhttps://impulsione-ai.vercel.app" + "\n\nEsperamos ter receber em breve! \n\nAtenciosamente, equipe Impulsione aí."
             
             });
 

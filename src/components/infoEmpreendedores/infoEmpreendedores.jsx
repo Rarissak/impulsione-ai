@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-import "../infoEmpreendedores/InfoEmpreendedores.css"
-import axiosInstance, { axiosInstanceToken } from '../../helper/axiosInstance';
+import React, { useState } from 'react';
+import "../infoEmpreendedores/InfoEmpreendedores.css";
+import { axiosInstanceToken } from '../../helper/axiosInstance';
+import axios from "axios";
 
-function InfoEmpreendedores({idEmpreendedor,idNicho, nomeEmpreendedor, nomeNegocio, data, horario, endereco, mei, modalidade, plano, insta, email, numContato, face}){
-    
+function InfoEmpreendedores({
+    idEmpreendedor, idNicho, nomeExibicao, nomeEmpreendedor, nomeNegocio, data, horario, endereco, mei, modalidade, plano, insta, email, numContato, face
+}) {
     const [motivosDispensar, setMotivosDispensar] = useState(false);
-
     const [expandir, setExpandir] = useState(false);
 
     const toggleDispensar = () => {
@@ -16,35 +17,81 @@ function InfoEmpreendedores({idEmpreendedor,idNicho, nomeEmpreendedor, nomeNegoc
         setExpandir(!expandir);
     };
 
-    const aceitarSolicitacao =  async() =>{
+
+    //Inicio sistema do e-mail
+
+    const [dadosEmail, setDadosEmail] = useState({
+        ownerRef: "Suporte",
+        emailFrom: "impulsioneai@gmail.com",
+        emailTo: email,
+        subject: "Bem-vindo (a) ao Impulsione AI",
+        text: "Bem-vindo(a) ao ImpulsioneAi! Estamos muito felizes em tê-lo(a) conosco! A nossa plataforma foi criada para lhe ajudar na divulgação do seu trabalho. Qualquer dúvida é só entrar em contato!"
+   
+    });
+
+    const handleSubmitEmail = async (dadosEmail) => {
         
-       await axiosInstanceToken().put("/admin/solicitacoes/" + idEmpreendedor)
-        .then((res) => {
-            console.log(res.data)
-        })
-        .catch((err) =>{
-            console.log(err)
-        })
-        .finally(() => {
-            window.location.reload()
-        })
 
-    }
-    const recusarSolicitacao = async () =>{
+        try {
+            const resposta = await axios.post('http://localhost:8080/email', dadosEmail);
+            console.log(resposta.data);
+            
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o e-mail:', erro);
+        }
+    };
+
+    const handleChangeEmail = (event) => {
+        setDadosEmail({ ...dadosEmail, [event.target.name]: event.target.value });
+    };
+
+    //Fim sistema do e-mail
+
+    const aceitarSolicitacao = async () => {
+        await axiosInstanceToken().put("/admin/solicitacoes/" + idEmpreendedor)
+            .then((res) => {
+                handleSubmitEmail({
+                    ownerRef: "Suporte",
+                    emailFrom: "impulsioneai@gmail.com",
+                    emailTo: email,
+                    subject: "Bem-vindo (a) ao Impulsione AI",
+                    text: "Olá " + nomeExibicao + "," +"\n\nFicamos muito felizes em saber que você deseja ser um parceiro Impulsione aí. \n\nE hoje viemos com boas notícias, tá preparado(a)?\n\nVocê foi aceito na nossa plataforma e será nosso mais novo, empreendedor parceiro. \n\nEstamos com muitas expectativas para começar a impulsionar seu negócio. \n\nAcesse aqui a plataforma Impulsione aí através desse link:https://impulsione-ai.vercel.app \n\nAtenciosamente, equipe Impulsione aí."
+                
+                });
+                alert("Solicitação aceita com sucesso!")
+                console.log(res.data);
+            })
+            .catch((err) => {
+                alert("Erro ao aceitar solicitação!")
+                console.log(err);
+            })
+            .finally(() => {
+                window.location.reload();
+            });
+    };
+
+    const recusarSolicitacao = async () => {
         await axiosInstanceToken().delete("/admin/solicitacoes/" + idEmpreendedor)
-        .then((res) => {
-            console.log(res.data)
-        })
-        .catch((err) =>{
-            console.log(err)
-        })
-        .finally(() => {
-            window.location.reload()
-        })
+            .then((res) => {
+                handleSubmitEmail({
+                    ownerRef: "Suporte",
+                    emailFrom: "impulsioneai@gmail.com",
+                    emailTo: email,
+                    subject: "Ainda Queremos Você com a Impulsione aí",
+                    text: "Olá " + nomeExibicao + "," + "\n\nFicamos muito felizes em saber que você deseja ser um parceiro Impulsione aí.\n\nInfelizmente você não foi aceito na nossa plataforma.\n\nDevido aos seguintes motivos:\n\n1- foi constatado que você não é um microempreendedor.\n2- Seus dados não foram encontrados.\n\nMas não fica triste, você pode ainda ser nosso usuário impulsione aí. Ajudando a impulsionar pequenos negócios a se tornarem grandes.\n\nEai, vamos firmar esse compromisso?\n\nVem navegar aqui conosco: https://impulsione-ai.vercel.app \n\nAtenciosamente, equipe impulsione aí."
+                });
+                alert("Solicitação deletada com sucesso!")
+            })
+            .catch((err) => {
+                alert("Erro ao deletar solicitação!")
+                console.log(err);
+            })
+            .finally(() => {
+                window.location.reload();
+            });
+    };
 
-    }
-
-    return(
+    return (
         <section id='blocoInfoNegocio'>
             <div id='topoBloco'>
                 <h3 className="title">{idNicho}</h3>
@@ -99,45 +146,46 @@ function InfoEmpreendedores({idEmpreendedor,idNicho, nomeEmpreendedor, nomeNegoc
                         </div>
                     </div>
                     <div id='buttonsAceitarDispensar'>
-                        <button onClick={toggleDispensar} id='dispensar' className="title">Dispensar</button>
+                        <button onClick={recusarSolicitacao} id='dispensar' className="title">Dispensar</button>
                         <button id='aceitar' className="title" onClick={aceitarSolicitacao}>Aceitar</button>
+                       
                     </div>
-                    {motivosDispensar && (
+                    {/* {motivosDispensar && (
                         <section id='motivosDispensa'>
                             <h3>Por qual motivo esse perfil será dispensado?</h3>
-                            <form>
+                            
                                 <div id='motivos'>
                                     <div className="colunaForm">
                                         <label className="campoForm">
-                                            <input type="radio" name='motivo1' value='1'/>
+                                            <input type="radio"/>
                                             <span>Não é um microempreendedor</span>
                                         </label>
                                         <label className="campoForm">
-                                            <input type="radio" name='motivo2' value='2'/>
+                                            <input type="radio"/>
                                             <span>Contém dados falsos</span>
                                         </label>
                                     </div>
                                     <div className="colunaForm">
                                         <label className="campoForm">
-                                            <input type="radio" name='motivo3' value='3'/>
-                                            <span>O Négocio não existe</span>
+                                            <input type="radio"/>
+                                            <span>O Negócio não existe</span>
                                         </label>
                                         <label className="campoForm">
-                                            <input type="radio" name='motivo4' value='4'/>
+                                            <input type="radio"/>
                                             <span>Não é um microempreendedor</span>
                                         </label>
-                                    </div> 
+                                    </div>
                                 </div>
-                                <button type='submit' className="title" onClick={recusarSolicitacao}>CONFIRMAR MOTIVO</button>
-                            </form>
+                                
+                            
+                            
                         </section>
-                    )}
-                    
+                    )} */}
                 </div>
             )}
-            
             <h4 id='infoSolicitacao'>Solicitação realizada dia {data} às {horario}</h4>
         </section>
-    )
+    );
 }
-export default InfoEmpreendedores
+
+export default InfoEmpreendedores;
