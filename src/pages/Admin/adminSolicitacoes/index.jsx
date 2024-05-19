@@ -25,9 +25,9 @@ return (
             <div className='centroAdm'>
                 <h1 className='title'>SOLICITAÇÕES DE CADASTRO</h1>
                 <div>
-                    {empreendedoresLoading && <p>Carregando empreendedores...</p>}
-                    {empreendedoresError && <p>Erro ao carregar empreendedores: {empreendedoresError}</p>}
-                    {empreendedores && empreendedores.map((empreendedor, index) =>
+                    {InfoEmpreendedoresInativosLoading && <p>Carregando empreendedores...</p>}
+                    {empreendedoresInativosError && <p>Erro ao carregar empreendedores: {empreendedoresInativosError}</p>}
+                    {InfoEmpreendedores && empreendedoresInativos.map((empreendedor, index) =>
                         <InfoEmpreendedores
                             key={index}
                             nicho={empreendedor.nicho}

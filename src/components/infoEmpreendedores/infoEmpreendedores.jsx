@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "../infoEmpreendedores/InfoEmpreendedores.css"
 import axiosInstance, { axiosInstanceToken } from '../../helper/axiosInstance';
 
-function InfoEmpreendedores({idEmpreendedor, nicho,nomeEmpreendedor, nomeNegocio, data, horario, endereco, mei, modalidade, plano, insta, email, numContato, face}){
+function InfoEmpreendedores({idEmpreendedor,idNicho, nomeEmpreendedor, nomeNegocio, data, horario, endereco, mei, modalidade, plano, insta, email, numContato, face}){
     
     const [motivosDispensar, setMotivosDispensar] = useState(false);
 
@@ -47,7 +47,7 @@ function InfoEmpreendedores({idEmpreendedor, nicho,nomeEmpreendedor, nomeNegocio
     return(
         <section id='blocoInfoNegocio'>
             <div id='topoBloco'>
-                <h3 className="title">{nicho}</h3>
+                <h3 className="title">{idNicho}</h3>
                 <button onClick={toggleVerMais} className="title">{expandir ? "Ver menos" : "Ver mais"}</button>
             </div>
             <div className="infoNegocioRow">
