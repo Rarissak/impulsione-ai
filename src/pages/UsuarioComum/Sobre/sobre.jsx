@@ -20,6 +20,8 @@ import Tecnologia from '../../../assets/tecnologia.png';
 import Propaganda from '../../../assets/propagandaImpulsioneAi.png';
 import { Link } from 'react-router-dom';
 import MenuLateral from '../../../components/menuLateral/menuLateral.jsx';
+import axiosInstance from '../../../helper/axiosInstance.js';
+import useAxios from '../../../hook/useAxios.js';
 
 function Sobre() {
   const crumbs = [
@@ -27,22 +29,30 @@ function Sobre() {
     { text: 'Sobre' }
   ];
 
+  const [nichos, nichosloading, nichoError] = useAxios({
+    axiosInstance: axiosInstance,
+    method: 'GET',
+    url: 'nichos'
+  })
+
+
   return (
     <>
       <Header></Header>
       <MenuLateral></MenuLateral>
 
       <body>
-        <nav className='linksExternos' id='barraLinks'>
-          <BarraLinkExterno id='fundoLaranja' name={'GASTRONOMIA'} link={'/pesquisa'}></BarraLinkExterno>
-          <BarraLinkExterno id='fundoLaranja' name={'MODA'} link={'/pesquisa'}></BarraLinkExterno>
-          <BarraLinkExterno id='fundoLaranja' name={'ARTESANATO'} link={'/pesquisa'}></BarraLinkExterno>
-          <BarraLinkExterno id='fundoLaranja' name={'TECNOLOGIA'} link={'/pesquisa'}></BarraLinkExterno>
-          <BarraLinkExterno id='fundoLaranja' name={'EDUCAÇÃO'} link={'/pesquisa'}></BarraLinkExterno>
-          <BarraLinkExterno id='fundoLaranja' name={'SAÚDE'} link={'/pesquisa'}></BarraLinkExterno>
-          <BarraLinkExterno id='fundoLaranja' name={'ESTÉTICA'} link={'/pesquisa'}></BarraLinkExterno>
-          <BarraLinkExterno id='fundoLaranja' name={'DIVERSOS'} link={'/pesquisa'}></BarraLinkExterno>
+      <nav className='linksExternos' id='barraLinks'>
+                    {nichos.map((nicho, index) => (
+                        <BarraLinkExterno
+                            key={nicho.id} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
+                            id='fundoLaranja'
+                            name={nicho?.nicho.toUpperCase()}
+                            link={`/pesquisa/nicho/${nicho.nicho}`}
+                        />
+                    ))}
         </nav>
+
 
         {/* <nav id='breadcrumbs'><Breadcrumb crumbs={crumbs} /></nav> */}
 
