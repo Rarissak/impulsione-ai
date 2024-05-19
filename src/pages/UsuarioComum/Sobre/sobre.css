@@ -18,6 +18,16 @@
     align-self: center;
   
   }
+
+  #boxInfoSobre{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .boxInformations p {
+    text-align: center;
+    color: #ffffff;
+}
   
   .boxInformations p {
       text-align: center;
@@ -37,9 +47,16 @@
     /* Estilos para o conteúdo dentro da caixa */
     .boxInformationsDegrade .title {
       color: #FFA15D; /* Cor do título */
-      margin-bottom: 0.9em;
-      padding-top: 1.5em;
+      margin-bottom: 1.5rem;
+      padding-top: 2.5rem;
       text-align: center;
+    }
+
+    .boxInformationsDegrade{
+      h3{
+        text-transform: uppercase;
+        font-weight: 600;
+      }
     }
     
     .boxInformationsDegrade .pilares {
@@ -60,6 +77,10 @@
       margin-left: 5em;
     }
 
+    #img-pilares {
+      width: 20rem;
+    }
+
     @media screen and (max-width: 280px){
       .boxInformations p {
         text-align: center;
@@ -76,7 +97,7 @@
       }
     }
     
-    @media screen and (min-width: 281px) and (max-width: 480px){
+    @media screen and (max-width: 480px){
       .boxInformations p {
         text-align: center;
         max-width: 60%;
@@ -87,12 +108,17 @@
         flex-direction: column;
       }
     
-      #img-pilares {
+      /* #img-pilares {
         width: 250px;
-      }
+      } */
+    }
+
+    @media screen and (max-width: 560px){
+      /* margin: 0 2rem 0 2rem; */
+
     }
     
-    @media screen and (min-width: 481px) and (max-width: 768px){
+    @media screen and (max-width: 768px){
       #breadcrumbs{
         margin-top: 6em !important;
       }
@@ -107,12 +133,22 @@
         flex-direction: column;
       }
     
-      #img-pilares {
+      /* #img-pilares {
         width: 325px;
+      } */
+    }
+
+    @media screen and (max-width: 920px){
+      /* margin: 0 5rem 0 5rem; */
+      #boxInfoSobre{
+        padding: 0 5rem 0 5rem;
       }
+
     }
     
-    @media screen and (min-width: 769px) and (max-width: 1024px){
+    @media screen and (max-width: 1024px){
+
+      /* margin: 0 8rem 0 8rem; */
       .boxInformations p {
         text-align: center;
         max-width: 70%;
@@ -124,11 +160,17 @@
       }
     
       #img-pilares {
-        width: 350px;
+        width: 15rem;
+        align-self: flex-end;
+      }
+
+      #boxInfoSobre{
+        padding: 0 8rem 0 8rem;
       }
     }
     
-    @media screen and (min-width: 1025px) and (max-width: 1200px){
+    @media screen and (max-width: 1200px){
+      /* margin: 0 10rem 0 10rem; */
       .boxInformations p {
         text-align: center;
         max-width: 70%;
@@ -139,7 +181,10 @@
         flex-direction: row;
       }
     
-      #img-pilares {
-        width: 400px;
+      #boxInfoSobre{
+        padding: 0 10rem 0 10rem;
       }
+      /* #img-pilares {
+        width: 400px;
+      } */
     }

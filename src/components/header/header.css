@@ -6,6 +6,11 @@ header{
     z-index: 1000;
 }
 
+#perfilSairHeader{
+    width: 10rem !important;
+    background-color: red;;
+}
+
 /*===- Configuração básica dos butões -===*/
 button, #headerSearch input
 {

@@ -82,22 +82,27 @@ function Vitrine() {
 
                 <section className="bloco1">
                     <div id="infoBloco1">
-                        <button id='favoritos' onClick={Favoritar}>
-                            <img id='botaoFavoritar' src={HeartLine} alt="Favoritar" />
-                        </button>
-                        <h1 className='title'>{empreendedor.nomeEmpreendimento}</h1>
-                        <p>{empreendedor.biografia}</p>
+                        <div>
+                            <button id='favoritos' onClick={Favoritar}>
+                                <img id='botaoFavoritar' src={HeartLine} alt="Favoritar" />
+                            </button>
+                            <h1 className='title'>{empreendedor.nomeEmpreendimento}</h1>
+                            <p>{empreendedor.biografia}</p>
+                        </div>
                         <a href='#bloco2' className='buttonInfo'>VER PRODUTOS</a>
                     </div>
-                    <Carrossel
-                        img1={Artesanado}
-                        img2={Saude01}
-                        img3={Gastronomia}
-                        img4={Tecnologia}
-                        img5={Saude02}
-                        img6={Educacao}
-                        img7={Propaganda}
-                    />
+                    <div id='carrosselCentralizado'>
+                        <Carrossel
+                            img1={Artesanado}
+                            img2={Saude01}
+                            img3={Gastronomia}
+                            img4={Tecnologia}
+                            img5={Saude02}
+                            img6={Educacao}
+                            img7={Propaganda}
+                        />
+                    </div>
+                    
                 </section>
 
                 <section className="bloco2" id="bloco2">
@@ -153,7 +158,7 @@ function Vitrine() {
             <section id='bloco4'>
                 <div id='conteudoBloco'>
                     <h1 className='title' id='tituloBloco4'>INFORMAÇÕES</h1>
-                    <div id='colunas'>
+                    <div id='colunas' className='colunaInformacoes'>
                         <div className='coluna' id='fotoNome'>
                             <img id='fotoPerfil' src={UserIcon} alt='Icon de perfil' />
                             <div id='fotoTexto'>
@@ -165,14 +170,14 @@ function Vitrine() {
                             </div>
                         </div>
                         
-                        <div className='coluna'>
+                        <div className='coluna' id='retirarPadding'>
                             <div>
                                 <h2>MODALIDADE DO SERVIÇO</h2>
                                 <h4>{empreendedor.modalidade}</h4>
                             </div>
                             <h3>Recife e Região Metropolitana</h3>
                         </div>
-                        <div className='coluna'>
+                        <div className='coluna' id='retirarPadding'>
                             <div className='contatos'>
                                 <h4>EMAIL DE CONTATO</h4>
                                 <div className='contato'>

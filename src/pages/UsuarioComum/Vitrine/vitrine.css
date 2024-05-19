@@ -12,7 +12,7 @@
 #bloco2{
     width: 90%;
     margin: 0 auto;
-    margin-top: 4rem !important;
+    /* margin-top: 4rem !important; */
 }
 
 #textBranco {
@@ -128,9 +128,9 @@
 }
 
 #colunas {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
 .coluna {
@@ -200,4 +200,78 @@
     color: #ffffff;
     background-color: red;
     padding: 1em;
+}
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 1200px){
+
+    #colunas{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .colunaInformacoes {
+        p{
+            font-size: 12px;
+        }
+
+        h1{ font-size: 18px !important;}
+
+        h4, h5{
+            font-size: 13px;
+        }
+
+        h2, h3{
+            font-size: 13px
+        }
+    }
+
+}
+
+@media screen and (max-width: 1024px){
+
+    #fotoNome{
+
+        img{
+            width: 5rem;
+        }
+    }
+	
+}
+
+
+@media screen and (max-width: 768px){
+    #retirarPadding{
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        align-self: center;
+    }
+
+    #carrosselCentralizado{
+        display: flex;
+        align-self: center !important;
+        justify-content: center !important; /* Centraliza horizontalmente */
+        align-items: center !important; 
+    }
+	
+}
+
+@media screen and (max-width: 560px){
+
+    
+    
+}
+
+@media screen and (max-width: 480px){
+	
+}
+
+@media screen and (max-width: 320px){
+	
+}
+
+@media screen and (max-width: 280px){
+	
 }

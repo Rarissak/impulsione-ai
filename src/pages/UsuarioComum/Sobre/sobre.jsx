@@ -58,15 +58,18 @@ function Sobre() {
           />
           <div className='carrossel_texto'>
             <p>Uma plataforma que busca criar o ambiente perfeito para impulsionar seu negócio aí onde você está. <br /><strong>Isso é o que nós somos!</strong></p>
-            <img src={LogoColorida} alt="Logo" />
-            <p id='fraseEfeito'>Dê um salto em seu negócio</p>
+            <div>
+              <img src={LogoColorida} alt="Logo" /> 
+              <p id='fraseEfeito'>Dê um salto em seu negócio</p>
+            </div>
+            
           </div>
         </div>
 
-        <section id='boxInfos'>
+        <section id='boxInfosSobre'>
           <BoxInfo title={"QUEM SOMOS"} idBox={'titleBoxRoxo'} idDivisor={'divisorRoxo'}></BoxInfo>
           <div>
-            <div className="boxInformations">
+            <div className="boxInformations" id='boxInfoSobre'>
               <p>
                 Somos um workplace que visa promover um ambiente seguro e com ferramentas que fomentam o desenvolvimento de pequenos e microempreendedores. <br /><br />
                 Aumentando a visibilidade desses negócios ao fazer a conexão entre esses empreendedores que estão em busca de novos clientes e um espaço no mercado à pessoas que querem consumir/adquirir/comprar a um custo mais acessível sem perder a qualidade, promovendo então o comércio de empreendedores locais.

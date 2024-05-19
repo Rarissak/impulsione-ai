@@ -54,7 +54,14 @@ function Header() {
         ToggleModal();
     };
 
+    const [expandir, setExpandir] = useState(false);
+
+    const toggleExpanded = () => {
+        setExpandir(!expandir);
+    };
+
     return (
+        <>
         <header>
 
             <div id='headerUpper'>
@@ -121,7 +128,17 @@ function Header() {
                          onClick={logout}>
                              <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
                              <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
-                         </button>)}
+                         </button>
+
+                        // <button 
+                        //     id='headerLogin'
+                        //     className='centralizeItems, headerScreenButtons'
+                        //     onClick={toggleExpanded}
+                        // >
+                        //     <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
+                        //     <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
+                        // </button>
+                    )}
                     <Link
                         id='headerParceiros'
                         className='centralizeItems, headerScreenLinks'
@@ -141,7 +158,23 @@ function Header() {
                     backgroundColor: '#7900c3', // Cor de fundo da linha horizontal
                     margin: 0
                 }} />
+
+            
+
+            
         </header>
+            
+            {/* {expandir && (
+                <div id='perfilSairHeader'>
+                    <Link to="">Perfil</Link>
+                    <button
+                        onClick={handleComponentLogin}
+                    >Sair
+                    </button>
+                </div>
+            )} */}
+        
+        </>
     );
 }
 
