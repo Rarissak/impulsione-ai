@@ -297,7 +297,7 @@ function MeusDados()
             setNicho(nicho.nicho);
             localStorage.setItem('idNicho', nicho.idNicho)
 
-            console.log("Nicho:", nicho.nicho);
+            // console.log("Nicho:", nicho.nicho);
         })
         .catch(error => {
             // console.error('Erro ao obter os detalhes do empreendedor:', error.response.data);

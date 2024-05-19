@@ -161,7 +161,7 @@ function EditarDadosEmp() {
                                             <span className="nameField">Data de Nascimento</span>
                                             <input 
                                                 className="conteudo"  
-                                                required  
+                                                // required  
                                                 type="date" 
                                                 size={12} 
                                                 value={dataNascimento}
@@ -198,7 +198,7 @@ function EditarDadosEmp() {
                                         <span className="nameField">Endereço Completo</span>
                                         <input 
                                             className="conteudo" 
-                                            required 
+                                            // required 
                                             type="text" 
                                             id="inputEndereco"
                                         />

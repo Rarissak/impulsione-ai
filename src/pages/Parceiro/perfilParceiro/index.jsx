@@ -27,7 +27,7 @@ function PerfilParceiro(){
     const id = localStorage.getItem('id')
     const uri = localStorage.getItem('uri')
 
-    console.log("TOKEN:", token);
+    // console.log("TOKEN:", token);
  
     const [usuarioLogado, loading, error] = useAxios({
         axiosInstance: axiosInstance,
@@ -47,7 +47,7 @@ function PerfilParceiro(){
 
         reader.onload = () => {
         setSelectedImage(reader.result);
-        console.log("Imagem CARROSSEL carregada:", imageDataURL); // Adicionando um console.log para verificar a imagem
+        // console.log("Imagem CARROSSEL carregada:", imageDataURL); // Adicionando um console.log para verificar a imagem
         };
 
         reader.readAsDataURL(file);
@@ -64,7 +64,7 @@ function PerfilParceiro(){
 
         reader.onload = () => {
         setSelectedProduto(reader.result);
-        console.log("Imagem PRODUTO carregada:", imageDataURL); // Adicionando um console.log para verificar a imagem
+        // console.log("Imagem PRODUTO carregada:", imageDataURL); // Adicionando um console.log para verificar a imagem
         };        
 
         reader.readAsDataURL(file);
@@ -93,7 +93,7 @@ useEffect(() => {
             const empreendedor = response.data;
             const { nicho } = empreendedor;
             setNicho(nicho.id);
-            console.log("TESTE Nicho:", nicho.id);
+            // console.log("TESTE Nicho:", nicho.id);
         })
         .catch(error => {
             console.error('Erro ao obter os detalhes do empreendedor:', error);
@@ -167,7 +167,7 @@ const handleSubmitProduto = async (event) => {
 
         const handleSubmitDepoimento = async (event) => {
             event.preventDefault();
-            console.log(dadosDepoimento)
+            // console.log(dadosDepoimento)
 
             try {
                 const token = localStorage.getItem('token'); 
@@ -177,10 +177,10 @@ const handleSubmitProduto = async (event) => {
                     }
                 };
                 setDepoimento({ ...dadosDepoimento});
-                console.log(dadosDepoimento);
+                // console.log(dadosDepoimento);
                 
                 const response = await axiosInstance.post('http://localhost:8080/depoimento', dadosDepoimento);
-                console.log('Depoimento enviado com sucesso:', response.data);
+                // console.log('Depoimento enviado com sucesso:', response.data);
                 alert("Depoimento enviado com sucesso!")
 
             } catch (error) {
@@ -208,18 +208,18 @@ const handleSubmitProduto = async (event) => {
 
             const novaBiografia = document.getElementById('textareaBiografia').value;
 
-            console.log(novaBiografia)
+            // console.log(novaBiografia)
 
             //a const empreendedorId já foi declarada lá em cima 
             const empreendedorId = localStorage.getItem('id');
-            console.log(empreendedorId)
+            // console.log(empreendedorId)
 
             axios.put(`http://localhost:8080/editarBiografia/${empreendedorId}`, {
                 biografia: novaBiografia
             })
             .then(response => {
                 alert("Biografia Atualizada!")
-                console.log('Biografia atualizada com sucesso:', response.data);
+                // console.log('Biografia atualizada com sucesso:', response.data);
             })
             .catch(error => {
                 alert("Não foi possivel atualizar a biografia :(")
@@ -267,7 +267,7 @@ const handleSubmitProduto = async (event) => {
                 <BarraLinkInterno id='fundoLaranja' name={'DEPOIMENTOS'} idElemento={'areaDepoimentos'}></BarraLinkInterno>                
             </nav>
             <section id='sessaoMeusDados'>
-                <div id='informacoesSessao'>
+                {/* <div id='informacoesSessao'>
                     <h1>Olá, {apelidoParceiro}</h1>
                     <div>
                         <h3>No ultimo mês sua vitrine teve:</h3>
@@ -276,7 +276,7 @@ const handleSubmitProduto = async (event) => {
                     <a>
                         <p>Clique aqui para ver algumas dicas do SEBRAE de como impulsionar seu negócio.</p>
                     </a>
-                </div>
+                </div> */}
                 <div id='dimensaoMeusDados'>
                     <MeusDados></MeusDados>
                 </div>
@@ -521,7 +521,7 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco, setShowEditModal
                     const empreendedor = response.data;
                     const { nicho } = empreendedor;
                     setNicho(nicho.id);
-                    console.log("TESTE Nicho:", nicho.id);
+                    // console.log("TESTE Nicho:", nicho.id);
                 })
                 .catch(error => {
                     console.error('Erro ao obter os detalhes do empreendedor:', error);
