@@ -13,8 +13,6 @@ import axiosInstance, { axiosInstanceToken } from '../../../helper/axiosInstance
 import useAxios from '../../../hook/useAxios.js';
 import axios from "axios"; 
 
-
-
 import IconEditar from '../../../assets/iconEditar.svg'
 import IconExcluir from '../../../assets/iconLoginModalClose.svg';
 import ImgTeste from '../../../assets/imgTeste.png';
@@ -70,6 +68,66 @@ function PerfilParceiro(){
         reader.readAsDataURL(file);
     };
     //---------------------------------
+    
+    
+    // Cadastrando os produtos
+
+        // GET DO NICHO
+        const [nicho, setNicho] = useState('');
+
+        useEffect(() => {
+            axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
+                .then(response => {
+                    const empreendedor = response.data;
+                    const { nicho } = empreendedor;
+                    setNicho(nicho.id);
+                    // console.log("TESTE Nicho:", nicho.id);
+                })
+                .catch(error => {
+                    console.error('Erro ao obter os detalhes do empreendedor:', error);
+                });
+        }, []);
+
+    const [dadosProduto, setDadosProduto] = useState({
+        nome: '',
+        preco: '',
+        urlFoto: '',
+        idNicho: nicho,
+        idEmpreendedor: localStorage.getItem('id')
+    });
+
+    useEffect(() => {
+        setDadosProduto(prevState => ({ ...prevState, idNicho: nicho }));
+    }, [nicho]);
+
+    const handleChangeProduto = (event) => {
+        setDadosProduto({ ...dadosProduto, [event.target.name]: event.target.value });
+    };
+
+    const handleSubmitProduto = async (event) => {
+        event.preventDefault();
+
+        console.log(dadosProduto);
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            alert("Você precisa estar logado");
+            return;
+        }
+
+        try {
+            const response = await axiosInstanceToken().post("/produtos", dadosProduto);
+            alert("Produto cadastrado com sucesso");
+            setProdutoCadastrado(response.data);
+        } catch (err) {
+            console.log(err.message);
+        } finally {
+            window.location.reload();
+        }
+    };
+
+    //Deletar Produto está no componente produto cadastrado
+
 
 
 
@@ -77,69 +135,9 @@ function PerfilParceiro(){
     const [produtos, produtosloading, produtosError] = useAxios({
         axiosInstance: axiosInstance,
         method: 'GET',
-        url: 'produtos'
+        url: '/empreendedorProdutos/' + id
     })
     //---------------------------------
-    
-    
-    // Cadastrando os produtos
-
-// GET DO NICHO
-const [nicho, setNicho] = useState('');
-
-useEffect(() => {
-    axios.get(`http://localhost:8080/empreendedores/` + localStorage.getItem('id'))
-        .then(response => {
-            const empreendedor = response.data;
-            const { nicho } = empreendedor;
-            setNicho(nicho.id);
-            // console.log("TESTE Nicho:", nicho.id);
-        })
-        .catch(error => {
-            console.error('Erro ao obter os detalhes do empreendedor:', error);
-        });
-}, []);
-
-const [dadosProduto, setDadosProduto] = useState({
-    nome: '',
-    preco: '',
-    urlFoto: '',
-    idNicho: nicho,
-    idEmpreendedor: localStorage.getItem('id')
-});
-
-useEffect(() => {
-    setDadosProduto(prevState => ({ ...prevState, idNicho: nicho }));
-}, [nicho]);
-
-const handleChangeProduto = (event) => {
-    setDadosProduto({ ...dadosProduto, [event.target.name]: event.target.value });
-};
-
-const handleSubmitProduto = async (event) => {
-    event.preventDefault();
-
-    console.log(dadosProduto);
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-        alert("Você precisa estar logado");
-        return;
-    }
-
-    try {
-        const response = await axiosInstanceToken().post("/produtos", dadosProduto);
-        alert("Produto cadastrado com sucesso");
-        setProdutoCadastrado(response.data);
-    } catch (err) {
-        console.log(err.message);
-    } finally {
-        window.location.reload();
-    }
-};
-
-    //Deletar Produto está no componente produto cadastrado
-
 
     //Cadastrando os depoimentos
 
@@ -254,11 +252,8 @@ const handleSubmitProduto = async (event) => {
 
     return(
         <>
-        {/* Se showEditModal for true, renderiza o modal de edição */}
-        {/* {showEditModal && <EditarDadosProduto handleCloseModal={handleCloseEditModal} />} */}
         <Header></Header>
         <MenuLateral></MenuLateral>
-        {/* <EditarDadosProduto></EditarDadosProduto> */}
         <body>
             <nav id='barraLinks'>
                 <BarraLinkInterno id='fundoLaranja' name={'MEUS DADOS'} idElemento={'sessaoMeusDados'}></BarraLinkInterno>
@@ -284,7 +279,7 @@ const handleSubmitProduto = async (event) => {
             <section id='minhaVitrine'>
                 <BoxInfo title={'MINHA VITRINE'} idBox={'titleBoxRoxo'} idDivisor={'divisorRoxo'}></BoxInfo>
                 <div className="boxInformations" id='boxEditVitrine'>
-                    <div id="editCarrossel">
+                    {/* <div id="editCarrossel">
                         <form
                             // method="post"
                             encType="multipart/form-data"
@@ -298,14 +293,14 @@ const handleSubmitProduto = async (event) => {
                                 id="imagemInput"
                                 onChange={loadImage}
                             />
-                            <ImagePreview src={selectedImage} id={'imageCarrossel'}/> {/* Passe selectedImage como prop */}
+                            <ImagePreview src={selectedImage} id={'imageCarrossel'}/>
                             </label>
                             <button type="submit">ADICIONAR IMAGENS</button>
                         </form>
                         <div className="itensCadastrados">
                             <ImgCarrosselCadastrada img={ImgCarrossel}></ImgCarrosselCadastrada>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div id='editProdutos'>
                         <form 
@@ -359,7 +354,6 @@ const handleSubmitProduto = async (event) => {
                             </div>
                             <button type='submit'>ADICIONAR PRODUTO</button>
                         </form>
-                        {showEditModal && <EditarDadosProduto handleCloseModal={handleCloseEditModal} idProduto={idProdutoUp} />}
                         <div className="itensCadastrados">
                             {produtos.map((produto, index) => (
                                 <ProdutoCadastrado
@@ -368,7 +362,6 @@ const handleSubmitProduto = async (event) => {
                                     img={produto?.urlFoto}
                                     nomeProduto={produto?.nome}
                                     preco={produto?.preco}
-                                    setShowEditModal={setShowEditModal}
                                 />
                             ))}
                         </div>
@@ -383,20 +376,6 @@ const handleSubmitProduto = async (event) => {
                             <button type='submit'>ADICIONAR BIOGRAFIA</button>
                         </form>
                     </div>
-                    {/* <div id='editAlcance'>
-                        <form>
-                            <legend>QUAIS REGIÕESS SEU NEGÓCIO ATENDE?</legend>
-                            <div>
-                                <input
-                                    type='text'
-
-                                ></input>
-                                <p>Ex: Recife e Região Metropolitana</p>
-                                <p>Ex: Em todo o Brasil</p>
-                            </div>
-                            <button type='submit'>SALVAR</button>
-                        </form>
-                    </div> */}
                 </div>
             </section>
             <section id='sebrae'>
@@ -602,6 +581,7 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco, setShowEditModal
                             <input 
                                 type='text'
                                 name='urlFoto'
+                                required
                                 value={dadosProdutoUpdate.urlFoto}
                                 onChange={handleProduto}
                             />
@@ -612,6 +592,7 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco, setShowEditModal
                                 <input 
                                     type='text'
                                     name='nome'
+                                    required
                                     value={dadosProdutoUpdate.nome}
                                     onChange={handleProduto}
                                 />
@@ -624,6 +605,7 @@ function ProdutoCadastrado({idProduto, img, nomeProduto, preco, setShowEditModal
                                         type='number' 
                                         step=".02"
                                         name='preco'
+                                        required
                                         value={dadosProdutoUpdate.preco}
                                         onChange={handleProduto}
                                     />
