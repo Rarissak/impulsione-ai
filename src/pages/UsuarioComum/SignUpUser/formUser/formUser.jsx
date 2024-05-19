@@ -94,8 +94,8 @@ function FormUser()
                 ownerRef: "Suporte",
                 emailFrom: "impulsioneai@gmail.com",
                 emailTo: dados.email,
-                subject: "Bem-vindo (a) ao ImpulsioneAI",
-                text: "Olá " + primeiroNome + "," + "\n\nSeja muito bem-vindo à nossa plataforma! Estamos animados em tê-lo(a) conosco." + "\n\n Aqui você encontrará um universo de possibilidades para explorar, aprender e conectar-se. Nossa missão é tornar sua experiência aqui incrível, oferecendo recursos e ferramentas que ajudarão você a atingir seus objetivos." + "\n\nEstamos aqui para ajudar em cada passo do caminho. Se tiver alguma dúvida ou precisar de suporte, não hesite em entrar em contato conosco." + "\n\nMais uma vez, obrigado por se juntar a nós. Estamos ansiosos para ver você prosperar e fazer parte da nossa comunidade." + "\n\nCumprimentos," + "\n\nEquipe Impulsione aí."
+                subject: "Bem-vindo (a) ao Impulsione AI",
+                text: "Olá " + primeiroNome + "," + "\n\nSeja muito bem-vindo à nossa plataforma! Estamos animados em tê-lo(a) conosco." + "\n\n Aqui você encontrará um universo de possibilidades para explorar, aprender e conectar-se. Nossa missão é tornar sua experiência aqui incrível, oferecendo recursos e ferramentas que ajudarão você a atingir seus objetivos." + "\n\nEstamos aqui para ajudar em cada passo do caminho. Se tiver alguma dúvida ou precisar de suporte, não hesite em entrar em contato conosco." + "\n\nMais uma vez, obrigado por se juntar a nós. Estamos ansiosos para ver você prosperar e fazer parte da nossa comunidade." + "\n\Atenciosamente," + "\n\nEquipe Impulsione aí."
             });
 
             CadastroRealizado();
