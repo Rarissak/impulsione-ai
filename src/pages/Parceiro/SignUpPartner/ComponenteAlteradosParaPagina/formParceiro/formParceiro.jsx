@@ -488,7 +488,7 @@ function FormPartner()
                                 <select id="membership" name="planoAssinatura" value={dados.planoAssinatura} onChange={handleChange}>
                                     <option value="">Selecione</option>
                                     <option value="Gratuito">Gratuito</option>
-                                    <option value="bronze">Bronze</option>
+                                    <option value="Ouro">Ouro</option>
                                     <option value="Diamante">Diamante</option>
                                 </select>
                             </div>
