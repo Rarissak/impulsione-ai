@@ -12,6 +12,7 @@ import FiltroPesquisa from '../../../components/filtroPesquisa/filtroPesquisa.js
 import useAxios, { useAxiosWithDependecies } from '../../../hook/useAxios.js';
 import axiosInstance from '../../../helper/axiosInstance.js';
 import { useEffect } from 'react';
+import TrufasDoSim from '../../../assets/trufasDoSim.png';
 
 function Pesquisa() {
 
@@ -39,7 +40,7 @@ function Pesquisa() {
   const [empreendedores, loading, error] = useAxios({
     axiosInstance: axiosInstance,
     method: 'GET',
-    url: 'empreendedores'
+    url: 'verificaPlanosEmpreendedores'
   })
 
   if (nicho) {
@@ -69,7 +70,7 @@ function Pesquisa() {
 
               {!nichosPesquisadoloading && nichoPesquisado?.empreendimentos?.map((empreendimento) => (
                 <Negocio
-                  img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                foto={TrufasDoSim}
                   key={empreendimento.idEmpreededor}
                   link={'/vitrine/' + empreendimento.idEmpreededor}
                   name={empreendimento.nomeEmpreendimento}
@@ -94,7 +95,7 @@ function Pesquisa() {
                   key={empreendedor.idEmpreededor}
                   idBox={'quadradoLaranja'}
                   path={'/vitrine/' + empreendedor.idEmpreededor}
-                  foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                  foto={TrufasDoSim}
                   nome={empreendedor?.nomeEmpreendimento}
                   nicho={empreendedor?.nicho.nicho} />
               ))}
@@ -130,7 +131,7 @@ function Pesquisa() {
 
               {!pesquisadoloading && pesquisa !== null && (pesquisa?.map((empreendimento) => (
                 <Negocio
-                img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                foto={TrufasDoSim}
                 key={empreendimento.idEmpreededor}
                 link={'/vitrine/' + empreendimento.idEmpreededor}
                 name={empreendimento.nomeEmpreendimento}
@@ -155,7 +156,7 @@ function Pesquisa() {
                   key={empreendedor.idEmpreededor}
                   idBox={'quadradoLaranja'}
                   path={'/vitrine/' + empreendedor.idEmpreededor}
-                  foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                  foto={TrufasDoSim}
                   nome={empreendedor?.nomeEmpreendimento}
                   nicho={empreendedor?.nicho.nicho} />
               ))}
@@ -191,7 +192,7 @@ function Pesquisa() {
 
           {!loading && empreendedores?.map((empreendimento) => (
             <Negocio
-              img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+              img={TrufasDoSim}
               key={empreendimento.idEmpreededor}
               link={'/vitrine/' + empreendimento.idEmpreededor}
               name={empreendimento.nomeEmpreendimento}
@@ -216,7 +217,7 @@ function Pesquisa() {
               key={empreendedor.idEmpreededor}
               idBox={'quadradoLaranja'}
               path={'/vitrine' + empreendedor.idEmpreededor}
-              foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+              foto={TrufasDoSim}
               nome={empreendedor?.nomeEmpreendimento}
               nicho={empreendedor?.nicho.nicho} />
           ))}

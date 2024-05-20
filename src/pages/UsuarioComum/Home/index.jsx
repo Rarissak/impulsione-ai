@@ -53,7 +53,7 @@ function Home() {
     const [empreendedoresDestaque, loading, error] = useAxios({
         axiosInstance: axiosInstance,
         method: 'GET',
-        url: 'empreendedores'
+        url: 'verificaPlanosEmpreendedores'
     })
     const [nichos, nichosloading, nichoError] = useAxios({
         axiosInstance: axiosInstance,

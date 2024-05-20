@@ -54,7 +54,7 @@ function Destaques()
     const [destaques, loading, error] = useAxios({
         axiosInstance: axiosInstance,
         method: 'GET',
-        url:'verificaPlanosEmpreendedores'
+        url:'verificaPlanosDepoimentoEmpreendedores'
     })
 
 
