@@ -12,7 +12,9 @@ import FiltroPesquisa from '../../../components/filtroPesquisa/filtroPesquisa.js
 import useAxios, { useAxiosWithDependecies } from '../../../hook/useAxios.js';
 import axiosInstance from '../../../helper/axiosInstance.js';
 import { useEffect } from 'react';
-import TrufasDoSim from '../../../assets/trufasDoSim.png';
+
+import NegocioRoxo from "../../../assets/negocioRoxo.png";
+import NegocioLaranja from "../../../assets/negocioLaranja.png";
 
 function Pesquisa() {
 
@@ -70,7 +72,7 @@ function Pesquisa() {
 
               {!nichosPesquisadoloading && nichoPesquisado?.empreendimentos?.map((empreendimento) => (
                 <Negocio
-                foto={TrufasDoSim}
+                  img={NegocioRoxo}
                   key={empreendimento.idEmpreededor}
                   link={'/vitrine/' + empreendimento.idEmpreededor}
                   name={empreendimento.nomeEmpreendimento}
@@ -156,7 +158,7 @@ function Pesquisa() {
                   key={empreendedor.idEmpreededor}
                   idBox={'quadradoLaranja'}
                   path={'/vitrine/' + empreendedor.idEmpreededor}
-                  foto={TrufasDoSim}
+                  foto={NegocioLaranja}
                   nome={empreendedor?.nomeEmpreendimento}
                   nicho={empreendedor?.nicho.nicho} />
               ))}
