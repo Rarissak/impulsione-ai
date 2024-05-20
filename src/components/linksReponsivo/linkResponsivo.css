@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Inter:wght@100..900&display=swap');
+
+#linksResponsivo {
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 700;
+    text-decoration: none; 
+    color: #ffa768; 
+    cursor: pointer; 
+    text-align: center;
+    justify-content: center;
+    text-transform: uppercase;
+    
+    background-color: #370158;
+    width: 100% !important;
+    text-align: center;
+    padding: 0.5rem 0;
+    transition: background-color 0.3s ease;
+}
+
+#linksResponsivo:hover {
+    background-color: #6f17a5;
+    transition: 0.2s;
+}
