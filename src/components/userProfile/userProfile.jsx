@@ -7,6 +7,7 @@ import TitleBorda from '../featured/titleBorda.jsx'
 // função principal do arquivo
 import axiosInstance from '../../helper/axiosInstance.js';
 import useAxios from '../../hook/useAxios.js';
+import Destaque from '../../components/featured/destaque.jsx';
 
     const userId = localStorage.getItem('id'); 
 
@@ -21,6 +22,8 @@ export function UserData()
         method: 'GET',
         url:`/usuarios/${userId}`
     })
+
+    
     
     // não mostrar nada 
     if(usuario === undefined)
@@ -180,53 +183,49 @@ function Recomendado({imgReco, recoTitle, recoTipoEstabe, recoDesc, recoIcon})
 function Recomendacoes()
 {
 
-    const [empreendimentoRecomendado, loading, error] = useAxios({
+    // const [empreendimentoRecomendado, loading, error] = useAxios({
+    //     axiosInstance: axiosInstance,
+    //     method: 'GET',
+    //     url:'verificaPlanosEmpreendedores'
+    // })
+
+    const [empreendedoresDestaque, loading, error] = useAxios({
         axiosInstance: axiosInstance,
         method: 'GET',
-        url:'verificaPlanosEmpreendedores'
+        url: 'verificaPlanosEmpreendedores'
     })
 
     
     // não mostrar nada 
-    if(empreendimentoRecomendado === undefined)
+    if(empreendedoresDestaque === undefined)
     {
         return null;
     }
     
-    console.log(empreendimentoRecomendado);
+    console.log(empreendedoresDestaque);
 
     return(
         <div>
             {/*Verificando se tem algo para ser mostrado*/}
-        {empreendimentoRecomendado ? (
+        {empreendedoresDestaque ? (
              <div id="recomendacoes">
              {/*Limitando o tamanho do titulo*/}
-                <div id="recomTitle">
-                    <TitleBorda title={'RECOMENDAÇÕES'}></TitleBorda>
-                </div>
-
-                <div id="recomendados">
-                    {/* Mapeando os empreendedores recomendados para criar os componentes Recomendado */}
-                    {empreendimentoRecomendado.length > 0 ? (
-                        empreendimentoRecomendado.map((empreendedor, index) => (
-                            <Recomendado
-                            key={index}
-                            imgReco={NegocioLaranja}
-                            recoTitle={empreendedor?.nomeEmpreendimento}
-                            recoTipoEstabe={empreendedor?.nicho?.nicho}
-                            recoDesc={empreendedor?.biografia}
-                            recoIcon={EmptyHeart}
+   
+                <div id='destaques'>
+                <TitleBorda title={'RECOMENDAÇÕES'}></TitleBorda>
+                    <div id='linhaDestaques'>
+                        {empreendedoresDestaque.slice(0, 5).map((empreendedor, index) => (
+                            <Destaque
+                                key={empreendedor.idEmpreededor}
+                                idBox={'quadradoLaranja'}
+                                path={'/vitrine/' + empreendedor.idEmpreededor}
+                                foto={NegocioLaranja}
+                                nome={empreendedor?.nomeEmpreendimento}
+                                nicho={empreendedor?.nicho.nicho} 
                             />
-                        ))
-                        ) : (
-                            // tá com uma animaçãozinha de mudar a cor do texto para um pouco azulado
-                            <div id="mensagemCarregamento">
-                            
-                                <h1 id="recomTitle">Contéudo está sendo carregado!</h1>
-                            </div>
-                        )}
-
+                        ))}
                     </div>
+                </div>
                 </div>
         )  : (
             
