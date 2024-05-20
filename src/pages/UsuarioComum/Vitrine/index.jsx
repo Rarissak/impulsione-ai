@@ -15,6 +15,10 @@ import Favoritar from '../../../utils/favoritar';
 import CopiarTexto from '../../../utils/copiarTexto';
 import UserIcon from '../../../assets/userIcon.svg';
 
+import CarrosselLaranja from '../../../assets/carrosselLaranja.png';
+import CarrosselRoxo from '../../../assets/carrosselRoxo.png';
+
+
 // Imagens do carrossel
 import Artesanado from '../../../assets/artesanato.png';
 import Educacao from '../../../assets/educacaoAula.png';
@@ -156,13 +160,13 @@ function Vitrine() {
                     </div>
                     <div id='carrosselCentralizado'>
                         <Carrossel
-                            img1={Artesanado}
-                            img2={Saude01}
-                            img3={Gastronomia}
-                            img4={Tecnologia}
-                            img5={Saude02}
-                            img6={Educacao}
-                            img7={Propaganda}
+                            img1={CarrosselRoxo}
+                            img2={CarrosselLaranja}
+                            img3={CarrosselRoxo}
+                            img4={CarrosselLaranja}
+                            img5={CarrosselRoxo}
+                            img6={CarrosselLaranja}
+                            img7={CarrosselRoxo}
                         />
                     </div>
                 </section>

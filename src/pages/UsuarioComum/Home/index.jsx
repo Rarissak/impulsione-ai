@@ -33,6 +33,7 @@ import Propaganda from '../../../assets/propagandaImpulsioneAi.png'
 
 //Imagens detaques
 import TrufasDoSim from '../../../assets/trufasDoSim.png';
+import NegocioLaranja from '../../../assets/negocioLaranja.png';
 import Artelane from '../../../assets/artelane.png';
 import pitagoras from '../../../assets/pitagoras.png';
 import Fisio from '../../../assets/fisioEmcasa.png';
@@ -130,7 +131,7 @@ function Home() {
                                 key={empreendedor.idEmpreededor}
                                 idBox={'quadradoLaranja'}
                                 path={'/vitrine/' + empreendedor.idEmpreededor}
-                                foto={TrufasDoSim}
+                                foto={NegocioLaranja}
                                 nome={empreendedor?.nomeEmpreendimento}
                                 nicho={empreendedor?.nicho.nicho} 
                             />

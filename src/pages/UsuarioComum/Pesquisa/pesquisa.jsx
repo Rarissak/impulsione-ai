@@ -13,6 +13,9 @@ import useAxios, { useAxiosWithDependecies } from '../../../hook/useAxios.js';
 import axiosInstance from '../../../helper/axiosInstance.js';
 import { useEffect } from 'react';
 
+import NegocioRoxo from "../../../assets/negocioRoxo.png";
+import NegocioLaranja from "../../../assets/negocioLaranja.png";
+
 function Pesquisa() {
 
   const { nicho, pesquisaUsuario } = useParams();
@@ -69,7 +72,7 @@ function Pesquisa() {
 
               {!nichosPesquisadoloading && nichoPesquisado?.empreendimentos?.map((empreendimento) => (
                 <Negocio
-                  img={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                  img={NegocioRoxo}
                   key={empreendimento.idEmpreededor}
                   link={'/vitrine/' + empreendimento.idEmpreededor}
                   name={empreendimento.nomeEmpreendimento}
@@ -155,7 +158,7 @@ function Pesquisa() {
                   key={empreendedor.idEmpreededor}
                   idBox={'quadradoLaranja'}
                   path={'/vitrine/' + empreendedor.idEmpreededor}
-                  foto={'https://toppng.com/uploads/preview/and-blank-effect-transparent-11546868080xgtiz6hxid.png'}
+                  foto={NegocioLaranja}
                   nome={empreendedor?.nomeEmpreendimento}
                   nicho={empreendedor?.nicho.nicho} />
               ))}
