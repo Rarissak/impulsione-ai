@@ -49,18 +49,20 @@ ul{
 
 /* Edição scroll */
 .menuLateral::-webkit-scrollbar {
-    width: 12px; /* largura da barra de rolagem */
+    width: 5px; 
 }
 
 .menuLateral::-webkit-scrollbar-track {
-    background: #2C0048; /* cor de fundo da área da barra de rolagem */
+    background: #2C0048;
 }
 
 .menuLateral::-webkit-scrollbar-thumb {
-    background: #4a0675; /* cor do indicador da barra de rolagem */
-    border-radius: 6px; /* borda arredondada do indicador */
+    background: #4a0675; 
+    border-radius: 6px;
 }
-/* Edição scroll */
+
+/* Fim Edição scroll */
+
 
 .menuLateral {
     list-style-type: none;
@@ -75,6 +77,7 @@ ul{
     z-index: 9999;
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
 
     #botaoSair {
         display: flex;
@@ -187,45 +190,13 @@ ul{
 }
 
 #barraLinksResponsivo {
-    list-style: none;
-    list-style-type: none;
-    /* display: flex;
-    flex-direction: column; */
-    /* flex-wrap: wrap; */
-    gap: 0.5rem;
-    margin-top: 5rem;
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 0.5rem;
     align-items: center;
-    margin-top: 5rem;
-
-    li {
-        background-color: #370158;
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem 0;
-        transition: background-color 0.3s ease;
-    }
-
-    li:hover {
-        background-color: #6f17a5;
-        transition: 0.2s;
-    }
-
-    .linksResponsivo {
-        font-family: "Baloo 2", sans-serif;
-        font-weight: 700;
-        text-decoration: none; 
-        color: #ffa768; 
-        cursor: pointer; 
-        text-align: center;
-        justify-content: center;
-    }
-
-    /* .linhaDivisora {
-        border-color: none;
-        border: solid 1px red;
-        width: 100%;
-    } */
+    gap: 0.5rem;
+    margin-top: 3rem;
 }
 
 /* Responsivo */

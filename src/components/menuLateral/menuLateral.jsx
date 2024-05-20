@@ -16,6 +16,7 @@ import useAxios, { useAxiosWithDependecies } from '../../hook/useAxios';
 
 import axiosInstance from '../../helper/axiosInstance';
 
+import LinkResponsivo from '../linksReponsivo/linkResponsivo';
 
 function MenuLateral(LoginPerfil, linkPerfil){
 
@@ -45,6 +46,11 @@ function MenuLateral(LoginPerfil, linkPerfil){
         ToggleModal();
     };
 
+    const [nichos, nichosloading, nichoError] = useAxios({
+        axiosInstance: axiosInstance,
+        method: 'GET',
+        url: 'nichos'
+    })
 
     //CÓDIGO DA INTEGRAÇÃO IGUAL AO HEADER
         const handleInputChange = (event) => {
@@ -220,32 +226,15 @@ function MenuLateral(LoginPerfil, linkPerfil){
                     </li>
                 </ul>
 
-                <ul id='barraLinksResponsivo'>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>GASTRONOMIA</Link>
-                    </li>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>MODA</Link>
-                    </li>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>ARTESANATO</Link>
-                    </li>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>TECNOLOGIA</Link>
-                    </li>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>EDUCAÇÃO</Link>
-                    </li>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>SAÚDE</Link>
-                    </li>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>ESTÉTICA</Link>
-                    </li>
-                    <li>
-                        <Link to='/pesquisa' className='linksResponsivo'>DIVERSOS</Link>
-                    </li>
-                </ul>
+                <div id='barraLinksResponsivo'>
+                    {nichos.map((nicho, index) => (
+                        <LinkResponsivo
+                            key={nicho.id} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
+                            name={nicho?.nicho.toUpperCase()}
+                            link={`/pesquisa/nicho/${nicho.nicho}`}
+                        />
+                    ))}
+                </div>
             </ul>
 
 
