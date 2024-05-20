@@ -29,50 +29,113 @@ import axiosInstance from '../../../helper/axiosInstance';
 import { useParams } from 'react-router-dom';
 
 function Vitrine() {
-
-    const {idEmpreendedor} = useParams();
+    const { idEmpreendedor } = useParams();
     const usuarioLogado = {
         token: localStorage.getItem("token"),
         id: localStorage.getItem('id'),
         uri: localStorage.getItem('uri')
-    }
- 
-    const [nichos, nichosloading, nichoError] = useAxios({
-        axiosInstance: axiosInstance,
-        method: 'GET',
-        url: 'nichos'
-    })
-    const [empreendedor, empreendedoresLoading, empreendedorError] = useAxiosWithDependecies({
-        axiosInstance:axiosInstance,
-        method:"GET",
-        url:"/empreendedores/" + idEmpreendedor
-    },[idEmpreendedor])
+    };
 
-    if (idEmpreendedor === undefined && usuarioLogado.uri == "empreendedores") {
-        window.location.href = "/vitrine/" + usuarioLogado.id
-    }else if(idEmpreendedor === undefined)
-    {
-        window.location.href ="/"
-    }
-   
+    // Hooks de uso geral
+    const [dadosAvaliacao, setDadosAvaliacao] = useState({
+        idEmpreendedor: idEmpreendedor,
+        avaliacao: '',
+        usuario: localStorage.getItem('id')
+    });
 
-    if (empreendedoresLoading) {
+    // Dados do Empreendedor
+    const [empreendedor, setEmpreendedor] = useState(null);
+    const [empreendedoresLoading, setEmpreendedoresLoading] = useState(true);
+    const [empreendedorError, setEmpreendedorError] = useState(null);
+
+    // Dados dos Nichos
+    const [nichos, setNichos] = useState([]);
+    const [nichosLoading, setNichosLoading] = useState(true);
+    const [nichoError, setNichoError] = useState(null);
+
+    // Efeito para carregar os dados dos nichos
+    useEffect(() => {
+        const fetchNichos = async () => {
+            try {
+                const response = await axiosInstance.get('nichos');
+                setNichos(response.data);
+                setNichosLoading(false);
+            } catch (error) {
+                setNichoError(error);
+                setNichosLoading(false);
+            }
+        };
+        fetchNichos();
+    }, []);
+
+    // Efeito para carregar os dados do empreendedor
+    useEffect(() => {
+        const fetchEmpreendedor = async () => {
+            try {
+                const response = await axiosInstance.get(`/empreendedores/${idEmpreendedor}`);
+                setEmpreendedor(response.data);
+                setEmpreendedoresLoading(false);
+            } catch (error) {
+                setEmpreendedorError(error);
+                setEmpreendedoresLoading(false);
+            }
+        };
+        if (idEmpreendedor) {
+            fetchEmpreendedor();
+        }
+    }, [idEmpreendedor]);
+
+    // Redirecionamentos
+    useEffect(() => {
+        if (idEmpreendedor === undefined && usuarioLogado.uri === "empreendedores") {
+            window.location.href = "/vitrine/" + usuarioLogado.id;
+        } else if (idEmpreendedor === undefined) {
+            window.location.href = "/";
+        }
+    }, [idEmpreendedor, usuarioLogado.uri, usuarioLogado.id]);
+
+    // Manter os estados de carregamento e erro de forma consistente
+    if (nichosLoading || empreendedoresLoading) {
         return <div>Loading...</div>;
     }
 
-    if (empreendedorError) {
-        return <div>Error: {empreendedorError.menssage}</div>;
+    if (nichoError) {
+        return <div>Error: {nichoError.message}</div>;
     }
+
+    if (empreendedorError) {
+        return <div>Error: {empreendedorError.message}</div>;
+    }
+
+    // Função para tratar a mudança no formulário
+    const handleChange = (event) => {
+        setDadosAvaliacao({ ...dadosAvaliacao, [event.target.name]: event.target.value });
+    };
+
+    // Função para enviar a avaliação
+    const enviarAvaliacao = async (event) => {
+        event.preventDefault();
+        console.log(dadosAvaliacao);
+        try {
+            const resposta = await axios.post('http://localhost:8080/avaliacao', dadosAvaliacao);
+            console.log(resposta.data);
+            alert("Avaliação enviada com sucesso!");
+            window.location.reload();
+        } catch (erro) {
+            console.error('Ocorreu um erro ao enviar o formulário:', erro);
+            alert("Desculpe, ocorreu um erro ao enviar sua avaliação :(  Tente novamente mais tarde.");
+        }
+    };
 
     return (
         <>
             <Header />
             <MenuLateral />
             <div className='blocoRoxo'>
-            <nav className='linksExternos' id='barraLinks'>
+                <nav className='linksExternos' id='barraLinks'>
                     {nichos.map((nicho, index) => (
                         <BarraLinkExterno
-                            key={nicho.id} // Usando o índice como chave, mas tenha cuidado com isso se os dados forem dinâmicos e mutáveis
+                            key={nicho.id}
                             id='fundoLaranja'
                             name={nicho?.nicho.toUpperCase()}
                             link={`/pesquisa/nicho/${nicho.nicho}`}
@@ -102,7 +165,6 @@ function Vitrine() {
                             img7={Propaganda}
                         />
                     </div>
-                    
                 </section>
 
                 <section className="bloco2" id="bloco2">
@@ -110,7 +172,7 @@ function Vitrine() {
                         <h2 id="textBranco">Nossos Produtos</h2>
                     </div>
                     <div id="gradeProdutos">
-                        {empreendedor.produtos.length > 0? (
+                        {empreendedor.produtos.length > 0 ? (
                             empreendedor.produtos.map(produto => (
                                 <Produto
                                     key={produto.idProduto}
@@ -128,32 +190,32 @@ function Vitrine() {
                 </section>
 
             </div>
-            
+
             <section id="bloco3">
-                    <BoxInfo title={"Avaliações"} idBox={'titleBoxLaranja'} idDivisor={'divisorLaranja'} />
-                    <div className='avaliacoes' id="boxLaranja">
-                        <div className='boxAvaliacoes'>
-                            {empreendedor? (
-                                empreendedor.avaliacoes.map(avaliacao => (
-                                    <div className='caixaAvaliacao' key={avaliacao.id}>
-                                        <h3>{avaliacao.usuario.nome}</h3>
-                                        <p>{avaliacao.avaliacao}</p>
-                                    </div>
-                                ))
-                            ) : (
-                                <div className='caixaAvaliacao'>
-                                    <p>Avaliações não disponíveis</p>
+                <BoxInfo title={"Avaliações"} idBox={'titleBoxLaranja'} idDivisor={'divisorLaranja'} />
+                <div className='avaliacoes' id="boxLaranja">
+                    <div className='boxAvaliacoes'>
+                        {empreendedor ? (
+                            empreendedor.avaliacoes.map(avaliacao => (
+                                <div className='caixaAvaliacao' key={avaliacao.id}>
+                                    <h3>{avaliacao.usuario.nome}</h3>
+                                    <p>{avaliacao.avaliacao}</p>
                                 </div>
-                            )}
-                        </div>
-                        <form id='inputAvaliacao'>
-                            <input type='text' placeholder="Insira sua avaliação" maxLength={100} />
-                            <button type="submit">
-                                <img src={SendMensage} alt='Enviar avaliação' />
-                            </button>
-                        </form>
+                            ))
+                        ) : (
+                            <div className='caixaAvaliacao'>
+                                <p>Avaliações não disponíveis</p>
+                            </div>
+                        )}
                     </div>
-                </section>
+                    <form id='inputAvaliacao' onSubmit={enviarAvaliacao}>
+                        <input type='text' placeholder="Insira sua avaliação" name='avaliacao' value={dadosAvaliacao.avaliacao} onChange={handleChange} maxLength={100} />
+                        <button type="submit">
+                            <img src={SendMensage} alt='Enviar avaliação' />
+                        </button>
+                    </form>
+                </div>
+            </section>
 
             <section id='bloco4'>
                 <div id='conteudoBloco'>
@@ -169,7 +231,7 @@ function Vitrine() {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className='coluna' id='retirarPadding'>
                             <div>
                                 <h2>MODALIDADE DO SERVIÇO</h2>
