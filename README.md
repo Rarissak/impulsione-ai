@@ -8,7 +8,7 @@ Impulsione aí é uma plataforma web projetada para conectar empreendedores loca
 
 - Frontend: HTML, CSS, JavaScript, React.js
 - Backend: Java, Springboot
-- Banco de Dados: MySQL
+- Banco de Dados: PostegreSQL
 
 ## Funcionalidades Principais
 
@@ -44,7 +44,7 @@ Para executar o projeto localmente, siga estas etapas:
 - Rarissa Oliveira - Product Management 
 - Keylane Cardoso - Designer UX/UI & dsenvolvedora Front-end
 - Helton Escobar - Desenvolvedor Front-end.
-- Vinícius Alburquerque - Desenvolver Front-end
+- Vinícius Alburquerque - Desenvolvedor Front-end
 - Jhonnatas Silva - Desenvolvedor Back-end
 - Luiz Nery - Desenvolvedor Back-end & DBA
 - Fábio Matheus - Tester 
