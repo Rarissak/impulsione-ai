@@ -37,6 +37,7 @@ import Artelane from '../../../assets/artelane.png';
 import pitagoras from '../../../assets/pitagoras.png';
 import Fisio from '../../../assets/fisioEmcasa.png';
 import vintageVibe from '../../../assets/vintageVibe.png';
+import NegocioLaranja from "../../../assets/negocioLaranja.png";
 
 // import Produto from '../../../components/produto/produto';
 
@@ -77,7 +78,7 @@ function Destaques()
                     key={index}
                     idBox={'quadradoBranco'}
                     path={'/vitrine/' + destaque.idEmpreededor} // Pegar o path do banco tbm?
-                    foto={TrufasDoSim} // Mias tarde -> Trocar pela foto do banco
+                    foto={NegocioLaranja} // Mias tarde -> Trocar pela foto do banco
                     nome={destaque.nomeEmpreendimento}
                     nicho={destaque.nicho.nicho}
                     />

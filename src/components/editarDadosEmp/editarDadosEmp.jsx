@@ -8,7 +8,7 @@ import iconModalClose from '../../assets/iconLoginModalClose.svg';
 import BoxInfo from "../boxInfo/boxInfo";
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
-import FotoExemplo from "../../assets/trufasDoSim.png"
+import NegocioRoxo from "../../assets/negocioRoxo.png";
 import { PegandoDados, MostrarDadosAtualizados } from "../meusDados/MeusDados";
 
 export function ToggleModalEditData()
@@ -175,7 +175,7 @@ function EditarDadosEmp() {
                                         <input 
                                             type="file" 
                                             id="inputImg" 
-                                            src={FotoExemplo}
+                                            src={NegocioRoxo}
                                         />
                                     </div>
                                 </fieldset>

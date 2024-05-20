@@ -97,7 +97,7 @@ function Pesquisa() {
                   key={empreendedor.idEmpreededor}
                   idBox={'quadradoLaranja'}
                   path={'/vitrine/' + empreendedor.idEmpreededor}
-                  foto={TrufasDoSim}
+                  foto={NegocioLaranja}
                   nome={empreendedor?.nomeEmpreendimento}
                   nicho={empreendedor?.nicho.nicho} />
               ))}
@@ -133,7 +133,7 @@ function Pesquisa() {
 
               {!pesquisadoloading && pesquisa !== null && (pesquisa?.map((empreendimento) => (
                 <Negocio
-                foto={TrufasDoSim}
+                foto={NegocioRoxo}
                 key={empreendimento.idEmpreededor}
                 link={'/vitrine/' + empreendimento.idEmpreededor}
                 name={empreendimento.nomeEmpreendimento}
@@ -194,7 +194,7 @@ function Pesquisa() {
 
           {!loading && empreendedores?.map((empreendimento) => (
             <Negocio
-              img={TrufasDoSim}
+              img={NegocioRoxo}
               key={empreendimento.idEmpreededor}
               link={'/vitrine/' + empreendimento.idEmpreededor}
               name={empreendimento.nomeEmpreendimento}
@@ -219,7 +219,7 @@ function Pesquisa() {
               key={empreendedor.idEmpreededor}
               idBox={'quadradoLaranja'}
               path={'/vitrine' + empreendedor.idEmpreededor}
-              foto={TrufasDoSim}
+              foto={NegocioLaranja}
               nome={empreendedor?.nomeEmpreendimento}
               nicho={empreendedor?.nicho.nicho} />
           ))}

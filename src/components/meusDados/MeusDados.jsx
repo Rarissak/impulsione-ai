@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import './meusDados.css';
 import InstagramIcon from '../../assets/instagramRoxo.svg';
 import FacebookIcon from '../../assets/facebookRoxo.svg';
-import ProfileImg from '../../assets/trufasDoSim.png';
+import NegocioRoxo from "../../assets/negocioRoxo.png";
 
 import EditarDadosEmp, {ToggleModalEditData} from '../editarDadosEmp/editarDadosEmp.jsx';
 // import EditarDadosEmp, {ToggleModalEditData, PegandoDadosAtualizados} from '../editarDadosEmp/editarDadosEmp.jsx';
@@ -361,7 +361,7 @@ function MeusDados()
                                 </div> 
                                     
                             </div>                
-                            <img src={ProfileImg} alt="Foto de perfil" id="fotoPerfil"/>
+                            <img src={NegocioRoxo} alt="Foto de perfil" id="fotoPerfil"/>
                         </fieldset>
                                     
                         {/*Campo das informações pessoais*/}

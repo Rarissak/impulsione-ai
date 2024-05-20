@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './userProfile.css';
 import Heart from '../../assets/fullHeartIcon.svg';
 import EmptyHeart from "../../assets/emptyHeartIcon.svg";
-import FotoExemplo from "../../assets/fotoExemplo.jpg";
+import NegocioLaranja from "../../assets/negocioLaranja.png";
 import TitleBorda from '../featured/titleBorda.jsx'
 // função principal do arquivo
 import axiosInstance from '../../helper/axiosInstance.js';
@@ -211,7 +211,7 @@ function Recomendacoes()
                         empreendimentoRecomendado.map((empreendedor, index) => (
                             <Recomendado
                             key={index}
-                            imgReco={FotoExemplo}
+                            imgReco={NegocioLaranja}
                             recoTitle={empreendedor?.nomeEmpreendimento}
                             recoTipoEstabe={empreendedor?.nicho?.nicho}
                             recoDesc={empreendedor?.biografia}
