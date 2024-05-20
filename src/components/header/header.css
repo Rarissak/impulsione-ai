@@ -4,11 +4,51 @@ header{
     width: 100%;
     top: 0;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+
+
+/* #headerUpperEHr{
+    background-color: red !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
+#loginPerfilSair{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 #perfilSairHeader{
     width: 10rem !important;
-    background-color: red;;
+    background-color: #c3c3c330;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    gap: 0.15rem;
+    border-top: 3px solid #ffa666;
+    margin-top: 0.15rem;
+
+    .itemPerfilSairHeader{
+        /* background-color: aqua; */
+        background: transparent;
+        padding: 0.1rem 3rem 0.1rem 3rem;
+        border-radius: 10px;
+        color: #7900C3 ;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .itemPerfilSairHeader:hover {
+        background-color: #ffbe8f;
+    }
 }
 
 /*===- Configuração básica dos butões -===*/
@@ -26,6 +66,11 @@ button, #headerSearch input
     height: auto;
     gap: 20px;
     align-items: center;
+}
+#headerUpper{
+    display: flex;
+    align-items: center;
+    /* align-items: baseline !important; */
 }
 
 /*===- Alinhamento vertical para items da caixa acima da listra... -===*/
@@ -144,19 +189,22 @@ button, #headerSearch input
 
 
 
-#logo
+#logoHeaderSiteName
 {
+    display: flex;
     /* margin-left: 10px; */
     width: 100%;
     height: 4rem;
+    /* align-items: flex-start !important;
+    justify-content: flex-start; */
 }
 
 /*===- Listra divisora -===*/
 
 #headerHR
 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
 }
 
 /*===- Botões das categorias/nichos -===*/
@@ -193,7 +241,54 @@ button, #headerSearch input
 
 @media screen and (max-width: 1200px){}
 
-@media screen and (max-width: 1024px){}
+@media screen and (max-width: 1024px){
+    #logoHeaderSiteName {
+        width: 100%;
+        height: 3rem;
+        /* align-items: flex-start !important;
+        justify-content: flex-start; */
+    }
+
+    header{
+        gap: 0.5rem !important;
+    }
+
+    #headerSearch{
+        width: 15rem;
+        font-size: 13px;
+    }
+
+    .headerScreenLinks{
+        font-size: 13px;
+    }
+
+    .headerScreenButtons span, .headerScreenLinks span{
+        font-size: 13px !important;
+    }
+
+    .headerScreenButtons img, .headerScreenLinks img{
+        width: 1.25rem;
+    }
+
+    .headerScreenLinks img{
+        width: 1.5rem;
+    }
+
+    #headerLogin{
+        font-size: 13px;
+    }
+
+    #perfilSairHeader{
+        
+        .itemPerfilSairHeader{
+            font-size: 13px;
+        }
+    
+        .itemPerfilSairHeader:hover {
+            background-color: #ffbe8f;
+        }
+    }
+}
 
 @media screen and (max-width: 768px){
     header {

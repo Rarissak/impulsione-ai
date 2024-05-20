@@ -5,7 +5,7 @@ import HandshakeIconSvg from '../../assets/handshakeIcon.svg';
 import SearchIconSvg from '../../assets/searchIcon.svg';
 import UserIconSvg from '../../assets/userIcon.svg';
 import LogoDescritivaIcon from '../../assets/logoDescritivaIcon.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Login, { ToggleModal } from '../../pages/UsuarioComum/login/login';
 import useAxios, { useAxiosWithDependecies } from '../../hook/useAxios';
 import axiosInstance from '../../helper/axiosInstance.js';
@@ -15,6 +15,8 @@ function Header() {
     const id = localStorage.getItem('id')
     const uri = localStorage.getItem('uri')
     const [itemPesquisa, setItemPesquisa] = useState("")
+    const [tipoUsuario, setTipoUsuario] = useState('');
+    const [rota, setRota] = useState('');
 
     const handleInputChange = (event) => {
         setItemPesquisa(event.target.value);
@@ -41,14 +43,69 @@ function Header() {
         url: uri + '/' + id
     }, [isLogado])
 
+    useEffect(() => {
+        const fetchUserType = async () => {
+            try {
+                const adminResponse = await axiosInstance.get(`/admin/${id}`);
+                if (adminResponse.data) {
+                    setTipoUsuario('admin');
+                    return;
+                }
+            } catch (error) {
+                console.log('Usuário não é admin', error);
+            }
+
+            try {
+                const empreendedorResponse = await axiosInstance.get(`/empreendedores/${id}`);
+                if (empreendedorResponse.data) {
+                    setTipoUsuario('empreendedor');
+                    return;
+                }
+            } catch (error) {
+                console.log('Usuário não é empreendedor', error);
+            }
+
+            try {
+                const usuarioResponse = await axiosInstance.get(`/usuarios/${id}`);
+                if (usuarioResponse.data) {
+                    setTipoUsuario('usuario');
+                }
+            } catch (error) {
+                console.log('Erro ao obter tipo de usuário', error);
+            }
+        };
+        if (isLogado) {
+            fetchUserType();
+        }
+    }, [isLogado, id]);
+
+
     function logout() {
         localStorage.clear();
-        window.location.reload();
+        window.location.href = "/";
     }
 
     function perfil(){
         window.location.href = "/perfilParceiro"
     }
+
+    const handlePerfilClick = () => {
+        let rota = '/';
+        switch (tipoUsuario) {
+            case 'admin':
+                setRota('/adminSolicitações');
+                break;
+            case 'empreendedor':
+                setRota('/perfilParceiro');
+                break;
+            case 'usuario':
+                setRota('/perfilUsuario');
+                break;
+            default:
+                setRota('/');
+        }
+        navigate(rota);
+    };
 
     const handleComponentLogin = () => {
         ToggleModal();
@@ -62,14 +119,14 @@ function Header() {
 
     return (
         <>
-        <header>
+        <header id="headerUpperEHr"> 
 
             <div id='headerUpper'>
 
                 <div id="headerSiteName">
                     <Link
                         to='/'>
-                        <img id='logo' src={LogoDescritivaIcon} alt="Logo do Impulsione Ai, onde a letra i é no formato de uma mola" />
+                        <img id='logoHeaderSiteName' src={LogoDescritivaIcon} alt="Logo do Impulsione Ai, onde a letra i é no formato de uma mola" />
                     </Link>
                 </div>
 
@@ -113,35 +170,52 @@ function Header() {
                     {!isLogado && (
                         <button
                             id='headerLogin'
-                            className='centralizeItems, headerScreenButtons'
+                            className='centralizeItems headerScreenButtons'
                             onClick={handleComponentLogin}>
                             <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon' />
                             <span>Login</span>
                         </button>)}
                     {!isLogado && <Login />}
 
+                    <div id='loginPerfilSair'>
+                        {isLogado && (
+                            // <button 
+                            // id='headerLogin'
+                            // className='centralizeItems, headerScreenButtons'
+                            // onClick={logout}>
+                            //     <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
+                            //     <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
+                            // </button>
 
-                    {isLogado && (
-                         <button 
-                         id='headerLogin'
-                         className='centralizeItems, headerScreenButtons'
-                         onClick={logout}>
-                             <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
-                             <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
-                         </button>
+                            <button 
+                                id='headerLogin'
+                                className='centralizeItems headerScreenButtons'
+                                onClick={toggleExpanded}
+                            >
+                                <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
+                                <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
+                            </button>
+                        )}
+                        {expandir && (
+                            <div id='perfilSairHeader'>
+                                <Link 
+                                    to={rota}
+                                    className='itemPerfilSairHeader'
+                                    onClick={handlePerfilClick}
+                                >Perfil</Link>
+                                <Link 
+                                    onClick={logout}
+                                    className='itemPerfilSairHeader'
+                                    to='/'
+                                >Sair
+                                </Link>
+                            </div>
+                        )}
+                    </div>
 
-                        // <button 
-                        //     id='headerLogin'
-                        //     className='centralizeItems, headerScreenButtons'
-                        //     onClick={toggleExpanded}
-                        // >
-                        //     <img src={UserIconSvg} alt="Icone, para informar login" className='headerIcon'/>
-                        //     <span>{"Olá, " + usuarioLogado.nomeExibicao}</span>  
-                        // </button>
-                    )}
                     <Link
                         id='headerParceiros'
-                        className='centralizeItems, headerScreenLinks'
+                        className='centralizeItems headerScreenLinks'
                         to='/areaParceiro'>
                         <img src={HandshakeIconSvg} alt="Icon da área de parceria, duas mãos se apertando." className='headerIcon' id="headerIconParceiros" />
                         <span>Área Parceiros</span>
@@ -158,21 +232,10 @@ function Header() {
                     backgroundColor: '#7900c3', // Cor de fundo da linha horizontal
                     margin: 0
                 }} />
-
-            
-
             
         </header>
             
-            {/* {expandir && (
-                <div id='perfilSairHeader'>
-                    <Link to="">Perfil</Link>
-                    <button
-                        onClick={handleComponentLogin}
-                    >Sair
-                    </button>
-                </div>
-            )} */}
+            
         
         </>
     );
