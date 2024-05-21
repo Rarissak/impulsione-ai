@@ -93,7 +93,7 @@ function Header() {
         let rota = '/';
         switch (tipoUsuario) {
             case 'admin':
-                setRota('/adminSolicitações');
+                setRota('/adminSolicitacoes');
                 break;
             case 'empreendedor':
                 setRota('/perfilParceiro');

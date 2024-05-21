@@ -128,7 +128,7 @@ function MenuLateral(LoginPerfil, linkPerfil){
             let rota = '/';
             switch (tipoUsuario) {
                 case 'admin':
-                    setRota('/adminSolicitações');
+                    setRota('/adminSolicitacoes');
                     break;
                 case 'empreendedor':
                     setRota('/perfilParceiro');
