@@ -7,7 +7,7 @@ import BoxInfo from "../boxInfo/boxInfo";
 
 import axiosInstance from '../../helper/axiosInstance.js';
 import useAxios from '../../hook/useAxios.js';
-import { PegandoDados } from "../userProfile/userProfile.jsx";
+// import { PegandoDados } from "../userProfile/userProfile.jsx";
 //Função de fechar o modal. Ele vai adicionar a classe hide na div editarDadosUserCentralize, 
 //que vai fazer a div sumir e aparecer, quando o botão escolhido for clicado.*/}
 

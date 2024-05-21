@@ -114,9 +114,9 @@ function Sobre() {
         </Link>
 
         <section>
-          <BoxVideo video={"https://www.youtube.com/embed/CxwjOwNgx30?si=LCEVyJluPePxyanL"}
-            title={"Como usar nossa plataforma?"}
-            text={"Para que você consiga usufruir de todos os benefícios da nossa plataforma, criamos um tutorial que irá explicar de maneira breve como navegar na nossa plataforma."}>
+          <BoxVideo video={"https://www.youtube.com/embed/WLg7imC5QYQ?si=u-av8KND9t5b-wzB"}
+            title={"Conheça o Impulsione aí"}
+            text={"A mais nova plataforma de empreendedores!"}>
           </BoxVideo>
         </section>
       </body>
