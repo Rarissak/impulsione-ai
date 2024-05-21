@@ -8,6 +8,7 @@ import TitleBorda from '../featured/titleBorda.jsx'
 import axiosInstance from '../../helper/axiosInstance.js';
 import useAxios from '../../hook/useAxios.js';
 import Destaque from '../../components/featured/destaque.jsx';
+import EditarDadosUser, {ToggleModalEditDataUser} from '../editarDadosUsuario/editarDadosUser.jsx';
 
     const userId = localStorage.getItem('id'); 
 
@@ -16,6 +17,11 @@ import Destaque from '../../components/featured/destaque.jsx';
 // Tornando os subcompenentes exportáveis solo
 export function UserData()
 {
+    
+    useEffect(() => {
+        ToggleModalEditDataUser();
+      }, []);
+
 
     const [usuario, loading, error] = useAxios({
         axiosInstance: axiosInstance,
@@ -81,7 +87,7 @@ export function UserData()
                      )}
                  
               <div className="buttonsFormEdit">  
-                  <button id="editButton">EDITAR DADOS</button>
+                  <button id="editButton" onClick={ToggleModalEditDataUser}>EDITAR DADOS</button>
               </div>
            </div>
           </div>
@@ -243,6 +249,7 @@ function UserProfile()
 
     return(
             <div id="componenteUserPro">
+                {<EditarDadosUser/>}
                <div id="corFundo">
                 <div id="formUserPro">
                     
